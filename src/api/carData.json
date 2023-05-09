@@ -1,0 +1,76 @@
+[
+  {"id": 10, "brand":"현대", "enbrand":"hyundai",
+    "segment": [
+      {
+        "id":21,
+        "seg":"중형세단",
+        "car": [
+          {"id":1,"krname":"쏘나타", "enname":"Sonata", "imgurl":null}
+        ]
+      },
+      {
+        "id":33,
+        "seg":"준대형SUV",
+        "car": [
+          {"id":1,"krname":"팰리세이드", "enname":"Palisade"}
+        ]
+      }
+    ]
+  },
+  {"id": 11, "brand":"기아", "enbrand":"kia",
+    "segment": [
+      {
+        "id":31,
+        "seg":"준중형SUV",
+        "car": [
+          {"id":1, "krname":"스포티지", "enname":"Sportage"}
+        ]
+      }
+    ]
+  },
+  {"id": 12, "brand":"제네시스", "enbrand":"genesis",
+    "segment": [
+      {
+        "id":null,
+        "seg": null,
+        "car": [
+          {"id":1,"krname":null, "enname":null}
+        ]
+      }
+    ]
+  },
+  {"id": 13, "brand":"르노코리아", "enbrand":"renault_korea",
+    "segment": [
+      {
+        "id":null,
+        "seg": null,
+        "car": [
+          {"id":1,"krname":null, "enname":null}
+        ]
+      }
+    ]
+  },
+  {"id": 14, "brand":"KG모빌리티", "enbrand":"kg_mobility",
+    "segment": [
+      {
+        "id":null,
+        "seg": null,
+        "car": [
+          {"id":1,"krname":null, "enname":null}
+        ]
+      }
+    ]
+  },
+  {"id": 15, "brand":"쉐보레", "enbrand":"chevrolet",
+    "segment": [
+      {
+        "id":null,
+        "seg": null,
+        "car": [
+          {"id":1,"krname":null, "enname":null}
+        ]
+      }
+    ]
+  }
+  
+]
