@@ -1,76 +1,377 @@
 [
-  {"id": 10, "brand":"현대", "enbrand":"hyundai",
+  {
+    "brand": "현대",
+    "enBrand": "hyundai",
+    "id": 10,
     "segment": [
-      {
-        "id":21,
-        "seg":"중형세단",
-        "car": [
-          {"id":1,"krname":"쏘나타", "enname":"Sonata", "imgurl":null}
-        ]
-      },
-      {
-        "id":33,
-        "seg":"준대형SUV",
-        "car": [
-          {"id":1,"krname":"팰리세이드", "enname":"Palisade"}
-        ]
-      }
+            {
+              "seg": "경차",
+              "id": 11,
+              "cars": [
+                {
+                  "id": 10110,
+                  "krName":"케스퍼",
+                  "enName":"Casper",
+                  "imgUrl":"hyundai/casper"
+                }
+              ]
+            },
+            {
+              "seg": "소형 세단",
+              "id": 20,
+              "cars": null
+            },
+            {
+              "seg": "준중형 세단",
+              "id": 21,
+              "cars": [
+                {
+                  "id": 10210,
+                  "krName":"아반떼",
+                  "enName":"Avante",
+                  "imgUrl":"hyundai/avante"
+                },
+                {
+                  "id": 10211,
+                  "krName":"아반떼N",
+                  "enName":"AvanteN",
+                  "imgUrl":"hyundai/avanteN"
+                }
+              ]
+            },
+            {
+              "seg": "중형 세단",
+              "id": 22,
+              "cars": [
+                {
+                  "id": 10220,
+                  "krName": "쏘나타",
+                  "enName": "Sonata",
+                  "imgUrl": "hyundai/sonata"
+                },
+                {
+                  "id": 10221,
+                  "krName": "아이오닉6",
+                  "enName": "IONIQ6",
+                  "imgUrl": "hyundai/ioniq6"
+                }
+              ]
+            },
+            {
+              "seg": "준대형 세단",
+              "id": 23,
+              "cars": [
+                {
+                  "id": 10230,
+                  "krName": "그랜저",
+                  "enName": "Grandeur",
+                  "imgUrl": "hyundai/grandeur"
+                }
+              ]
+            },
+            {
+              "seg": "대형 세단",
+              "id": 24,
+              "cars": null
+            },
+            {
+              "seg": "소형SUV",
+              "id": 30,
+              "cars": [
+                {
+                  "id": 10300,
+                  "krName": "베뉴",
+                  "enName": "Venue",
+                  "imgUrl": "hyundai/venue"
+                },
+                {
+                  "id": 10301,
+                  "krName": "코나",
+                  "enName": "Kona",
+                  "imgUrl": "hyundai/kona"
+                },
+                {
+                  "id": 10302,
+                  "krName": "코나N",
+                  "enName": "KonaN",
+                  "imgUrl": "hyundai/konaN"
+                }
+              ]
+            },
+            {
+              "seg": "준중형SUV",
+              "id": 31,
+              "cars": [
+                {
+                  "id": 10310,
+                  "krName": "투싼",
+                  "enName": "Tucson",
+                  "imgUrl": "hyundai/tucson"
+                },
+                {
+                  "id": 10311,
+                  "krName": "아이오닉5",
+                  "enName": "IONIQ5",
+                  "imgUrl": "hyundai/ioniq5"
+                }
+              ]
+            },
+            {
+              "seg": "중형SUV",
+              "id": 32,
+              "cars": [
+                {
+                  "id": 10320,
+                  "krName": "싼타페",
+                  "enName": "Santafe",
+                  "imgUrl": "hyundai/santafe"
+                },
+                {
+                  "id": 10321,
+                  "krName": "넥쏘",
+                  "enName": "Nexo",
+                  "imgUrl": "hyundai/nexo"
+                }
+              ]
+            },
+            {
+              "seg": "준대형SUV",
+              "id": 33,
+              "cars": [
+                {
+                  "id": 10330,
+                  "krName": "팰리세이드",
+                  "enName": "Palisade",
+                  "imgUrl": "hyundai/palisade"
+                }
+              ]
+            },
+            {
+              "seg": "대형SUV",
+              "id": 34,
+              "cars": null
+            },
+            {
+              "seg": "RV/MPV",
+              "id": 44,
+              "cars": [
+                {
+                  "id": 10440,
+                  "krName": "스타리아",
+                  "enName": "Staria",
+                  "imgUrl": "hyundai/staria"
+                }
+              ]
+            },
+            {
+              "seg": "픽업/벤",
+              "id": 55,
+              "cars": null
+            },
+            {
+              "seg": "해치백",
+              "id": 66,
+              "cars": [
+                {
+                  "id": 10660,
+                  "krName": "i30",
+                  "enName": "i30",
+                  "imgUrl": "hyundai/i30"
+                }
+              ]
+            },
+            {
+              "seg": "왜건",
+              "id": 77,
+              "cars": null
+            },
+            {
+              "seg": "상용차",
+              "id": 88,
+              "cars": null
+            }
     ]
   },
-  {"id": 11, "brand":"기아", "enbrand":"kia",
+  {
+    "brand": "기아",
+    "enBrand": "kia",
+    "id": 11,
     "segment": [
-      {
-        "id":31,
-        "seg":"준중형SUV",
-        "car": [
-          {"id":1, "krname":"스포티지", "enname":"Sportage"}
-        ]
-      }
-    ]
-  },
-  {"id": 12, "brand":"제네시스", "enbrand":"genesis",
-    "segment": [
-      {
-        "id":null,
-        "seg": null,
-        "car": [
-          {"id":1,"krname":null, "enname":null}
-        ]
-      }
-    ]
-  },
-  {"id": 13, "brand":"르노코리아", "enbrand":"renault_korea",
-    "segment": [
-      {
-        "id":null,
-        "seg": null,
-        "car": [
-          {"id":1,"krname":null, "enname":null}
-        ]
-      }
-    ]
-  },
-  {"id": 14, "brand":"KG모빌리티", "enbrand":"kg_mobility",
-    "segment": [
-      {
-        "id":null,
-        "seg": null,
-        "car": [
-          {"id":1,"krname":null, "enname":null}
-        ]
-      }
-    ]
-  },
-  {"id": 15, "brand":"쉐보레", "enbrand":"chevrolet",
-    "segment": [
-      {
-        "id":null,
-        "seg": null,
-        "car": [
-          {"id":1,"krname":null, "enname":null}
-        ]
-      }
+            {
+              "seg": "경차",
+              "id": 11,
+              "cars": [
+                {
+                  "id": 11110,
+                  "krName":"모닝",
+                  "enName":"Morning",
+                  "imgUrl":"kia/morning"
+                },
+                {
+                  "id": 11111,
+                  "krName":"레이",
+                  "enName":"Ray",
+                  "imgUrl":"kia/ray"
+                }
+              ]
+            },
+            {
+              "seg": "소형 세단",
+              "id": 20,
+              "cars": null
+            },
+            {
+              "seg": "준중형 세단",
+              "id": 21,
+              "cars": [
+                {
+                  "id": 11210,
+                  "krName":"K3",
+                  "enName":"K3",
+                  "imgUrl":"kia/k3"
+                }
+              ]
+            },
+            {
+              "seg": "중형 세단",
+              "id": 22,
+              "cars": [
+                {
+                  "id": 11220,
+                  "krName": "K3 GT",
+                  "enName": "K3 GT",
+                  "imgUrl": "kia/k3_GT"
+                }
+              ]
+            },
+            {
+              "seg": "준대형 세단",
+              "id": 23,
+              "cars": [
+                {
+                  "id": 11230,
+                  "krName": "K8",
+                  "enName": "K8",
+                  "imgUrl": "kia/k8"
+                }
+              ]
+            },
+            {
+              "seg": "대형 세단",
+              "id": 24,
+              "cars": [
+                {
+                  "id": 11240,
+                  "krName": "K9",
+                  "enName": "K9",
+                  "imgUrl": "kia/k9"
+                }
+              ]
+            },
+            {
+              "seg": "소형SUV",
+              "id": 30,
+              "cars": [
+                {
+                  "id": 11300,
+                  "krName": "니로",
+                  "enName": "Niro",
+                  "imgUrl": "kia/niro"
+                },
+                {
+                  "id": 11301,
+                  "krName": "셀토스",
+                  "enName": "Seltos",
+                  "imgUrl": "kia/seltos"
+                }
+              ]
+            },
+            {
+              "seg": "준중형SUV",
+              "id": 31,
+              "cars": [
+                {
+                  "id": 11310,
+                  "krName": "스포티지",
+                  "enName": "Sportage",
+                  "imgUrl": "kia/sportage"
+                },
+                {
+                  "id": 11311,
+                  "krName": "EV6",
+                  "enName": "EV6",
+                  "imgUrl": "kia/ev6"
+                }
+              ]
+            },
+            {
+              "seg": "중형SUV",
+              "id": 32,
+              "cars": [
+                {
+                  "id": 11320,
+                  "krName": "쏘렌토",
+                  "enName": "Sorento",
+                  "imgUrl": "kia/sorento"
+                }
+              ]
+            },
+            {
+              "seg": "준대형SUV",
+              "id": 33,
+              "cars": [
+                {
+                  "id": 11330,
+                  "krName": "모하비",
+                  "enName": "Mohave",
+                  "imgUrl": "kia/mohave"
+                },
+                {
+                  "id": 11331,
+                  "krName": "EV9",
+                  "enName": "EV9",
+                  "imgUrl": "kia/ev9"
+
+                }
+              ]
+            },
+            {
+              "seg": "대형SUV",
+              "id": 34,
+              "cars": null
+            },
+            {
+              "seg": "RV/MPV",
+              "id": 44,
+              "cars": [
+                {
+                  "id": 11440,
+                  "krName": "카니발",
+                  "enName": "Carnival",
+                  "imgUrl": "kia/carnival"
+                }
+              ]
+            },
+            {
+              "seg": "픽업/벤",
+              "id": 55,
+              "cars": null
+            },
+            {
+              "seg": "해치백",
+              "id": 66,
+              "cars": null
+            },
+            {
+              "seg": "왜건",
+              "id": 77,
+              "cars": null
+            },
+            {
+              "seg": "상용차",
+              "id": 88,
+              "cars": null
+            }
     ]
   }
-  
 ]

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import { AllCarsPage } from './pages/AllCarsPage'
+import { AllCarsPage } from './pages/AllCars'
 
 function App() {
   const navigate = useNavigate();
