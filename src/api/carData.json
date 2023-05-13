@@ -1,377 +1,921 @@
 [
   {
-    "brand": "현대",
-    "enBrand": "hyundai",
-    "id": 10,
-    "segment": [
-            {
-              "seg": "경차",
-              "id": 11,
-              "cars": [
-                {
-                  "id": 10110,
-                  "krName":"케스퍼",
-                  "enName":"Casper",
-                  "imgUrl":"hyundai/casper"
-                }
-              ]
-            },
-            {
-              "seg": "소형 세단",
-              "id": 20,
-              "cars": null
-            },
-            {
-              "seg": "준중형 세단",
-              "id": 21,
-              "cars": [
-                {
-                  "id": 10210,
-                  "krName":"아반떼",
-                  "enName":"Avante",
-                  "imgUrl":"hyundai/avante"
-                },
-                {
-                  "id": 10211,
-                  "krName":"아반떼N",
-                  "enName":"AvanteN",
-                  "imgUrl":"hyundai/avanteN"
-                }
-              ]
-            },
-            {
-              "seg": "중형 세단",
-              "id": 22,
-              "cars": [
-                {
-                  "id": 10220,
-                  "krName": "쏘나타",
-                  "enName": "Sonata",
-                  "imgUrl": "hyundai/sonata"
-                },
-                {
-                  "id": 10221,
-                  "krName": "아이오닉6",
-                  "enName": "IONIQ6",
-                  "imgUrl": "hyundai/ioniq6"
-                }
-              ]
-            },
-            {
-              "seg": "준대형 세단",
-              "id": 23,
-              "cars": [
-                {
-                  "id": 10230,
-                  "krName": "그랜저",
-                  "enName": "Grandeur",
-                  "imgUrl": "hyundai/grandeur"
-                }
-              ]
-            },
-            {
-              "seg": "대형 세단",
-              "id": 24,
-              "cars": null
-            },
-            {
-              "seg": "소형SUV",
-              "id": 30,
-              "cars": [
-                {
-                  "id": 10300,
-                  "krName": "베뉴",
-                  "enName": "Venue",
-                  "imgUrl": "hyundai/venue"
-                },
-                {
-                  "id": 10301,
-                  "krName": "코나",
-                  "enName": "Kona",
-                  "imgUrl": "hyundai/kona"
-                },
-                {
-                  "id": 10302,
-                  "krName": "코나N",
-                  "enName": "KonaN",
-                  "imgUrl": "hyundai/konaN"
-                }
-              ]
-            },
-            {
-              "seg": "준중형SUV",
-              "id": 31,
-              "cars": [
-                {
-                  "id": 10310,
-                  "krName": "투싼",
-                  "enName": "Tucson",
-                  "imgUrl": "hyundai/tucson"
-                },
-                {
-                  "id": 10311,
-                  "krName": "아이오닉5",
-                  "enName": "IONIQ5",
-                  "imgUrl": "hyundai/ioniq5"
-                }
-              ]
-            },
-            {
-              "seg": "중형SUV",
-              "id": 32,
-              "cars": [
-                {
-                  "id": 10320,
-                  "krName": "싼타페",
-                  "enName": "Santafe",
-                  "imgUrl": "hyundai/santafe"
-                },
-                {
-                  "id": 10321,
-                  "krName": "넥쏘",
-                  "enName": "Nexo",
-                  "imgUrl": "hyundai/nexo"
-                }
-              ]
-            },
-            {
-              "seg": "준대형SUV",
-              "id": 33,
-              "cars": [
-                {
-                  "id": 10330,
-                  "krName": "팰리세이드",
-                  "enName": "Palisade",
-                  "imgUrl": "hyundai/palisade"
-                }
-              ]
-            },
-            {
-              "seg": "대형SUV",
-              "id": 34,
-              "cars": null
-            },
-            {
-              "seg": "RV/MPV",
-              "id": 44,
-              "cars": [
-                {
-                  "id": 10440,
-                  "krName": "스타리아",
-                  "enName": "Staria",
-                  "imgUrl": "hyundai/staria"
-                }
-              ]
-            },
-            {
-              "seg": "픽업/벤",
-              "id": 55,
-              "cars": null
-            },
-            {
-              "seg": "해치백",
-              "id": 66,
-              "cars": [
-                {
-                  "id": 10660,
-                  "krName": "i30",
-                  "enName": "i30",
-                  "imgUrl": "hyundai/i30"
-                }
-              ]
-            },
-            {
-              "seg": "왜건",
-              "id": 77,
-              "cars": null
-            },
-            {
-              "seg": "상용차",
-              "id": 88,
-              "cars": null
-            }
-    ]
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "캐스퍼",
+      "en" : "Casper"
+    },
+    "id": 10110,
+    "segments": "경차",
+    "imgUrl" : "hyundai/Casper",
+    "price" : {
+      "min" : 1375,
+      "max" : 1960
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "998",
+      "gasMileage" : "12.3 ~ 14.3",
+      "power" : "76/6,200",
+      "torque" : "9.73/750",
+      "length" : "3595",
+      "width" : "1595",
+      "height" : "1575"
+    }
   },
   {
-    "brand": "기아",
-    "enBrand": "kia",
-    "id": 11,
-    "segment": [
-            {
-              "seg": "경차",
-              "id": 11,
-              "cars": [
-                {
-                  "id": 11110,
-                  "krName":"모닝",
-                  "enName":"Morning",
-                  "imgUrl":"kia/morning"
-                },
-                {
-                  "id": 11111,
-                  "krName":"레이",
-                  "enName":"Ray",
-                  "imgUrl":"kia/ray"
-                }
-              ]
-            },
-            {
-              "seg": "소형 세단",
-              "id": 20,
-              "cars": null
-            },
-            {
-              "seg": "준중형 세단",
-              "id": 21,
-              "cars": [
-                {
-                  "id": 11210,
-                  "krName":"K3",
-                  "enName":"K3",
-                  "imgUrl":"kia/k3"
-                }
-              ]
-            },
-            {
-              "seg": "중형 세단",
-              "id": 22,
-              "cars": [
-                {
-                  "id": 11220,
-                  "krName": "K3 GT",
-                  "enName": "K3 GT",
-                  "imgUrl": "kia/k3_GT"
-                }
-              ]
-            },
-            {
-              "seg": "준대형 세단",
-              "id": 23,
-              "cars": [
-                {
-                  "id": 11230,
-                  "krName": "K8",
-                  "enName": "K8",
-                  "imgUrl": "kia/k8"
-                }
-              ]
-            },
-            {
-              "seg": "대형 세단",
-              "id": 24,
-              "cars": [
-                {
-                  "id": 11240,
-                  "krName": "K9",
-                  "enName": "K9",
-                  "imgUrl": "kia/k9"
-                }
-              ]
-            },
-            {
-              "seg": "소형SUV",
-              "id": 30,
-              "cars": [
-                {
-                  "id": 11300,
-                  "krName": "니로",
-                  "enName": "Niro",
-                  "imgUrl": "kia/niro"
-                },
-                {
-                  "id": 11301,
-                  "krName": "셀토스",
-                  "enName": "Seltos",
-                  "imgUrl": "kia/seltos"
-                }
-              ]
-            },
-            {
-              "seg": "준중형SUV",
-              "id": 31,
-              "cars": [
-                {
-                  "id": 11310,
-                  "krName": "스포티지",
-                  "enName": "Sportage",
-                  "imgUrl": "kia/sportage"
-                },
-                {
-                  "id": 11311,
-                  "krName": "EV6",
-                  "enName": "EV6",
-                  "imgUrl": "kia/ev6"
-                }
-              ]
-            },
-            {
-              "seg": "중형SUV",
-              "id": 32,
-              "cars": [
-                {
-                  "id": 11320,
-                  "krName": "쏘렌토",
-                  "enName": "Sorento",
-                  "imgUrl": "kia/sorento"
-                }
-              ]
-            },
-            {
-              "seg": "준대형SUV",
-              "id": 33,
-              "cars": [
-                {
-                  "id": 11330,
-                  "krName": "모하비",
-                  "enName": "Mohave",
-                  "imgUrl": "kia/mohave"
-                },
-                {
-                  "id": 11331,
-                  "krName": "EV9",
-                  "enName": "EV9",
-                  "imgUrl": "kia/ev9"
-
-                }
-              ]
-            },
-            {
-              "seg": "대형SUV",
-              "id": 34,
-              "cars": null
-            },
-            {
-              "seg": "RV/MPV",
-              "id": 44,
-              "cars": [
-                {
-                  "id": 11440,
-                  "krName": "카니발",
-                  "enName": "Carnival",
-                  "imgUrl": "kia/carnival"
-                }
-              ]
-            },
-            {
-              "seg": "픽업/벤",
-              "id": 55,
-              "cars": null
-            },
-            {
-              "seg": "해치백",
-              "id": 66,
-              "cars": null
-            },
-            {
-              "seg": "왜건",
-              "id": 77,
-              "cars": null
-            },
-            {
-              "seg": "상용차",
-              "id": 88,
-              "cars": null
-            }
-    ]
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "아반떼",
+      "en" : "Avante"
+    },
+    "id": 10210,
+    "segments": "준중형세단",
+    "imgUrl" : "hyundai/Avante",
+    "price" : {
+      "min" : 1960,
+      "max" : 3064
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1580~1598",
+      "gasMileage" : "10.3 ~ 21.1",
+      "power" : "105/5700",
+      "torque" : "15.0/4000",
+      "length" : "4710",
+      "width" : "1825",
+      "height" : "1420"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "아반떼N",
+      "en" : "Avante N"
+    },
+    "id": 10211,
+    "segments": "준중형세단",
+    "imgUrl" : "hyundai/AvanteN",
+    "price" : {
+      "min" : 3212,
+      "max" : 3399
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1998",
+      "gasMileage" : "10.4~10.7",
+      "power" : "280/5500~6000",
+      "torque" : "40.0/2100~4700",
+      "length" : "4675",
+      "width" : "1825",
+      "height" : "1415"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "쏘나타",
+      "en" : "Sonata"
+    },
+    "id": 10220,
+    "segments": "중형세단",
+    "imgUrl" : "hyundai/Sonata",
+    "price" : {
+      "min" : 2546,
+      "max" : 3399
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 가솔린, 가솔린+전기",
+      "displacement" : "1598~2497",
+      "gasMileage" : "9.4~19.4",
+      "power" : "152/6,000",
+      "torque" : "19.2/5000",
+      "length" : "4910",
+      "width" : "1860",
+      "height" : "1445"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "아이오닉6",
+      "en" : "IONIQ6"
+    },
+    "id": 10221,
+    "segments": "중형세단",
+    "imgUrl" : "hyundai/IONIQ6",
+    "price" : {
+      "min" : 5200,
+      "max" : 6369
+    },
+    "attribute" : {
+      "fuelType" : "전기(배터리)",
+      "displacement" : "697 | 77.4",
+      "gasMileage" : "5.5~6.2 | 367~524",
+      "power" : "229",
+      "torque" : "35.7",
+      "length" : "4855",
+      "width" : "1880",
+      "height" : "1495"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "그랜저",
+      "en" : "Grandeur"
+    },
+    "id": 10230,
+    "segments": "준대형세단",
+    "imgUrl" : "hyundai/Grandeur",
+    "price" : {
+      "min" : 3580,
+      "max" : 5121
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 가솔린, 가솔린+전기",
+      "displacement" : "1598~3,470",
+      "gasMileage" : "7.8~18.0",
+      "power" : "180/5500",
+      "torque" : "27.0/1500",
+      "length" : "5035",
+      "width" : "1880",
+      "height" : "1460"
+    }
+  },
+  
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "베뉴",
+      "en" : "Venue"
+    },
+    "id": 10300,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/Venue",
+    "price" : {
+      "min" : 1630,
+      "max" : 2395
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1598",
+      "gasMileage" : "13.3~13.7",
+      "power" : "123/6,300",
+      "torque" : "15.7/4500",
+      "length" : "4040",
+      "width" : "1770",
+      "height" : "1565"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "코나",
+      "en" : "Kona"
+    },
+    "id": 10301,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/Kona",
+    "price" : {
+      "min" : 2468,
+      "max" : 3468
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 가솔린+전기",
+      "displacement" : "1580~1999",
+      "gasMileage" : "11.2~19.8",
+      "power" : "105/5700",
+      "torque" : "14.7/4000",
+      "length" : "4350",
+      "width" : "1825",
+      "height" : "1580"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "코나N",
+      "en" : "Kona N"
+    },
+    "id": 10302,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/KonaN",
+    "price" : {
+      "min" : 3418,
+      "max" : 3418
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1998",
+      "gasMileage" : "10.0",
+      "power" : "280/6,800",
+      "torque" : "40.0",
+      "length" : "4215",
+      "width" : "1800",
+      "height" : "1550"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "코나 Electric",
+      "en" : "Kona Electric"
+    },
+    "id": 10303,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/KonaElectric",
+    "price" : {
+      "min" : 4655,
+      "max" : 5324
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1998",
+      "gasMileage" : "10.0",
+      "power" : "280/6,800",
+      "torque" : "40.0",
+      "length" : "4215",
+      "width" : "1800",
+      "height" : "1550"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "투싼",
+      "en" : "Tucson"
+    },
+    "id": 10310,
+    "segments": "준중형SUV",
+    "imgUrl" : "hyundai/Tucson",
+    "price" : {
+      "min" : 2584,
+      "max" : 3969
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 가솔린+전기, 디젤",
+      "displacement" : "1598~1998",
+      "gasMileage" : "11.0~16.2",
+      "power" : "180/5500",
+      "torque" : "27.0/1,500~4,500",
+      "length" : "4630",
+      "width" : "1865",
+      "height" : "1665"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "아이오닉5",
+      "en" : "IONIQ5"
+    },
+    "id": 10311,
+    "segments": "준중형SUV",
+    "imgUrl" : "hyundai/IONIQ5",
+    "price" : {
+      "min" : 4790,
+      "max" : 6120
+    },
+    "attribute" : {
+      "fuelType" : "전기(배터리)",
+      "displacement" : "697 | 77.4",
+      "gasMileage" : "4.5~5.2 | 319~458",
+      "power" : "228.4",
+      "torque" : "35.7",
+      "length" : "4630",
+      "width" : "1890",
+      "height" : "1605"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "싼타페",
+      "en" : "Santafe"
+    },
+    "id": 10320,
+    "segments": "중형SUV",
+    "imgUrl" : "hyundai/Santafe",
+    "price" : {
+      "min" : 3252,
+      "max" : 4727
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 가솔린+전기, 디젤",
+      "displacement" : "1598~2497",
+      "gasMileage" : "9.5~15.3",
+      "power" : "180/5500",
+      "torque" : "27.0/1,500~4,500",
+      "length" : "4785",
+      "width" : "1900",
+      "height" : "1685"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "넥쏘",
+      "en" : "Nexo"
+    },
+    "id": 10321,
+    "segments": "중형SUV",
+    "imgUrl" : "hyundai/Nexo",
+    "price" : {
+      "min" : 7073,
+      "max" : 7418
+    },
+    "attribute" : {
+      "fuelType" : "전기(수소연료전지)",
+      "displacement" : "6.33",
+      "gasMileage" : "93.7~96.2 | 593~609",
+      "power" : "154/3000~4600",
+      "torque" : "40.3",
+      "length" : "4670",
+      "width" : "1860",
+      "height" : "1630"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "팰리세이드",
+      "en" : "Palisade"
+    },
+    "id": 10330,
+    "segments": "준대형SUV",
+    "imgUrl" : "hyundai/Palisade",
+    "price" : {
+      "min" : 3867,
+      "max" : 6021
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 디젤",
+      "displacement" : "2199~3778",
+      "gasMileage" : "8.5~12.4",
+      "power" : "295/6000",
+      "torque" : "36.2/5200",
+      "length" : "4995",
+      "width" : "1975",
+      "height" : "1750"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "스타리아",
+      "en" : "Staria"
+    },
+    "id": 10440,
+    "segments": "MPV",
+    "imgUrl" : "hyundai/Staria",
+    "price" : {
+      "min" : 2596,
+      "max" : 7210
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 디젤",
+      "displacement" : "2199~3470",
+      "gasMileage" : "6.3~12.3",
+      "power" : "177/3800",
+      "torque" : "44.0/1500~2500",
+      "length" : "5255",
+      "width" : "1995",
+      "height" : "1990"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "현대",
+      "en" : "Hyundai"
+    },
+    "name" : {
+      "kr" : "i30",
+      "en" : "i30"
+    },
+    "id": 10770,
+    "segments": "해치백",
+    "imgUrl" : "hyundai/i30",
+    "price" : {
+      "min" : 2379,
+      "max" : 2556
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 디젤",
+      "displacement" : "1353~1591",
+      "gasMileage" : "11.4~17.3",
+      "power" : "204/6000",
+      "torque" : "27.0/1500~4500",
+      "length" : "4345",
+      "width" : "1795",
+      "height" : "1455"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "모닝",
+      "en" : "Morning"
+    },
+    "id": 11110,
+    "segments": "경차",
+    "imgUrl" : "hyundai/Morning",
+    "price" : {
+      "min" : 1175,
+      "max" : 1540
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "998",
+      "gasMileage" : "14.7~5.7",
+      "power" : "76/6200",
+      "torque" : "9.7/3750",
+      "length" : "3595",
+      "width" : "1595",
+      "height" : "1485"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "레이",
+      "en" : "Ray"
+    },
+    "id": 11111,
+    "segments": "경차",
+    "imgUrl" : "hyundai/Ray",
+    "price" : {
+      "min" : 1340,
+      "max" : 1815
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "998",
+      "gasMileage" : "12.7~13.0",
+      "power" : "76/6200",
+      "torque" : "9.7/3750",
+      "length" : "3595",
+      "width" : "1595",
+      "height" : "1700"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "K3",
+      "en" : "K3"
+    },
+    "id": 11210,
+    "segments": "준중형세단",
+    "imgUrl" : "hyundai/K3",
+    "price" : {
+      "min" : 1752,
+      "max" : 2724
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1591~1598",
+      "gasMileage" : "11.9~15.2",
+      "power" : "123/6300",
+      "torque" : "15.7/4500",
+      "length" : "4645",
+      "width" : "1800",
+      "height" : "1440"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "K5",
+      "en" : "K5"
+    },
+    "id": 11220,
+    "segments": "중형세단",
+    "imgUrl" : "hyundai/K5",
+    "price" : {
+      "min" : 2120,
+      "max" : 3551
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 가솔린, 가솔린+전기",
+      "displacement" : "1999",
+      "gasMileage" : "9.8~20.1",
+      "power" : "152/6000",
+      "torque" : "19.2/5000",
+      "length" : "4905",
+      "width" : "1860",
+      "height" : "1445"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "스팅어",
+      "en" : "Stinger"
+    },
+    "id": 11221,
+    "segments": "중형세단",
+    "imgUrl" : "hyundai/Stinger",
+    "price" : {
+      "min" : 3878,
+      "max" : 5070
+    },
+    "attribute" : {
+      "fuelType" : "가솔린2.5, 가솔린3.3",
+      "displacement" : "2497~3342",
+      "gasMileage" : "8.5~11.2",
+      "power" : "304/5800, 373/6000",
+      "torque" : "43.0/1650~4000, 52.0/1300~4500",
+      "length" : "4830",
+      "width" : "1870",
+      "height" : "1400"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "K8",
+      "en" : "K8"
+    },
+    "id": 11230,
+    "segments": "준대형세단",
+    "imgUrl" : "hyundai/K8",
+    "price" : {
+      "min" : 2795,
+      "max" : 4565
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 가솔린, 가솔린+전기",
+      "displacement" : "1598~3470",
+      "gasMileage" : "7.7~18.0",
+      "power" : "180/5500",
+      "torque" : "27.0/1500~4500",
+      "length" : "5015",
+      "width" : "1875",
+      "height" : "1455"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "K9",
+      "en" : "K9"
+    },
+    "id": 11240,
+    "segments": "대형세단",
+    "imgUrl" : "hyundai/K9",
+    "price" : {
+      "min" : 5772,
+      "max" : 8487
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "3342~3778",
+      "gasMileage" : "8.1~9.0",
+      "power" : "370/6000",
+      "torque" : "52.0/1300~4500",
+      "length" : "5140",
+      "width" : "1915",
+      "height" : "1490"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "니로",
+      "en" : "Niro"
+    },
+    "id": 11300,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/Niro",
+    "price" : {
+      "min" : 2712,
+      "max" : 3350
+    },
+    "attribute" : {
+      "fuelType" : "가솔린+전기",
+      "displacement" : "2712~3350",
+      "gasMileage" : "19.1~20.8",
+      "power" : "105/5700",
+      "torque" : "14.7/4000",
+      "length" : "4420",
+      "width" : "1825",
+      "height" : "1545"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "니로 플러스",
+      "en" : "Niro PLUS"
+    },
+    "id": 11301,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/NiroPlus",
+    "price" : {
+      "min" : 4600,
+      "max" : 4849
+    },
+    "attribute" : {
+      "fuelType" : "전기(배터리)",
+      "displacement" : "356 | 64.0",
+      "gasMileage" : "5.3 | 392",
+      "power" : "110",
+      "torque" : "40.3",
+      "length" : "4385",
+      "width" : "1805",
+      "height" : "1640"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "니로 EV",
+      "en" : "Niro EV"
+    },
+    "id": 11302,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/NiroEV",
+    "price" : {
+      "min" : 4855,
+      "max" : 5120
+    },
+    "attribute" : {
+      "fuelType" : "전기(배터리)",
+      "displacement" : "358 | 64.8",
+      "gasMileage" : "5.3 | 401",
+      "power" : "110",
+      "torque" : "26.0",
+      "length" : "4420",
+      "width" : "1825",
+      "height" : "1570"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "셀토스",
+      "en" : "Seltos"
+    },
+    "id": 11303,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/Seltos",
+    "price" : {
+      "min" : 2062,
+      "max" : 2882
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1598~1999",
+      "gasMileage" : "10.8~12.9",
+      "power" : "198/6000",
+      "torque" : "27.0/1600~4500",
+      "length" : "4390",
+      "width" : "1800",
+      "height" : "1600"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "셀토스",
+      "en" : "Seltos"
+    },
+    "id": 11303,
+    "segments": "소형SUV",
+    "imgUrl" : "hyundai/Seltos",
+    "price" : {
+      "min" : 2062,
+      "max" : 2882
+    },
+    "attribute" : {
+      "fuelType" : "가솔린",
+      "displacement" : "1598~1999",
+      "gasMileage" : "10.8~12.9",
+      "power" : "198/6000",
+      "torque" : "27.0/1600~4500",
+      "length" : "4390",
+      "width" : "1800",
+      "height" : "1600"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "스포티지",
+      "en" : "Sportage"
+    },
+    "id": 11310,
+    "segments": "준중형SUV",
+    "imgUrl" : "hyundai/Sportage",
+    "price" : {
+      "min" : 2474,
+      "max" : 3968
+    },
+    "attribute" : {
+      "fuelType" : "LPG, 가솔린, 가솔린+전기, 디젤",
+      "displacement" : "1598~1999",
+      "gasMileage" : "9.0~16.7",
+      "power" : "180/5500",
+      "torque" : "27.0/1500~4500",
+      "length" : "4660",
+      "width" : "1865",
+      "height" : "1665"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "EV6",
+      "en" : "EV6"
+    },
+    "id": 11311,
+    "segments": "준중형SUV",
+    "imgUrl" : "hyundai/EV6",
+    "price" : {
+      "min" : 4870,
+      "max" : 7200
+    },
+    "attribute" : {
+      "fuelType" : "전기(배터리)",
+      "displacement" : "697 | 77.4",
+      "gasMileage" : "3.9~5.6",
+      "power" : "229",
+      "torque" : "35.7",
+      "length" : "4680",
+      "width" : "1880",
+      "height" : "1550"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "쏘렌토",
+      "en" : "Sorento"
+    },
+    "id": 11320,
+    "segments": "중형SUV",
+    "imgUrl" : "hyundai/Sorento",
+    "price" : {
+      "min" : 3002,
+      "max" : 4708
+    },
+    "attribute" : {
+      "fuelType" : "가솔린, 가솔린+전기, 디젤",
+      "displacement" : "1598~2497",
+      "gasMileage" : "9.7~15.3",
+      "power" : "230",
+      "torque" : "35.7",
+      "length" : "4810",
+      "width" : "1900",
+      "height" : "1700"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "모하비",
+      "en" : "Mohave"
+    },
+    "id": 11330,
+    "segments": "준대형SUV",
+    "imgUrl" : "hyundai/Sorento",
+    "price" : {
+      "min" : 4958,
+      "max" : 5973
+    },
+    "attribute" : {
+      "fuelType" : "디젤",
+      "displacement" : "2959",
+      "gasMileage" : "9.1~9.4",
+      "power" : "257/3800",
+      "torque" : "57.1/1500~3000",
+      "length" : "4810",
+      "width" : "1920",
+      "height" : "1790"
+    }
+  },
+  {
+    "brand": {
+      "kr" : "기아",
+      "en" : "Kia"
+    },
+    "name" : {
+      "kr" : "카니발",
+      "en" : "Carnival"
+    },
+    "id": 11440,
+    "segments": "MPV",
+    "imgUrl" : "hyundai/Sorento",
+    "price" : {
+      "min" : 3180,
+      "max" : 8683
+    },
+    "attribute" : {
+      "fuelType" : "가솔린2.0, 가솔린3.5, 디젤",
+      "displacement" : "2151~3470",
+      "gasMileage" : "8.4~13.1",
+      "power" : "294/6400",
+      "torque" : "36.2/5200",
+      "length" : "5155",
+      "width" : "1995",
+      "height" : "1740"
+    }
   }
 ]

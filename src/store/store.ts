@@ -1,18 +1,18 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit"
-import cars from '../api/carData.json'
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+import cars from '../api/carData.json';
 
 const carData = createSlice({
-  name : 'carData',
-  initialState : cars,
+  name: 'carData',
+  initialState: cars,
   reducers: {},
-})
+});
 
 const store = configureStore({
-  reducer : {
-    cars : carData.reducer,
-  }
-})
+  reducer: {
+    cars: carData.reducer,
+  },
+});
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 
-export default store
+export default store;
