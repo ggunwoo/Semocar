@@ -10,11 +10,11 @@ import {RootState} from './store/store'
 import { useState } from 'react';
 import cars from './api/carData.json';
 
-function App() {
+function App():JSX.Element {
   const navigate = useNavigate();
-  const [carsData, setData] = useState(cars)
+  const carAllData = useSelector((state :RootState)=> { return state})
 
-  // console.log(carsData)
+  console.log(carAllData.cars)
 
   return (
     <>
@@ -26,7 +26,6 @@ function App() {
         </Container>
       </Navbar>
 
-      {/* <div>{carsData[0].brand.kr}</div> */}
 
       <Routes>
         <Route path={'/'} element={<AllCarsPage />} />
@@ -39,39 +38,28 @@ function App() {
 function AllCarsPage():JSX.Element{
 
   const navigate = useNavigate();
-  // const carAllData = useSelector((state :RootState)=> { return state})
+  const carAllData = useSelector((state :RootState)=> { return state})
 
-  // console.log(carAllData.cars)
-
-  // const getAllCars = (): type.Car[] => {
-  //   const allCars: type.Car[] = [];
-  //   carAllData.cars.forEach((brand: type.Brand) => {
-  //     brand.segments.forEach((segment: type.Segments) => {
-  //       if (segment.cars !== null) { 
-  //         allCars.push(...segment.cars);
-  //       }
-  //     });
-  //   });
-  //   return allCars;
+  // const getAllCars = () => {
+  //   const allCars: [] = [];
+  //   return allCars
   // };
-  // const allCars = getAllCars();
-  // // console.log(allCars)
-
-
+  
+  
   return (
-    <></>
-    // <Container>
-    //   <Row xs={6} className="d-flex">
-    //       {
-    //         allCars.map((car)=>(
-    //           <Col className="align-self-center" onClick={()=>{navigate(`/${car.id}`)}} key={car.id}>
-    //             <img src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${car.imgUrl}.jpg?raw=true`} alt="CAR" style={{width:"100%"}}/>
-    //             {/* <div>{car.krName}</div> */}
-    //           </Col>
-    //         ))
-    //       }
-    //   </Row>
-    // </Container>
+    <>
+      {
+        carAllData.cars.map((cars)=>(
+          <Container>
+            <Row>
+              <Col>
+                <img src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.jpg?raw=true`} />
+              </Col>
+            </Row>
+          </Container>
+        ))
+      }
+    </>
   )
 }
 
