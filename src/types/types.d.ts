@@ -1,22 +1,23 @@
-export interface Car {
-  id: number;
-  name : { kr:string , en:string}
-  imgUrl: string;
-}
-
-export interface Segments {
-  name: string;
-  id: number;
-  cars: Car[];
-}
 
 export interface Brand {
-  brand: string;
-  enName: string;
-  id: number;
-  segments: Segments[];
+  kr : string
+  en : string
 }
 
-export interface DetailProps {
-  carsData?: type.Brand[];
+export interface Name {
+  kr : string
+  en : string
+}
+export interface price {
+  min : number
+  max : number
+}
+
+export interface Cars {
+  brand: Brand
+  name : Name
+  id : number
+  segment : string
+  imgUrl : string
+  price : price
 }

@@ -4,7 +4,12 @@ import cars from '../api/carData.json';
 const carData = createSlice({
   name: 'carData',
   initialState: cars,
-  reducers: {},
+  reducers: {
+    filter(state){
+      
+      return state
+    }
+  },
 });
 
 const store = configureStore({

@@ -470,7 +470,7 @@
     },
     "id": 11110,
     "segments": "경차",
-    "imgUrl" : "hyundai/Morning",
+    "imgUrl" : "kia/Morning",
     "price" : {
       "min" : 1175,
       "max" : 1540
@@ -497,7 +497,7 @@
     },
     "id": 11111,
     "segments": "경차",
-    "imgUrl" : "hyundai/Ray",
+    "imgUrl" : "kia/Ray",
     "price" : {
       "min" : 1340,
       "max" : 1815
@@ -524,7 +524,7 @@
     },
     "id": 11210,
     "segments": "준중형세단",
-    "imgUrl" : "hyundai/K3",
+    "imgUrl" : "kia/K3",
     "price" : {
       "min" : 1752,
       "max" : 2724
@@ -551,7 +551,7 @@
     },
     "id": 11220,
     "segments": "중형세단",
-    "imgUrl" : "hyundai/K5",
+    "imgUrl" : "kia/K5",
     "price" : {
       "min" : 2120,
       "max" : 3551
@@ -578,7 +578,7 @@
     },
     "id": 11221,
     "segments": "중형세단",
-    "imgUrl" : "hyundai/Stinger",
+    "imgUrl" : "kia/Stinger",
     "price" : {
       "min" : 3878,
       "max" : 5070
@@ -605,7 +605,7 @@
     },
     "id": 11230,
     "segments": "준대형세단",
-    "imgUrl" : "hyundai/K8",
+    "imgUrl" : "kia/K8",
     "price" : {
       "min" : 2795,
       "max" : 4565
@@ -632,7 +632,7 @@
     },
     "id": 11240,
     "segments": "대형세단",
-    "imgUrl" : "hyundai/K9",
+    "imgUrl" : "kia/K9",
     "price" : {
       "min" : 5772,
       "max" : 8487
@@ -659,7 +659,7 @@
     },
     "id": 11300,
     "segments": "소형SUV",
-    "imgUrl" : "hyundai/Niro",
+    "imgUrl" : "kia/Niro",
     "price" : {
       "min" : 2712,
       "max" : 3350
@@ -686,7 +686,7 @@
     },
     "id": 11301,
     "segments": "소형SUV",
-    "imgUrl" : "hyundai/NiroPlus",
+    "imgUrl" : "kia/NiroPlus",
     "price" : {
       "min" : 4600,
       "max" : 4849
@@ -713,7 +713,7 @@
     },
     "id": 11302,
     "segments": "소형SUV",
-    "imgUrl" : "hyundai/NiroEV",
+    "imgUrl" : "kia/NiroEV",
     "price" : {
       "min" : 4855,
       "max" : 5120
@@ -740,34 +740,7 @@
     },
     "id": 11303,
     "segments": "소형SUV",
-    "imgUrl" : "hyundai/Seltos",
-    "price" : {
-      "min" : 2062,
-      "max" : 2882
-    },
-    "attribute" : {
-      "fuelType" : "가솔린",
-      "displacement" : "1598~1999",
-      "gasMileage" : "10.8~12.9",
-      "power" : "198/6000",
-      "torque" : "27.0/1600~4500",
-      "length" : "4390",
-      "width" : "1800",
-      "height" : "1600"
-    }
-  },
-  {
-    "brand": {
-      "kr" : "기아",
-      "en" : "Kia"
-    },
-    "name" : {
-      "kr" : "셀토스",
-      "en" : "Seltos"
-    },
-    "id": 11303,
-    "segments": "소형SUV",
-    "imgUrl" : "hyundai/Seltos",
+    "imgUrl" : "kia/Seltos",
     "price" : {
       "min" : 2062,
       "max" : 2882
@@ -794,7 +767,7 @@
     },
     "id": 11310,
     "segments": "준중형SUV",
-    "imgUrl" : "hyundai/Sportage",
+    "imgUrl" : "kia/Sportage",
     "price" : {
       "min" : 2474,
       "max" : 3968
@@ -821,7 +794,7 @@
     },
     "id": 11311,
     "segments": "준중형SUV",
-    "imgUrl" : "hyundai/EV6",
+    "imgUrl" : "kia/EV6",
     "price" : {
       "min" : 4870,
       "max" : 7200
@@ -848,7 +821,7 @@
     },
     "id": 11320,
     "segments": "중형SUV",
-    "imgUrl" : "hyundai/Sorento",
+    "imgUrl" : "kia/Sorento",
     "price" : {
       "min" : 3002,
       "max" : 4708
@@ -875,7 +848,7 @@
     },
     "id": 11330,
     "segments": "준대형SUV",
-    "imgUrl" : "hyundai/Sorento",
+    "imgUrl" : "kia/Mohave",
     "price" : {
       "min" : 4958,
       "max" : 5973
@@ -902,7 +875,7 @@
     },
     "id": 11440,
     "segments": "MPV",
-    "imgUrl" : "hyundai/Sorento",
+    "imgUrl" : "kia/Carnival",
     "price" : {
       "min" : 3180,
       "max" : 8683
