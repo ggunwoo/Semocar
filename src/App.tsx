@@ -9,12 +9,12 @@ import * as type from './types/types'
 
 import './css/App.scss';
 import { Detail }from './pages/Detail';
-import cars from './api/carData.json';
+// import cars from './api/carData.json';
 
 
 function App():JSX.Element {
   const navigate = useNavigate();
-  const carAllData = useSelector((state :RootState)=> { return state});
+  // const carAllData = useSelector((state :RootState)=> { return state});
   const [mobileOpen, setMobileOpen] = useState(false)
   const drawerWidth = "200px";
   console.log(drawerWidth)
@@ -92,14 +92,14 @@ function AllCarsPage(props: type.AllCarsPageProps):JSX.Element{
   const carAllData = useSelector((state :RootState)=> { return state})
   
   return (
-    <Container sx={{width : {xs: '100%', md:`calc(100% - ${props.drawerWidth})`}, marginTop:"100px", marginRight:"0"}} maxWidth={false}>
+    <Container sx={{width : {xs: '100%', md:`calc(100% - ${props.drawerWidth})`}, marginTop:"64px", marginRight:"0"}} maxWidth={false}>
         {
           carAllData.cars.map((cars)=>(
             <Grid container className="grid_wrap" key={cars.id}>
-              <Grid item className="img" xs={6} md={6} lg={4} xl={2}>
-                <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} />
+              <Grid item className="img" xs={6} md={5} lg={4} xl={2}>
+                <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} alt={cars.name.en} />
               </Grid>
-              <Grid item className="info" xs={6} md={6} lg={8} xl={10}>
+              <Grid item className="info" xs={6} md={7} lg={8} xl={10}>
                 <Typography>{cars.segment}</Typography>
                 <Typography>{cars.brand.kr} {cars.name.kr}</Typography>
               </Grid>
