@@ -7,7 +7,10 @@ Container {
 .grid_wrap {
   display: flex;
   padding: 0;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  &:first-child{
+    border-top : none;
+  }
   // border-radius: 1rem;
   .img {
     img {

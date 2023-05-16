@@ -88,9 +88,6 @@ function App():JSX.Element {
 }
 
 function AllCarsPage(props: type.AllCarsPageProps):JSX.Element{
-
-  
-
   const navigate = useNavigate();
   const carAllData = useSelector((state :RootState)=> { return state})
   
@@ -99,14 +96,14 @@ function AllCarsPage(props: type.AllCarsPageProps):JSX.Element{
         {
           carAllData.cars.map((cars)=>(
             <Grid container className="grid_wrap" key={cars.id}>
-              <Grid item className="img" xs={2}>
+              <Grid item className="img" xs={6} md={6} lg={4} xl={2}>
                 <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} />
               </Grid>
-              <Grid item className="info" xs={2}>
+              <Grid item className="info" xs={6} md={6} lg={8} xl={10}>
                 <Typography>{cars.segment}</Typography>
                 <Typography>{cars.brand.kr} {cars.name.kr}</Typography>
               </Grid>
-              <Grid item className="btn_group" xs={4}>
+              <Grid container className="btn_group" xs={12}>
                 <Button onClick={()=>{ navigate(`/detail/${cars.id}`)}}>상세정보 &gt; </Button>
               </Grid>
             </Grid>
