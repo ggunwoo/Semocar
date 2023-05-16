@@ -7,7 +7,6 @@ Container {
 .grid_wrap {
   display: flex;
   padding: 0;
-  padding-left: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   &:first-child{
     border-top : none;
@@ -17,12 +16,12 @@ Container {
     img {
       width: 100%;
       padding : 25px;
-      background: #eee;
+      background: #222;
       // border-top-left-radius: 1rem;
       // border-bottom-left-radius: 1rem;
     }
   }
-  .info {
+  // .info {
     
-  }
+  // }
 }
