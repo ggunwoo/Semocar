@@ -21,3 +21,8 @@ export interface Cars {
   imgUrl : string
   price : price
 }
+
+// AllCarsPage
+interface AllCarsPageProps {
+  drawerWidth : string;
+}

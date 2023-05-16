@@ -9,7 +9,7 @@
       "en" : "Casper"
     },
     "id": 10110,
-    "segments": "경차",
+    "segment": "경차",
     "imgUrl" : "hyundai/Casper",
     "price" : {
       "min" : 1375,
@@ -36,7 +36,7 @@
       "en" : "Avante"
     },
     "id": 10210,
-    "segments": "준중형세단",
+    "segment": "준중형세단",
     "imgUrl" : "hyundai/Avante",
     "price" : {
       "min" : 1960,
@@ -63,7 +63,7 @@
       "en" : "Avante N"
     },
     "id": 10211,
-    "segments": "준중형세단",
+    "segment": "준중형세단",
     "imgUrl" : "hyundai/AvanteN",
     "price" : {
       "min" : 3212,
@@ -90,7 +90,7 @@
       "en" : "Sonata"
     },
     "id": 10220,
-    "segments": "중형세단",
+    "segment": "중형세단",
     "imgUrl" : "hyundai/Sonata",
     "price" : {
       "min" : 2546,
@@ -117,7 +117,7 @@
       "en" : "IONIQ6"
     },
     "id": 10221,
-    "segments": "중형세단",
+    "segment": "중형세단",
     "imgUrl" : "hyundai/IONIQ6",
     "price" : {
       "min" : 5200,
@@ -144,7 +144,7 @@
       "en" : "Grandeur"
     },
     "id": 10230,
-    "segments": "준대형세단",
+    "segment": "준대형세단",
     "imgUrl" : "hyundai/Grandeur",
     "price" : {
       "min" : 3580,
@@ -172,7 +172,7 @@
       "en" : "Venue"
     },
     "id": 10300,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "hyundai/Venue",
     "price" : {
       "min" : 1630,
@@ -199,7 +199,7 @@
       "en" : "Kona"
     },
     "id": 10301,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "hyundai/Kona",
     "price" : {
       "min" : 2468,
@@ -226,7 +226,7 @@
       "en" : "Kona N"
     },
     "id": 10302,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "hyundai/KonaN",
     "price" : {
       "min" : 3418,
@@ -253,7 +253,7 @@
       "en" : "Kona Electric"
     },
     "id": 10303,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "hyundai/KonaElectric",
     "price" : {
       "min" : 4655,
@@ -280,7 +280,7 @@
       "en" : "Tucson"
     },
     "id": 10310,
-    "segments": "준중형SUV",
+    "segment": "준중형SUV",
     "imgUrl" : "hyundai/Tucson",
     "price" : {
       "min" : 2584,
@@ -307,7 +307,7 @@
       "en" : "IONIQ5"
     },
     "id": 10311,
-    "segments": "준중형SUV",
+    "segment": "준중형SUV",
     "imgUrl" : "hyundai/IONIQ5",
     "price" : {
       "min" : 4790,
@@ -334,7 +334,7 @@
       "en" : "Santafe"
     },
     "id": 10320,
-    "segments": "중형SUV",
+    "segment": "중형SUV",
     "imgUrl" : "hyundai/Santafe",
     "price" : {
       "min" : 3252,
@@ -361,7 +361,7 @@
       "en" : "Nexo"
     },
     "id": 10321,
-    "segments": "중형SUV",
+    "segment": "중형SUV",
     "imgUrl" : "hyundai/Nexo",
     "price" : {
       "min" : 7073,
@@ -388,7 +388,7 @@
       "en" : "Palisade"
     },
     "id": 10330,
-    "segments": "준대형SUV",
+    "segment": "준대형SUV",
     "imgUrl" : "hyundai/Palisade",
     "price" : {
       "min" : 3867,
@@ -415,7 +415,7 @@
       "en" : "Staria"
     },
     "id": 10440,
-    "segments": "MPV",
+    "segment": "MPV",
     "imgUrl" : "hyundai/Staria",
     "price" : {
       "min" : 2596,
@@ -442,7 +442,7 @@
       "en" : "i30"
     },
     "id": 10770,
-    "segments": "해치백",
+    "segment": "해치백",
     "imgUrl" : "hyundai/i30",
     "price" : {
       "min" : 2379,
@@ -469,7 +469,7 @@
       "en" : "Morning"
     },
     "id": 11110,
-    "segments": "경차",
+    "segment": "경차",
     "imgUrl" : "kia/Morning",
     "price" : {
       "min" : 1175,
@@ -496,7 +496,7 @@
       "en" : "Ray"
     },
     "id": 11111,
-    "segments": "경차",
+    "segment": "경차",
     "imgUrl" : "kia/Ray",
     "price" : {
       "min" : 1340,
@@ -523,7 +523,7 @@
       "en" : "K3"
     },
     "id": 11210,
-    "segments": "준중형세단",
+    "segment": "준중형세단",
     "imgUrl" : "kia/K3",
     "price" : {
       "min" : 1752,
@@ -550,7 +550,7 @@
       "en" : "K5"
     },
     "id": 11220,
-    "segments": "중형세단",
+    "segment": "중형세단",
     "imgUrl" : "kia/K5",
     "price" : {
       "min" : 2120,
@@ -577,7 +577,7 @@
       "en" : "Stinger"
     },
     "id": 11221,
-    "segments": "중형세단",
+    "segment": "중형세단",
     "imgUrl" : "kia/Stinger",
     "price" : {
       "min" : 3878,
@@ -604,7 +604,7 @@
       "en" : "K8"
     },
     "id": 11230,
-    "segments": "준대형세단",
+    "segment": "준대형세단",
     "imgUrl" : "kia/K8",
     "price" : {
       "min" : 2795,
@@ -631,7 +631,7 @@
       "en" : "K9"
     },
     "id": 11240,
-    "segments": "대형세단",
+    "segment": "대형세단",
     "imgUrl" : "kia/K9",
     "price" : {
       "min" : 5772,
@@ -658,7 +658,7 @@
       "en" : "Niro"
     },
     "id": 11300,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "kia/Niro",
     "price" : {
       "min" : 2712,
@@ -685,7 +685,7 @@
       "en" : "Niro PLUS"
     },
     "id": 11301,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "kia/NiroPlus",
     "price" : {
       "min" : 4600,
@@ -712,7 +712,7 @@
       "en" : "Niro EV"
     },
     "id": 11302,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "kia/NiroEV",
     "price" : {
       "min" : 4855,
@@ -739,7 +739,7 @@
       "en" : "Seltos"
     },
     "id": 11303,
-    "segments": "소형SUV",
+    "segment": "소형SUV",
     "imgUrl" : "kia/Seltos",
     "price" : {
       "min" : 2062,
@@ -766,7 +766,7 @@
       "en" : "Sportage"
     },
     "id": 11310,
-    "segments": "준중형SUV",
+    "segment": "준중형SUV",
     "imgUrl" : "kia/Sportage",
     "price" : {
       "min" : 2474,
@@ -793,7 +793,7 @@
       "en" : "EV6"
     },
     "id": 11311,
-    "segments": "준중형SUV",
+    "segment": "준중형SUV",
     "imgUrl" : "kia/EV6",
     "price" : {
       "min" : 4870,
@@ -820,7 +820,7 @@
       "en" : "Sorento"
     },
     "id": 11320,
-    "segments": "중형SUV",
+    "segment": "중형SUV",
     "imgUrl" : "kia/Sorento",
     "price" : {
       "min" : 3002,
@@ -847,7 +847,7 @@
       "en" : "Mohave"
     },
     "id": 11330,
-    "segments": "준대형SUV",
+    "segment": "준대형SUV",
     "imgUrl" : "kia/Mohave",
     "price" : {
       "min" : 4958,
@@ -874,7 +874,7 @@
       "en" : "Carnival"
     },
     "id": 11440,
-    "segments": "MPV",
+    "segment": "MPV",
     "imgUrl" : "kia/Carnival",
     "price" : {
       "min" : 3180,

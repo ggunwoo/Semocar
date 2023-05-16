@@ -1,0 +1,24 @@
+/* App */
+Container {
+  width: 200px;
+}
+
+/* AllCarsPage */
+.grid_wrap {
+  display: flex;
+  padding: 0;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  // border-radius: 1rem;
+  .img {
+    img {
+      width: 100%;
+      padding : 25px;
+      background: #eee;
+      // border-top-left-radius: 1rem;
+      // border-bottom-left-radius: 1rem;
+    }
+  }
+  .info {
+    
+  }
+}
