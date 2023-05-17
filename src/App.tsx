@@ -1,114 +1,82 @@
+import './main.scss';
 import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
-import { Container, Box, Grid, AppBar, Drawer, Toolbar, Typography, List, ListItem, ListItemButton, ListItemIcon, ListItemText, IconButton, CssBaseline, Button } from '@mui/material';
-import { DirectionsCar } from '@mui/icons-material';
-import MenuIcon from '@mui/icons-material/Menu';
-import * as type from './types/types'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { CssBaseline ,Container, Box, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
+// import * as type from './types/types'
 
-import './css/App.scss';
 import { Detail }from './pages/Detail';
+import { Brand }from './pages/BrandCar';
 // import cars from './api/carData.json';
 
 
 function App():JSX.Element {
   const navigate = useNavigate();
-  // const carAllData = useSelector((state :RootState)=> { return state});
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const drawerWidth = "200px";
-  console.log(drawerWidth)
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  }
-
-  const drawer :JSX.Element = (
-    <Box>
-      <List>
-        <ListItem key={"car"} disablePadding>
-          <ListItemButton onClick={()=>{ navigate("/") }}>
-            <ListItemIcon><DirectionsCar /></ListItemIcon>
-            <ListItemText primary={"Main"} />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  )
-
+  const carAllData = useSelector((state :RootState)=> state);
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#2196f3',
+      },
+      secondary: {
+        main: '#000000'
+      },
+    },
+  });
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <AppBar
-      position="fixed"
-      sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+        position="fixed"
+        sx={{width: "100%"}}
+      >
+        <Toolbar className='ToolBar'>
+          <Typography className="Toolbar_title" variant="h5" noWrap component="div" color='secondary' onClick={()=>{navigate('/')}}>
+            붕붕
           </Typography>
+          <ButtonGroup className='Toolbar_btns' color='secondary' >
+            <Button variant="text">Home</Button>
+            <Button variant="text">About</Button>
+            <Button variant="text">Resources</Button>
+            <Button variant="text">Contact</Button>
+            <Button variant="outlined">로그인</Button>
+          </ButtonGroup>
         </Toolbar>
       </AppBar>
-
-    <CssBaseline />
-      <Drawer
-        variant='temporary'
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true
-        }}
-        sx={{ [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box"}, display: {xs:"block", md:"none"} }}
-      >
-        {drawer}
-      </Drawer>
-      <Drawer 
-        variant='permanent'
-        sx={{ [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box"}, display: {xs:"none", md:"block"} }}
-      >
-        {drawer}
-      </Drawer>
       
+      <Box className='nav'>
+        <Container className='nav_container'>
+          <Typography variant="h3" className='navTitle'>Domaestic Cars</Typography>
+          <ButtonGroup size="large">
+            {carAllData.brands.map((brand):JSX.Element=>(
+              <Button key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} className='brand_btn' variant='text'>{brand.name}</Button>
+            ))}
+          </ButtonGroup>
+        </Container>
+      </Box>
+    
       <Routes>
-        <Route path={'/'} element={<AllCarsPage drawerWidth={drawerWidth} />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path={'/'} element={<AllCarsPage />} />
+        <Route path='/brand/:id' element={<Brand />} />
+        <Route path='/detail/:id' element={<Detail />} />
       </Routes>
-    </div>
+      </ThemeProvider>
   )
 }
 
-function AllCarsPage(props: type.AllCarsPageProps):JSX.Element{
-  const navigate = useNavigate();
+function AllCarsPage():JSX.Element{
+  // const navigate = useNavigate();
   const carAllData = useSelector((state :RootState)=> { return state})
   
   return (
-    <Container sx={{width : {xs: '100%', md:`calc(100% - ${props.drawerWidth})`}, marginTop:"64px", marginRight:"0"}} maxWidth={false}>
-        {
-          carAllData.cars.map((cars)=>(
-            <Grid container className="grid_wrap" key={cars.id}>
-              <Grid item className="img" xs={6} md={5} lg={4} xl={2}>
-                <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} alt={cars.name.en} />
-              </Grid>
-              <Grid item className="info" xs={6} md={7} lg={8} xl={10}>
-                <Typography>{cars.segment}</Typography>
-                <Typography>{cars.brand.kr} {cars.name.kr}</Typography>
-              </Grid>
-              <Grid container className="btn_group" xs={12}>
-                <Button onClick={()=>{ navigate(`/detail/${cars.id}`)}}>상세정보 &gt; </Button>
-              </Grid>
-            </Grid>
-          ))
-        }
+    <Container className="img_container" maxWidth={false}>
+        {carAllData.cars.map((cars)=>(
+          <Box className="img_wrap" key={cars.id}>
+            <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} alt={cars.name.en} />
+          </Box>
+        ))}
     </Container>
   )
 }

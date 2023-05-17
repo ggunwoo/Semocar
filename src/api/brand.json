@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Hyundai",
+    "id": 1,
+    "imgUrl": "logo/hyundai"
+  },
+  {
+    "name": "Kia",
+    "id": 2,
+    "imgUrl": "logo/kia"
+  },
+  {
+    "name": "Genesis",
+    "id": 3,
+    "imgUrl": "logo/genesis"
+  },
+  {
+    "name": "Renault Korea",
+    "id": 4,
+    "imgUrl": "logo/renault_korea"
+  },
+  {
+    "name": "KG Mobility",
+    "id": 5,
+    "imgUrl": "logo/kg_mobility"
+  },
+  {
+    "name": "Chevrolet",
+    "id": 6,
+    "imgUrl": "logo/chevrolet"
+  }
+]

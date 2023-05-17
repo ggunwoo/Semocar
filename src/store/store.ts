@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import cars from '../api/carData.json';
+import carBrands from '../api/brand.json';
 
 const carData = createSlice({
   name: 'carData',
@@ -12,9 +13,16 @@ const carData = createSlice({
   },
 });
 
+const carBrand = createSlice({
+  name: 'carBrand',
+  initialState: carBrands,
+  reducers: {}
+})
+
 const store = configureStore({
   reducer: {
     cars: carData.reducer,
+    brands: carBrand.reducer,
   },
 });
 
