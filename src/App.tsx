@@ -7,16 +7,15 @@ import { useCarBrands } from './hook/useCarData';
 // import * as type from './types/types'
 
 // pages 
-import { AllCarsPage } from './components/AllCarsPage';
-import { Brand } from './components/BrandCar';
-import { Detail } from './components/Detail';
+import { AllCarsPage } from './components/AllCarsUi';
+import { Brand } from './pages/BrandCar';
+import { Detail } from './pages/Detail';
 
 
 function App():JSX.Element {
   const navigate = useNavigate();
 
   const carBrands = useCarBrands();
-  console.log(carBrands)
   
   const theme = createTheme({
     palette: {
@@ -55,7 +54,7 @@ function App():JSX.Element {
           <Typography variant="h3" className='navTitle'>Domaestic Cars</Typography>
           <ButtonGroup size="large">
             {carBrands.map((brand):JSX.Element=>(
-              <Button key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} className='brand_btn' variant='text'>{brand.name}</Button>
+              <Button key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} className='brand_btn' variant='text'>{brand.name.kr}</Button>
             ))}
           </ButtonGroup>
         </Container>

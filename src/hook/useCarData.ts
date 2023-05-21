@@ -29,7 +29,6 @@ export const useCarBrands = () => {
     const fetchData = async () => {
       try {
         const data = await getCarBrands();
-        console.log(data)
         setCarBrands(data);
       } catch (error) {
         console.log('Error fetching car data:', error);

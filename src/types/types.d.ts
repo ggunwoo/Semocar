@@ -13,6 +13,17 @@ export interface price {
   max : number
 }
 
+export interface Attr {
+  displacement: string
+  fuelType: string
+  gasMileage: string
+  height: string
+  length: string
+  power: string
+  torque: string
+  width: string
+}
+
 export interface Cars {
   brand: Brand
   name : Name
@@ -20,10 +31,11 @@ export interface Cars {
   segment : string
   imgUrl : string
   price : price
+  attribute : Attr
 }
 
 export interface Brands {
-  name : string
+  name : { kr : string, en: string}
   id : number
   imgUrl : string
 }

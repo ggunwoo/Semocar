@@ -9,11 +9,13 @@ export function Brand(){
 
   const {id} = useParams();
   const searchBrand = carBrands.find(function(e){ return e.id === Number(id) }) ;
-  const sameData = searchBrand ? carData.filter((e) => e.brand.en === searchBrand.name) : [];
+  const sameData = searchBrand ? carData.filter((e) => e.brand.en === searchBrand.name.en) : [];
+  console.log(id)
+  console.log(searchBrand)
 
   return (
     <Container className="brand_container">
-      <Typography variant="h2">{searchBrand?.name}</Typography>
+      <Typography variant="h2">{searchBrand?.name.kr}</Typography>
       <Box className='list_container'>
         {
           sameData.length !== 0
