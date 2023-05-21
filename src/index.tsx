@@ -3,8 +3,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import {Provider} from 'react-redux'
-import store from './store/store'
+// import {Provider} from 'react-redux'
+// import store from './store/store'
 import CssBaseLine from '@mui/material/CssBaseline';
 
 const root = ReactDOM.createRoot(
@@ -12,12 +12,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-    <Provider store={store}>
+    // <Provider store={store}>
       <BrowserRouter>
         <CssBaseLine />
         <App />
       </BrowserRouter>
-    </Provider>
+    // </Provider>
   // </React.StrictMode>
 );
 

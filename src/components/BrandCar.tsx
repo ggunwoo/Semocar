@@ -1,16 +1,15 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
 import { Container, Typography, Box } from '@mui/material'
+import { useCarData, useCarBrands } from '../hook/useCarData'
 
 export function Brand(){
 
-  const carAllData = useSelector((state: RootState)=> state)
+  const carData = useCarData();
+  const carBrands = useCarBrands();
 
   const {id} = useParams();
-  const searchBrand = carAllData.brands.find(function(e){ return e.id === Number(id) }) ;
-  // const sameData = searchBrand?.find((e)=> e.name === carAllData.cars.brand.en );
-  const sameData = searchBrand ? carAllData.cars.filter((e) => e.brand.en === searchBrand.name) : [];
+  const searchBrand = carBrands.find(function(e){ return e.id === Number(id) }) ;
+  const sameData = searchBrand ? carData.filter((e) => e.brand.en === searchBrand.name) : [];
 
   return (
     <Container className="brand_container">
@@ -23,7 +22,7 @@ export function Brand(){
             <Box className="img_wrap" key={cars.id}>
               <img
                 className="carImg"
-                src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`}
+                src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${cars.imgUrl}.png`}
                 alt={cars.name.en}
               />
             </Box>

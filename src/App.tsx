@@ -1,20 +1,23 @@
+import React from 'react';
 import './main.scss';
-// import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from './store/store';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline ,Container, Box, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
+import { useCarBrands } from './hook/useCarData';
 // import * as type from './types/types'
 
-import { Detail }from './pages/Detail';
-import { Brand }from './pages/BrandCar';
-// import cars from './api/carData.json';
+// pages 
+import { AllCarsPage } from './components/AllCarsPage';
+import { Brand } from './components/BrandCar';
+import { Detail } from './components/Detail';
 
 
 function App():JSX.Element {
   const navigate = useNavigate();
-  const carAllData = useSelector((state :RootState)=> state);
+
+  const carBrands = useCarBrands();
+  console.log(carBrands)
+  
   const theme = createTheme({
     palette: {
       primary: {
@@ -25,6 +28,7 @@ function App():JSX.Element {
       },
     },
   });
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -34,7 +38,7 @@ function App():JSX.Element {
       >
         <Toolbar className='ToolBar'>
           <Typography className="Toolbar_title" variant="h5" noWrap component="div" color='secondary' onClick={()=>{navigate('/')}}>
-            붕붕
+            Logo
           </Typography>
           <ButtonGroup className='Toolbar_btns' color='secondary' >
             <Button variant="text">Home</Button>
@@ -50,7 +54,7 @@ function App():JSX.Element {
         <Container className='nav_container'>
           <Typography variant="h3" className='navTitle'>Domaestic Cars</Typography>
           <ButtonGroup size="large">
-            {carAllData.brands.map((brand):JSX.Element=>(
+            {carBrands.map((brand):JSX.Element=>(
               <Button key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} className='brand_btn' variant='text'>{brand.name}</Button>
             ))}
           </ButtonGroup>
@@ -65,20 +69,4 @@ function App():JSX.Element {
       </ThemeProvider>
   )
 }
-
-function AllCarsPage():JSX.Element{
-  // const navigate = useNavigate();
-  const carAllData = useSelector((state :RootState)=> { return state})
-  
-  return (
-    <Container className="img_container" maxWidth={false}>
-        {carAllData.cars.map((cars)=>(
-          <Box className="img_wrap" key={cars.id}>
-            <img className="carImg" src={`https://github.com/pgw6541/CarSite/blob/main/src/images/${cars.imgUrl}.png?raw=true`} alt={cars.name.en} />
-          </Box>
-        ))}
-    </Container>
-  )
-}
-
 export default App;

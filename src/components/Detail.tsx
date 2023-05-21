@@ -1,25 +1,25 @@
 import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux";
-import { RootState } from '../store/store'
+// import { useSelector } from "react-redux";
+// import { RootState } from '../store/store'
 import { Container, Box, Typography, Toolbar } from '@mui/material'
 
 // import * as type from '../types/types'
 
 export function Detail():JSX.Element {
 
-  const carAllData = useSelector((state :RootState)=>{ return state})
-  console.log(carAllData.cars)
+  // const carAllData = useSelector((state :RootState)=>{ return state})
+  // console.log(carAllData.cars)
   
 
   const {id} = useParams();
   // console.log(id)
-  const searchCar = carAllData.cars.find(function(e){ return e.id === Number(id) })
-  console.log(searchCar)
+  // const searchCar = carAllData.cars.find(function(e){ return e.id === Number(id) })
+  // console.log(searchCar)
 
   return (
     <Container>
       <Toolbar />
-      {searchCar === undefined
+      {/* {searchCar === undefined
         ?
         <div> 잘못된 접근입니다.</div>
         :
@@ -36,7 +36,7 @@ export function Detail():JSX.Element {
           <Typography>{searchCar?.attribute.width}</Typography>
           <Typography>{searchCar?.attribute.height}</Typography>
         </Box>
-      }
+      } */}
     </Container>
   )
 }

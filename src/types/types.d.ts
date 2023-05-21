@@ -22,7 +22,8 @@ export interface Cars {
   price : price
 }
 
-// AllCarsPage
-interface AllCarsPageProps {
-  drawerWidth : string;
+export interface Brands {
+  name : string
+  id : number
+  imgUrl : string
 }
