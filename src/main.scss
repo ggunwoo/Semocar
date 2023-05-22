@@ -1,84 +1,88 @@
 $primary-color : #FFDE2F;
 $nav_container_grid : 1440px;
 
-// App
-body {
-  background: #f7f7f7 !important;
-}
+.container {
+  max-width: 1100px !important;
+  padding-left: 0;
+  padding-right: 0;
 
-.ToolBar {
-  background: $primary-color;
-  padding: 0 60px 0 !important;
-  display: flex;
-  justify-content: space-between;
-  .Toolbar_title {
-    font-weight: bold;
-  }
-  .toolbar_btns {
-    Button {
-      margin-right : 24px;
-      border-radius: 20px;
-      border-top-left-radius: 20px !important;
-      border-top-right-radius: 20px !important;
-      border-bottom-left-radius: 20px !important;
-      border-bottom-right-radius: 20px !important;
-      &:last-child {
-        margin-right: 0;
+// App.tsx
+
+// body {
+//   // background: #f7f7f7;
+// }
+
+  .AppBar {
+    background: #fff;
+    .ToolBar {
+      // display: flex;
+      justify-content: space-between;
+      .Toolbar_title {
+        font-weight: bold;
+        color: black;
+        cursor: pointer;
+      }
+      .Toolbar_btns {
+        Button {
+          color: black;
+          margin-right : 24px;
+          border-radius: 20px;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
       }
     }
   }
-}
-.nav {
-  height: 200px !important;
-  text-align: center;
-  margin: 64px 0 0 !important;
-  // position: fixed;
-  background: #fff;
-  .navTitle {
-    margin: 36px 0 18px;
-    .nav_container {
-      .brand_btn {
-        gap: 191px;
+
+  .nav {
+    height: 100px;
+    margin: 64px 0 0;;
+    background: #fff;
+    .brand_btn {
+      width: 16.6666666666667%;
+      border: 1px solid #000;
+      .img {
+        width: 60%;
       }
     }
   }
-}
-
-// AllCarsPage 
-.img_container {
-  width: 100%;
-  max-width: 1200px !important;
-  margin-top: 100px;
-  text-align: center;
-  display: flex !important;
-  flex-wrap: wrap;
-  justify-content: center;
-  .img_wrap {
-    img {
-      width: 300px;
-      margin: 0 25px 25px 0;
-      // background: #fff;
-      // background: #222222ea;
-      // border: 1px solid $primary-color;
-    }
-  }
-}
-
-// Deteil
 
 
-// BrandCar
-.brand_container {
-  margin-top: 100px;
-  .list_container {
+// AllCarsPage.tsx
+
+  .img_container {
+    margin-top: 100px;
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 50px;
-    .img_wrap{
-      margin: 0 25px 25px 0;
-      .carImg {
-        width: 240px;
+    justify-content: center;
+    .img_wrap {
+      img {
+        width: 300px;
+        margin: 0 25px 25px 0;
+      }
+    }
+  }
+
+// Deteil.tsx
+
+
+
+// BrandCar.tsx
+  .brand_container {
+    margin-top: 100px;
+    .list_container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-top: 50px;
+      .img_wrap{
+        margin: 0 25px 25px 0;
+        .carImg {
+          width: 240px;
+        }
       }
     }
   }

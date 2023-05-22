@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { Container, Typography, Box } from '@mui/material'
 import { useCarData, useCarBrands } from '../hook/useCarData'
 
-export function Brand(){
+export function BrandCar(){
 
   const carData = useCarData();
   const carBrands = useCarBrands();
