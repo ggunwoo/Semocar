@@ -27,7 +27,7 @@ export function Detail():JSX.Element {
         <Box sx={{width: "50%", margin:"0 auto", textAlign:"center"}}>
           <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
           <Container sx={{ height:"250px" ,display:"flex", flexWrap:"wrap", flexDirection:"column", justifyContent:"flex-start", alignContent:"space-between"}}>
-              {
+              {/* {
                 tempState.map((a)=>(
                   <dl>
                     {
@@ -41,7 +41,7 @@ export function Detail():JSX.Element {
                     }
                   </dl>
                 ))
-              }
+              } */}
           </Container>
         </Box>
       }
