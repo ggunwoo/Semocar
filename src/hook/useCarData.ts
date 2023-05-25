@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getCarData, getCarBrands } from '../api/getCarData';
-
 import * as type from '../types/types'
 
 export const useCarData = () => {

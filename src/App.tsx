@@ -1,4 +1,5 @@
 import React from 'react';
+import './mui-css-reset.scss';
 import './main.scss';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CssBaseline ,Container, Box, Grid, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
@@ -31,7 +32,7 @@ function App():JSX.Element {
           </ButtonGroup>
         </Toolbar>
       </AppBar>
-      
+
       <Routes>
         <Route path={'/'} element={<BrandNav />} />
         <Route path='/brand' element={<Brand />} >

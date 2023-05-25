@@ -30,7 +30,7 @@ export function AllCarsUi():JSX.Element{
       </Box>
         
         {carData.map((cars: type.Cars)=>(
-          <Box className="img_wrap" key={cars.id} onClick={()=>{ navigate(`/detail/${cars.id}`)}}>
+          <Box className="img_wrap" key={cars.id}>
             <img className="carImg" src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${cars.imgUrl}.png`} alt={cars.name.en} />
           </Box>
         ))}

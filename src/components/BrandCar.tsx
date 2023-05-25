@@ -1,8 +1,10 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Container, Typography, Box } from '@mui/material'
 import { useCarData, useCarBrands } from '../hook/useCarData'
 
 export function BrandCar(){
+
+  const navigate = useNavigate();
 
   const carData = useCarData();
   const carBrands = useCarBrands();
@@ -18,10 +20,12 @@ export function BrandCar(){
       <Typography variant="h2">{searchBrand?.name.kr}</Typography>
       <Box className='list_container'>
         {
-          sameData.length !== 0
+          sameData.length === 0
           ?
+          <div>해당 브랜드의 차 데이터가 없습니다.</div>
+          :
           sameData.map((cars) => (
-            <Box className="img_wrap" key={cars.id}>
+            <Box className="img_wrap" key={cars.id} onClick={()=>{ navigate(`/detail/${cars.id}`)}}>
               <img
                 className="carImg"
                 src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${cars.imgUrl}.png`}
@@ -29,8 +33,7 @@ export function BrandCar(){
               />
             </Box>
           ))
-          :
-          <div>해당 브랜드의 차 데이터가 없습니다.</div>
+          
         }
       </Box>
     </Container>

@@ -1,4 +1,4 @@
-
+// carData.json
 export interface Brand {
   kr : string
   en : string
@@ -12,6 +12,7 @@ export interface price {
   min : number
   max : number
 }
+
 
 export interface Attr {
   displacement: string
@@ -34,6 +35,7 @@ export interface Cars {
   attribute : Attr
 }
 
+// brand.json
 export interface Brands {
   name : { kr : string, en: string}
   id : number
