@@ -74,7 +74,7 @@ function App(): JSX.Element {
       {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
-          <Logo fontSize='34px' className='logo' onClick={() => { navigate('/'); }}>
+          <Logo fontSize='28px' className='logo' onClick={() => { navigate('/'); }}>
             SEMO CAR
           </Logo>
           <div>
