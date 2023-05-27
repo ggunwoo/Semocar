@@ -22,12 +22,12 @@ const FooterBtn = styled(Button)`
 && {
   color: black;
   font-weight: normal;
-  padding-left: 36px;
-  padding-right: 0;
+  margin-left: 18px;
 }
 `
 const Logo = styled.h2`
 && {
+  color: black;
   font-family: Anders, Arial, sans-serif;
 }
 `
