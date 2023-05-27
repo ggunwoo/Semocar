@@ -51,7 +51,8 @@ const CustomStyledButton = styled(Button)`
 `;
 const MaxContainer = styled(Container)`
 && {
-  max-width:1100px;
+  max-width: 1100px;
+  min-width: 1100px;
   margin-top: 80px;
   padding-left:0;
   padding-right:0;
