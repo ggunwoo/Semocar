@@ -38,6 +38,8 @@ const SecondSwiper = styled(Swiper)`
 `;
 const InfoText = styled.p`
 && {
+  display: flex;
+  justify-content: space-between;
   font-size: 12px;
 }
 `
@@ -126,17 +128,22 @@ export function Main ():JSX.Element {
             <SwiperSlide>
               <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
               <p style={{fontSize:"18px"}}>TITLE</p>
-              <div style={{display:"flex", justifyContent:"space-between"}}>
-                <div>
-                  <InfoText>PRICE : </InfoText>
-                  <InfoText>CARMILEAGE : </InfoText>
-                  <InfoText>ENGINE : </InfoText>
-                </div>
-                <div>
-                  <p>{a}</p>
-                  <p>{a}</p>
-                  <p>{a}</p>
-                </div>
+              <div>
+                <InfoText>
+                  <div>PRICE : </div>
+                  <div>{a}</div>
+                </InfoText>
+                <InfoText>
+                  <div>CARMILEAGE : </div>
+                  <div>{a}</div>
+                </InfoText>
+                <InfoText>
+                  <div>ENGINE : </div>
+                  <div>{a}</div>
+                </InfoText>
+                
+                
+                
               </div>
             </SwiperSlide>
           ))
