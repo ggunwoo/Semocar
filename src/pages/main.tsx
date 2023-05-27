@@ -17,16 +17,17 @@ import { BrandNav } from '../components/BrandNav'
 import { MaxContainer } from '../App';
 const FirstSwiper = styled(Swiper)`
 && {
+  min-width: 1100px;
   margin-top: 80px;
   margin-bottom: 100px;
   user-select: none;
   .swiper-button-next {
-    right: 450px;
+    right: 15%;
     /* background-color: black; */
     color: black;
   }
   .swiper-button-prev {
-    left: 450px;
+    left: 15%;
     color: black;
   }
   .swiper-scrollbar {
