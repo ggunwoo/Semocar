@@ -78,10 +78,11 @@ const SecondSwiper = styled(Swiper)`
   margin: 36px 0 100px;
   display: flex;
   user-select: none;
-  .swiper-pagination {
+  .swiper-pagination-bullets {
+    width: 150px !important;
   }
   .swiper-pagination-bullet-active {
-    width : 60px;
+    width : 30px;
     background-color : black;
     border-radius: 20px;
   } 
@@ -149,9 +150,12 @@ export function Main ():JSX.Element {
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
+        pagination={{
+          type: "fraction",
+        }}
         navigation={true}
         loop={true}
-        modules={[Scrollbar, Navigation, Autoplay]}
+        modules={[Scrollbar, Navigation, Autoplay, Pagination]}
         slidesPerView={1}
         onSlideChange={() => console.log('slide change')}
         >
@@ -173,11 +177,12 @@ export function Main ():JSX.Element {
           <Typography sx={{fontSize: "24px",marginTop: "100px"}}>최신 출시 모델</Typography>
           <SecondSwiper
             slidesPerView={4}
-            spaceBetween={80}
+            slidesPerGroup={4}
+            spaceBetween={60}
             modules={[Pagination]}
             className="mySwiper"
             pagination={{
-              clickable: true,
+              dynamicBullets: true,
             }}
             >
             {
