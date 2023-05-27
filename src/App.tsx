@@ -1,46 +1,88 @@
 import React from 'react';
-import './mui-css-reset.scss';
-import './main.scss';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { CssBaseline ,Container, Box, Grid, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
-import { useCarBrands } from './hook/useCarData';
-// import * as type from './types/types'
-
-// PAGES
-import { Detail } from './pages/Detail';
-import { Brand } from './pages/Brand'
+import { CssBaseline, Container, Grid, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
+import styled from 'styled-components';
+import * as type from './types/types';
 
 // COMPONENT
-import { AllCarsUi } from './components/AllCarsUi';
 import { BrandCar } from './components/BrandCar';
 import { BrandNav } from './components/BrandNav';
 
+// PAGES
+import { Main } from './pages/main'
+import { Detail } from './pages/Detail';
+import { Brand } from './pages/Brand';
 
-function App():JSX.Element {
+// styled
+const FlexToolbar = styled(Toolbar)`
+&& {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+`;
+const CustomAppBar = styled(AppBar)`
+&& {
+  background-color: #fff;
+  height: 80px;
+  border-bottom: 1px solid #D7D7D7;
+  box-shadow: none;
+  
+}
+`;
+const CustomStyledButton = styled(Button)`
+&& {
+  color:black;
+  font-size:14px;
+  font-weight: normal;
+  border-color:black;
+  margin-right:24px;
+  border-radius:1.25rem;
+}
+`;
+const MaxContainer = styled(Container)`
+&& {
+  max-width:1100px;
+  margin-top: 80px;
+  padding-left:0;
+  padding-right:0;
+}
+`;
+function App(): JSX.Element {
   const navigate = useNavigate();
 
   return (
-    <Container className='container'>
-      <AppBar className='AppBar'>
-        <Toolbar className='ToolBar container'>
-          <Typography className="Toolbar_title" variant="h5" noWrap component="div" color='secondary' onClick={()=>{navigate('/')}}>
-            Logo
+    <>
+      <CssBaseline />
+      <CustomAppBar>
+        <FlexToolbar>
+          <Typography sx={{fontFamily: "Anders, Arial, sans-serif", color:"black"}} variant="h5" noWrap onClick={() => { navigate('/'); }}>
+            SEMO CAR
           </Typography>
-          <ButtonGroup className='Toolbar_btns' color='secondary' >
-            <Button variant="text">Home</Button>
-            <Button variant="text">About</Button>
-          </ButtonGroup>
-        </Toolbar>
-      </AppBar>
+          <div>
+            <CustomStyledButton variant="text">Home</CustomStyledButton>
+            <CustomStyledButton variant="text">About</CustomStyledButton>
+            <CustomStyledButton variant="text">Resources</CustomStyledButton>
+            <CustomStyledButton sx={{lineHeight:"1.25rem", marginLeft:"12px"}} variant="outlined">로그인</CustomStyledButton>
+          </div>
+        </FlexToolbar>
+      </CustomAppBar>
 
-      <Routes>
-        <Route path={'/'} element={<BrandNav />} />
-        <Route path='/brand' element={<Brand />} >
-          <Route path=':id' element={<BrandCar />} />
-        </Route>
-        <Route path='/detail/:id' element={<Detail />} />
-      </Routes>
-    </Container>
-  )
+      <MaxContainer>
+        <Routes>
+          <Route path={'/'} element={<Main />} />
+          <Route path="/brand" element={<Brand />}>
+            <Route path=":id" element={<BrandCar />} />
+          </Route>
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </MaxContainer>
+    </>
+  );
 }
+
 export default App;

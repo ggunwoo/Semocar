@@ -1,6 +1,5 @@
-import { Container, Box } from '@mui/material';
+import { Container, Box, ButtonGroup, Button } from '@mui/material';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { ButtonGroup, Button } from '@mui/material';
 
 import { useCarData } from '../hook/useCarData';
 import { useCarBrands } from '../hook/useCarData';
@@ -16,13 +15,13 @@ export function AllCarsUi():JSX.Element{
   const carBrands = useCarBrands();
 
   return (
-    <Container className="img_container" maxWidth={false}>
+    <Container maxWidth={false}>
       {/* LOGO Nav */}
-      <Box className='nav'>
+      <Box>
           <ButtonGroup size="large">
             {carBrands.map((brand):JSX.Element => (
-              <Button className='brand_btn' key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} variant='text'>
-                <img className="img" src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+              <Button key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} variant='text'>
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
                 {/* {brand.name.kr} */}
               </Button>
             ))}
@@ -30,8 +29,8 @@ export function AllCarsUi():JSX.Element{
       </Box>
         
         {carData.map((cars: type.Cars)=>(
-          <Box className="img_wrap" key={cars.id}>
-            <img className="carImg" src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${cars.imgUrl}.png`} alt={cars.name.en} />
+          <Box key={cars.id}>
+            <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${cars.imgUrl}.png`} alt={cars.name.en} />
           </Box>
         ))}
 

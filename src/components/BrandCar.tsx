@@ -16,9 +16,9 @@ export function BrandCar(){
   console.log(searchBrand)
 
   return (
-    <Container className="brand_container">
+    <Container>
       <Typography variant="h2">{searchBrand?.name.kr}</Typography>
-      <Box className='list_container'>
+      <Box>
         {
           sameData.length === 0
           ?
