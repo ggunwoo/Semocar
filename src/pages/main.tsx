@@ -146,7 +146,7 @@ export function Main ():JSX.Element {
           hide:false,
         }}
         autoplay={{
-          delay: 5000,
+          delay: 2000,
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
