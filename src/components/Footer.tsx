@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components'
 import { Button } from '@mui/material'
 
+import { Logo } from '../App';
 const FooterCtn = styled.div`
 && {
   width: 100%;
@@ -25,13 +26,7 @@ const FooterBtn = styled(Button)`
   margin-left: 18px;
 }
 `
-const Logo = styled.h2`
-&& {
-  color: black;
-  font-family: Anders, Arial, sans-serif;
-  cursor: pointer;
-}
-`
+
 const Copyright = styled.div`
 && {
   width: 100%;
@@ -53,7 +48,7 @@ export function Footer():JSX.Element {
     <>
       <FooterCtn>
         <div className='infoWrap'>
-          <Logo>SEMO CAR</Logo>
+          <Logo fontSize='38px' >SEMO CAR</Logo>
           <div className='btnGroup'>
             <FooterBtn>Home</FooterBtn>
             <FooterBtn>GitHub</FooterBtn>

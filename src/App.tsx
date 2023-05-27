@@ -25,6 +25,14 @@ export const MaxContainer = styled(Container)`
   padding-right:0;
 }
 `;
+export const Logo = styled.h2<{fontSize : string}>`
+&& {
+  font-size: ${props => props.fontSize};
+  color: black;
+  font-family: Anders, Arial, sans-serif;
+  cursor: pointer;
+}
+`
 const CustomAppBar = styled(AppBar)`
 && {
   width: 100%;
@@ -44,10 +52,6 @@ const FlexToolbar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .logo {
-    font-family: Anders, Arial, sans-serif;
-    color: black;
-  }
 }
 `;
 const CustomStyledButton = styled(Button)`
@@ -70,9 +74,9 @@ function App(): JSX.Element {
       {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
-          <Typography sx={{cursor: "pointer"}}className='logo' variant="h5" noWrap onClick={() => { navigate('/'); }}>
+          <Logo fontSize='34px' className='logo' onClick={() => { navigate('/'); }}>
             SEMO CAR
-          </Typography>
+          </Logo>
           <div>
             <CustomStyledButton variant="text">Home</CustomStyledButton>
             <CustomStyledButton variant="text">About</CustomStyledButton>
