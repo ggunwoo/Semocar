@@ -20,6 +20,20 @@ const FirstSwiper = styled(Swiper)`
   margin-top: 80px;
   margin-bottom: 100px;
   user-select: none;
+  .swiper-button-next {
+    right: 450px;
+    /* background-color: black; */
+    color: black;
+  }
+  .swiper-button-prev {
+    left: 450px;
+    color: black;
+  }
+  .swiper-scrollbar {
+    width: 1100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 `;
 const BannerBackgound = styled.img`
@@ -51,7 +65,7 @@ const GradientBox = styled.div`
   height: 300px;
   background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #E6E6E6 100%);
   position: absolute;
-  top: -40%;
+  top: -35%;
   left: 0;
   z-index: -1;
 }
@@ -59,7 +73,7 @@ const GradientBox = styled.div`
 const SecondSwiper = styled(Swiper)`
 && {
   width: 1100px;
-  height: 350px;
+  height: 370px;
   margin: 36px 0 100px;
   display: flex;
   user-select: none;
@@ -156,8 +170,8 @@ export function Main ():JSX.Element {
         <MaxContainer sx={{ position:'relative' }}>
           <Typography sx={{fontSize: "24px",marginTop: "100px"}}>최신 출시 모델</Typography>
           <SecondSwiper
-            slidesPerView={5}
-            spaceBetween={50}
+            slidesPerView={4}
+            spaceBetween={80}
             modules={[Pagination]}
             className="mySwiper"
             pagination={{
@@ -169,7 +183,7 @@ export function Main ():JSX.Element {
                 
                 <SwiperSlide>
                   <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
-                  <p style={{fontSize:"18px"}}>TITLE</p>
+                  <p style={{fontSize:"18px", marginTop: "24px"}}>TITLE</p>
                   <div>
                     <InfoText>
                       <div>PRICE : </div>
