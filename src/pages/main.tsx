@@ -150,6 +150,7 @@ export function Main ():JSX.Element {
           pauseOnMouseEnter: true,
         }}
         navigation={true}
+        loop={true}
         modules={[Scrollbar, Navigation, Autoplay]}
         slidesPerView={1}
         onSlideChange={() => console.log('slide change')}
