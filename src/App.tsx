@@ -14,7 +14,27 @@ import { Main } from './pages/main'
 import { Detail } from './pages/Detail';
 import { Brand } from './pages/Brand';
 
-// styled
+// STYLED
+export const MaxContainer = styled(Container)`
+&& {
+  max-width: 1100px;
+  /* 적응형웹 */
+  min-width: 1100px;
+  margin-top: 80px;
+  padding-left:0;
+  padding-right:0;
+}
+`;
+const CustomAppBar = styled(AppBar)`
+&& {
+  width: 100%;
+  background-color: #fff;
+  height: 80px;
+  border-bottom: 1px solid #D7D7D7;
+  box-shadow: none;
+  
+}
+`;
 const FlexToolbar = styled(Toolbar)`
 && {
   width: 100%;
@@ -30,15 +50,6 @@ const FlexToolbar = styled(Toolbar)`
   }
 }
 `;
-const CustomAppBar = styled(AppBar)`
-&& {
-  background-color: #fff;
-  height: 80px;
-  border-bottom: 1px solid #D7D7D7;
-  box-shadow: none;
-  
-}
-`;
 const CustomStyledButton = styled(Button)`
 && {
   color:black;
@@ -49,22 +60,13 @@ const CustomStyledButton = styled(Button)`
   border-radius:1.25rem;
 }
 `;
-const MaxContainer = styled(Container)`
-&& {
-  max-width: 1100px;
-  min-width: 1100px;
-  margin-top: 80px;
-  padding-left:0;
-  padding-right:0;
-}
-`;
 function App(): JSX.Element {
   const navigate = useNavigate(); 
 
   return (
     <>
-      {/* HEADER */}
       <CssBaseline />
+      {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
           <Typography className='logo' variant="h5" noWrap onClick={() => { navigate('/'); }}>
@@ -80,15 +82,13 @@ function App(): JSX.Element {
       </CustomAppBar>
 
       {/* ARTICLE */}
-      <MaxContainer>
-        <Routes>
-          <Route path={'/'} element={<Main />} />
-          <Route path="/brand" element={<Brand />}>
-            <Route path=":id" element={<BrandCar />} />
-          </Route>
-          <Route path="/detail/:id" element={<Detail />} />
-        </Routes>
-      </MaxContainer>
+      <Routes>
+        <Route path={'/'} element={<Main />} />
+        <Route path="/brand" element={<Brand />}>
+          <Route path=":id" element={<BrandCar />} />
+        </Route>
+        <Route path="/detail/:id" element={<Detail />} />
+      </Routes>
 
       {/* FOOTER */}
       <Footer />

@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useCarBrands } from '../hook/useCarData';
-import { Container, Box, Button } from '@mui/material';
-import {styled} from 'styled-components';
+import { Box, Button } from '@mui/material';
+import { styled } from 'styled-components';
+
+
+// STYLED
+import { MaxContainer } from '../App';
 
 const FlexBox = styled(Box)`
 && {
@@ -32,12 +36,12 @@ const LogoName = styled.p`
 `;
 
 export function BrandNav () {
-  
+
   const navigate = useNavigate();
   const carBrands = useCarBrands();
 
   return (
-    <Container>
+    <MaxContainer>
       <FlexBox>
         {carBrands.map((brand):JSX.Element => (
           <LogoButton key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} variant='text'>
@@ -54,6 +58,6 @@ export function BrandNav () {
           <LogoName>전체보기</LogoName>
         </LogoButton>
       </FlexBox>
-    </Container>
+    </MaxContainer>
   )
 }
