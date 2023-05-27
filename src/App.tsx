@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { CssBaseline, Container, Grid, AppBar, Toolbar, Typography, ButtonGroup, Button } from '@mui/material';
+import { CssBaseline, Container, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import styled from 'styled-components';
 import * as type from './types/types';
 

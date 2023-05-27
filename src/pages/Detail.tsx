@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
-import { Container, Box, Typography, Toolbar } from '@mui/material'
+import { Container, Box, Toolbar } from '@mui/material'
 // import * as type from '../types/types'
 
 

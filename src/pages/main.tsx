@@ -1,4 +1,4 @@
-import React, {useState, useRef } from 'react';
+import React, {useState } from 'react';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation, Pagination, Autoplay } from 'swiper';
