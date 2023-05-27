@@ -9,13 +9,21 @@ const FooterCtn = styled.div`
   margin-top: 200px;
   background: #F9F9F9;
   .infoWrap {
-    width: 70%;
+    width: 700px;
     height: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
+}
+`
+const FooterBtn = styled(Button)`
+&& {
+  color: black;
+  font-weight: normal;
+  padding-left: 36px;
+  padding-right: 0;
 }
 `
 const Logo = styled.h2`
@@ -45,11 +53,11 @@ export function Footer():JSX.Element {
       <FooterCtn>
         <div className='infoWrap'>
           <Logo>SEMO CAR</Logo>
-          <div>
-            <Button>Home</Button>
-            <Button>GitHub</Button>
-            <Button>Notion</Button>
-            <Button>Contact</Button>
+          <div className='btnGroup'>
+            <FooterBtn>Home</FooterBtn>
+            <FooterBtn>GitHub</FooterBtn>
+            <FooterBtn>Notion</FooterBtn>
+            <FooterBtn>Contact</FooterBtn>
           </div>
         </div>
       </FooterCtn>
