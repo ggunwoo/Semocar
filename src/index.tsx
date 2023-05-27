@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import {Provider} from 'react-redux'
 // import store from './store/store'
 
+
 // Fonts
 import './fonts/fonts.css'
 
@@ -15,7 +16,6 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
     <BrowserRouter>
-      
       <App />
     </BrowserRouter>
   // </React.StrictMode>
