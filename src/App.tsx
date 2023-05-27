@@ -58,6 +58,7 @@ const CustomStyledButton = styled(Button)`
   border-color:black;
   margin-right:24px;
   border-radius:1.25rem;
+  
 }
 `;
 function App(): JSX.Element {
@@ -69,7 +70,7 @@ function App(): JSX.Element {
       {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
-          <Typography className='logo' variant="h5" noWrap onClick={() => { navigate('/'); }}>
+          <Typography sx={{cursor: "pointer"}}className='logo' variant="h5" noWrap onClick={() => { navigate('/'); }}>
             SEMO CAR
           </Typography>
           <div>

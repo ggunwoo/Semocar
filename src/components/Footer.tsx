@@ -29,6 +29,7 @@ const Logo = styled.h2`
 && {
   color: black;
   font-family: Anders, Arial, sans-serif;
+  cursor: pointer;
 }
 `
 const Copyright = styled.div`
