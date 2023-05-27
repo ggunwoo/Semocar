@@ -1,11 +1,13 @@
 import App from './App';
 import './index.css';
-import './fonts/fonts.css'
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 // import {Provider} from 'react-redux'
 // import store from './store/store'
+
+// Fonts
+import './fonts/fonts.css'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

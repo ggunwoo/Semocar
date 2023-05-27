@@ -7,6 +7,7 @@ import * as type from './types/types';
 // COMPONENT
 import { BrandCar } from './components/BrandCar';
 import { BrandNav } from './components/BrandNav';
+import { Footer } from './components/Footer';
 
 // PAGES
 import { Main } from './pages/main'
@@ -23,6 +24,10 @@ const FlexToolbar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .logo {
+    font-family: Anders, Arial, sans-serif;
+    color: black;
+  }
 }
 `;
 const CustomAppBar = styled(AppBar)`
@@ -53,14 +58,15 @@ const MaxContainer = styled(Container)`
 }
 `;
 function App(): JSX.Element {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   return (
     <>
+      {/* HEADER */}
       <CssBaseline />
       <CustomAppBar>
         <FlexToolbar>
-          <Typography sx={{fontFamily: "Anders, Arial, sans-serif", color:"black"}} variant="h5" noWrap onClick={() => { navigate('/'); }}>
+          <Typography className='logo' variant="h5" noWrap onClick={() => { navigate('/'); }}>
             SEMO CAR
           </Typography>
           <div>
@@ -72,6 +78,7 @@ function App(): JSX.Element {
         </FlexToolbar>
       </CustomAppBar>
 
+      {/* ARTICLE */}
       <MaxContainer>
         <Routes>
           <Route path={'/'} element={<Main />} />
@@ -81,6 +88,9 @@ function App(): JSX.Element {
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
       </MaxContainer>
+
+      {/* FOOTER */}
+      <Footer />
     </>
   );
 }
