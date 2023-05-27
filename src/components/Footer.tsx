@@ -63,7 +63,7 @@ export function Footer():JSX.Element {
       </FooterCtn>
       <Copyright>
         <p className='text'>
-          Copyright © 2023 박건우 포트폴리오 | pgw6541@gmail.com
+          Copyright &copy; 2023 박건우 포트폴리오 | pgw6541@gmail.com
         </p>
       </Copyright>
     </>
