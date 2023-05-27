@@ -34,9 +34,13 @@ const SecondSwiper = styled(Swiper)`
     background-color : black;
     border-radius: 20px;
   } 
-
 }
 `;
+const InfoText = styled.p`
+&& {
+  font-size: 12px;
+}
+`
 const GalleryGrid = styled(Grid)`
 && {
   .item {
@@ -122,11 +126,11 @@ export function Main ():JSX.Element {
             <SwiperSlide>
               <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
               <p style={{fontSize:"18px"}}>TITLE</p>
-              <div style={{display:"flex", justifyContent:"space-around"}}>
+              <div style={{display:"flex", justifyContent:"space-between"}}>
                 <div>
-                  <p style={{fontSize:"12px"}}>PRICE : </p>
-                  <p style={{fontSize:"12px"}}>CARMILEAGE : </p>
-                  <p style={{fontSize:"12px"}}>ENGINE : </p>
+                  <InfoText>PRICE : </InfoText>
+                  <InfoText>CARMILEAGE : </InfoText>
+                  <InfoText>ENGINE : </InfoText>
                 </div>
                 <div>
                   <p>{a}</p>
