@@ -20,11 +20,9 @@ export const MaxContainer = styled(Container)`
   max-width: 1100px;
   /* 적응형웹 */
   min-width: 1100px;
-  margin-top: 80px;
   padding-left:0;
   padding-right:0;
-}
-`;
+}`;
 export const Logo = styled.h2<{fontSize : string}>`
 && {
   font-size: ${props => props.fontSize};
@@ -33,6 +31,11 @@ export const Logo = styled.h2<{fontSize : string}>`
   cursor: pointer;
 }
 `
+export const Blank = styled.div`
+&&{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}`;
 const CustomAppBar = styled(AppBar)`
 && {
   width: 100%;
@@ -41,8 +44,7 @@ const CustomAppBar = styled(AppBar)`
   border-bottom: 1px solid #D7D7D7;
   box-shadow: none;
   
-}
-`;
+}`;
 const FlexToolbar = styled(Toolbar)`
 && {
   width: 100%;
@@ -54,8 +56,7 @@ const FlexToolbar = styled(Toolbar)`
   justify-content: space-between;
   align-items: center;
   
-}
-`;
+}`;
 const CustomStyledButton = styled(Button)`
 && {
   color:black;
@@ -69,8 +70,7 @@ const CustomStyledButton = styled(Button)`
     margin-right: 0;
     margin-left: 12px;
   }
-}
-`;
+}`;
 function App(): JSX.Element {
   const navigate = useNavigate();  
 
@@ -95,7 +95,7 @@ function App(): JSX.Element {
       {/* ARTICLE */}
       <Routes>
         <Route path={'/'} element={<Main />} />
-        <Route path="/brand" element={<Brand />} / >
+        <Route path="/brand" element={<Brand />} />
         <Route path="/detail/:id" element={<Detail />} />
       </Routes>
 
