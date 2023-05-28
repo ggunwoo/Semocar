@@ -44,7 +44,7 @@ export function BrandNav () {
     <MaxContainer>
       <FlexBox>
         {carBrands.map((brand):JSX.Element => (
-          <LogoButton key={brand.id} onClick={()=>{navigate(`/brand/${brand.id}`)}} variant='text'>
+          <LogoButton key={brand.id} onClick={()=>{navigate(`/brand`)}} variant='text'>
             <ImageBox>
               <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
             </ImageBox>
