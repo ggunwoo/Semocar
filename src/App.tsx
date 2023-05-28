@@ -14,7 +14,7 @@ import { Main } from './pages/main'
 import { Detail } from './pages/Detail';
 import { Brand } from './pages/Brand';
 
-// STYLED
+// STYLED COMPONENTS
 export const MaxContainer = styled(Container)`
 && {
   max-width: 1100px;
@@ -66,7 +66,7 @@ const CustomStyledButton = styled(Button)`
 }
 `;
 function App(): JSX.Element {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();  
 
   return (
     <>
@@ -74,13 +74,13 @@ function App(): JSX.Element {
       {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
-          <Logo fontSize='28px' className='logo' onClick={() => { navigate('/'); }}>
+          <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
             SEMO CAR
           </Logo>
           <div>
-            <CustomStyledButton variant="text">Home</CustomStyledButton>
-            <CustomStyledButton variant="text">About</CustomStyledButton>
-            <CustomStyledButton variant="text">Resources</CustomStyledButton>
+            <CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</CustomStyledButton>
+            <CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</CustomStyledButton>
+            <CustomStyledButton variant="text">차량목록</CustomStyledButton>
             <CustomStyledButton sx={{lineHeight:"1.25rem", marginLeft:"12px"}} variant="outlined">로그인</CustomStyledButton>
           </div>
         </FlexToolbar>
@@ -89,9 +89,7 @@ function App(): JSX.Element {
       {/* ARTICLE */}
       <Routes>
         <Route path={'/'} element={<Main />} />
-        <Route path="/brand" element={<Brand />}>
-          <Route path=":id" element={<BrandCar />} />
-        </Route>
+        <Route path="/brand" element={<Brand />} / >
         <Route path="/detail/:id" element={<Detail />} />
       </Routes>
 
