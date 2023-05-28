@@ -48,7 +48,7 @@ export function Footer():JSX.Element {
     <>
       <FooterCtn>
         <div className='infoWrap'>
-          <Logo fontSize='38px' >SEMO CAR</Logo>
+          <Logo fontSize='32px' >SEMO CAR</Logo>
           <div className='btnGroup'>
             <FooterBtn>Home</FooterBtn>
             <FooterBtn>GitHub</FooterBtn>
