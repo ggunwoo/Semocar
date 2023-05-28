@@ -14,7 +14,7 @@ import "swiper/css/pagination";
 import { BrandNav } from '../components/BrandNav'
 
 // STYLED-COMPONENTS
-import { MaxContainer } from '../App';
+import { MaxContainer, Blank } from '../App';
 const FirstSwiper = styled(Swiper)`
 && {
   min-width: 1100px;
@@ -175,9 +175,13 @@ export function Main ():JSX.Element {
           ))
         }
       </FirstSwiper>
+
+      <Blank />
+
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <BrandNav />
 
+      <Blank />
       {/* NewCar SLIDE */}
       <GradientRelative>
         <MaxContainer sx={{ position:'relative' }}>
@@ -220,7 +224,7 @@ export function Main ():JSX.Element {
         <GradientBox />
       </GradientRelative>
       
-
+      <Blank />
 
       {/* 포토갤러리 */}
       

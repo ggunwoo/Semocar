@@ -33,8 +33,7 @@ export const Logo = styled.h2<{fontSize : string}>`
 `
 export const Blank = styled.div`
 &&{
-  margin-top: 50px;
-  margin-bottom: 50px;
+  height: 100px;
 }`;
 const CustomAppBar = styled(AppBar)`
 && {
