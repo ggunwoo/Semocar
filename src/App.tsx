@@ -49,9 +49,11 @@ const FlexToolbar = styled(Toolbar)`
   height: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 `;
 const CustomStyledButton = styled(Button)`
@@ -62,7 +64,11 @@ const CustomStyledButton = styled(Button)`
   border-color:black;
   margin-right:24px;
   border-radius:1.25rem;
-  
+  &:last-child {
+    line-height: 1.25rem;
+    margin-right: 0;
+    margin-left: 12px;
+  }
 }
 `;
 function App(): JSX.Element {
@@ -81,7 +87,7 @@ function App(): JSX.Element {
             <CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</CustomStyledButton>
             <CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</CustomStyledButton>
             <CustomStyledButton variant="text">차량목록</CustomStyledButton>
-            <CustomStyledButton sx={{lineHeight:"1.25rem", marginLeft:"12px"}} variant="outlined">로그인</CustomStyledButton>
+            <CustomStyledButton variant="outlined">로그인</CustomStyledButton>
           </div>
         </FlexToolbar>
       </CustomAppBar>
