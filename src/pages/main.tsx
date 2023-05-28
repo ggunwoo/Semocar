@@ -88,7 +88,7 @@ const SecondSwiper = styled(Swiper)`
   } 
 }
 `;
-const Title_Typography = styled(Typography)`
+const TitleTypography = styled(Typography)`
 && {
   font-size: 24px;
   margin-top: 100px;
@@ -181,7 +181,7 @@ export function Main ():JSX.Element {
       {/* NewCar SLIDE */}
       <GradientRelative>
         <MaxContainer sx={{ position:'relative' }}>
-          <Title_Typography>최신 출시 모델</Title_Typography>
+          <TitleTypography>최신 출시 모델</TitleTypography>
           <SecondSwiper
             slidesPerView={4}
             slidesPerGroup={4}
@@ -225,7 +225,7 @@ export function Main ():JSX.Element {
       {/* 포토갤러리 */}
       
       <MaxContainer>
-        <Title_Typography>포토 갤러리</Title_Typography>
+        <TitleTypography>포토 갤러리</TitleTypography>
         <GalleryGrid container spacing={0}>
           {
             carPhote.map((a, i)=>(
