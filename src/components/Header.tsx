@@ -45,7 +45,6 @@ export function Header():JSX.Element {
 
   return(
     <>
-      {/* HEADER */}
       <CustomAppBar>
         <FlexToolbar>
           <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
