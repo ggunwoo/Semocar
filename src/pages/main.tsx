@@ -176,7 +176,7 @@ export function Main ():JSX.Element {
         }
       </FirstSwiper>
 
-      <Blank />
+      {/* <Blank /> */}
 
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <BrandNav />
