@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from 'styled-components'
-import { FormControl, OutlinedInput, InputAdornment, FormGroup, FormControlLabel } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, FormGroup, FormControlLabel, Box, Tabs, Tab, Typography } from '@mui/material';
 import { Checkbox } from '@mui/joy'
 import SearchIcon from '@mui/icons-material/Search';
+import * as type from '../types/types'
 
 // COMPONENT
 import {BrandCar} from '../components/BrandCar'
 import {BrandNav} from '../components/BrandNav'
+import {TebView}  from '../components/TabView'
 
 // STYLED COMPONENTS
-  // SearchBox
+  // SearchBox Styled
 import { MaxContainer } from '../App';
 const SearchBarWraper = styled.div`
 && {
@@ -18,9 +20,8 @@ const SearchBarWraper = styled.div`
   display: flex;
   justify-content: space-between;
 }`;
-
-  // CheckBox
-const CheckboxWraper = styled.div`
+  // CheckBox Styled
+const FormWraper = styled.div`
 && {
   width: 100%;
   height: 200px;  
@@ -30,7 +31,7 @@ const CheckboxWraper = styled.div`
   display: flex;
   flex-wrap: wrap;
 }`;
-const DivA = styled.div`
+const CheckboxLine = styled.div`
 && {
   width: 100%;
   display: flex;
@@ -39,12 +40,12 @@ const DivA = styled.div`
   /* TEMP */
   /* border: 1px solid #D8D8D8; */
 }`;
-const DivB = styled.div`
+const CheckboxTitle = styled.div`
 && {
   width: 5%;
   /* margin-top: 0.47rem; */
 }`;
-const DivC = styled(FormGroup)`
+const CheckBoxWraper = styled(FormGroup)`
 && {
   width: 95%;
 }`;
@@ -56,18 +57,18 @@ const StyledFormControlLabel = styled(FormControlLabel)`
     font-size: 14px;
   }
 }`;
-
+// Search View Styled
 export function Brand ():JSX.Element {
 
-  const [segment, setSegment] = useState([
-    '경차', '소형', '준중형', '중형', '준대형', '대형', '소형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV/MPV', '픽업/벤', '해치백', '왜건'
-  ]);
+  const [segment, setSegment] = useState(['경차', '소형', '준중형', '중형', '준대형', '대형', '소형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV/MPV', '픽업/벤', '해치백', '왜건']);
   const [engine, setEngine] = useState(['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']);
-
   const [segmentChecked, setSegmentChecked] = useState(Array(segment.length).fill(false));
   const [segmentChecked2, setSegmentChecked2] = useState(true);
-  const [engineChecked, engineSetChecked] = useState(Array(engine.length).fill(false));
-  const [engineChecked2, engineSetChecked2] = useState(true);
+  const [engineChecked, setEngineChecked] = useState(Array(engine.length).fill(false));
+
+  
+  
+  const [engineChecked2, setEngineChecked2] = useState(true);
   
   const segmentDefalutHandle = () => {
     const updatedChecked = Array(segment.length).fill(false);
@@ -79,24 +80,29 @@ export function Brand ():JSX.Element {
     updatedChecked[index] = !updatedChecked[index];
     setSegmentChecked(updatedChecked);
     setSegmentChecked2(false);
+    if(segmentChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
+      setSegmentChecked2(true);
+    }
   };
-  
   const engineDefalutHandle = () => {
     const updatedChecked = Array(engine.length).fill(false);
-    engineSetChecked(updatedChecked);
-    engineSetChecked2(true);
+    setEngineChecked(updatedChecked);
+    setEngineChecked2(true);
   };
   const engineHandle = (index: number) => {
     const updatedChecked = [...engineChecked];
     updatedChecked[index] = !updatedChecked[index];
-    engineSetChecked(updatedChecked);
-    engineSetChecked2(false);
+    setEngineChecked(updatedChecked);
+    setEngineChecked2(false);
+    if(engineChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
+      setEngineChecked2(true);
+    }
   };
 
   return (
     <>
-        {/* 검색창 */}
       <MaxContainer>
+        {/* 검색창 */}
         <SearchBarWraper>
           <div></div>
           <FormControl size='small' sx={{m:1}}>
@@ -112,10 +118,10 @@ export function Brand ():JSX.Element {
         <BrandNav />
 
         {/* Search Check Box */}
-        <CheckboxWraper>
-          <DivA>
-            <DivB>차급</DivB>
-            <DivC row={true}>
+        <FormWraper>
+          <CheckboxLine>
+            <CheckboxTitle>차급</CheckboxTitle>
+            <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
                 <Checkbox className="segmentDefalutCheckBox" checked={segmentChecked2} onChange={segmentDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
@@ -126,11 +132,11 @@ export function Brand ():JSX.Element {
                   ></StyledFormControlLabel>
                 ))
               }
-            </DivC>
-          </DivA>
-          <DivA>
-            <DivB>연료</DivB>
-            <DivC row={true}>
+            </CheckBoxWraper>
+          </CheckboxLine>
+          <CheckboxLine>
+            <CheckboxTitle>연료</CheckboxTitle>
+            <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
                 <Checkbox className="engineDefalutCheckBox" checked={engineChecked2} onChange={engineDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
@@ -141,16 +147,13 @@ export function Brand ():JSX.Element {
                   ></StyledFormControlLabel>
                 ))
               }
-            </DivC>
-          </DivA>
-        </CheckboxWraper>
-
-
-
-
+            </CheckBoxWraper>
+          </CheckboxLine>
+        </FormWraper>
         {/* Search View */}
-        <BrandCar />
+        <TebView />
       </MaxContainer>
     </>
   )
 }
+
