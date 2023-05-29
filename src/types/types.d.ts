@@ -41,3 +41,10 @@ export interface Brands {
   id : number
   imgUrl : string
 }
+
+// Brand.tsx
+export interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
