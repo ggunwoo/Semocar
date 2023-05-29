@@ -3,7 +3,7 @@ import { getCarData, getCarBrands } from '../api/getCarData';
 import * as type from '../types/types'
 
 export const useCarData = () => {
-  const [carData, setCarData] = useState<type.Cars[]>([]);
+  const [carData, setCarData] = useState<type.Car[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

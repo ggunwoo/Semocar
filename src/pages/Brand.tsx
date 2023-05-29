@@ -8,7 +8,7 @@ import * as type from '../types/types'
 // COMPONENT
 import {BrandCar} from '../components/BrandCar'
 import {BrandNav} from '../components/BrandNav'
-import {TebView}  from '../components/TabView'
+import {TabView}  from '../components/TabView'
 
 // STYLED COMPONENTS
   // SearchBox Styled
@@ -150,8 +150,10 @@ export function Brand ():JSX.Element {
             </CheckBoxWraper>
           </CheckboxLine>
         </FormWraper>
+
         {/* Search View */}
-        <TebView />
+        <TabView />
+        
       </MaxContainer>
     </>
   )

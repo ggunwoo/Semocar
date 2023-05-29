@@ -203,16 +203,16 @@ export function Main ():JSX.Element {
                   <p style={{fontSize:"18px", marginTop: "24px"}}>TITLE</p>
                   <div>
                     <InfoText>
-                      <div>PRICE : </div>
-                      <div>{a}</div>
+                      <span>PRICE : </span>
+                      <span>{a}</span>
                     </InfoText>
                     <InfoText>
-                      <div>CARMILEAGE : </div>
-                      <div>{a}</div>
+                      <span>CARMILEAGE : </span>
+                      <span>{a}</span>
                     </InfoText>
                     <InfoText>
-                      <div>ENGINE : </div>
-                      <div>{a}</div>
+                      <span>ENGINE : </span>
+                      <span>{a}</span>
                     </InfoText>
                   </div>
                 </SwiperSlide>

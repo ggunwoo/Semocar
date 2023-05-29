@@ -1,40 +1,3 @@
-// carData.json
-export interface Brand {
-  kr : string
-  en : string
-}
-
-export interface Name {
-  kr : string
-  en : string
-}
-export interface price {
-  min : number
-  max : number
-}
-
-
-export interface Attr {
-  displacement: string
-  fuelType: string
-  gasMileage: string
-  height: string
-  length: string
-  power: string
-  torque: string
-  width: string
-}
-
-export interface Cars {
-  brand: Brand
-  name : Name
-  id : number
-  segment : string
-  imgUrl : string
-  price : price
-  attribute : Attr
-}
-
 // brand.json
 export interface Brands {
   name : { kr : string, en: string}
@@ -47,4 +10,63 @@ export interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+}
+
+
+
+// carData.json
+interface Car {
+  brand: {
+    kr: string;
+    en: string;
+  };
+  name: {
+    kr: string;
+    en: string;
+  };
+  id: number;
+  segment: string;
+  imgUrl: string;
+  price: {
+    min: number;
+    max: number;
+  };
+  grades: Grade[];
+}
+
+interface Grade {
+  name: string;
+  trims: Trim[];
+}
+
+interface Trim {
+  name: string;
+  price: number;
+  fuelType: string;
+  engine: string;
+  displacement: string;
+  transmission: string;
+  drivingSystem: string;
+  power: string;
+  torque: string;
+  gasMileage: string;
+  urbanGasMileage: string;
+  highwayGasMileage: string;
+  ratingGasMileage: string;
+  lowEmission: string;
+  vehicleWeight: string;
+  autoLevel: string;
+  frontTire: string;
+  rearTire: string;
+  frontBrake: string;
+  rearBrake: string;
+  frontSuspension: string;
+  rearSuspension: string;
+  capacity: string;
+  length: string;
+  weight: string;
+  height: string;
+  wheelBase: string;
+  track: string;
+  tread: string;
 }
