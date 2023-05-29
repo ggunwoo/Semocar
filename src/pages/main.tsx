@@ -164,11 +164,11 @@ export function Main ():JSX.Element {
         loop={true}
         modules={[Scrollbar, Navigation, Autoplay, Pagination]}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
+        // onSlideChange={() => console.log('slide change')}
         >
         {
           carImg.map((a, i)=>(
-            <SwiperSlide>
+            <SwiperSlide key={carImg[i]}>
               <BannerBackgound src={`https://via.placeholder.com/1100x500/D8D8D8?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
               <Banner src={`https://via.placeholder.com/1100x500?text=Test Banner ${i+1}`} alt={`SLIDE${i+1}`}></Banner>
             </SwiperSlide>
@@ -198,8 +198,7 @@ export function Main ():JSX.Element {
             >
             {
               carCount.map((a,i)=>(
-                
-                <SwiperSlide>
+                <SwiperSlide key={carCount[i]}>
                   <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
                   <p style={{fontSize:"18px", marginTop: "24px"}}>TITLE</p>
                   <div>
@@ -233,7 +232,7 @@ export function Main ():JSX.Element {
         <GalleryGrid container spacing={0}>
           {
             carPhote.map((a, i)=>(
-                <Grid className='item' item xs={4}>
+                <Grid className='item' item xs={4} key={carPhote[i]}>
                   <div className='info'>
                     <Typography className='title'>Title</Typography>
                     <Button className='btn'>MORE PROFILE &gt;</Button>
