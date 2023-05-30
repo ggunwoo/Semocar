@@ -1,3 +1,4 @@
+import React from 'react'
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -16,7 +17,9 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
     <BrowserRouter>
+      {/* <Provider store={store}> */}
       <App />
+      {/* </Provider> */}
     </BrowserRouter>
   // </React.StrictMode>
 );
