@@ -1,4 +1,5 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation, Pagination, Autoplay } from 'swiper';
@@ -116,7 +117,7 @@ const GalleryGrid = styled(Grid)`
       text-align: center;
       opacity: 0;
       transition: opacity .3s;
-      background-color: rgba(255, 255, 0, .8);
+      background-color: rgba(255, 255, 0, .95);
       .title {
         margin-top: 80px;
         font-size: 36px;
@@ -139,9 +140,18 @@ const GalleryGrid = styled(Grid)`
 `;
 
 export function Main ():JSX.Element {
+  const navigate = useNavigate();
+
   const [carImg, setCarImg] = useState([1,2,3,4,5]);
   const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
-  const [carPhote, setCarPhote] = useState([1,2,3,4,5,6]);
+  const [carPhoto, setCarPhoto] = useState([
+    {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata'},
+    {id: 2, name : '트랙스 크로스오버', imgUrl: 'chevrolet/Trax'},
+    {id: 11331, name : 'EV9', imgUrl: 'kia/EV9'},
+    {id: 4, name : 'QM6', imgUrl: 'renault_korea/Qm6'},
+    {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante'},
+    {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
+  ]);
 
   
 
@@ -231,13 +241,15 @@ export function Main ():JSX.Element {
         <TitleTypography>포토 갤러리</TitleTypography>
         <GalleryGrid container spacing={0}>
           {
-            carPhote.map((a, i)=>(
-                <Grid className='item' item xs={4} key={carPhote[i]}>
+            carPhoto.map((photo, i)=>(
+                <Grid className='item' item xs={4} key={carPhoto[i].id}>
                   <div className='info'>
-                    <Typography className='title'>Title</Typography>
-                    <Button className='btn'>MORE PROFILE &gt;</Button>
+                    <Typography className='title'>{photo.name}</Typography>
+                    <Button className='btn' onClick={()=> { navigate(`/detail/${photo.id}`) }}>MORE PROFILE &gt;</Button>
                   </div>
-                  <img className='img' style={{width:'100%'}} src={`https://via.placeholder.com/400x300?text=Temp Phote ${i+1}`} alt="CARPHOTO" />
+                  <picture>
+                    <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${photo.imgUrl}.jpg`} alt="CARPHOTO" />
+                  </picture>
                 </Grid>
             ))
           }
