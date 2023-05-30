@@ -6,9 +6,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import * as type from '../types/types'
 
 // COMPONENT
-import {BrandCar} from '../components/BrandCar'
-import {BrandNav} from '../components/BrandNav'
-import {TabView}  from '../components/TabView'
+import {BrandCar} from '../components/BrandCar';
+import {BrandNav} from '../components/BrandNav';
+import {TabView} from '../components/TabView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
@@ -60,15 +60,14 @@ const StyledFormControlLabel = styled(FormControlLabel)`
 // Search View Styled
 export function Brand ():JSX.Element {
 
-  const [segment, setSegment] = useState(['경차', '소형', '준중형', '중형', '준대형', '대형', '소형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV/MPV', '픽업/벤', '해치백', '왜건']);
+  const [segment, setSegment] = useState(['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV/MPV', '픽업/벤', '해치백', '왜건']);
   const [engine, setEngine] = useState(['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']);
   const [segmentChecked, setSegmentChecked] = useState(Array(segment.length).fill(false));
   const [segmentChecked2, setSegmentChecked2] = useState(true);
   const [engineChecked, setEngineChecked] = useState(Array(engine.length).fill(false));
-
-  
-  
   const [engineChecked2, setEngineChecked2] = useState(true);
+
+  const [propsSegment, setPropsSegment] = useState<string[]>([])
   
   const segmentDefalutHandle = () => {
     const updatedChecked = Array(segment.length).fill(false);
@@ -99,6 +98,14 @@ export function Brand ():JSX.Element {
     }
   };
 
+  const segmentFilterHandle = (segment:string) => {
+    let copySegment = [...propsSegment, segment]
+    // console.log(copySegment)
+    setPropsSegment(copySegment)
+  }
+  
+  console.log(propsSegment)
+  
   return (
     <>
       <MaxContainer>
@@ -128,7 +135,7 @@ export function Brand ():JSX.Element {
               {
                 segment.map((a, i)=>(
                   <StyledFormControlLabel key={segment[i]} control={
-                    <Checkbox className="segmentCheckBox" checked={segmentChecked[i]} onChange={()=> segmentHandle(i)} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
+                    <Checkbox className="segmentCheckBox" checked={segmentChecked[i]} onChange={()=> { segmentHandle(i); segmentFilterHandle(a)}} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
                   ></StyledFormControlLabel>
                 ))
               }
@@ -150,9 +157,8 @@ export function Brand ():JSX.Element {
             </CheckBoxWraper>
           </CheckboxLine>
         </FormWraper>
-
         {/* Search View */}
-        <TabView />
+        <TabView segment={propsSegment} />
         
       </MaxContainer>
     </>
