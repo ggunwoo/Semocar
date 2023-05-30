@@ -12,8 +12,6 @@ export interface TabPanelProps {
   value: number;
 }
 
-
-
 // carData.json
 interface Car {
   brand: {
