@@ -4,6 +4,9 @@ import { useCarData } from '../hook/useCarData'
 import { Container, Box, Toolbar } from '@mui/material'
 // import * as type from '../types/types'
 
+// STYLED
+import { MaxContainer } from '../App'
+import { Blank } from '../App'
 
 export function Detail():JSX.Element {
   const carData = useCarData();
@@ -17,11 +20,12 @@ export function Detail():JSX.Element {
   const [tempEngState, setTempEngState] = useState(["A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S","T"])
 
   return (
-    <Container>
+    <MaxContainer>
+      <Blank />
       <Toolbar />
       {searchCar === undefined
         ?
-        <div> 잘못된 접근입니다.</div>
+        <div> 잘못된 접근이거나 해당 차량 정보가 없습니다.</div>
         :
         <Box sx={{width: "50%", margin:"0 auto", textAlign:"center"}}>
           <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
@@ -44,6 +48,6 @@ export function Detail():JSX.Element {
           </Container>
         </Box>
       }
-    </Container>
+    </MaxContainer>
   )
 }
