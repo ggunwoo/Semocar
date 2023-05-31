@@ -9,14 +9,13 @@ import { Grid, Typography, Button } from '@mui/material'
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 // COMPONENTS
 import { BrandNav } from '../components/BrandNav'
 
 // STYLED-COMPONENTS
 import { MaxContainer, Blank } from '../App';
-const FirstSwiper = styled(Swiper)`
+const BannerSwiper = styled(Swiper)`
 && {
   min-width: 1100px;
   margin-top: 80px;
@@ -42,14 +41,13 @@ const BannerBackgound = styled.img`
 && {
   position: relative;
   width: 100%;
-  max-height: 500px;
 }
 `;
 const Banner = styled.img`
 && {
   z-index: 1;
+  width: 100%;
   max-width: 1100px;
-  height: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -142,7 +140,7 @@ const GalleryGrid = styled(Grid)`
 export function Main ():JSX.Element {
   const navigate = useNavigate();
 
-  const [carImg, setCarImg] = useState([1,2,3,4,5]);
+  const [carImg, setCarImg] = useState([1,2,3,4]);
   const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
   const [carPhoto, setCarPhoto] = useState([
     {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata'},
@@ -158,7 +156,7 @@ export function Main ():JSX.Element {
   return (
     <>
       {/* 메인배너 SLIDE */}
-      <FirstSwiper
+      <BannerSwiper
         scrollbar={{
           hide:false,
         }}
@@ -179,12 +177,12 @@ export function Main ():JSX.Element {
         {
           carImg.map((a, i)=>(
             <SwiperSlide key={carImg[i]}>
-              <BannerBackgound src={`https://via.placeholder.com/1100x500/D8D8D8?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
-              <Banner src={`https://via.placeholder.com/1100x500?text=Test Banner ${i+1}`} alt={`SLIDE${i+1}`}></Banner>
+              <Banner src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${a}.png`} alt={`SLIDE${i+1}`}></Banner>
+              <BannerBackgound src={`https://via.placeholder.com/1100x300/FFFFFF?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
             </SwiperSlide>
           ))
         }
-      </FirstSwiper>
+      </BannerSwiper>
 
       {/* <Blank /> */}
 
@@ -200,11 +198,11 @@ export function Main ():JSX.Element {
             slidesPerView={4}
             slidesPerGroup={4}
             spaceBetween={60}
-            modules={[Pagination]}
+            // modules={[Pagination]}
             className="mySwiper"
-            pagination={{
-              dynamicBullets: true,
-            }}
+            // pagination={{
+            //   dynamicBullets: true,
+            // }}
             >
             {
               carCount.map((a,i)=>(
