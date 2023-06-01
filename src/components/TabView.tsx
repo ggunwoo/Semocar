@@ -16,6 +16,17 @@ const CarSection = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: baseline;
+  @media (max-width:1440px) {
+    width: 960px;
+    
+  }
+}`;
+const CarArticle = styled.div`
+&& {
+  width: 275px;
+  @media (max-width: 1440px){
+      width: 240px;
+    }
 }`;
 
 type Props = {
@@ -160,13 +171,11 @@ export function TabView(props:Props) {
               {
                 (() => {
                   const filteredCars = sortCarData(carData, props.segment, props.fuelType);
-                  if(filteredCars === undefined){
-                    return <div style={{ width: "100%" }}>해당 페이지에 오류가 발생했습니다.</div>;
-                  } else if (filteredCars.includes('selectAgain')) {
-                    return <div style={{ width: "100%" }}>해당되는 차량이 없습니다. 죄송합니다. 다시 선택해주세요.</div>;
+                 if (filteredCars.includes('selectAgain')) {
+                    return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {
                     return filteredCars.map((car, index) => (
-                      <div key={index} style={{ width: "275px" }}>
+                      <CarArticle key={index}>
                         <img
                           style={{ width: '80%' }}
                           src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
@@ -178,7 +187,7 @@ export function TabView(props:Props) {
                         <div>연료: {car.fuelTypes}</div>
                         <div>연비: {car.gasMileage}</div>
                         <Button onClick={()=>{navigate(`/detail/${car.id}`)}} size='small' variant='outlined' >보러가기</Button>
-                      </div>
+                      </CarArticle>
                     ));
                   }
                 })()
