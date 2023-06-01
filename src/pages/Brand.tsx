@@ -6,7 +6,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import * as type from '../types/types'
 
 // COMPONENT
-import {BrandCar} from '../components/BrandCar';
 import {BrandNav} from '../components/BrandNav';
 import {TabView} from '../components/TabView';
 
@@ -60,22 +59,24 @@ const StyledFormControlLabel = styled(FormControlLabel)`
 // Search View Styled
 export function Brand ():JSX.Element {
 
-  const [segment, setSegment] = useState(['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV/MPV', '픽업/벤', '해치백', '왜건']);
-  const [engine, setEngine] = useState(['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']);
+  const [segment, setSegment] = useState(['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '해치백', '왜건']);
+  const [fuelType, setFuelType] = useState(['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']);
   const [segmentChecked, setSegmentChecked] = useState(Array(segment.length).fill(false));
   const [segmentChecked2, setSegmentChecked2] = useState(true);
-  const [engineChecked, setEngineChecked] = useState(Array(engine.length).fill(false));
-  const [engineChecked2, setEngineChecked2] = useState(true);
+  const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelType.length).fill(false));
+  const [fuelTypeChecked2, setFuelTypeChecked2] = useState(true);
 
   const [propsSegment, setPropsSegment] = useState<string[]>([])
+  const [propsFuelType, setPropsFuelType] = useState<string[]>([])
   
+  // 차급 체크박스 Checked? 로직
   const segmentDefalutHandle = () => {
     const updatedChecked = Array(segment.length).fill(false);
     setSegmentChecked(updatedChecked);
     setSegmentChecked2(true);
   };
   const segmentHandle = (index: number) => {
-    const updatedChecked = [...segmentChecked];
+    const updatedChecked = [...segmentChecked];  
     updatedChecked[index] = !updatedChecked[index];
     setSegmentChecked(updatedChecked);
     setSegmentChecked2(false);
@@ -83,28 +84,44 @@ export function Brand ():JSX.Element {
       setSegmentChecked2(true);
     }
   };
-  const engineDefalutHandle = () => {
-    const updatedChecked = Array(engine.length).fill(false);
-    setEngineChecked(updatedChecked);
-    setEngineChecked2(true);
+  // 차급 체크여부 props 로직
+  const segmentFilterHandle = (segment:string) => {
+    if(propsSegment.includes(segment)){
+      const updatedSegment = propsSegment.filter((item) => item !== segment);
+      setPropsSegment(updatedSegment);
+    } else {
+      let copySegment = [...propsSegment, segment]
+      setPropsSegment(copySegment)
+    }
+  }
+
+  // 연료 체크박스 Checked? 로직
+  const fuelTypeDefalutHandle = () => {
+    const updatedChecked = Array(fuelType.length).fill(false);
+    setFuelTypeChecked(updatedChecked);
+    setFuelTypeChecked2(true);
   };
-  const engineHandle = (index: number) => {
-    const updatedChecked = [...engineChecked];
+  const fuelTypeHandle = (index: number) => {
+    const updatedChecked = [...fuelTypeChecked];
     updatedChecked[index] = !updatedChecked[index];
-    setEngineChecked(updatedChecked);
-    setEngineChecked2(false);
-    if(engineChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
-      setEngineChecked2(true);
+    setFuelTypeChecked(updatedChecked);
+    setFuelTypeChecked2(false);
+    if(fuelTypeChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
+      setFuelTypeChecked2(true);
     }
   };
-
-  const segmentFilterHandle = (segment:string) => {
-    let copySegment = [...propsSegment, segment]
-    // console.log(copySegment)
-    setPropsSegment(copySegment)
-  }
-  
-  console.log(propsSegment)
+  // 연료 체크여부 props 로직
+  const fuelTypeFilterHandle = (fuelType: string) => {
+    if (propsFuelType.includes(fuelType)) {
+      const updatedFuelType = propsFuelType.filter((item) => item !== fuelType);
+      setPropsFuelType(updatedFuelType);
+    } else {
+      const copyFuelType = [...propsFuelType, fuelType];
+      setPropsFuelType(copyFuelType);
+    }
+  };
+  // console.log(propsSegment)
+  // console.log(propsFuelType)
   
   return (
     <>
@@ -145,12 +162,12 @@ export function Brand ():JSX.Element {
             <CheckboxTitle>연료</CheckboxTitle>
             <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
-                <Checkbox className="engineDefalutCheckBox" checked={engineChecked2} onChange={engineDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
+                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelTypeChecked2} onChange={fuelTypeDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
               {
-                engine.map((a, i)=>(
-                  <StyledFormControlLabel key={engine[i]} control={
-                    <Checkbox className="engineCheckBox" checked={engineChecked[i]} onChange={()=> engineHandle(i)} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
+                fuelType.map((a, i)=>(
+                  <StyledFormControlLabel key={fuelType[i]} control={
+                    <Checkbox className="fuelTypeCheckBox" checked={fuelTypeChecked[i]} onChange={()=> { fuelTypeHandle(i); fuelTypeFilterHandle(a) }} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
                   ></StyledFormControlLabel>
                 ))
               }
@@ -158,7 +175,7 @@ export function Brand ():JSX.Element {
           </CheckboxLine>
         </FormWraper>
         {/* Search View */}
-        <TabView segment={propsSegment} />
+        <TabView segment={propsSegment} fuelType={propsFuelType}  />
         
       </MaxContainer>
     </>
