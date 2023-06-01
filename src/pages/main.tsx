@@ -17,48 +17,95 @@ import { BrandNav } from '../components/BrandNav'
 import { MaxContainer, Blank } from '../App';
 const BannerSwiper = styled(Swiper)`
 && {
-  min-width: 1100px;
+  height: 472px;
   margin-top: 80px;
   margin-bottom: 100px;
   user-select: none;
   .swiper-button-next {
-    right: 15%;
-    /* background-color: black; */
+    right: 13%;
     color: black;
+    opacity: .2;
+    @media (max-width:1600px) {
+      right: 7%;
+    }
+    @media (max-width:1440px) {
+      right: 4%;
+    }
+    @media (max-width:1100px) {
+      right: 2%;
+    }
   }
   .swiper-button-prev {
-    left: 15%;
-    color: black;
+    left: 13%;
+    color: black; 
+    opacity: .2;
+    @media (max-width:1600px) {
+      left: 7%;
+    }
+    @media (max-width:1440px) {
+      left: 4%;
+    }
+    @media (max-width:1100px) {
+      left: 2%;
+    }
   }
   .swiper-scrollbar {
     width: 1100px;
     left: 50%;
     transform: translateX(-50%);
   }
-}
-`;
+}`;
+const BaseBox = styled.div`
+&&{
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}`
+const BannerImg = styled.img`
+&&{
+  z-index: 1;
+  width: 1100px;
+  position: absolute;
+  margin: 0 auto;
+  /* top: 0; */
+  left: 50%;
+  transform: translateX(-50%);
+
+}`;
+const BannerBtn = styled.img`
+&& {
+  width: 175px;
+  z-index: 2;
+  cursor: pointer;
+  position: absolute;
+  &.bannerBtn_1 {
+    top: 387px;
+    left: 26px;
+  }
+  &.bannerBtn_2 {
+    top: 330px;
+    left: 40px;
+  }
+  &.bannerBtn_3 {
+    top: 305px;
+    right: 123px;
+  }
+  &.bannerBtn_4 {
+    top: 205px;
+    right: 90px;
+  }
+}`;
 const BannerBackgound = styled.img`
 && {
-  position: relative;
-  width: 100%;
-}
-`;
-const Banner = styled.img`
-&& {
-  z-index: 1;
-  width: 100%;
-  max-width: 1100px;
+  width: 100% !important;
+  height: 100% !important;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-`;
+  left: 0;
+}`;
 const GradientRelative = styled.div`
 && {
   position: relative;
-}
-`;
+}`;
 const GradientBox = styled.div`
 && {
   width: 100%;
@@ -68,8 +115,7 @@ const GradientBox = styled.div`
   top: -35%;
   left: 0;
   z-index: -1;
-}
-`;
+}`;
 const SecondSwiper = styled(Swiper)`
 && {
   width: 1100px;
@@ -85,21 +131,18 @@ const SecondSwiper = styled(Swiper)`
     background-color : black;
     border-radius: 20px;
   } 
-}
-`;
+}`;
 const TitleTypography = styled(Typography)`
 && {
   font-size: 24px;
   margin-top: 100px;
-}
-`;
+}`;
 const InfoText = styled.p`
 && {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-}
-`
+}`;
 const GalleryGrid = styled(Grid)`
 && {
   margin-top: 36px;
@@ -134,13 +177,12 @@ const GalleryGrid = styled(Grid)`
   }
   /* HOVER EFFECT */
   .item:hover { .info { opacity: 1; } }
-}
-`;
+}`;
 
 export function Main ():JSX.Element {
   const navigate = useNavigate();
 
-  const [carImg, setCarImg] = useState([1,2,3,4]);
+  const [carImg, setCarImg] = useState([1,10210,3,4]);
   const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
   const [carPhoto, setCarPhoto] = useState([
     {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata'},
@@ -161,7 +203,7 @@ export function Main ():JSX.Element {
           hide:false,
         }}
         autoplay={{
-          delay: 2000,
+          delay: 200000,
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
@@ -177,8 +219,11 @@ export function Main ():JSX.Element {
         {
           carImg.map((a, i)=>(
             <SwiperSlide key={carImg[i]}>
-              <Banner src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${a}.png`} alt={`SLIDE${i+1}`}></Banner>
-              <BannerBackgound src={`https://via.placeholder.com/1100x300/FFFFFF?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
+                <BaseBox>
+                  <BannerImg src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
+                  <BannerBtn onClick={()=>{navigate(`/detail/${a}`)}} className={`bannerBtn_${i+1}`} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/btn.png`} />
+                </BaseBox>
+                <BannerBackgound src={`https://via.placeholder.com/1920x468/FFFFFF?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
             </SwiperSlide>
           ))
         }
@@ -189,7 +234,7 @@ export function Main ():JSX.Element {
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <BrandNav />
 
-      <Blank />
+      {/* <Blank /> */}
       {/* NewCar SLIDE */}
       <GradientRelative>
         <MaxContainer sx={{ position:'relative' }}>
