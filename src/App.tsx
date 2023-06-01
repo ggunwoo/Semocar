@@ -20,6 +20,11 @@ export const MaxContainer = styled(Container)`
   min-width: 1100px;
   padding-left:0;
   padding-right:0;
+  @media (max-width:1440px) {
+    max-width: 960px;
+    min-width: 960px;
+    
+  }
 }`;
 export const Logo = styled.h2<{fontSize : string}>`
 && {
