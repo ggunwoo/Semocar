@@ -5,6 +5,7 @@ import {AppBar, Toolbar, Button} from '@mui/material'
 
 // STYLED
 import { Logo } from '../App';
+import { MaxContainer } from '../App';
 const CustomAppBar = styled(AppBar)`
 && {
   width: 100%;
@@ -16,14 +17,16 @@ const CustomAppBar = styled(AppBar)`
 const FlexToolbar = styled(Toolbar)`
 && {
   width: 100%;
-  height: 100%;
-  max-width: 1100px;
+  height: 80px;
   margin: 0 auto;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+  @media (max-width:1440px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }`;
 const CustomStyledButton = styled(Button)`
 && {
@@ -46,17 +49,19 @@ export function Header():JSX.Element {
   return(
     <>
       <CustomAppBar>
-        <FlexToolbar>
-          <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
-            SEMO CAR
-          </Logo>
-          <div>
-            <CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</CustomStyledButton>
-            <CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</CustomStyledButton>
-            <CustomStyledButton variant="text">차량목록</CustomStyledButton>
-            <CustomStyledButton variant="outlined">로그인</CustomStyledButton>
-          </div>
-        </FlexToolbar>
+        <MaxContainer>
+          <FlexToolbar>
+            <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
+              SEMO CAR
+            </Logo>
+            <div>
+              <CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</CustomStyledButton>
+              <CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</CustomStyledButton>
+              <CustomStyledButton variant="text">차량목록</CustomStyledButton>
+              <CustomStyledButton variant="outlined">로그인</CustomStyledButton>
+            </div>
+          </FlexToolbar>
+        </MaxContainer>
       </CustomAppBar>
     </>
   )
