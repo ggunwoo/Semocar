@@ -17,12 +17,13 @@ const LogoButton = styled(Button)`
 && {
   display:block;
   width: 100px;
+  border-radius: 20px;
 }
 `;
 const ImageBox = styled.div`
 && {
   width: 40px;
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   margin: 0 auto;
