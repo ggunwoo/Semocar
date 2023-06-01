@@ -29,6 +29,8 @@ interface Car {
     min: number;
     max: number;
   };
+  gasMileage: string,
+  fuelTypes: string[],
   grades: Grade[];
 }
 
