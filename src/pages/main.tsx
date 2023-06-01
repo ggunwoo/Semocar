@@ -276,7 +276,7 @@ export function Main ():JSX.Element {
         <GradientBox />
       </GradientRelative>
       
-      <Blank />
+      {/* <Blank /> */}
 
       {/* 포토갤러리 */}
       
