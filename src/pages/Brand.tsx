@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { styled } from 'styled-components'
-import { FormControl, OutlinedInput, InputAdornment, FormGroup, FormControlLabel, Box, Tabs, Tab, Typography } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment, FormGroup, FormControlLabel} from '@mui/material';
 import { Checkbox } from '@mui/joy'
 import SearchIcon from '@mui/icons-material/Search';
-import * as type from '../types/types'
+// import * as type from '../types/types'
 
 // COMPONENT
 import {BrandNav} from '../components/BrandNav';
@@ -58,9 +59,9 @@ const StyledFormControlLabel = styled(FormControlLabel)`
 }`;
 // Search View Styled
 export function Brand ():JSX.Element {
+  const segment = useAppSelector(state => state.segmentList)
+  const fuelType = useAppSelector(state => state.fuelTypeList)
 
-  const [segment, setSegment] = useState(['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '해치백', '왜건']);
-  const [fuelType, setFuelType] = useState(['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']);
   const [segmentChecked, setSegmentChecked] = useState(Array(segment.length).fill(false));
   const [segmentChecked2, setSegmentChecked2] = useState(true);
   const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelType.length).fill(false));

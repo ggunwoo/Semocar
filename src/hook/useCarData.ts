@@ -33,7 +33,6 @@ export const useCarBrands = () => {
         console.log('Error fetching car data:', error);
       }
     };
-
     fetchData();
   }, []);
 
