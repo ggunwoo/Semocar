@@ -69,13 +69,18 @@ export function Brand ():JSX.Element {
   const [propsSegment, setPropsSegment] = useState<string[]>([])
   const [propsFuelType, setPropsFuelType] = useState<string[]>([])
   
-  // 차급 체크박스 Checked? 로직
-  const segmentDefalutHandle = () => {
+// 차급 체크박스 Checked 로직
+  // 차급 전체 체크박스 로직
+  const segmentAllHandle = () => {
     const updatedChecked = Array(segment.length).fill(false);
     setSegmentChecked(updatedChecked);
     setSegmentChecked2(true);
+    if(propsSegment.length !== 0){
+      setPropsSegment([]);
+    }
   };
-  const segmentHandle = (index: number) => {
+  // 차급 체크박스 로직
+  const segmentHandle = (index: number, segment: string) => {
     const updatedChecked = [...segmentChecked];  
     updatedChecked[index] = !updatedChecked[index];
     setSegmentChecked(updatedChecked);
@@ -83,9 +88,7 @@ export function Brand ():JSX.Element {
     if(segmentChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
       setSegmentChecked2(true);
     }
-  };
-  // 차급 체크여부 props 로직
-  const segmentFilterHandle = (segment:string) => {
+    // PropsSegment 로직
     if(propsSegment.includes(segment)){
       const updatedSegment = propsSegment.filter((item) => item !== segment);
       setPropsSegment(updatedSegment);
@@ -93,15 +96,20 @@ export function Brand ():JSX.Element {
       let copySegment = [...propsSegment, segment]
       setPropsSegment(copySegment)
     }
-  }
+  };
 
-  // 연료 체크박스 Checked? 로직
-  const fuelTypeDefalutHandle = () => {
+// 연료 체크박스 Checked 로직
+  // 연료 전체 체크박스 로직
+  const fuelTypeAllHandle = () => {
     const updatedChecked = Array(fuelType.length).fill(false);
     setFuelTypeChecked(updatedChecked);
     setFuelTypeChecked2(true);
+    if(propsFuelType.length !== 0){
+      setPropsFuelType([]);
+    }
   };
-  const fuelTypeHandle = (index: number) => {
+  // 연료 체크박스 로직
+  const fuelTypeHandle = (index: number, fuelType:string) => {
     const updatedChecked = [...fuelTypeChecked];
     updatedChecked[index] = !updatedChecked[index];
     setFuelTypeChecked(updatedChecked);
@@ -109,9 +117,7 @@ export function Brand ():JSX.Element {
     if(fuelTypeChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
       setFuelTypeChecked2(true);
     }
-  };
-  // 연료 체크여부 props 로직
-  const fuelTypeFilterHandle = (fuelType: string) => {
+    // propsFuelType 로직
     if (propsFuelType.includes(fuelType)) {
       const updatedFuelType = propsFuelType.filter((item) => item !== fuelType);
       setPropsFuelType(updatedFuelType);
@@ -120,9 +126,8 @@ export function Brand ():JSX.Element {
       setPropsFuelType(copyFuelType);
     }
   };
-  // console.log(propsSegment)
-  // console.log(propsFuelType)
-  
+
+
   return (
     <>
       <MaxContainer>
@@ -147,12 +152,12 @@ export function Brand ():JSX.Element {
             <CheckboxTitle>차급</CheckboxTitle>
             <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
-                <Checkbox className="segmentDefalutCheckBox" checked={segmentChecked2} onChange={segmentDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
+                <Checkbox className="segmentDefalutCheckBox" checked={segmentChecked2} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
               {
                 segment.map((a, i)=>(
                   <StyledFormControlLabel key={segment[i]} control={
-                    <Checkbox className="segmentCheckBox" checked={segmentChecked[i]} onChange={()=> { segmentHandle(i); segmentFilterHandle(a)}} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
+                    <Checkbox className="segmentCheckBox" checked={segmentChecked[i]} onChange={() => { segmentHandle(i, a);}} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
                   ></StyledFormControlLabel>
                 ))
               }
@@ -162,12 +167,12 @@ export function Brand ():JSX.Element {
             <CheckboxTitle>연료</CheckboxTitle>
             <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
-                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelTypeChecked2} onChange={fuelTypeDefalutHandle} variant='outlined' size="sm" color="neutral" />} label="전체"
+                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelTypeChecked2} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
               {
                 fuelType.map((a, i)=>(
                   <StyledFormControlLabel key={fuelType[i]} control={
-                    <Checkbox className="fuelTypeCheckBox" checked={fuelTypeChecked[i]} onChange={()=> { fuelTypeHandle(i); fuelTypeFilterHandle(a) }} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
+                    <Checkbox className="fuelTypeCheckBox" checked={fuelTypeChecked[i]} onChange={()=> { fuelTypeHandle(i, a) }} variant='outlined' size="sm" color="neutral" />} label={`${a}`}
                   ></StyledFormControlLabel>
                 ))
               }
