@@ -88,20 +88,6 @@ export function TabView(props:Props) {
         });
       }
     }
-    // 정렬 - 매개변수, 전부 빈 배열 일경우 전체데이터 반환
-    if(checkSegment.length !== 0 && checkFuelType.length !== 0){
-      sorted(sortedData)
-    }
-    if(checkSegment.length === 0 && checkFuelType.length !== 0){
-      sorted(segmentFilterData)
-    }
-    if(checkSegment.length !== 0 && checkFuelType.length === 0){
-      sorted(fuelTypeFilterData)
-    }
-    if(checkSegment.length === 0 && checkFuelType.length === 0){
-      sorted(duplicateRemoveData)
-    }
-    
     
     // console.log("checkSegment : " + checkSegment.length)
     // console.log("checkFuelType : " + checkFuelType.length)
@@ -128,19 +114,19 @@ export function TabView(props:Props) {
         return ['selectAgain']
         
       } else if (segmentLength !== 0 && fuelTypeLength !== 0) {
-        
+        sorted(duplicateRemoveData)
         return duplicateRemoveData;
         
       } else if (segmentLength !== 0 && fuelTypeLength === 0) {
-        
+        sorted(segmentFilterData)
         return segmentFilterData;
         
       } else if (segmentLength === 0 && fuelTypeLength !== 0) {
-        
+        sorted(fuelTypeFilterData)
         return fuelTypeFilterData;
         
-      }
-      else {
+      } else {
+        sorted(sortedData)
         return sortedData;
       }
     };
