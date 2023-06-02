@@ -115,18 +115,17 @@ export function TabView(props:Props) {
       // console.log('oneCheckNullTest : ' +oneCheckNullTest)
       // console.log('merged : '+mergedFilterData.length )
 
-        // 퓨어타입 하나 들어왔는데 합친값이 없네?
-      if (segmentLength === 0 && fuelTypeLength !== 0 && oneCheckNullTest === 0) {
+      // 둘다 값이 있는데 합친값이 없어?
+      if (segmentLength !== 0 && fuelTypeLength !== 0 && mergedFilterData.length === 0) {
         return ['selectAgain']
         
-        // 둘다 값이 있는데 합친값이 없어?
-      } else if (segmentLength !== 0 && fuelTypeLength !== 0 && mergedFilterData.length === 0) {
+        // 세그먼트 체크했고 FuelType전체인데 값 없을때
+      } else if (segmentLength === 0 && fuelTypeLength !== 0 && oneCheckNullTest === 0) {
         return ['selectAgain']
         
-        // 세그먼트 값 들어왔는데 값이 아예 없네?
+        // 퓨어타입 체크했고 세그먼트 전체인데 값 없을때
       } else if (segmentLength !== 0 && fuelTypeLength === 0 && oneCheckNullTest === 0) {
         return ['selectAgain']
-        
         
       } else if (segmentLength !== 0 && fuelTypeLength !== 0) {
         
