@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux'
 import { styled } from 'styled-components';
 import { Box, Tabs, Tab, Button } from '@mui/material';
 import * as type from '../types/types';
-import { useCarData } from '../hook/useCarData';
 
 // STYLED
 import { MaxContainer } from '../App';
+import { useCarData } from '../hook/useCarData';
 const CarSection = styled.div`
 && {
   width: 1100px;
@@ -29,28 +29,23 @@ const CarArticle = styled.div`
     }
 }`;
 
-type Props = {
-  segment: string[]
-  fuelType: string[]
-};
-
-
-
-export function TabView(props:Props) {
+export function TabView() {
   const navigate = useNavigate();
+  const carData = useCarData();
+
+  const selectedSeg = useAppSelector(state => {return state.selectedSeg})
+  const selectedFuel = useAppSelector(state => {return state.selectedFuel})
 
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);
   const [sortOption, setSortOption] = useState('latest'); // 최신순, 가격순, 연비순 정렬 기준
-  const carData = useCarData();
-  const [filterSegment, setFilterSegment] = useState([])
 
-  // 차량 데이터를 정렬하는 함수
+  // 차량 데이터를 필터링, 정렬하는 함수
   const sortCarData = (data: any, checkSegment:string[], checkFuelType:string[]): any[] => {
     // 전체 데이터
     let sortedData = [...data];
 
-    // segment 필터링 로직
+    // egment필터링 로직
     const filterSegHandler = checkSegment.map((a, i)=>{
       const filterSegData = sortedData.filter((e) => e.segment === a);
       return filterSegData
@@ -89,17 +84,19 @@ export function TabView(props:Props) {
       }
     }
     
+<<<<<<< HEAD
     // console.log("checkSegment : " + checkSegment.length)
     // console.log("checkFuelType : " + checkFuelType.length)
     
     // 전체 return Checked
+=======
+    // return Checked
+>>>>>>> redux
     const filteredData = (): type.Car[] | string[] => {
       // 체크값 하나만 들어왔을때 검사지
       const oneCheckNullTest = [...segmentFilterData, ...fuelTypeFilterData].length;
       const segmentLength = checkSegment.length;
       const fuelTypeLength = checkFuelType.length;
-      // console.log('oneCheckNullTest : ' +oneCheckNullTest)
-      // console.log('merged : '+mergedFilterData.length )
 
       // 둘다 값이 있는데 합친값이 없어?
       if (segmentLength !== 0 && fuelTypeLength !== 0 && mergedFilterData.length === 0) {
@@ -113,18 +110,25 @@ export function TabView(props:Props) {
       } else if (segmentLength !== 0 && fuelTypeLength === 0 && oneCheckNullTest === 0) {
         return ['selectAgain']
         
+        // 세그먼트, 퓨어타입 둘다 체크했을 때 반환할 데이터
       } else if (segmentLength !== 0 && fuelTypeLength !== 0) {
         sorted(duplicateRemoveData)
         return duplicateRemoveData;
-        
+
+        // 세그먼트만 체크했을 때 반환할 데이터
       } else if (segmentLength !== 0 && fuelTypeLength === 0) {
         sorted(segmentFilterData)
         return segmentFilterData;
         
+        // 퓨어타입만 체크했을 때 반환할 데이터
       } else if (segmentLength === 0 && fuelTypeLength !== 0) {
         sorted(fuelTypeFilterData)
         return fuelTypeFilterData;
         
+<<<<<<< HEAD
+=======
+        // 빈배열일 때
+>>>>>>> redux
       } else {
         sorted(sortedData)
         return sortedData;
@@ -133,7 +137,6 @@ export function TabView(props:Props) {
 
     return filteredData()
   };
-  // console.log(sortCarData(carData, props.segment, props.fuelType))
 
   // 정렬 기준 변경 시 처리하는 함수
   const handleSortChange = (event: React.SyntheticEvent, value: any) => {
@@ -155,7 +158,7 @@ export function TabView(props:Props) {
             <CarSection>
               {
                 (() => {
-                  const filteredCars = sortCarData(carData, props.segment, props.fuelType);
+                  const filteredCars = sortCarData(carData, selectedSeg, selectedFuel);
                  if (filteredCars.includes('selectAgain')) {
                     return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {
@@ -176,29 +179,6 @@ export function TabView(props:Props) {
                     ));
                   }
                 })()
-                // sortCarData(carData, props.segment, props.fuelType).find(e => e[0] === 'Error')
-                // ?
-                // <div style={{width:"275px"}}>페이지 오류입니다</div>
-                // :
-                // sortCarData(carData, props.segment, props.fuelType).find(e => e[0] === 'selectAgain')
-                // ?
-                // <div style={{width:"275px"}}>해당되는 차량이 없습니다. 죄송합니다. 다시 선택해주세요.</div>
-                // :
-                // sortCarData(carData, props.segment, props.fuelType).map((car, index) => (
-                  // <div key={index}  style={{width:"275px"}}>
-                    // <img
-                    //   style={{ width: '80%' }}
-                    //   src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
-                    //   alt={car.name}
-                    // />
-                    // <div style={{ fontWeight: 'bold', margin: '4px 0 4px' }}>{`${car.brand.kr} ${car.name.kr}`}</div>
-                    // <div>가격: {`${car.price.min} ~ ${car.price.max}`}만원</div>
-                    // <div>차급: {car.segment}</div>
-                    // <div>연료: {car.fuelTypes}</div>
-                    // <div>연비: {car.gasMileage}</div>
-                    // <Button onClick={()=>{navigate(`/detail/${car.id}`)}} size='small' variant='outlined' >보러가기</Button>
-                  // </div>
-                // ))
               }
             </CarSection>
           </TabPanel>

@@ -36,6 +36,8 @@ const LogoName = styled.p`
 }
 `;
 
+const brandHandler = () => {}
+
 export function BrandNav () {
 
   const navigate = useNavigate();
@@ -45,7 +47,7 @@ export function BrandNav () {
     <MaxContainer>
       <FlexBox>
         {carBrands.map((brand):JSX.Element => (
-          <LogoButton key={brand.id} onClick={()=>{navigate(`/brand`)}} variant='text'>
+          <LogoButton key={brand.id} onClick={()=>{navigate(`/brand`)}} onChange={()=>{ brandHandler() }} variant='text'>
             <ImageBox>
               <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
             </ImageBox>
