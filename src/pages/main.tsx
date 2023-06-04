@@ -9,6 +9,7 @@ import { Grid, Typography, Button } from '@mui/material'
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // COMPONENTS
 import { BrandNav } from '../components/BrandNav'
@@ -207,12 +208,9 @@ export function Main ():JSX.Element {
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
-        pagination={{
-          type: "fraction",
-        }}
         navigation={true}
         loop={true}
-        modules={[Scrollbar, Navigation, Autoplay, Pagination]}
+        modules={[Scrollbar, Navigation, Autoplay]}
         slidesPerView={1}
         >
         {
@@ -242,11 +240,11 @@ export function Main ():JSX.Element {
             slidesPerView={4}
             slidesPerGroup={4}
             spaceBetween={60}
-            // modules={[Pagination]}
+            modules={[Pagination]}
             className="mySwiper"
-            // pagination={{
-            //   dynamicBullets: true,
-            // }}
+            pagination={{
+              dynamicBullets: true,
+            }}
             >
             {
               carCount.map((a,i)=>(
