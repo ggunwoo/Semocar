@@ -28,27 +28,24 @@ const CarArticle = styled.div`
       width: 240px;
     }
 }`;
-type Props = {
-  segment: string[]
-  fuelType: string[]
-};
 
-
-
-export function TabView(props:Props) {
+export function TabView() {
   const navigate = useNavigate();
-  const carData = useCarData;
+  const carData = useCarData();
+
+  const selectedSeg = useAppSelector(state => {return state.selectedSeg})
+  const selectedFuel = useAppSelector(state => {return state.selectedFuel})
 
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);
   const [sortOption, setSortOption] = useState('latest'); // 최신순, 가격순, 연비순 정렬 기준
-  // const carData = useCarData();
   const [filterSegment, setFilterSegment] = useState([])
 
   // 차량 데이터를 필터링, 정렬하는 함수
   const sortCarData = (data: any, checkSegment:string[], checkFuelType:string[]): any[] => {
     // 전체 데이터
     let sortedData = [...data];
+    console.log(checkSegment, checkFuelType)
 
     // egment필터링 로직
     const filterSegHandler = checkSegment.map((a, i)=>{
@@ -156,7 +153,7 @@ export function TabView(props:Props) {
             <CarSection>
               {
                 (() => {
-                  const filteredCars = sortCarData(carData, props.segment, props.fuelType);
+                  const filteredCars = sortCarData(carData, selectedSeg, selectedFuel);
                  if (filteredCars.includes('selectAgain')) {
                     return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {

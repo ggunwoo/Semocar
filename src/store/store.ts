@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { segment, } from './segment'
-import { fuelType } from './fuelType'
+import { selectedSeg } from './segment'
+import { selectedFuel } from './fuelType'
 
 export const store = configureStore ({
   reducer : {
+    selectedSeg: selectedSeg.reducer,
+    selectedFuel: selectedFuel.reducer,
   }
 });
-store.dispatch(fetchCarData());
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

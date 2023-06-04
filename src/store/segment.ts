@@ -1,14 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { Form } from 'react-router-dom';
+import { createSlice } from '@reduxjs/toolkit'
 
 export const selectedSeg = createSlice({
   name: 'selectedSeg',
-  initialState: [],
+  initialState: [] as string[],
   reducers: {
     segIn: (state, action)=>{
-      
-    }
+      const segment = action.payload
+      if(state.includes(segment)){
+        const updatedSegment = state.filter((item:string) => item !== segment);
+        return updatedSegment
+      } else {
+        let copySegment = [...state, segment]
+        return copySegment
+      }
+    },
+    segReset: (state)=>{
+      if(state.length !== 0){
+        return []
+      }
+    },
   },
 })
 
-export { segIn } = selectedSeg.actions;
+export const { segIn, segReset } = selectedSeg.actions;
