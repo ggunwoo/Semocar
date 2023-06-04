@@ -214,7 +214,6 @@ export function Main ():JSX.Element {
         loop={true}
         modules={[Scrollbar, Navigation, Autoplay, Pagination]}
         slidesPerView={1}
-        // onSlideChange={() => console.log('slide change')}
         >
         {
           carImg.map((a, i)=>(

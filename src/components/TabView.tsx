@@ -39,13 +39,11 @@ export function TabView() {
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);
   const [sortOption, setSortOption] = useState('latest'); // 최신순, 가격순, 연비순 정렬 기준
-  const [filterSegment, setFilterSegment] = useState([])
 
   // 차량 데이터를 필터링, 정렬하는 함수
   const sortCarData = (data: any, checkSegment:string[], checkFuelType:string[]): any[] => {
     // 전체 데이터
     let sortedData = [...data];
-    console.log(checkSegment, checkFuelType)
 
     // egment필터링 로직
     const filterSegHandler = checkSegment.map((a, i)=>{
@@ -92,8 +90,6 @@ export function TabView() {
       const oneCheckNullTest = [...segmentFilterData, ...fuelTypeFilterData].length;
       const segmentLength = checkSegment.length;
       const fuelTypeLength = checkFuelType.length;
-      // console.log('oneCheckNullTest : ' +oneCheckNullTest)
-      // console.log('merged : '+mergedFilterData.length )
 
       // 둘다 값이 있는데 합친값이 없어?
       if (segmentLength !== 0 && fuelTypeLength !== 0 && mergedFilterData.length === 0) {
@@ -131,7 +127,6 @@ export function TabView() {
 
     return filteredData()
   };
-  // console.log(sortCarData(carData, props.segment, props.fuelType))
 
   // 정렬 기준 변경 시 처리하는 함수
   const handleSortChange = (event: React.SyntheticEvent, value: any) => {

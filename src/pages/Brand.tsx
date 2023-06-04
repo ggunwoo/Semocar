@@ -72,9 +72,6 @@ export function Brand ():JSX.Element {
   const [segmentChecked2, setSegmentChecked2] = useState(true);
   const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelTypeList.length).fill(false));
   const [fuelTypeChecked2, setFuelTypeChecked2] = useState(true);
-
-  // const selectedSeg = useAppSelector(state => {return state.selectedSeg})
-  const selectedFuel = useAppSelector(state => {return state.selectedFuel})
   
   
 // 차급 체크박스 Checked 로직
