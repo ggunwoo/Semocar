@@ -1,14 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { carData, fetchCarData, segmentList, fuelTypeList  } from './carFiltering'
+import { segment, } from './segment'
+import { fuelType } from './fuelType'
 
 export const store = configureStore ({
   reducer : {
-    carData: carData.reducer,
-    segmentList: segmentList.reducer,
-    fuelTypeList: fuelTypeList.reducer,
   }
 });
-
 store.dispatch(fetchCarData());
 
 export type RootState = ReturnType<typeof store.getState>;

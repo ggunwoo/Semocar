@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Box, Tabs, Tab, Button } from '@mui/material';
 import * as type from '../types/types';
-import { useCarData } from '../hook/useCarData';
 
 // STYLED
 import { MaxContainer } from '../App';
+import { useCarData } from '../hook/useCarData';
 const CarSection = styled.div`
 && {
   width: 1100px;
@@ -28,7 +28,6 @@ const CarArticle = styled.div`
       width: 240px;
     }
 }`;
-
 type Props = {
   segment: string[]
   fuelType: string[]
@@ -38,9 +37,7 @@ type Props = {
 
 export function TabView(props:Props) {
   const navigate = useNavigate();
-  const carData = useAppSelector(state => state.carData)
-  const segment = useAppSelector(state => state.segmentList)
-  const fuelType = useAppSelector(state => state.fuelTypeList)
+  const carData = useCarData;
 
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);

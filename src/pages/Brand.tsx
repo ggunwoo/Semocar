@@ -59,16 +59,17 @@ const StyledFormControlLabel = styled(FormControlLabel)`
 }`;
 // Search View Styled
 export function Brand ():JSX.Element {
-  const segment = useAppSelector(state => state.segmentList)
-  const fuelType = useAppSelector(state => state.fuelTypeList)
+
+  const segment = ['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '해치백', '왜건']
+  const fuelType = ['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']
 
   const [segmentChecked, setSegmentChecked] = useState(Array(segment.length).fill(false));
   const [segmentChecked2, setSegmentChecked2] = useState(true);
   const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelType.length).fill(false));
   const [fuelTypeChecked2, setFuelTypeChecked2] = useState(true);
 
-  const [propsSegment, setPropsSegment] = useState<string[]>([])
-  const [propsFuelType, setPropsFuelType] = useState<string[]>([])
+  // const [propsSegment, setPropsSegment] = useState<string[]>([])
+  // const [propsFuelType, setPropsFuelType] = useState<string[]>([])
   
 // 차급 체크박스 Checked 로직
   // 차급 전체 체크박스 로직
