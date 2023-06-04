@@ -84,14 +84,7 @@ export function TabView() {
       }
     }
     
-<<<<<<< HEAD
-    // console.log("checkSegment : " + checkSegment.length)
-    // console.log("checkFuelType : " + checkFuelType.length)
-    
-    // 전체 return Checked
-=======
     // return Checked
->>>>>>> redux
     const filteredData = (): type.Car[] | string[] => {
       // 체크값 하나만 들어왔을때 검사지
       const oneCheckNullTest = [...segmentFilterData, ...fuelTypeFilterData].length;
@@ -125,10 +118,7 @@ export function TabView() {
         sorted(fuelTypeFilterData)
         return fuelTypeFilterData;
         
-<<<<<<< HEAD
-=======
         // 빈배열일 때
->>>>>>> redux
       } else {
         sorted(sortedData)
         return sortedData;
