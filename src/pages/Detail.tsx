@@ -1,12 +1,40 @@
 import React, { useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
-import { Container, Box, Toolbar } from '@mui/material'
-// import * as type from '../types/types'
+import { Chip } from '@mui/material'
+import { styled } from 'styled-components' 
 
 // STYLED
-import { MaxContainer } from '../App'
-import { Blank } from '../App'
+import { MaxContainer, Blank } from '../App' 
+const BgBox = styled.div`
+&& {
+  width: 100%;
+  background-color: #e9e9e9;
+}`;
+const TitleBox = styled.div`
+&& {
+  width: 100%;
+  height: 300px;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}`;
+const InfoBox = styled.div`
+&& {
+  .brand {}
+  .name {}
+  .price {}
+}`;
+const StyledChip = styled(Chip)`
+&& {
+  margin-right: 8px;
+}`;
+const ImgBox = styled.div`
+&& {
+  
+}`;
+
 
 export function Detail():JSX.Element {
   const carData = useCarData();
@@ -16,38 +44,29 @@ export function Detail():JSX.Element {
   console.log(id)
   console.log(searchCar)
 
-  const [tempState, setTempState] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20])
-  const [tempEngState, setTempEngState] = useState(["A","B","C","D","E","F","G","H","I","J","K","L","N","M","O","P","Q","R","S","T"])
-
   return (
-    <MaxContainer>
-      <Blank />
-      <Toolbar />
-      {searchCar === undefined
-        ?
-        <div> 잘못된 접근이거나 해당 차량 정보가 없습니다.</div>
-        :
-        <Box sx={{width: "50%", margin:"0 auto", textAlign:"center"}}>
-          <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
-          <Container sx={{ height:"250px" ,display:"flex", flexWrap:"wrap", flexDirection:"column", justifyContent:"flex-start", alignContent:"space-between"}}>
-              {/* {
-                tempState.map((a)=>(
-                  <dl>
-                    {
-                      tempState.map((a)=>(
-                        <dt>{a+100}</dt>
-                        ))
-                    }{
-                      tempState.map((a)=>(
-                        <dd>{a+10}</dd>
-                      ))
-                    }
-                  </dl>
-                ))
-              } */}
-          </Container>
-        </Box>
-      }
-    </MaxContainer>
+    <>
+      <BgBox>
+        {searchCar === undefined
+          ?
+          <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
+          :
+        <MaxContainer>
+          <TitleBox>
+            <InfoBox>
+              <h5 className='brand'>{searchCar.brand.kr}</h5>
+              <h1 className='name'>{searchCar.name.kr}</h1>
+              <p className='price'>{searchCar.price.min} ~ {searchCar.price.max} 만원</p>
+              <StyledChip label={`${searchCar.segment}`} variant='outlined' />
+              <StyledChip label={`${searchCar.fuelTypes}`} variant='outlined' />
+              <StyledChip label={`${searchCar.gasMileage}`} variant='outlined' />
+            </InfoBox>
+            <ImgBox>
+              <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
+            </ImgBox>
+          </TitleBox>
+        </MaxContainer>}
+      </BgBox>
+    </>
   )
 }

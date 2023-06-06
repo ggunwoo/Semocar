@@ -8,11 +8,11 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 // PAGES
-import { Main } from './pages/main'
+import { Main } from './pages/Main'
 import { Detail } from './pages/Detail';
 import { Brand } from './pages/Brand';
 
-// STYLED COMPONENTS
+// STYLED
 export const MaxContainer = styled(Container)`
 && {
   max-width: 1100px;

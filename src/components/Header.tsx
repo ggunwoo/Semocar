@@ -40,6 +40,9 @@ const CustomStyledButton = styled(Button)`
     line-height: 1.25rem;
     margin-right: 0;
     margin-left: 12px;
+    &:hover {
+      border: 1px solid #FFA30B;
+    }
   }
 }`;
 
@@ -57,7 +60,7 @@ export function Header():JSX.Element {
             <div>
               <CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</CustomStyledButton>
               <CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</CustomStyledButton>
-              <CustomStyledButton variant="text">차량목록</CustomStyledButton>
+              {/* <CustomStyledButton variant="text">차량목록</CustomStyledButton> */}
               <CustomStyledButton variant="outlined">로그인</CustomStyledButton>
             </div>
           </FlexToolbar>
