@@ -233,12 +233,9 @@ export function Main ():JSX.Element {
         }
       </BannerSwiper>
 
-      {/* <Blank /> */}
-
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <BrandNav />
 
-      {/* <Blank /> */}
       {/* NewCar SLIDE */}
       <GradientRelative>
         <MaxContainer sx={{ position:'relative' }}>
@@ -280,8 +277,6 @@ export function Main ():JSX.Element {
         </MaxContainer>
         <GradientBox />
       </GradientRelative>
-      
-      {/* <Blank /> */}
 
       {/* 포토갤러리 */}
       
