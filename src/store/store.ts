@@ -1,11 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { selectedSeg } from './segment'
-import { selectedFuel } from './fuelType'
+import { selectedSeg, selectedFuel, selectedBrand } from './carFilter'
+import { brand, toggle } from './brandNav'
 
 export const store = configureStore ({
-  reducer : {
+  reducer: {
     selectedSeg: selectedSeg.reducer,
     selectedFuel: selectedFuel.reducer,
+    selectedBrand: selectedBrand.reducer,
+    brand: brand.reducer,
+    toggle : toggle.reducer
   }
 });
 

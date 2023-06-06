@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, Navigation, Pagination, Autoplay } from 'swiper';
 import { Grid, Typography, Button } from '@mui/material'
+
+// REDUX
+import { toggleReset } from '../store/brandNav'
 
 // SWIPER CSS
 import 'swiper/css';
@@ -119,7 +123,6 @@ const GradientBox = styled.div`
 }`;
 const SecondSwiper = styled(Swiper)`
 && {
-  width: 1100px;
   height: 370px;
   margin: 36px 0 100px;
   display: flex;
@@ -129,7 +132,7 @@ const SecondSwiper = styled(Swiper)`
   }
   .swiper-pagination-bullet-active {
     width : 30px;
-    background-color : black;
+    background-color : #FFA30B;
     border-radius: 20px;
   } 
 }`;
@@ -182,6 +185,7 @@ const GalleryGrid = styled(Grid)`
 
 export function Main ():JSX.Element {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [carImg, setCarImg] = useState([1,10210,3,4]);
   const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
@@ -194,7 +198,10 @@ export function Main ():JSX.Element {
     {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
   ]);
 
-  
+  useEffect(()=>{
+    dispatch(toggleReset())
+    console.log('reset')
+  },[dispatch])
 
   return (
     <>
@@ -250,7 +257,8 @@ export function Main ():JSX.Element {
               carCount.map((a,i)=>(
                 <SwiperSlide key={carCount[i]}>
                   <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
-                  <p style={{fontSize:"18px", marginTop: "24px"}}>TITLE</p>
+                  <p style={{ marginTop: "24px"}}>TITLE</p>
+                  {/* fontSize:"18px", */}
                   <div>
                     <InfoText>
                       <span>PRICE : </span>

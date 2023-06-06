@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components'
-import { FormControl, OutlinedInput, InputAdornment, FormGroup, FormControlLabel} from '@mui/material';
+import { FormControl, FormGroup, FormControlLabel} from '@mui/material';
 import { Checkbox } from '@mui/joy'
-import SearchIcon from '@mui/icons-material/Search';
 // import * as type from '../types/types'
 
 // Redux
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { segIn, segReset } from '../store/segment';
-import { fuelIn, fuelReset } from '../store/fuelType';
+import { segIn, segReset } from '../store/carFilter';
+import { fuelIn, fuelReset } from '../store/carFilter';
+import { toggleReset } from '../store/brandNav';
 
 // COMPONENT
 import {BrandNav} from '../components/BrandNav';
@@ -16,19 +16,14 @@ import {TabView} from '../components/TabView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
-import { MaxContainer } from '../App';
-const SearchBarWraper = styled.div`
-&& {
-  width: 100%;
-  margin-top: 100px;
-  display: flex;
-  justify-content: space-between;
-}`;
+import { MaxContainer, Blank } from '../App';
+
   // CheckBox Styled
 const FormWraper = styled.div`
 && {
   width: 100%;
-  height: 200px;  
+  height: 200px;
+  margin-top: 3rem;
   padding: 42px 36px 18px;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 10px;
@@ -128,17 +123,8 @@ export function Brand ():JSX.Element {
   return (
     <>
       <MaxContainer>
-        {/* 검색창 */}
-        <SearchBarWraper>
-          <div></div>
-          <FormControl size='small' sx={{m:1}}>
-            <OutlinedInput
-            id="input-with-icon-adornment"
-            // Icon
-            endAdornment={ <InputAdornment position="end"><SearchIcon /></InputAdornment> }
-            />
-          </FormControl>
-        </SearchBarWraper>
+        
+        <Blank />
 
         {/* Brand Search Nav */}
         <BrandNav />
@@ -176,6 +162,11 @@ export function Brand ():JSX.Element {
             </CheckBoxWraper>
           </CheckboxLine>
         </FormWraper>
+
+        <Blank />
+
+        
+
         {/* Search View */}
         <TabView />
         
