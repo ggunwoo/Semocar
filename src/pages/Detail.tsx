@@ -17,14 +17,20 @@ const TitleBox = styled.div`
   height: 300px;
   margin-top: 80px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }`;
 const InfoBox = styled.div`
 && {
-  .brand {}
-  .name {}
-  .price {}
+  div.brand {}
+  div.name {}
+  p.price {
+    color: #FFA30B;
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    letter-spacing: 0.175rem;
+  }
 }`;
 const StyledChip = styled(Chip)`
 && {
@@ -40,6 +46,9 @@ export function Detail():JSX.Element {
   const carData = useCarData();
   const {id} = useParams();
   const searchCar = carData.find(function(e){ return e.id === Number(id) })
+
+  const minPrice = (searchCar?.price.min)?.toLocaleString('ko-KR')
+  const maxPrice = (searchCar?.price.max)?.toLocaleString('ko-KR')
   
   console.log(id)
   console.log(searchCar)
@@ -56,7 +65,7 @@ export function Detail():JSX.Element {
             <InfoBox>
               <h5 className='brand'>{searchCar.brand.kr}</h5>
               <h1 className='name'>{searchCar.name.kr}</h1>
-              <p className='price'>{searchCar.price.min} ~ {searchCar.price.max} 만원</p>
+              <p className='price'>{minPrice} ~ {maxPrice} 만원</p>
               <StyledChip label={`${searchCar.segment}`} variant='outlined' />
               <StyledChip label={`${searchCar.fuelTypes}`} variant='outlined' />
               <StyledChip label={`${searchCar.gasMileage}`} variant='outlined' />
