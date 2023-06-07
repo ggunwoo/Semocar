@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +21,7 @@ import "swiper/css/pagination";
 import { BrandNav } from '../components/BrandNav'
 
 // STYLED-COMPONENTS
-import { MaxContainer, Blank } from '../App';
+import { MaxContainer } from '../App';
 const BannerSwiper = styled(Swiper)`
 && {
   height: 472px;
@@ -199,12 +199,6 @@ export function Main ():JSX.Element {
     {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante'},
     {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
   ]);
-  
-  const segChecked = useAppSelector((state)=> state.segCheck);
-  const segAll = useAppSelector((state)=> state.segAll);
-
-  const fuelChecked = useAppSelector((state)=> state.fuelCheck);
-  const fuelAll = useAppSelector((state)=> state.fuelAll)
 
   useEffect(()=>{
     dispatch(segReset())
