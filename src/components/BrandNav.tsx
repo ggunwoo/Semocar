@@ -58,7 +58,7 @@ const ImageBox = styled.div`
 const LogoName = styled.p`
 && {
   color: #FFA30B;
-  font-size: 14px;
+  font-size: 1.125rem;
   font-weight: bold;
   margin: auto 0;
   display: none;
