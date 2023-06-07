@@ -58,8 +58,9 @@ const ImageBox = styled.div`
 const LogoName = styled.p`
 && {
   color: #FFA30B;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: bold;
+  font-family: 'Gmarket Sans medium';
   margin: auto 0;
   display: none;
 }`;

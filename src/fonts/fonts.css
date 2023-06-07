@@ -2,3 +2,15 @@
   font-family: "Anders";
   src: url(./Anders.ttf);
 }
+@font-face {
+  font-family: "Gmarket Sans bold";
+  src: url(./GmarketSansTTFBold.ttf);
+}
+@font-face {
+  font-family: "Gmarket Sans medium";
+  src: url(./GmarketSansTTFMedium.ttf);
+}
+@font-face {
+  font-family: "Gmarket Sans light";
+  src: url(./GmarketSansTTFLight.ttf);
+}
