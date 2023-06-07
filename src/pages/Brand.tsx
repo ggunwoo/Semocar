@@ -6,9 +6,8 @@ import { Checkbox } from '@mui/joy'
 
 // Redux
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { segIn, segReset } from '../store/carFilter';
-import { fuelIn, fuelReset } from '../store/carFilter';
-import { toggleReset } from '../store/brandNav';
+import { segIn, segReset, fuelIn, fuelReset } from '../store/carFilter';
+import { segAllChange, segHandle, fuelAllChange, fuelHandle } from '../store/check';
 
 // COMPONENT
 import {BrandNav} from '../components/BrandNav';
@@ -66,17 +65,18 @@ export function Brand ():JSX.Element {
   const segmentList = ['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '해치백', '왜건']
   const fuelTypeList = ['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']
   
-  const [segmentChecked, setSegmentChecked] = useState(Array(segmentList.length).fill(false));
-  const [segmentChecked2, setSegmentChecked2] = useState(true);
-  const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelTypeList.length).fill(false));
-  const [fuelTypeChecked2, setFuelTypeChecked2] = useState(true);
+  const segChecked = useAppSelector((state)=> state.segCheck);
+  const segAll = useAppSelector((state)=> state.segAll);
+
+  const fuelChecked = useAppSelector((state)=> state.fuelCheck);
+  const fuelAll = useAppSelector((state)=> state.fuelAll)
 
 // 차급 체크박스 Checked 로직
   // 차급 전체 체크박스 로직
   const segmentAllHandle = () => {
     const updatedChecked = Array(segmentList.length).fill(false);
-    setSegmentChecked(updatedChecked);
-    setSegmentChecked2(true);
+    dispatch(segHandle(updatedChecked))
+    dispatch(segAllChange(true))
 
     // selected reset
     dispatch(segReset())
@@ -84,35 +84,43 @@ export function Brand ():JSX.Element {
   };
   // 차급 체크박스 로직
   const segmentHandle = (segment: string, index: number) => {
-    const updatedChecked = [...segmentChecked];  
+
+    const updatedChecked = [...segChecked];  
     updatedChecked[index] = !updatedChecked[index];
-    setSegmentChecked(updatedChecked);
-    setSegmentChecked2(false);
-    if(segmentChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
-      setSegmentChecked2(true);
+    dispatch(segHandle(updatedChecked))
+
+    dispatch(segAllChange(false))
+
+    if(segAll === false && updatedChecked.find( e => e === true) === undefined ){
+      dispatch(segAllChange(true))
     }
 
     // selected Segment
     dispatch(segIn(segment));
   };
+
 // 연료 체크박스 Checked 로직
   // 연료 전체 체크박스 로직
   const fuelTypeAllHandle = () => {
     const updatedChecked = Array(fuelTypeList.length).fill(false);
-    setFuelTypeChecked(updatedChecked);
-    setFuelTypeChecked2(true);
+    dispatch(fuelHandle(updatedChecked))
+
+    dispatch(fuelAllChange(true))
 
     // selected reset
     dispatch(fuelReset());
   };
   // 연료 체크박스 로직
   const fuelTypeHandle = (fuelType:string, index: number) => {
-    const updatedChecked = [...fuelTypeChecked];
+
+    const updatedChecked = [...fuelChecked];
     updatedChecked[index] = !updatedChecked[index];
-    setFuelTypeChecked(updatedChecked);
-    setFuelTypeChecked2(false);
-    if(fuelTypeChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
-      setFuelTypeChecked2(true);
+    dispatch(fuelHandle(updatedChecked))
+
+    dispatch(fuelAllChange(false))
+
+    if(fuelAll === false && updatedChecked.find( e => e === true) === undefined ){
+      dispatch(fuelAllChange(true))
     }
     // selected Fuel Type
     dispatch(fuelIn(fuelType));
@@ -133,12 +141,12 @@ export function Brand ():JSX.Element {
             <CheckboxTitle>차급</CheckboxTitle>
             <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
-                <Checkbox className="segmentDefalutCheckBox" checked={segmentChecked2} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
+                <Checkbox className="segmentDefalutCheckBox" checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
               {
                 segmentList.map((segment, index)=>(
                   <StyledFormControlLabel key={segment} control={
-                    <Checkbox className="segmentCheckBox" checked={segmentChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
+                    <Checkbox className="segmentCheckBox" checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
                   ></StyledFormControlLabel>
                 ))
               }
@@ -148,12 +156,12 @@ export function Brand ():JSX.Element {
             <CheckboxTitle>연료</CheckboxTitle>
             <CheckBoxWraper row={true}>
               <StyledFormControlLabel control={
-                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelTypeChecked2} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
+                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
               ></StyledFormControlLabel>
               {
                 fuelTypeList.map((fuelType, index)=>(
                   <StyledFormControlLabel key={fuelType} control={
-                    <Checkbox className="fuelTypeCheckBox" checked={fuelTypeChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
+                    <Checkbox className="fuelTypeCheckBox" checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
                   ></StyledFormControlLabel>
                 ))
               }

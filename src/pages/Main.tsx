@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAppDispatch } from '../store/hooks';
+import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,6 +8,8 @@ import { Grid, Typography, Button } from '@mui/material'
 
 // REDUX
 import { toggleReset } from '../store/brandNav'
+import { segReset, fuelReset, brandReset } from '../store/carFilter';
+import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/check';
 
 // SWIPER CSS
 import 'swiper/css';
@@ -197,9 +199,28 @@ export function Main ():JSX.Element {
     {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante'},
     {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
   ]);
+  
+  const segChecked = useAppSelector((state)=> state.segCheck);
+  const segAll = useAppSelector((state)=> state.segAll);
+
+  const fuelChecked = useAppSelector((state)=> state.fuelCheck);
+  const fuelAll = useAppSelector((state)=> state.fuelAll)
 
   useEffect(()=>{
+    dispatch(segReset())
+    dispatch(fuelReset())
+    dispatch(brandReset())
     dispatch(toggleReset())
+    // segement Reset
+    dispatch(segAllChange(true))
+    const resetSeg = Array(segList.length).fill(false);
+    dispatch(segHandle(resetSeg))
+
+    // fuelType Reset
+    dispatch(fuelAllChange(true))
+    const resetFuel = Array(fuelList.length).fill(false);
+    dispatch(fuelHandle(resetFuel))
+
     console.log('reset')
   },[dispatch])
 
