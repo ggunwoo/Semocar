@@ -23,9 +23,10 @@ const FormWraper = styled.div`
 && {
   width: 100%;
   height: 200px;
+  background-color: #fcfcfc;
+  border: 1px solid rgba(0,0,0,.2);
   margin-top: 2rem;
   padding: 42px 36px 18px;
-  border: 1px solid rgba(0,0,0,.2);
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -70,9 +71,6 @@ export function Brand ():JSX.Element {
   const [fuelTypeChecked, setFuelTypeChecked] = useState(Array(fuelTypeList.length).fill(false));
   const [fuelTypeChecked2, setFuelTypeChecked2] = useState(true);
 
-  console.log(segmentChecked)
-  
-  
 // 차급 체크박스 Checked 로직
   // 차급 전체 체크박스 로직
   const segmentAllHandle = () => {
@@ -97,7 +95,6 @@ export function Brand ():JSX.Element {
     // selected Segment
     dispatch(segIn(segment));
   };
-
 // 연료 체크박스 Checked 로직
   // 연료 전체 체크박스 로직
   const fuelTypeAllHandle = () => {
@@ -117,12 +114,9 @@ export function Brand ():JSX.Element {
     if(fuelTypeChecked2 === false && updatedChecked.find( e => e === true) === undefined ){
       setFuelTypeChecked2(true);
     }
-
     // selected Fuel Type
     dispatch(fuelIn(fuelType));
-    
   };
-
 
   return (
     <>
@@ -168,8 +162,6 @@ export function Brand ():JSX.Element {
         </FormWraper>
 
         <Blank />
-
-        
 
         {/* Search View */}
         <TabView />
