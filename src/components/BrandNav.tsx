@@ -17,34 +17,52 @@ import {
 
 
 // STYLED
-import { MaxContainer } from '../App';
+import { MaxContainer, Blank } from '../App';
 const FlexBox = styled(Box)`
 && {
   display:flex;
+  margin-top: 2rem;
   justify-content: space-evenly;
+  align-items: center;
   .clicked {
-    color: #FFF;
-    background-color: rgb(243, 227, 84, .4);
+    /* color: #FFF; */
+    /* background-color: rgb(243, 227, 84, .4); */
+    border-bottom: 4px solid #FFA30B;
+    border-radius: 0 !important;
+  }
+  :hover > .imgBox{
+    display: none;
+  }
+  :hover > .logoName{
+    display: block;
   }
 }`;
 const LogoButton = styled(Button)`
 && {
-  display:block;
-  width: 100px;
-  border-radius: 20px;
+  &:hover {
+    border-bottom: 4px solid #FFA30B;
+  }
+  width: 140px;
+  height: 60px;
+  /* border-radius: 20px; */
+  :hover {}
 }`;
 const ImageBox = styled.div`
 && {
-  width: 40px;
-  height: 60px;
+  display: block;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 }`;
 const LogoName = styled.p`
 && {
-  color: black;
-  font-size: 14px;
+  
+  color: #FFA30B;
+  font-size: 16px;
+  font-weight: bold;
+  margin: auto 0;
+  display: none;
 }`;
 
 export function BrandNav () {
@@ -71,18 +89,23 @@ export function BrandNav () {
     <MaxContainer>
       <FlexBox>
         {carBrands.map((brand, index):JSX.Element => (
-          <LogoButton key={brand.id} className={`${ toggle[index] ? 'clicked' : null }`} onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } variant='text'>
-            <ImageBox>
+          <LogoButton
+            key={brand.id} 
+            className={`${ toggle[index] ? 'clicked' : null}` }
+            onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } 
+            variant='text'
+          >
+            <ImageBox className='imgBox'>
               <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
             </ImageBox>
-            <LogoName>{brand.name.kr}</LogoName>
+            <LogoName className='logoName'>{brand.name.kr}</LogoName>
           </LogoButton>
         ))}
         <LogoButton onClick={()=>{brandAll(); navigate(`/brand`)}}>
-          <ImageBox>
+          <ImageBox className='imgBox'>
             <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' />
           </ImageBox>
-          <LogoName>전체보기</LogoName>
+          <LogoName className='logoName'>전체보기</LogoName>
         </LogoButton>
       </FlexBox>
     </MaxContainer>

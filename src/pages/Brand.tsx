@@ -23,7 +23,7 @@ const FormWraper = styled.div`
 && {
   width: 100%;
   height: 200px;
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 42px 36px 18px;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 10px;

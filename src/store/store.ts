@@ -8,7 +8,7 @@ export const store = configureStore ({
     selectedFuel: selectedFuel.reducer,
     selectedBrand: selectedBrand.reducer,
     brand: brand.reducer,
-    toggle : toggle.reducer
+    toggle : toggle.reducer,
   }
 });
 

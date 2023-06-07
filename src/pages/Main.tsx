@@ -162,7 +162,7 @@ const GalleryGrid = styled(Grid)`
       text-align: center;
       opacity: 0;
       transition: opacity .3s;
-      background-color: rgba(255, 255, 0, .95);
+      background-color: #FFA30B;
       .title {
         margin-top: 80px;
         font-size: 36px;
