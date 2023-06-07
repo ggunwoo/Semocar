@@ -42,7 +42,7 @@ const LogoButton = styled(Button)`
   &:hover {
     border-bottom: 4px solid #FFA30B;
   }
-  width: 140px;
+  width: 120px;
   height: 60px;
   /* border-radius: 20px; */
   :hover {}
@@ -57,9 +57,8 @@ const ImageBox = styled.div`
 }`;
 const LogoName = styled.p`
 && {
-  
   color: #FFA30B;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   margin: auto 0;
   display: none;
