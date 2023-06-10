@@ -15,7 +15,7 @@ import {TabView} from '../components/TabView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
-import { MaxContainer, Blank } from '../App';
+import { MaxContainer, Blank } from '../styled/global';
 
   // CheckBox Styled
 const FormWraper = styled.div`

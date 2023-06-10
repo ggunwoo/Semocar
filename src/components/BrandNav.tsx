@@ -17,7 +17,7 @@ import {
 
 
 // STYLED
-import { MaxContainer, Blank } from '../App';
+import { MaxContainer, Blank } from '../styled/global';
 const FlexBox = styled(Box)`
 && {
   display:flex;
@@ -25,10 +25,7 @@ const FlexBox = styled(Box)`
   justify-content: space-evenly;
   align-items: center;
   .clicked {
-    /* color: #FFF; */
-    /* background-color: rgb(243, 227, 84, .4); */
     border-bottom: 4px solid #FFA30B;
-    border-radius: 0 !important;
   }
   :hover > .imgBox{
     display: none;
@@ -39,13 +36,11 @@ const FlexBox = styled(Box)`
 }`;
 const LogoButton = styled(Button)`
 && {
+  width: 120px;
+  height: 60px;
   &:hover {
     border-bottom: 4px solid #FFA30B;
   }
-  width: 120px;
-  height: 60px;
-  /* border-radius: 20px; */
-  :hover {}
 }`;
 const ImageBox = styled.div`
 && {
@@ -91,7 +86,7 @@ export function BrandNav () {
         {carBrands.map((brand, index):JSX.Element => (
           <LogoButton
             key={brand.id} 
-            className={`${ toggle[index] ? 'clicked' : null}` }
+            className={`${ toggle[index] ? 'clicked' : 'unclick'}` }
             onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } 
             variant='text'
           >
