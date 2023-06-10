@@ -14,6 +14,7 @@ export const MaxContainer = styled(Container)`
     
   }
 }`;
+
 export const Logo = styled.h2<{fontSize : string}>`
 && {
   font-size: ${props => props.fontSize};
@@ -21,6 +22,7 @@ export const Logo = styled.h2<{fontSize : string}>`
   font-family: Anders, Arial, sans-serif;
   cursor: pointer;
 }`;
+
 export const Blank = styled.div`
 &&{
   height: 100px;

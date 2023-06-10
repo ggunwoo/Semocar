@@ -1,6 +1,3 @@
-import React, { useState } from 'react';
-import { styled } from 'styled-components'
-import { FormControl, FormGroup, FormControlLabel} from '@mui/material';
 import { Checkbox } from '@mui/joy'
 // import * as type from '../types/types'
 
@@ -15,47 +12,9 @@ import {TabView} from '../components/TabView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
-import { MaxContainer, Blank } from '../styled/global';
+import { MaxContainer, Blank } from '../styled/Global';
+import * as S from '../styled/Brand.styled'
 
-  // CheckBox Styled
-const FormWraper = styled.div`
-&& {
-  width: 100%;
-  height: 200px;
-  background-color: #fcfcfc;
-  border: 1px solid rgba(0,0,0,.2);
-  margin-top: 2rem;
-  padding: 42px 36px 18px;
-  border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}`;
-const CheckboxLine = styled.div`
-&& {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-
-  /* TEMP */
-  /* border: 1px solid #D8D8D8; */
-}`;
-const CheckboxTitle = styled.div`
-&& {
-  width: 5%;
-  /* margin-top: 0.47rem; */
-}`;
-const CheckBoxWraper = styled(FormGroup)`
-&& {
-  width: 95%;
-}`;
-const StyledFormControlLabel = styled(FormControlLabel)`
-&& {
-  margin: 2px 0 8px 14px;
-  .MuiTypography-root {
-    margin-left: 4px;
-    font-size: 14px;
-  }
-}`;
 // Search View Styled
 export function Brand ():JSX.Element {
   const dispatch = useAppDispatch();
@@ -125,55 +84,46 @@ export function Brand ():JSX.Element {
   };
 
   return (
-    <>
-      <MaxContainer>
-        
-        <Blank />
+    <MaxContainer>
+      <Blank />
+      {/* Brand Search Nav */}
+      <BrandNav />
 
-        {/* Brand Search Nav */}
-        <BrandNav />
+      {/* Search Check Box */}
+      <S.FormWraper>
+        <S.CheckLine>
+          <S.CheckTitle>차급</S.CheckTitle>
+          <S.CheckWraper row={true}>
+            <S.FormControl control={
+              <Checkbox className="segmentDefalutCheckBox" checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
+            ></S.FormControl>
+            {segmentList.map((segment, index)=>(
+              <S.FormControl key={segment} control={
+                <Checkbox className="segmentCheckBox" checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
+              ></S.FormControl>
+            ))}
+          </S.CheckWraper>
+        </S.CheckLine>
+        <S.CheckLine>
+          <S.CheckTitle>연료</S.CheckTitle>
+          <S.CheckWraper row={true}>
+            <S.FormControl control={
+              <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
+            ></S.FormControl>
+            {fuelTypeList.map((fuelType, index)=>(
+              <S.FormControl key={fuelType} control={
+                <Checkbox className="fuelTypeCheckBox" checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
+              ></S.FormControl>
+            ))}
+          </S.CheckWraper>
+        </S.CheckLine>
+      </S.FormWraper>
+      <Blank />
 
-        {/* Search Check Box */}
-        <FormWraper>
-          <CheckboxLine>
-            <CheckboxTitle>차급</CheckboxTitle>
-            <CheckBoxWraper row={true}>
-              <StyledFormControlLabel control={
-                <Checkbox className="segmentDefalutCheckBox" checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
-              ></StyledFormControlLabel>
-              {
-                segmentList.map((segment, index)=>(
-                  <StyledFormControlLabel key={segment} control={
-                    <Checkbox className="segmentCheckBox" checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
-                  ></StyledFormControlLabel>
-                ))
-              }
-            </CheckBoxWraper>
-          </CheckboxLine>
-          <CheckboxLine>
-            <CheckboxTitle>연료</CheckboxTitle>
-            <CheckBoxWraper row={true}>
-              <StyledFormControlLabel control={
-                <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
-              ></StyledFormControlLabel>
-              {
-                fuelTypeList.map((fuelType, index)=>(
-                  <StyledFormControlLabel key={fuelType} control={
-                    <Checkbox className="fuelTypeCheckBox" checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
-                  ></StyledFormControlLabel>
-                ))
-              }
-            </CheckBoxWraper>
-          </CheckboxLine>
-        </FormWraper>
-
-        <Blank />
-
-        {/* Search View */}
-        <TabView />
-        
-      </MaxContainer>
-    </>
+      {/* Search View */}
+      <TabView />
+      
+    </MaxContainer>
   )
 }
 

@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
-import { Box, Tabs, Tab, FormControl, OutlinedInput, InputAdornment, Button } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { useCarData } from '../hook/useCarData';
 import * as type from '../types/types';
 
+
 // STYLED
-import { Blank, MaxContainer } from '../App';
-import { useCarData } from '../hook/useCarData';
-const SearchBarWraper = styled.div`
-&& {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}`;
-const StyledBox = styled(Box)`
-&& {
-  /* {display:"flex", borderBottom: 0, borderColor: 'divider' } */
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 0;
-  margin-bottom: 3rem;
-  border-color: divider;
-}`;
-const CarSection = styled.div`
-&& {
-  width: 1100px;
-  /* border: 1px solid black; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: baseline;
-  @media (max-width:1440px) {
-    width: 960px;
-    
-  }
-}`;
-const CarArticle = styled.div`
-&& {
-  width: 275px;
-  @media (max-width: 1440px){
-      width: 240px;
-    }
-}`;
+import { Box, Tabs, Tab, FormControl, OutlinedInput, InputAdornment, Button } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import { MaxContainer } from '../styled/Global';
+import * as S from '../styled/components/TabView.styled'
+
 export function TabView() {
   const navigate = useNavigate();
   const carData = useCarData();
@@ -195,14 +162,14 @@ export function TabView() {
   return (
     <MaxContainer>
       <Box>
-        <StyledBox>
+        <S.StyledBox>
           <Tabs sx={{overflow:"visible"}} value={sortOption} onChange={handleSortChange} aria-label="정렬 기준">
             <Tab label="최신순" value="latest" {...a11yProps(0)} />
             <Tab label="가격순" value="price" {...a11yProps(1)} />
             <Tab label="연비순" value="mileage" {...a11yProps(2)} />
           </Tabs>
           {/* 검색창 */}
-          <SearchBarWraper>
+          <S.SearchBarWraper>
             <div></div>
             <FormControl size='small' sx={{m:1}}>
               <OutlinedInput
@@ -212,11 +179,11 @@ export function TabView() {
               endAdornment={ <InputAdornment position="end"><SearchIcon /></InputAdornment> }
               />
             </FormControl>
-          </SearchBarWraper>
-        </StyledBox>
+          </S.SearchBarWraper>
+        </S.StyledBox>
         {tabIndex.map((tab, i) => (
           <TabPanel key={tab} value={value} index={i}>
-            <CarSection>
+            <S.CarSection>
               {
                 (() => {
                   const filteredCars = sortCarData(carData, selectedBrand, selectedSeg, selectedFuel);
@@ -224,7 +191,7 @@ export function TabView() {
                     return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {
                     return filteredCars.map((car, index) => (
-                      <CarArticle key={index}>
+                      <S.CarArticle key={index}>
                         <img
                           style={{ width: '80%' }}
                           src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
@@ -236,12 +203,12 @@ export function TabView() {
                         <div>연료: {car.fuelTypes}</div>
                         <div>연비: {car.gasMileage}</div>
                         <Button onClick={()=>{navigate(`/detail/${car.id}`)}} size='small' variant='outlined' >보러가기</Button>
-                      </CarArticle>
+                      </S.CarArticle>
                     ));
                   }
                 })()
               }
-            </CarSection>
+            </S.CarSection>
           </TabPanel>
         ))}
       </Box>
