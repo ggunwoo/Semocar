@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { Chip, Button, ButtonGroup } from '@mui/material'
 
-
+// FORM
 export const BgBox = styled.div`
 && {
   width: 100%;
@@ -43,7 +43,6 @@ export const ImgBox = styled.div`
 && {
 
 }`;
-
 export const StyledBtnGroup = styled(ButtonGroup)`
 && {
   margin-top: 50px;
@@ -72,6 +71,8 @@ export const FormDt = styled.dt`
 && {
   width: 10%;
   height: 100%;
+  margin-top: 10px;
+  text-align: center;
 }`;
 export const FormDd = styled.dd`
 && {
@@ -80,11 +81,68 @@ export const FormDd = styled.dd`
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
-
+  gap: .5em;
 }`;
 export const ChipBtn = styled.div`
 && {
   padding: 5px 10px;
   border: 1px solid #d8d8d8;
   border-radius: 1.5em;
+}`;
+
+// INFO
+export const PriceDl = styled.dl`
+&& {
+  display: flex;
+}`;
+export const PriceDt = styled.dt`
+&& {
+  width: 10%;
+  margin-top: 10px;
+  height: 100%;
+  text-align: center;
+}`;
+export const PriceDd = styled.dd`
+&& {
+  width: 90%;
+  span {
+    font-size: 14px;
+  }
+}`;
+
+// SPAC
+export const SpacDl = styled.dl`
+&& {
+  display: flex;
+}`;
+export const SpacDt = styled.dt`
+&& {
+  width: 10%;
+  /* margin-top: 10px; */
+  height: 100%;
+  text-align: center;
+}`;
+export const SpacDd = styled.dd`
+&& {
+  display: flex;
+  width: 90%;
+  span {
+    font-size: 0.825em;
+  }
+}`;
+export const OptionDl = styled.dl`
+&& {
+  width: 33.3333333333%;
+}`;
+export const OptionDt = styled.dt`
+&& {
+  width: 40%;
+  color: #999999;
+  font-weight: normal;
+  float: left;
+}`;
+export const OptionDd = styled.dd`
+&& {
+  font-weight: bold;
+  /* float: right; */
 }`;

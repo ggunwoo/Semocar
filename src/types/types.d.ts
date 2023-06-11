@@ -45,11 +45,11 @@ interface Trim {
   fuelType: string;
   engine: string;
   displacement: string;
-  transmission: string;
+  transMission: string;
   drivingSystem: string;
   power: string;
   torque: string;
-  gasMileage: string;
+  complexGasMileage: string;
   urbanGasMileage: string;
   highwayGasMileage: string;
   ratingGasMileage: string;
@@ -69,4 +69,16 @@ interface Trim {
   wheelBase: string;
   track: string;
   tread: string;
+
+  // 전기
+  evMileage: string,
+  charging: string,
+  chargingQuick: string,
+  chargingSlow: string,
+
+  // + 하이브리드
+  batteryType: string,
+  batteryVolume: string,
+  motorPower: string;
+  motorTorque: string;
 }

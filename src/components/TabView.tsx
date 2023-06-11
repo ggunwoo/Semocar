@@ -56,9 +56,6 @@ export function TabView() {
     let brandSegFilter = brandFilterData.filter((car) => segmentFilterData.includes(car))
     let brandFuelFilter = brandFilterData.filter((car) => fuelTypeFilterData.includes(car))
     let brandMergedFilter = brandFilterData.filter((car) => mergedData.includes(car))
-    console.log(brandSegFilter)
-    console.log(brandFuelFilter)
-    console.log(brandMergedFilter)
     // 중복 제거
     // let duplicateRemoveData = mergedData.filter((item, pos)=> mergedData.indexOf(item) === pos);
 
