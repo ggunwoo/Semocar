@@ -236,7 +236,7 @@ export function Detail():JSX.Element {
               </S.SpacDd>}
 
             {/* 전기 */}
-            {choosed?.fuelType === '전기' &&
+            {(choosed?.fuelType === '전기' || choosed?.fuelType === '수소') &&
               <S.SpacDd>
                 {/* OPTION 1LINE */}
                 <S.OptionDl>

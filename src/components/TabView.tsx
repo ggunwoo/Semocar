@@ -63,7 +63,11 @@ export function TabView() {
     const sorted = (mustSortData: type.Car[])=>{
       if (sortOption === 'latest') {
         // 최신순 정렬 ('date' 데이터 아직 안넣어서 'id'로 대체)
-        mustSortData.sort((a, b) => b.id - a.id);
+        mustSortData.sort((a, b) => {
+          const aDate = parseFloat(a.date);
+          const bDate = parseFloat(b.date);
+          return bDate - aDate;
+        });
       } else if (sortOption === 'price') {
         // 가격순 정렬
         mustSortData.sort((a, b) => a.price.min - b.price.min);

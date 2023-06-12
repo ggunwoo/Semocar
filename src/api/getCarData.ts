@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCarData = async () => {
   try {
-    const response = await axios.get('https://gist.githubusercontent.com/pgw6541/9db3dd7dc7fe2c28d1c529e47b7d062b/raw/df000c1367c7ccc8ec99bd8fef8383c36ec6732d/carData.json');
+    const response = await axios.get('https://gist.githubusercontent.com/pgw6541/9db3dd7dc7fe2c28d1c529e47b7d062b/raw/cfe55a4512b6544e711b942eb3752b8b747fa47d/carData.json');
     return response.data;
   } catch (error) {
     console.log('error car data', error);
