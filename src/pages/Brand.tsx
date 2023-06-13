@@ -19,7 +19,7 @@ import * as S from '../styled/Brand.styled'
 export function Brand ():JSX.Element {
   const dispatch = useAppDispatch();
 
-  const segmentList = ['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '해치백', '왜건']
+  const segmentList = ['경차', '소형세단', '준중형세단', '중형세단', '준대형세단', '대형세단', '소형SUV','준중형SUV', '중형SUV', '준대형SUV', '대형SUV', 'RV', 'MPV', '픽업', '벤', '쿠페', '해치백', '왜건']
   const fuelTypeList = ['가솔린', '디젤', 'LPG', '하이브리드', '전기', '수소']
   
   const segChecked = useAppSelector((state)=> state.segCheck);
