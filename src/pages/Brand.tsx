@@ -12,7 +12,7 @@ import {TabView} from '../components/TabView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
-import { MaxContainer, Blank } from '../styled/Global';
+import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/Brand.styled'
 
 // Search View Styled
@@ -85,7 +85,6 @@ export function Brand ():JSX.Element {
 
   return (
     <MaxContainer>
-      <Blank />
       {/* Brand Search Nav */}
       <BrandNav />
 
@@ -118,7 +117,6 @@ export function Brand ():JSX.Element {
           </S.CheckWraper>
         </S.CheckLine>
       </S.FormWraper>
-      <Blank />
 
       {/* Search View */}
       <TabView />
