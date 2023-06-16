@@ -5,8 +5,7 @@ import { Grid, Typography } from '@mui/material'
 export const BannerSwiper = styled(Swiper)`
 && {
   height: 472px;
-  margin-top: 80px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   user-select: none;
   .swiper-button-next {
     right: 13%;

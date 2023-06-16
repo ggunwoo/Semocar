@@ -1,5 +1,7 @@
 import { styled } from 'styled-components'
-import { Chip, Button, ButtonGroup } from '@mui/material'
+import { Chip, Button, ButtonGroup,  } from '@mui/material'
+import { Swiper } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 
 // FORM
 export const BgBox = styled.div`
@@ -11,7 +13,6 @@ export const TitleBox = styled.div`
 && {
   width: 100%;
   height: 400px;
-  margin-top: 80px;
   background-color: #e2e2e2;
   display: flex;
   justify-content: space-around;
@@ -19,6 +20,7 @@ export const TitleBox = styled.div`
 }`;
 export const InfoBox = styled.div`
 && {
+  height: 400px;
   h5.brand {
     font-size: 1.125rem;
     margin-bottom: 0 !important;
@@ -57,27 +59,39 @@ export const StyledBtn = styled(Button)`
     background-color: black;
   }
 }`;
+
+// INFO
 export const MoreInfo = styled.div`
 && {
   width: 100%;
-  border: 1px solid black;
+  margin-top: 40px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
 }`;
 export const FormDl = styled.dl`
 && {
+  background-color: #fbfbfb;
+  padding: 24px 0 24px 16px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e8e8e8;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  min-height: 46px;
 }`;
 export const FormDt = styled.dt`
 && {
-  width: 10%;
+  width: 90px;
   height: 100%;
   margin-top: 10px;
+  margin-right: 24px;
   text-align: center;
 }`;
 export const FormDd = styled.dd`
 && {
-  width: 90%;
+  width: 85%;
   height: 100%;
+  margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
@@ -89,43 +103,45 @@ export const ChipBtn = styled.div`
   border: 1px solid #d8d8d8;
   border-radius: 1.5em;
 }`;
-
-// INFO
 export const PriceDl = styled.dl`
 && {
+  margin: 18px 16px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d8d8d8;
   display: flex;
-}`;
-export const PriceDt = styled.dt`
-&& {
-  width: 10%;
-  margin-top: 10px;
-  height: 100%;
-  text-align: center;
-}`;
-export const PriceDd = styled.dd`
-&& {
-  width: 90%;
-  span {
-    font-size: 14px;
+  align-items: flex-start;
+  dt {
+    width: 90px;
+    height: 100%;
+    margin-top: 8px;
+    margin-right: 24px;
+    text-align: center;
+  }
+  dd {
+    width: 85%;
+    span {
+      font-size: 14px;
+    }
   }
 }`;
-
 // SPAC
 export const SpacDl = styled.dl`
 && {
+  margin-top: 48px;
+  margin-left: 16px;
   display: flex;
 }`;
 export const SpacDt = styled.dt`
 && {
-  width: 10%;
-  /* margin-top: 10px; */
-  height: 100%;
+  width: 90px;
+  height: 85%;
+  margin-right: 24px;
   text-align: center;
 }`;
 export const SpacDd = styled.dd`
 && {
   display: flex;
-  width: 90%;
+  width: 85%;
   span {
     font-size: 0.825em;
   }
@@ -145,4 +161,203 @@ export const OptionDd = styled.dd`
 && {
   font-weight: bold;
   /* float: right; */
+}`;
+
+// SWIPER
+export const SwiperWrap = styled.div`
+&& {
+  width: 100%;
+  margin-top: 160px;
+  height: 700px;
+}`;
+export const Title = styled.span`
+&& {
+  margin-bottom: 2000px;
+  text-align: center;
+  p {
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: .275em;
+  }
+}`;
+export const MainSwiper = styled(Swiper)`
+&& {
+  margin-top: 40px;
+  --swiper-navigation-color : #fff;
+  --swiper-pagination-color : #fff;
+  img {
+    width: 100%;
+  }
+}`;
+
+export const ThumbsSwiper = styled(Swiper)`
+&& {
+  margin-top: 10px;
+  .swiper-slide {
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .swiper-slide::after {
+    content: "";
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .3;
+  }
+  
+  .swiper-slide-thumb-active {
+    position: relative;
+  }
+  .swiper-slide-thumb-active::after { display: none; }
+  .swiper-slide-thumb-active::before {
+    content: "";
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    border-bottom: 5px solid #FFA30B;
+  }
+}`;
+
+// COMMENT
+export const CommentWrap = styled.div`
+&& {
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 280px;
+  .top_section {
+    margin-left: 24px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .left {
+      width: 300px;
+      position: relative;
+      .star {
+        color: #FFA30B;
+        font-size: 3.5em;
+      }
+      .int {
+        font-size: 4em;
+        font-weight: bold;
+        margin-top: 1rem;
+        margin-left: 1rem;
+      }
+      .commentCount {
+        color: #777777;
+        font-size: 14px;
+        position: absolute;
+        left: 3em;
+        bottom: -1.25em;
+      }
+    }
+    .right {
+      width: 800px;
+      border-left: 1px solid #999999;
+      padding-left: 36px;
+      .box {
+        display: flex;
+        .line {
+          width: 150px;
+          height: 6px;
+          margin: auto 0;
+          margin-left: 0.5em;
+          background-color: #FFA30B;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+}`;
+export const PostForm = styled.form`
+&& {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  .rating {
+    margin-right: 16px;
+    margin-left: 24px;
+  }
+  .send {
+    width: 100px;
+    height: 100%;
+    color: #d8d8d8;
+    margin-right: 16px;
+    margin-left: 10px;
+    height: 56px;
+    border-radius: 100%;
+    &:hover {
+      color: #000;
+    }
+    .sendIcon {
+      font-size: 2em;
+      width: 100%;
+      height: 100%;
+      margin-top: -3px;
+      padding: 8px 8px 8px;
+      transform: rotate(-28.42deg);
+    }
+  }
+}`;
+
+// COMMENT-list
+export const CommentList = styled.div`
+&& {
+  width: 100%;
+  min-height: 128px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  .rating {
+    margin-right: .5em;
+  }
+  .ratingNum {
+    color: #000;
+    font-weight: bold;
+    margin-right: 1.25em;
+  }
+  .textBox {
+    width: 100%;
+    height: 100%;
+    .typo {
+      font-size: 1em;
+    }
+    .userInfo {
+      margin-top: 8px;
+      font-size: .75rem;
+      font-weight: lighter;
+      color: #626262;
+      .userName {}
+      .date {}
+    }
+  }
+  .like {
+    width: 100px;
+    text-align: center;
+    .icon, .offIcon {
+      color: #c6c6c6;
+      font-size: 2.5em;
+    }
+    .icon {}
+    .offIcon {}
+    .likeCtn {
+      font-size: 0.75em;
+    }
+  }
 }`;

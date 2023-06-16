@@ -1,13 +1,13 @@
 import React from 'react';
 
 // STYLED
-import { Logo, Blank } from '../styled/Global';
+import { Logo } from '../styled/Global';
 import * as S from '../styled/components/Footer.styled'
+
 
 export function Footer():JSX.Element {
   return (
     <>
-      <Blank />
       <S.FooterCtn>
         <div className='infoWrap'>
           <Logo fontSize='32px' >SEMO CAR</Logo>

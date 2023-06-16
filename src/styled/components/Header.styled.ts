@@ -6,6 +6,7 @@ export const CustomAppBar = styled(AppBar)`
   width: 100%;
   background-color: #fff;
   height: 80px;
+  /* margin-bottom: 80px; */
   border-bottom: 1px solid #D7D7D7;
   box-shadow: none;
 }`;

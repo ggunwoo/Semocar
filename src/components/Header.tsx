@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
 // STYLED
 import { MaxContainer, Logo } from '../styled/Global';
 import * as S from '../styled/components/Header.styled'
@@ -11,6 +10,7 @@ export function Header():JSX.Element {
 
   return(
     <>
+      <div style={{"height":"80px"}}></div>
       <S.CustomAppBar>
         <MaxContainer>
           <S.FlexToolbar>

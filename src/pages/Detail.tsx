@@ -1,10 +1,25 @@
 import React, { useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
+import { SwiperSlide } from 'swiper/react'
+import { Rating, TextField, Typography} from '@mui/material'
+import SendIcon from '@mui/icons-material/Send';
+import GradeIcon from '@mui/icons-material/Grade';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+
+// SWIPER
+import { FreeMode, Navigation, Thumbs } from "swiper";
+import type { Swiper } from 'swiper';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 // STYLED
 import { MaxContainer } from '../styled/Global'
 import * as S from '../styled/Detail.styled'
+
 
 export function Detail():JSX.Element {
   const carData = useCarData();
@@ -17,8 +32,37 @@ export function Detail():JSX.Element {
   const [selectGrade, segSelectGrade] = useState(0)
   const [selectTrim, segSelectTrim] = useState(0)
   const choosed = searchCar?.grades[selectGrade].trims[selectTrim];
-  const choosedElectric = choosed?.fuelType === '전기';
-  const choosedHybrid = choosed?.fuelType === '하이브리드';
+  // const choosedElectric = choosed?.fuelType === '전기';
+  // const choosedHybrid = choosed?.fuelType === '하이브리드';
+
+  const [thumbsSwiper, setThumbsSwiper] = useState<Swiper|null>(null);
+  const [commentList, setCommentList] = useState([
+    {
+      "rating":5,
+      "likeCount":79,
+      "text":"정말 매력적이다~",
+    },
+    {
+      "rating":4,
+      "likeCount":12,
+      "text":"출력이 좀 아쉽지만 디자인이 이뻐서 합격!",
+    },
+    {
+      "rating":2,
+      "likeCount":43,
+      "text":"디자이너 진짜 누구냐 시말서쓰라해라ㅋㅋ",
+    },
+    {
+      "rating":1,
+      "likeCount":4,
+      "text":"시승해봤는데 별로였음",
+    },
+    {
+      "rating":1,
+      "likeCount":2,
+      "text":"이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐",
+    },
+  ]);
 
   const BtnClick = (index: number) => {
     setClickCheck(ClickCheck.fill(false))
@@ -58,7 +102,7 @@ export function Detail():JSX.Element {
         </MaxContainer>}
       </S.BgBox>
 
-      <MaxContainer sx={{height: '1000px'}}>
+      <MaxContainer>
         {/* 스크롤탭 */}
         <S.StyledBtnGroup>
           {[{'name':'상세정보'},{'name':'포토'},{'name':'댓글'}].map((item, index)=>(
@@ -88,16 +132,15 @@ export function Detail():JSX.Element {
           
           {/* INFO */}
           <S.PriceDl>
-            <S.PriceDt>가격</S.PriceDt>
-            <S.PriceDd>
+            <dt>가격</dt>
+            <dd>
               <h2>{choosed?.price.toLocaleString('ko-KR')} <span>만원</span></h2>
-            </S.PriceDd>
+            </dd>
           </S.PriceDl>
           
-          {/* SPAC */}
+          {/* /SPAC */}
           <S.SpacDl>
             <S.SpacDt>제원</S.SpacDt>
-
             {/* 가솔린, 디젤, LPG */}
             {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
               <S.SpacDd>
@@ -121,7 +164,6 @@ export function Detail():JSX.Element {
                 <S.OptionDd>-</S.OptionDd>
                 {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
               </S.OptionDl>
-
               {/* OPTION 2LINE */}
               <S.OptionDl>
                 <S.OptionDt>연비등급</S.OptionDt>
@@ -142,7 +184,6 @@ export function Detail():JSX.Element {
                 <S.OptionDd>zero100</S.OptionDd>
                 {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
               </S.OptionDl>
-
               {/* OPTION 3LINE */}
               <S.OptionDl>
                 <S.OptionDt>앞타이어규격</S.OptionDt>
@@ -160,9 +201,7 @@ export function Detail():JSX.Element {
                 <S.OptionDt>탑승정원</S.OptionDt>
                 <S.OptionDd>{choosed?.capacity}</S.OptionDd>
               </S.OptionDl>
-
               </S.SpacDd>}
-
             {/* 하이브리드 */}
             {choosed?.fuelType === '하이브리드' &&
               <S.SpacDd>
@@ -234,7 +273,6 @@ export function Detail():JSX.Element {
                   <S.OptionDd>{choosed?.capacity}</S.OptionDd>
                 </S.OptionDl>
               </S.SpacDd>}
-
             {/* 전기 */}
             {(choosed?.fuelType === '전기' || choosed?.fuelType === '수소') &&
               <S.SpacDd>
@@ -295,9 +333,112 @@ export function Detail():JSX.Element {
                 </S.OptionDl>
               </S.SpacDd>
             }
-
           </S.SpacDl>
         </S.MoreInfo>
+
+        {/* PHOTO GALLERY */}
+        <S.SwiperWrap>
+          <S.Title><p>PHOTO</p></S.Title>
+          <S.MainSwiper
+            spaceBetween={10}
+            navigation={true}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[FreeMode, Navigation, Thumbs]}
+          >
+            {['1','2','3','4','5','6'].map((slide, index)=>(
+              <SwiperSlide>
+                <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
+              </SwiperSlide>
+            ))}
+          </S.MainSwiper>
+          <S.ThumbsSwiper
+            onSwiper={setThumbsSwiper}
+            spaceBetween={10}
+            slidesPerView={6}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            >
+            {/* ThumbsSwiper */}
+            {['1','2','3','4','5','6'].map((slide, index)=>(
+              <SwiperSlide>
+                <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
+              </SwiperSlide>
+            ))}
+          </S.ThumbsSwiper>
+        </S.SwiperWrap>
+
+        {/* COMMENT */}
+        <S.CommentWrap>
+          <div className='top_section'>
+            <div className='left'>
+              <div style={{width:"100%", display:"flex", alignItems:"center"}}>
+                <GradeIcon className='star'/>
+                <p className='int'>4.4</p>
+              </div>
+              <p className='commentCount'>23개의리뷰</p>
+            </div>
+            <div className='right'>
+              <div className='box'>
+                <span>5</span>
+                <div className='line'></div>
+              </div>
+              <div className='box'>
+                <span>4</span>
+                <div className='line'></div>
+              </div>
+              <div className='box'>
+                <span>3</span>
+                <div className='line'></div>
+              </div>
+              <div className='box'>
+                <span>2</span>
+                <div className='line'></div>
+              </div>
+              <div className='box'>
+                <span>1</span>
+                <div className='line'></div>
+              </div>
+            </div>
+          </div>
+          
+          {/* /post */}
+          <S.PostForm action='#' method='#'>
+            <Rating className='rating' defaultValue={0} precision={1} />
+            <TextField  fullWidth label="댓글" id="fullWidth"></TextField>
+            <div className='send'><SendIcon className='sendIcon' /></div>
+          </S.PostForm>
+          
+          {/* /sort */}
+          <div style={{margin:"24px 0 24px 24px"}}>
+            <span style={{marginRight:"16px"}}>최신순</span>
+            <span>좋아요순</span>
+          </div>
+
+          {/* /list */}
+          <form>
+            {commentList.map((item, index)=>(
+              <S.CommentList key={index}>
+                <Rating className='rating' defaultValue={item.rating} readOnly />
+                <span className='ratingNum'>{item.rating}</span>
+
+                <div className='textBox'>
+                  <div className='typo'>{item.text}</div>
+                  <div className='userInfo'>
+                    <span className='userName'>사용자</span>
+                    <span className='date'>  /  23.12.31</span>
+                  </div>
+                </div>
+
+                <div className='like'>
+                  {/* <ThumbUpAltIcon className='icon' /> */}
+                  <ThumbUpOffAltIcon className='offIcon' />
+                  <p className='likeCtn'>{item.likeCount}의 좋아요</p>
+                </div>
+              </S.CommentList>
+            ))}
+          </form>
+        </S.CommentWrap>
       </MaxContainer>
     </>
   )
