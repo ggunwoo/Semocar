@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useCarBrands } from '../hook/useCarData';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
+import SelectAllIcon from '@mui/icons-material/SelectAll';
 
 import {
   brandIn,
@@ -56,7 +57,8 @@ export function BrandNav () {
         ))}
         <S.LogoButton onClick={()=>{brandAll(); navigate(`/brand`)}}>
           <S.ImageBox className='imgBox'>
-            <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' />
+            {/* <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' /> */}
+            <SelectAllIcon sx={{"fontSize":"36px", "color":"#333"}} />
           </S.ImageBox>
           <S.LogoName className='logoName'>전체보기</S.LogoName>
         </S.LogoButton>

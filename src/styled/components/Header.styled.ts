@@ -1,7 +1,7 @@
 import  styled  from 'styled-components'
-import {AppBar, Toolbar, Button} from '@mui/material'
+import { Toolbar, Button} from '@mui/material'
 
-export const CustomAppBar = styled(AppBar)`
+export const Header = styled.div`
 && {
   width: 100%;
   background-color: #fff;
@@ -37,7 +37,7 @@ export const CustomStyledButton = styled(Button)`
     margin-right: 0;
     margin-left: 12px;
     &:hover {
-      border: 1px solid #FFA30B;
+      border: 1px solid #BA90FD;
     }
   }
 }`;

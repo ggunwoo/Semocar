@@ -7,6 +7,8 @@ export const BannerSwiper = styled(Swiper)`
   height: 472px;
   margin-bottom: 80px;
   user-select: none;
+  /* border-bottom-left-radius: 20px; */
+  /* border-bottom-right-radius: 20px; */
   .swiper-button-next {
     right: 13%;
     color: black;
@@ -51,6 +53,7 @@ export const BannerImg = styled.img`
 &&{
   z-index: 1;
   width: 1100px;
+  border-radius: 20px;
   position: absolute;
   margin: 0 auto;
   /* top: 0; */
@@ -83,8 +86,12 @@ export const BannerBtn = styled.img`
 }`;
 export const BannerBackgound = styled.img`
 && {
-  width: 100% !important;
-  height: 100% !important;
+  width: 85%;
+  height: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  filter: blur(100px);
+  opacity: .95;
   position: absolute;
   left: 0;
 }`;
@@ -94,12 +101,17 @@ export const GradientRelative = styled.div`
 }`;
 export const GradientBox = styled.div`
 && {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #E6E6E6 100%);
+  width: 70%;
+  height: 3px;
+  /* background: linear-gradient(0deg, rgba(230, 230, 230, 0) 0%, #E9DCFD 50%); */
+  /* background-color: #BA90FD; */
+  background-color: #E9DCFD;
+  filter: blur(2px);
+  opacity: .8;
   position: absolute;
-  top: -35%;
-  left: 0;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: -1;
 }`;
 export const SecondSwiper = styled(Swiper)`
@@ -113,13 +125,13 @@ export const SecondSwiper = styled(Swiper)`
   }
   .swiper-pagination-bullet-active {
     width : 30px;
-    background-color : #FFA30B;
+    background-color : #5C477D;
     border-radius: 20px;
   } 
 }`;
-export const TitleTypography = styled(Typography)`
+export const Title = styled(Typography)`
 && {
-  font-size: 24px;
+  font-size: 18px;
   margin-top: 100px;
 }`;
 export const InfoText = styled.p`
@@ -143,7 +155,7 @@ export const GalleryGrid = styled(Grid)`
       text-align: center;
       opacity: 0;
       transition: opacity .3s;
-      background-color: #FFA30B;
+      background-color: #BA90FD;
       .title {
         margin-top: 80px;
         font-size: 36px;

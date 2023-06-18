@@ -10,8 +10,8 @@ export function Header():JSX.Element {
 
   return(
     <>
-      <div style={{"height":"80px"}}></div>
-      <S.CustomAppBar>
+      {/* <div style={{"height":"80px"}}></div> */}
+      <S.Header>
         <MaxContainer>
           <S.FlexToolbar>
             <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
@@ -25,7 +25,7 @@ export function Header():JSX.Element {
             </div>
           </S.FlexToolbar>
         </MaxContainer>
-      </S.CustomAppBar>
+      </S.Header>
     </>
   )
 }

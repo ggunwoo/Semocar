@@ -28,4 +28,12 @@ function App(): JSX.Element {
     </>
   );
 }
+
+// color
+// dark : #5C477D
+// deep : #9063FF
+// main : #BA90FD
+// light : #E9DCFD
+
+
 export default App;

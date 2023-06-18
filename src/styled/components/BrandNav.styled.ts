@@ -8,7 +8,7 @@ export const FlexBox = styled(Box)`
   justify-content: space-evenly;
   align-items: center;
   .clicked {
-    border-bottom: 4px solid #FFA30B;
+    border-bottom: 4px solid #BA90FD;
   }
   :hover > .imgBox{
     display: none;
@@ -22,7 +22,7 @@ export const LogoButton = styled(Button)`
   width: 120px;
   height: 60px;
   &:hover {
-    border-bottom: 4px solid #FFA30B;
+    border-bottom: 4px solid #BA90FD;
   }
 }`;
 export const ImageBox = styled.div`
@@ -35,7 +35,7 @@ export const ImageBox = styled.div`
 }`;
 export const LogoName = styled.p`
 && {
-  color: #FFA30B;
+  color: #BA90FD;
   font-size: 1rem;
   font-weight: bold;
   font-family: 'Gmarket Sans medium';

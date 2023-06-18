@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
@@ -71,6 +71,9 @@ export function Detail():JSX.Element {
     setClickCheck(copyCheck);
   }
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  }, [])
   return (
     <>
     {/* 상단 Article */}
@@ -116,7 +119,7 @@ export function Detail():JSX.Element {
               <S.FormDt>등급</S.FormDt>
               <S.FormDd>
                 {searchCar?.grades.map((grade, index)=>(
-                  <S.ChipBtn key={index} onClick={()=>{segSelectGrade(index); segSelectTrim(0)}}>{grade.name}</S.ChipBtn>
+                  <S.ChipBtn key={index} className={`${index === selectGrade ? "clicked" : null}  grade`} onClick={()=>{segSelectGrade(index); segSelectTrim(0);}}>{grade.name}</S.ChipBtn>
                 ))}
               </S.FormDd>
             </S.FormDl>
@@ -124,7 +127,7 @@ export function Detail():JSX.Element {
               <S.FormDt>트림</S.FormDt>
               <S.FormDd>
                 {searchCar?.grades[selectGrade].trims.map((trim, index)=>(
-                  <S.ChipBtn key={trim.name} onClick={()=>{segSelectTrim(index)}}>{trim.name}</S.ChipBtn>
+                  <S.ChipBtn key={trim.name} className={`${index === selectTrim ? "clicked" : null} trim`} onClick={()=>{segSelectTrim(index)}}>{trim.name}</S.ChipBtn>
                 ))}
               </S.FormDd>
             </S.FormDl>
@@ -144,63 +147,63 @@ export function Detail():JSX.Element {
             {/* 가솔린, 디젤, LPG */}
             {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
               <S.SpacDd>
-              {/* OPTION 1LINE */}
-              <S.OptionDl>
-                <S.OptionDt>연료</S.OptionDt>
-                <S.OptionDd>{choosed?.fuelType}</S.OptionDd>
-                <S.OptionDt>엔진형식</S.OptionDt>
-                <S.OptionDd>{choosed?.engine}</S.OptionDd>
-                <S.OptionDt>배기량</S.OptionDt>
-                <S.OptionDd>{choosed?.displacement}</S.OptionDd>
-                <S.OptionDt>변속기</S.OptionDt>
-                <S.OptionDd>{choosed?.transMission}</S.OptionDd>
-                <S.OptionDt>구동방식</S.OptionDt>
-                <S.OptionDd>{choosed?.drivingSystem}</S.OptionDd>
-                <S.OptionDt>최고출력</S.OptionDt>
-                <S.OptionDd>{choosed?.power}</S.OptionDd>
-                <S.OptionDt>최대토크</S.OptionDt>
-                <S.OptionDd>{choosed?.torque}</S.OptionDd>
-                <S.OptionDt>최고속도</S.OptionDt>
-                <S.OptionDd>-</S.OptionDd>
-                {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-              </S.OptionDl>
-              {/* OPTION 2LINE */}
-              <S.OptionDl>
-                <S.OptionDt>연비등급</S.OptionDt>
-                <S.OptionDd>{choosed?.ratingGasMileage}</S.OptionDd>
-                <S.OptionDt>복합연비</S.OptionDt>
-                <S.OptionDd>{choosed?.complexGasMileage}</S.OptionDd>
-                <S.OptionDt>도심연비</S.OptionDt>
-                <S.OptionDd>{choosed?.urbanGasMileage}</S.OptionDd>
-                <S.OptionDt>고속도로연비</S.OptionDt>
-                <S.OptionDd>{choosed?.highwayGasMileage}</S.OptionDd>
-                <S.OptionDt>저공해등급</S.OptionDt>
-                <S.OptionDd>{choosed?.lowEmission}</S.OptionDd>
-                <S.OptionDt>공차중량</S.OptionDt>
-                <S.OptionDd>{choosed?.vehicleWeight}</S.OptionDd>
-                <S.OptionDt>자율주행 레벨</S.OptionDt>
-                <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
-                <S.OptionDt>제로백</S.OptionDt>
-                <S.OptionDd>zero100</S.OptionDd>
-                {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-              </S.OptionDl>
-              {/* OPTION 3LINE */}
-              <S.OptionDl>
-                <S.OptionDt>앞타이어규격</S.OptionDt>
-                <S.OptionDd>{choosed?.frontTire}</S.OptionDd>
-                <S.OptionDt>뒷타이어규격</S.OptionDt>
-                <S.OptionDd>{choosed?.rearTire}</S.OptionDd>
-                <S.OptionDt>전륜브레이크</S.OptionDt>
-                <S.OptionDd>{choosed?.frontSuspension}</S.OptionDd>
-                <S.OptionDt>후륜브레이크</S.OptionDt>
-                <S.OptionDd>{choosed?.rearSuspension}</S.OptionDd>
-                <S.OptionDt>전륜서스펜션</S.OptionDt>
-                <S.OptionDd>{choosed?.frontBrake}</S.OptionDd>
-                <S.OptionDt>후륜서스펜션</S.OptionDt>
-                <S.OptionDd>{choosed?.rearBrake}</S.OptionDd>
-                <S.OptionDt>탑승정원</S.OptionDt>
-                <S.OptionDd>{choosed?.capacity}</S.OptionDd>
-              </S.OptionDl>
+                {/* OPTION 1LINE */}
+                <S.OptionDl>
+                  <S.OptionDt>연료</S.OptionDt>
+                  <S.OptionDd>{choosed?.fuelType}</S.OptionDd>
+                  <S.OptionDt>엔진형식</S.OptionDt>
+                  <S.OptionDd>{choosed?.engine}</S.OptionDd>
+                  <S.OptionDt>배기량</S.OptionDt>
+                  <S.OptionDd>{choosed?.displacement}</S.OptionDd>
+                  <S.OptionDt>변속기</S.OptionDt>
+                  <S.OptionDd>{choosed?.transMission}</S.OptionDd>
+                  <S.OptionDt>구동방식</S.OptionDt>
+                  <S.OptionDd>{choosed?.drivingSystem}</S.OptionDd>
+                  <S.OptionDt>최고출력</S.OptionDt>
+                  <S.OptionDd>{choosed?.power}</S.OptionDd>
+                  <S.OptionDt>최대토크</S.OptionDt>
+                  <S.OptionDd>{choosed?.torque}</S.OptionDd>
+                  <S.OptionDt>최고속도</S.OptionDt>
+                  <S.OptionDd>-</S.OptionDd>
+                  {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
+                </S.OptionDl>
+                {/* OPTION 2LINE */}
+                <S.OptionDl>
+                  <S.OptionDt>연비등급</S.OptionDt>
+                  <S.OptionDd>{choosed?.ratingGasMileage}</S.OptionDd>
+                  <S.OptionDt>복합연비</S.OptionDt>
+                  <S.OptionDd>{choosed?.complexGasMileage}</S.OptionDd>
+                  <S.OptionDt>도심연비</S.OptionDt>
+                  <S.OptionDd>{choosed?.urbanGasMileage}</S.OptionDd>
+                  <S.OptionDt>고속도로연비</S.OptionDt>
+                  <S.OptionDd>{choosed?.highwayGasMileage}</S.OptionDd>
+                  <S.OptionDt>저공해등급</S.OptionDt>
+                  <S.OptionDd>{choosed?.lowEmission}</S.OptionDd>
+                  <S.OptionDt>공차중량</S.OptionDt>
+                  <S.OptionDd>{choosed?.vehicleWeight}</S.OptionDd>
+                  <S.OptionDt>자율주행 레벨</S.OptionDt>
+                  <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
+                  <S.OptionDt>제로백</S.OptionDt>
+                  <S.OptionDd>zero100</S.OptionDd>
+                  {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
+                </S.OptionDl>
+                {/* OPTION 3LINE */}
+                <S.OptionDl>
+                  <S.OptionDt>앞타이어규격</S.OptionDt>
+                  <S.OptionDd>{choosed?.frontTire}</S.OptionDd>
+                  <S.OptionDt>뒷타이어규격</S.OptionDt>
+                  <S.OptionDd>{choosed?.rearTire}</S.OptionDd>
+                  <S.OptionDt>전륜브레이크</S.OptionDt>
+                  <S.OptionDd>{choosed?.frontSuspension}</S.OptionDd>
+                  <S.OptionDt>후륜브레이크</S.OptionDt>
+                  <S.OptionDd>{choosed?.rearSuspension}</S.OptionDd>
+                  <S.OptionDt>전륜서스펜션</S.OptionDt>
+                  <S.OptionDd>{choosed?.frontBrake}</S.OptionDd>
+                  <S.OptionDt>후륜서스펜션</S.OptionDt>
+                  <S.OptionDd>{choosed?.rearBrake}</S.OptionDd>
+                  <S.OptionDt>탑승정원</S.OptionDt>
+                  <S.OptionDd>{choosed?.capacity}</S.OptionDd>
+                </S.OptionDl>
               </S.SpacDd>}
             {/* 하이브리드 */}
             {choosed?.fuelType === '하이브리드' &&
@@ -334,6 +337,80 @@ export function Detail():JSX.Element {
               </S.SpacDd>
             }
           </S.SpacDl>
+
+            <S.SizeBox>
+
+
+
+              {/* 차량 앞면 이미지 */}
+              <div className='size_box front'>
+                <span className='wrap_thumb'>
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
+                </span>
+                <span className='wrap_size track'>
+                  <span className='txt'>
+                    윤거전
+                    <span> {choosed?.track}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+                <span className='wrap_size weight'>
+                  <span className='txt'>
+                    전폭
+                    <span> {choosed?.weight}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+
+              </div>
+
+
+
+
+              {/* 차량 옆면 이미지 */}
+              <div className='size_box side'>
+                <span className='wrap_thumb'>
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
+                </span>
+                <span className='wrap_size wheelbase'>
+                  <span className='txt'>
+                    축거
+                    <span> {choosed?.wheelBase}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+                <span className='wrap_size length'>
+                  <span className='txt'>
+                    전장
+                    <span> {choosed?.length}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+              </div>
+
+
+              {/* 차량 뒷면 이미지 */}
+              <div className='size_box rear'>
+                <span className='wrap_thumb'>
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
+                </span>
+                <span className='wrap_size tread'>
+                  <span className='txt'>
+                    윤거후
+                    <span> {choosed?.tread}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+                <span className='wrap_size height'>
+                  <span className='txt'>
+                    전고
+                    <span> {choosed?.height}</span>
+                  </span>
+                  <span className='line'></span>
+                </span>
+              </div>
+            </S.SizeBox>
+
         </S.MoreInfo>
 
         {/* PHOTO GALLERY */}
@@ -433,7 +510,7 @@ export function Detail():JSX.Element {
                 <div className='like'>
                   {/* <ThumbUpAltIcon className='icon' /> */}
                   <ThumbUpOffAltIcon className='offIcon' />
-                  <p className='likeCtn'>{item.likeCount}의 좋아요</p>
+                  <p className='likeCtn'>{item.likeCount}</p>
                 </div>
               </S.CommentList>
             ))}

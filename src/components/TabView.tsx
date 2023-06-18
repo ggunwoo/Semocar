@@ -193,17 +193,20 @@ export function TabView() {
                   } else {
                     return filteredCars.map((car, index) => (
                       <S.CarArticle key={index}>
-                        <img
-                          style={{ width: '80%' }}
-                          src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
-                          alt={car.name.en}
-                        />
-                        <div style={{ fontWeight: 'bold', margin: '4px 0 4px' }}>{`${car.brand.kr} ${car.name.kr}`}</div>
-                        <div>가격: {`${car.price.min} ~ ${car.price.max}`}만원</div>
-                        <div>차급: {car.segment}</div>
-                        <div>연료: {car.fuelTypes}</div>
-                        <div>연비: {car.gasMileage}</div>
-                        <Button onClick={()=>{navigate(`/detail/${car.id}`)}} size='small' variant='outlined' >보러가기</Button>
+                        <div className='car_head' onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                          <img
+                            style={{ width: '80%' }}
+                            src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
+                            alt={car.name.en}
+                          />
+                          <p>{`${car.brand.kr} ${car.name.kr}`}</p>
+                        </div>
+                        <div className='car_info'>
+                          <div><span>가격</span>{`${car.price.min} ~ ${car.price.max}`}만원</div>
+                          <div><span>차급</span>{car.segment}</div>
+                          <div><span>연료</span>{car.fuelTypes}</div>
+                          <div><span>연비</span>{car.gasMileage}</div>
+                        </div>
                       </S.CarArticle>
                     ));
                   }

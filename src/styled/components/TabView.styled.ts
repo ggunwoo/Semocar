@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { Box } from '@mui/material';
 
+// const maincolor = "#BA90FD";
 
 export const SearchBarWraper = styled.div`
 && {
@@ -33,7 +34,41 @@ export const CarSection = styled.div`
 export const CarArticle = styled.div`
 && {
   width: 275px;
-  @media (max-width: 1440px){
-      width: 240px;
+  margin-bottom: 70px;
+  .car_head {
+    cursor: pointer;
+    img {
+      transition: all .5s;
     }
+    p {
+      margin-top: 16px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    &:hover {
+      img {
+        transform: translateX(-20px);
+      }
+      p {
+        color: #9063FF;
+      }
+    }
+    &:not(:hover) {
+      transform: translateX(0);
+      p {
+        color: #000;
+      }
+    }
+  }
+  .car_info {
+    font-size: 14px;
+    div span {
+      color: #999;
+      margin-right: 8px;
+    }
+  }
+  @media (max-width: 1440px){
+    width: 320px;
+  }
 }`;

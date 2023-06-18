@@ -32,9 +32,9 @@ export function Main ():JSX.Element {
 
   const [carPhoto, setCarPhoto] = useState([
     {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata'},
-    {id: 2, name : '트랙스 크로스오버', imgUrl: 'chevrolet/Trax'},
+    {id: 15300, name : '트랙스 크로스오버', imgUrl: 'chevrolet/Trax'},
     {id: 11331, name : 'EV9', imgUrl: 'kia/EV9'},
-    {id: 4, name : 'QM6', imgUrl: 'renault_korea/Qm6'},
+    {id: 13320, name : 'QM6', imgUrl: 'renault_korea/Qm6'},
     {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante'},
     {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
   ]);
@@ -81,7 +81,7 @@ export function Main ():JSX.Element {
                   <S.BannerImg src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
                   <S.BannerBtn onClick={()=>{navigate(`/detail/${a}`)}} className={`bannerBtn_${i+1}`} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/btn.png`} />
                 </S.BaseBox>
-                <S.BannerBackgound src={`https://via.placeholder.com/1920x468/FFFFFF?text=Background Banner ${i+1}`} alt={`BACKGROUND${i+1}`} />
+                <S.BannerBackgound src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`BACKGROUND${i+1}`} />
             </SwiperSlide>
           ))
         }
@@ -93,7 +93,7 @@ export function Main ():JSX.Element {
       {/* NewCar SLIDE */}
       <S.GradientRelative>
         <MaxContainer sx={{ position:'relative' }}>
-          <S.TitleTypography>최신 출시 모델</S.TitleTypography>
+          <S.Title>최신 출시 모델</S.Title>
           <S.SecondSwiper
             slidesPerView={4}
             slidesPerGroup={4}
@@ -135,7 +135,7 @@ export function Main ():JSX.Element {
       {/* 포토갤러리 */}
       
       <MaxContainer>
-        <S.TitleTypography>포토 갤러리</S.TitleTypography>
+        <S.Title>포토 갤러리</S.Title>
         <S.GalleryGrid container spacing={0}>
           {
             carPhoto.map((photo, i)=>(

@@ -16,11 +16,12 @@ export const TitleBox = styled.div`
   background-color: #e2e2e2;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }`;
 export const InfoBox = styled.div`
 && {
   height: 400px;
+  margin-top: 100px;
   h5.brand {
     font-size: 1.125rem;
     margin-bottom: 0 !important;
@@ -30,7 +31,7 @@ export const InfoBox = styled.div`
     font-size: 3.75rem;
   }
   p.price {
-    color: #FFA30B;
+    color: #5C477D;
     font-weight: bold;
     font-size: 1.25rem;
     line-height: 2rem;
@@ -43,7 +44,7 @@ export const StyledChip = styled(Chip)`
 }`;
 export const ImgBox = styled.div`
 && {
-
+  margin-top: 120px;
 }`;
 export const StyledBtnGroup = styled(ButtonGroup)`
 && {
@@ -95,11 +96,21 @@ export const FormDd = styled.dd`
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
-  gap: .5em;
+  gap: .7em;
+  .clicked {
+    color: #fff;
+    background-color: #5C477D;
+  }
+  .grade {
+  }
 }`;
 export const ChipBtn = styled.div`
 && {
   padding: 5px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* min-width: 60px; */
+  text-align: center;
   border: 1px solid #d8d8d8;
   border-radius: 1.5em;
 }`;
@@ -124,6 +135,7 @@ export const PriceDl = styled.dl`
     }
   }
 }`;
+
 // SPAC
 export const SpacDl = styled.dl`
 && {
@@ -156,11 +168,137 @@ export const OptionDt = styled.dt`
   color: #999999;
   font-weight: normal;
   float: left;
+  margin-bottom: 8px;
 }`;
 export const OptionDd = styled.dd`
 && {
-  font-weight: bold;
-  /* float: right; */
+  margin-bottom: 8px;
+  /* font-weight: bold; */
+}`;
+export const SizeBox = styled.div`
+&& {
+  width: 85%;
+  height: 100%;
+  margin-left: 90px;
+  display: flex;
+  justify-content: space-evenly;
+  .size_box {
+    .wrap_thumb .sizeimg {
+      height: 104px;
+      margin-bottom: 3px;
+    }
+    .wrap_size {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      line-height: 1em;
+      .txt {
+        font-size: .75em;
+        background-color: #fff;
+        padding: 0 3px;
+      }
+      .line {
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        z-index: -1;
+        &::after {
+          content: "";
+          display: block;
+          width: 1px;
+          height: 5px;
+          background-color: #ccc;
+          position: absolute;
+          top: -5px;
+          left: 0;
+        }
+        &::before {
+          content: "";
+          display: block;
+          width: 1px;
+          height: 5px;
+          background-color: #ccc;
+          position: absolute;
+          top: -5px;
+          right: 0;
+        }
+      }
+    }
+  }
+  .front {
+    .track {
+      width: 94px;
+    }
+    .weight {
+      width: 100%;
+    }
+  }
+  .side {
+    .wheelbase {
+      width: 180px;
+    }
+    .length {}
+  }
+  .rear {
+    position: relative;
+    .tread {
+      width: 94px;
+      margin-top: 8px;
+    }
+    .height {
+      height: 104px;
+      margin: 0 auto;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 152px;
+      line-height: 1em;
+      .txt {
+        display: block;
+        width: 61px;
+        padding: 5px 0;
+        font-size: .75em;
+        background-color: #fff;
+        position: relative;
+        top: 50%;
+        left: -50%;
+        transform: translateY(-50%);
+      }
+      .line {
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        &::after {
+          content: "";
+          display: block;
+          width: 5px;
+          height: 1px;
+          background-color: #ccc;
+          position: absolute;
+          top: 0;
+          left: -5px;
+        }
+        &::before {
+          content: "";
+          display: block;
+          width: 5px;
+          height: 1px;
+          background-color: #ccc;
+          position: absolute;
+          top: 103px;
+          left: -5px;
+        }
+      }
+    }
+  }
 }`;
 
 // SWIPER
@@ -227,7 +365,7 @@ export const ThumbsSwiper = styled(Swiper)`
     top: 0;
     left: 0;
     background-color: transparent;
-    border-bottom: 5px solid #FFA30B;
+    border-bottom: 5px solid #5C477D;
   }
 }`;
 
@@ -357,6 +495,7 @@ export const CommentList = styled.div`
     .icon {}
     .offIcon {}
     .likeCtn {
+      line-height: 2em;
       font-size: 0.75em;
     }
   }
