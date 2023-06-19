@@ -4,13 +4,13 @@ import { Grid, Typography } from '@mui/material'
 
 export const BannerSwiper = styled(Swiper)`
 && {
-  height: 472px;
+  height: 572px;
   margin-bottom: 80px;
   user-select: none;
-  /* border-bottom-left-radius: 20px; */
-  /* border-bottom-right-radius: 20px; */
+  border-bottom-left-radius: 7%;
+  border-bottom-right-radius: 7%;
   .swiper-button-next {
-    right: 13%;
+    right: 15%;
     color: black;
     opacity: .2;
     @media (max-width:1600px) {
@@ -24,14 +24,14 @@ export const BannerSwiper = styled(Swiper)`
     }
   }
   .swiper-button-prev {
-    left: 13%;
+    left: 15%;
     color: black; 
     opacity: .2;
     @media (max-width:1600px) {
       left: 7%;
     }
     @media (max-width:1440px) {
-      left: 4%;
+      left: 6%;
     }
     @media (max-width:1100px) {
       left: 2%;
@@ -39,6 +39,8 @@ export const BannerSwiper = styled(Swiper)`
   }
   .swiper-scrollbar {
     width: 1100px;
+    height: 7px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -46,8 +48,10 @@ export const BannerSwiper = styled(Swiper)`
 export const BaseBox = styled.div`
 &&{
   width: 1100px;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
+  top: 50px;
+  /* transform: translateY(-50%); */
 }`
 export const BannerImg = styled.img`
 &&{
@@ -104,7 +108,6 @@ export const GradientBox = styled.div`
   width: 70%;
   height: 3px;
   /* background: linear-gradient(0deg, rgba(230, 230, 230, 0) 0%, #E9DCFD 50%); */
-  /* background-color: #BA90FD; */
   background-color: #E9DCFD;
   filter: blur(2px);
   opacity: .8;
