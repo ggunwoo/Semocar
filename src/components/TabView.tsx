@@ -194,11 +194,13 @@ export function TabView() {
                     return filteredCars.map((car, index) => (
                       <S.CarArticle key={index}>
                         <div className='car_head' onClick={()=>{navigate(`/detail/${car.id}`)}}>
-                          <img
-                            style={{ width: '80%' }}
-                            src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
-                            alt={car.name.en}
-                          />
+                          <div className='img_wrap'>
+                            <img
+                              // style={{ width: '80%' }}
+                              src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
+                              alt={car.name.en}
+                            />
+                          </div>
                           <p>{`${car.brand.kr} ${car.name.kr}`}</p>
                         </div>
                         <div className='car_info'>

@@ -24,8 +24,7 @@ export const CarSection = styled.div`
   /* border: 1px solid black; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
   @media (max-width:1440px) {
     width: 960px;
     
@@ -37,8 +36,18 @@ export const CarArticle = styled.div`
   margin-bottom: 70px;
   .car_head {
     cursor: pointer;
-    img {
-      transition: all .5s;
+    .img_wrap {
+      max-width: 280px;
+      height: 130px;
+      position: relative;
+      img {
+        margin: auto 0;
+        width: 230px;
+        transition: all .5s;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
     p {
       margin-top: 16px;
@@ -48,14 +57,16 @@ export const CarArticle = styled.div`
     }
     &:hover {
       img {
-        transform: translateX(-20px);
+        left: -30px;
       }
       p {
         color: #9063FF;
       }
     }
     &:not(:hover) {
-      transform: translateX(0);
+      img {
+        left: 0;
+      }
       p {
         color: #000;
       }

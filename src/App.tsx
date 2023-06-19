@@ -34,6 +34,7 @@ function App(): JSX.Element {
 // deep : #9063FF
 // main : #BA90FD
 // light : #E9DCFD
+// superlight : #FAF7FF
 
 
 export default App;
