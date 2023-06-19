@@ -7,8 +7,8 @@ export const BannerSwiper = styled(Swiper)`
   height: 572px;
   margin-bottom: 80px;
   user-select: none;
-  border-bottom-left-radius: 7%;
-  border-bottom-right-radius: 7%;
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
   .swiper-button-next {
     right: 15%;
     color: black;
@@ -38,9 +38,9 @@ export const BannerSwiper = styled(Swiper)`
     }
   }
   .swiper-scrollbar {
-    width: 1100px;
+    width: 1072px;
     height: 7px;
-    bottom: 0;
+    bottom: 54px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -117,6 +117,23 @@ export const GradientBox = styled.div`
   transform: translateX(-50%);
   z-index: -1;
 }`;
+
+
+// BrandNav
+export const BrandNavWrap = styled.div`
+&& {
+  width: 1100px;
+  height: 100px;
+  background-color: #fcfcfc;
+  padding-top: 20px;
+  margin: 50px auto;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 20px;
+}`;
+
+
+
 export const SecondSwiper = styled(Swiper)`
 && {
   height: 370px;

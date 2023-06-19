@@ -88,11 +88,14 @@ export function Main ():JSX.Element {
       </S.BannerSwiper>
 
       {/* 브랜드별 차량 NAV COMPONENTS */}
-      <BrandNav />
+        <MaxContainer sx={{ position:'relative' }}>
+      <p>브랜드별 보러가기</p>
+      <S.BrandNavWrap>
+        <BrandNav />
+      </S.BrandNavWrap>
 
       {/* NewCar SLIDE */}
-      <S.GradientRelative>
-        <MaxContainer sx={{ position:'relative' }}>
+      {/* <S.GradientRelative> */}
           <S.Title>최신 출시 모델</S.Title>
           <S.SecondSwiper
             slidesPerView={4}
@@ -130,7 +133,7 @@ export function Main ():JSX.Element {
           </S.SecondSwiper>
         </MaxContainer>
         {/* <S.GradientBox /> */}
-      </S.GradientRelative>
+      {/* </S.GradientRelative> */}
 
       {/* 포토갤러리 */}
       

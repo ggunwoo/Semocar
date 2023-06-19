@@ -4,7 +4,7 @@ import { Box, Button } from '@mui/material';
 export const FlexBox = styled(Box)`
 && {
   display:flex;
-  margin-top: 2rem;
+  /* margin-top: 0; */
   justify-content: space-evenly;
   align-items: center;
   .clicked {
