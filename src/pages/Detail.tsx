@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState } from 'react'
+import React, {useRef, useEffect, useState, useCallback } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
@@ -19,6 +19,7 @@ import "swiper/css/thumbs";
 // STYLED
 import { MaxContainer } from '../styled/Global'
 import * as S from '../styled/Detail.styled'
+import { Title } from '../styled/Main.styled'
 
 
 export function Detail():JSX.Element {
@@ -26,19 +27,12 @@ export function Detail():JSX.Element {
   const {id} = useParams();
   const searchCar = carData.find((e) => e.id === Number(id))
 
-  const infoRef = useRef<HTMLInputElement>(null)
-  const photoRef = useRef<HTMLInputElement>(null)
-  const commentRef = useRef<HTMLInputElement>(null)
-  const [ClickCheck, setClickCheck] = useState([true, false, false]);
-  const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
   
   const minPrice = (searchCar?.price.min)?.toLocaleString('ko-KR')
   const maxPrice = (searchCar?.price.max)?.toLocaleString('ko-KR')
   const [selectGrade, segSelectGrade] = useState(0)
   const [selectTrim, segSelectTrim] = useState(0)
   const choosed = searchCar?.grades[selectGrade].trims[selectTrim];
-  // const choosedElectric = choosed?.fuelType === '전기';
-  // const choosedHybrid = choosed?.fuelType === '하이브리드';
 
   const [thumbsSwiper, setThumbsSwiper] = useState<Swiper|null>(null);
   const [commentList, setCommentList] = useState([
@@ -76,18 +70,60 @@ export function Detail():JSX.Element {
     setClickCheck(copyCheck);
   }
 
+  const infoRef = useRef<HTMLInputElement>(null)
+  const photoRef = useRef<HTMLInputElement>(null)
+  const commentRef = useRef<HTMLInputElement>(null)
+  const [ClickCheck, setClickCheck] = useState([true, false, false]);
+  const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
 
+  const [tabFixed, setTabFixed] = useState(false)
 
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [])
 
+  useEffect(()=>{
+    const handleScroll = () => {
+      const targetElement = document.getElementById('grade');
+      const scrollY = window.scrollY
+  
+      // 탭네비 화면에서 사라지면 Fixed 로직
+      if (targetElement) {
+        const { top } = targetElement.getBoundingClientRect();
+        if (top <= window.innerHeight * 0.14) {
+          // 특정 위치에 도달했을 때 실행할 로직
+          setTabFixed(true)
+        } else if ( top > window.innerHeight * 0.14) {
+          setTabFixed(false)
+        }
+      }
+
+      console.log()
+  
+      if(scrollY > 600 && scrollY < 900){
+        setClickCheck([true, false, false])
+      }
+      if(scrollY > 1350 && scrollY < 1800){
+        setClickCheck([false, true, false])
+      }
+      if(scrollY > 2250 && scrollY < 2800){
+        setClickCheck([false, false, true])
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      setTabFixed(false)
+    }
+  }, [])
+  
   const targetMove = (target: any) => {
     if(target.current){
       target.current.scrollIntoView({ block: 'center', behavior: 'smooth'});
     }
   };
-  
+
   return (
     <div className='wrap'>
     {/* 상단 Article */}
@@ -119,22 +155,25 @@ export function Detail():JSX.Element {
               <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
             </S.ImgBox>
           </S.TitleBox>
+
         </MaxContainer>
       </S.BgBox>
       }
-
       <MaxContainer>
-        {/* 스크롤탭 */}
-        <S.StyledBtnGroup>
-          {['상세정보','포토','댓글'].map((item, index)=>(
-            <S.StyledBtn 
+        
+        <S.TargetBtnGroup className={`${tabFixed ? 'fixed': 'unfixed'}`}>
+          {/* 스크롤탭 */}
+          {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
+            <div 
               key={index}
-              className={`${ClickCheck[index] ? 'clicked' : 'unclick'}`}
-              onClick={()=>{BtnClick(index); targetMove(targetClick[index]);}}>{item}
-            </S.StyledBtn>
+              className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
+              onClick={()=>{BtnClick(index); targetMove(targetClick[index]);}}><p>{item}</p>
+            </div>
           ))}
-        </S.StyledBtnGroup>
-        <S.MoreInfo ref={infoRef}>
+        </S.TargetBtnGroup>
+        
+        <S.Title >등급별 제원</S.Title>
+        <S.MoreInfo id="grade" ref={infoRef}>
           {/* FORM */}
           <form action="#">
             <S.FormDl>
@@ -437,7 +476,7 @@ export function Detail():JSX.Element {
 
         {/* PHOTO GALLERY */}
         <S.SwiperWrap ref={photoRef}>
-          <S.Title><p>PHOTO</p></S.Title>
+          <S.Title>포토</S.Title>
           <S.MainSwiper
             spaceBetween={10}
             navigation={true}
@@ -473,7 +512,7 @@ export function Detail():JSX.Element {
             <div className='left'>
               <div style={{width:"100%", display:"flex", alignItems:"center"}}>
                 <GradeIcon className='star'/>
-                <p className='int'>4.4</p>
+                <p className='int'>3.0</p>
               </div>
               <p className='commentCount'>23개의리뷰</p>
             </div>
@@ -509,15 +548,15 @@ export function Detail():JSX.Element {
           </S.PostForm>
           
           {/* /sort */}
-          <div style={{margin:"24px 0 24px 24px"}}>
+          <div className='sort' style={{margin:"24px 0 24px 24px"}}>
             <span style={{marginRight:"16px"}}>최신순</span>
             <span>좋아요순</span>
           </div>
 
           {/* /list */}
-          <form>
+          <S.CommentList>
             {commentList.map((item, index)=>(
-              <S.CommentList key={index}>
+              <div className='list' key={index}>
                 <Rating className='rating' defaultValue={item.rating} readOnly />
                 <span className='ratingNum'>{item.rating}</span>
 
@@ -534,9 +573,9 @@ export function Detail():JSX.Element {
                   <ThumbUpOffAltIcon className='offIcon' />
                   <p className='likeCtn'>{item.likeCount}</p>
                 </div>
-              </S.CommentList>
+              </div>
             ))}
-          </form>
+          </S.CommentList>
         </S.CommentWrap>
       </MaxContainer>
     </div>

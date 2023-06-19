@@ -1,13 +1,16 @@
 import { styled } from 'styled-components'
-import { Chip, Button, ButtonGroup,  } from '@mui/material'
+import { Chip } from '@mui/material'
 import { Swiper } from 'swiper/react'
-import { SwiperSlide } from 'swiper/react'
 
 // FORM
 export const BgBox = styled.div`
 && {
   width: 100%;
   background-color: #e9e9e9;
+  margin-bottom: 40px;
+  &.display_none {
+    width: 100px;
+  }
 }`;
 export const TitleBox = styled.div`
 && {
@@ -46,26 +49,68 @@ export const ImgBox = styled.div`
 && {
   margin-top: 120px;
 }`;
-export const StyledBtnGroup = styled(ButtonGroup)`
+export const TargetBtnGroup = styled.div`
 && {
-  margin-top: 50px;
-}`;
-export const StyledBtn = styled(Button)`
-&& {
-  color: black;
-  border-color: #5C477D;
-  transition: all 1;
-  &.clicked {
-    color: white;
-    background-color: #5C477D;
+  width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 2;
+
+  @media (max-width: 1440px) {
+    width: 960px;
   }
+  &.fixed {
+    position: fixed;
+    top: 0;
+  }
+  .targetBtn {
+    width: calc(100%/3);
+    height: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+    border-top: 1px solid #5C477D;  
+    border-left: 1px solid #E9DCFD;
+    position: relative;
+    p {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:last-child {
+      /* border-right: none; */
+      border-right: 1px solid #E9DCFD;
+    }
+  }
+  .unclick {
+    background-color: #FAF7FF;
+    border-bottom: 1px solid #E9DCFD;
+  }
+  .clicked {
+    color: #000;
+    background-color: #fff;
+  }
+  
+  &.fixed .clicked {
+    color: #000;
+    background-color: #fff;
+    border-bottom: 1px solid #E9DCFD;
+  }
+  
+}`;
+
+export const Title = styled.span`
+&& {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
 }`;
 
 // INFO
 export const MoreInfo = styled.div`
 && {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 20px;
   border: 1px solid #e8e8e8;
   border-radius: 5px;
 }`;
@@ -308,19 +353,9 @@ export const SwiperWrap = styled.div`
   margin-top: 160px;
   height: 700px;
 }`;
-export const Title = styled.span`
-&& {
-  margin-bottom: 2000px;
-  text-align: center;
-  p {
-    font-size: 2em;
-    font-weight: bold;
-    letter-spacing: .275em;
-  }
-}`;
 export const MainSwiper = styled(Swiper)`
 && {
-  margin-top: 40px;
+  margin-top: 20px;
   --swiper-navigation-color : #fff;
   --swiper-pagination-color : #fff;
   img {
@@ -401,6 +436,7 @@ export const CommentWrap = styled.div`
         left: 3em;
         bottom: -1.25em;
       }
+      
     }
     .right {
       width: 800px;
@@ -418,6 +454,10 @@ export const CommentWrap = styled.div`
         }
       }
     }
+    
+  }
+  .sort {
+    cursor: pointer;
   }
 }`;
 export const PostForm = styled.form`
@@ -452,38 +492,40 @@ export const PostForm = styled.form`
 }`;
 
 // COMMENT-list
-export const CommentList = styled.div`
+export const CommentList = styled.form`
 && {
-  width: 100%;
-  min-height: 128px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 18px;
-  background-color: #f9f9f9;
-  border-radius: 20px;
-  .rating {
-    margin-right: .5em;
-  }
-  .ratingNum {
-    color: #000;
-    font-weight: bold;
-    margin-right: 1.25em;
-  }
-  .textBox {
+  .list {
     width: 100%;
-    height: 100%;
-    .typo {
-      font-size: 1em;
+    min-height: 128px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    .rating {
+      margin-right: .5em;
     }
-    .userInfo {
-      margin-top: 8px;
-      font-size: .75rem;
-      font-weight: lighter;
-      color: #626262;
-      .userName {}
-      .date {}
+    .ratingNum {
+      color: #000;
+      font-weight: bold;
+      margin-right: 1.25em;
     }
+    .textBox {
+      width: 100%;
+      height: 100%;
+      .typo {
+        font-size: 1em;
+      }
+      .userInfo {
+        margin-top: 8px;
+        font-size: .75rem;
+        font-weight: lighter;
+        color: #626262;
+        .userName {}
+        .date {}
+      }
+  }
   }
   .like {
     width: 100px;
