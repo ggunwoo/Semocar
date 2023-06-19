@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useRef, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
@@ -25,10 +25,15 @@ export function Detail():JSX.Element {
   const carData = useCarData();
   const {id} = useParams();
   const searchCar = carData.find((e) => e.id === Number(id))
+
+  const infoRef = useRef<HTMLInputElement>(null)
+  const photoRef = useRef<HTMLInputElement>(null)
+  const commentRef = useRef<HTMLInputElement>(null)
+  const [ClickCheck, setClickCheck] = useState([true, false, false]);
+  const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
   
   const minPrice = (searchCar?.price.min)?.toLocaleString('ko-KR')
   const maxPrice = (searchCar?.price.max)?.toLocaleString('ko-KR')
-  const [ClickCheck, setClickCheck] = useState([true, false, false]);
   const [selectGrade, segSelectGrade] = useState(0)
   const [selectTrim, segSelectTrim] = useState(0)
   const choosed = searchCar?.grades[selectGrade].trims[selectTrim];
@@ -71,17 +76,26 @@ export function Detail():JSX.Element {
     setClickCheck(copyCheck);
   }
 
+
+
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [])
+
+  const targetMove = (target: any) => {
+    if(target.current){
+      target.current.scrollIntoView({ block: 'center', behavior: 'smooth'});
+    }
+  };
+  
   return (
-    <>
+    <div className='wrap'>
     {/* 상단 Article */}
+      {searchCar === undefined
+        ?
+        <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
+        :
       <S.BgBox>
-        {searchCar === undefined
-          ?
-          <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
-          :
         <MaxContainer>
           <S.TitleBox>
             <S.InfoBox>
@@ -91,8 +105,11 @@ export function Detail():JSX.Element {
                 minPrice === '-' && maxPrice === '-'
                 ?
                 <p>가격정보없음</p>
-                :
-                <p className='price'>{minPrice} ~ {maxPrice} 만원</p>
+                : minPrice === maxPrice 
+                  ? 
+                  <p className='price'>{maxPrice} 만원</p>
+                  :
+                  <p className='price'>{minPrice} ~ {maxPrice} 만원</p>
               }
               <S.StyledChip label={`${searchCar.segment}`} variant='outlined' />
               <S.StyledChip label={`${searchCar.fuelTypes}`} variant='outlined' />
@@ -102,17 +119,22 @@ export function Detail():JSX.Element {
               <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
             </S.ImgBox>
           </S.TitleBox>
-        </MaxContainer>}
+        </MaxContainer>
       </S.BgBox>
+      }
 
       <MaxContainer>
         {/* 스크롤탭 */}
         <S.StyledBtnGroup>
-          {[{'name':'상세정보'},{'name':'포토'},{'name':'댓글'}].map((item, index)=>(
-            <S.StyledBtn key={item.name} className={`${ClickCheck[index] ? 'clicked' : 'unclick'}`} onClick={()=>{BtnClick(index)}}>{item.name}</S.StyledBtn>
+          {['상세정보','포토','댓글'].map((item, index)=>(
+            <S.StyledBtn 
+              key={index}
+              className={`${ClickCheck[index] ? 'clicked' : 'unclick'}`}
+              onClick={()=>{BtnClick(index); targetMove(targetClick[index]);}}>{item}
+            </S.StyledBtn>
           ))}
         </S.StyledBtnGroup>
-        <S.MoreInfo>
+        <S.MoreInfo ref={infoRef}>
           {/* FORM */}
           <form action="#">
             <S.FormDl>
@@ -414,7 +436,7 @@ export function Detail():JSX.Element {
         </S.MoreInfo>
 
         {/* PHOTO GALLERY */}
-        <S.SwiperWrap>
+        <S.SwiperWrap ref={photoRef}>
           <S.Title><p>PHOTO</p></S.Title>
           <S.MainSwiper
             spaceBetween={10}
@@ -423,7 +445,7 @@ export function Detail():JSX.Element {
             modules={[FreeMode, Navigation, Thumbs]}
           >
             {['1','2','3','4','5','6'].map((slide, index)=>(
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
               </SwiperSlide>
             ))}
@@ -438,7 +460,7 @@ export function Detail():JSX.Element {
             >
             {/* ThumbsSwiper */}
             {['1','2','3','4','5','6'].map((slide, index)=>(
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
               </SwiperSlide>
             ))}
@@ -447,7 +469,7 @@ export function Detail():JSX.Element {
 
         {/* COMMENT */}
         <S.CommentWrap>
-          <div className='top_section'>
+          <div ref={commentRef} className='top_section'>
             <div className='left'>
               <div style={{width:"100%", display:"flex", alignItems:"center"}}>
                 <GradeIcon className='star'/>
@@ -482,7 +504,7 @@ export function Detail():JSX.Element {
           {/* /post */}
           <S.PostForm action='#' method='#'>
             <Rating className='rating' defaultValue={0} precision={1} />
-            <TextField  fullWidth label="댓글" id="fullWidth"></TextField>
+            <TextField  fullWidth label="To be implemented." id="fullWidth"></TextField>
             <div className='send'><SendIcon className='sendIcon' /></div>
           </S.PostForm>
           
@@ -517,6 +539,6 @@ export function Detail():JSX.Element {
           </form>
         </S.CommentWrap>
       </MaxContainer>
-    </>
+    </div>
   )
 }

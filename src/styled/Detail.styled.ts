@@ -53,11 +53,11 @@ export const StyledBtnGroup = styled(ButtonGroup)`
 export const StyledBtn = styled(Button)`
 && {
   color: black;
-  border-color: black;
+  border-color: #5C477D;
   transition: all 1;
   &.clicked {
     color: white;
-    background-color: black;
+    background-color: #5C477D;
   }
 }`;
 
