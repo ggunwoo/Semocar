@@ -65,7 +65,7 @@ export function Main ():JSX.Element {
           hide:false,
         }}
         autoplay={{
-          delay: 200000,
+          delay: 7000,
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
@@ -129,7 +129,7 @@ export function Main ():JSX.Element {
             }
           </S.SecondSwiper>
         </MaxContainer>
-        <S.GradientBox />
+        {/* <S.GradientBox /> */}
       </S.GradientRelative>
 
       {/* 포토갤러리 */}

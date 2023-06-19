@@ -86,12 +86,12 @@ export const BannerBtn = styled.img`
 }`;
 export const BannerBackgound = styled.img`
 && {
-  width: 85%;
+  width: 95%;
   height: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
-  filter: blur(100px);
-  opacity: .95;
+  filter: blur(60px);
+  opacity: .5;
   position: absolute;
   left: 0;
 }`;
