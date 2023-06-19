@@ -4,11 +4,11 @@ import { Box, Button } from '@mui/material';
 export const FlexBox = styled(Box)`
 && {
   display:flex;
-  /* margin-top: 0; */
   justify-content: space-evenly;
   align-items: center;
+  border-color: #5C477D;
   .clicked {
-    border-bottom: 4px solid #e8e8e8;
+    border-bottom: 4px solid #5C477D;
   }
   :hover > .imgBox{
     display: none;
@@ -21,8 +21,6 @@ export const LogoButton = styled(Button)`
 && {
   width: 120px;
   height: 60px;
-  &:hover {
-  }
 }`;
 export const ImageBox = styled.div`
 && {

@@ -202,7 +202,7 @@ export function TabView() {
                           <p>{`${car.brand.kr} ${car.name.kr}`}</p>
                         </div>
                         <div className='car_info'>
-                          <div><span>가격</span>{`${car.price.min} ~ ${car.price.max}`}만원</div>
+                          <div><span>가격</span>{ car.price.min === car.price.max ? car.price.min : `${car.price.min} ~ ${car.price.max}`}만원</div>
                           <div><span>차급</span>{car.segment}</div>
                           <div><span>연료</span>{car.fuelTypes}</div>
                           <div><span>연비</span>{car.gasMileage}</div>

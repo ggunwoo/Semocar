@@ -88,52 +88,52 @@ export function Main ():JSX.Element {
       </S.BannerSwiper>
 
       {/* 브랜드별 차량 NAV COMPONENTS */}
-        <MaxContainer sx={{ position:'relative' }}>
-      <p>브랜드별 보러가기</p>
-      <S.BrandNavWrap>
-        <BrandNav />
-      </S.BrandNavWrap>
+      <MaxContainer sx={{ position:'relative' }}>
+        <S.Title marginTop="100px">브랜드별 보러가기</S.Title>
+        <S.BrandNavWrap>
+          <BrandNav />
+        </S.BrandNavWrap>
 
-      {/* NewCar SLIDE */}
-      {/* <S.GradientRelative> */}
-          <S.Title>최신 출시 모델</S.Title>
-          <S.SecondSwiper
-            slidesPerView={4}
-            slidesPerGroup={4}
-            spaceBetween={60}
-            modules={[Pagination]}
-            className="mySwiper"
-            pagination={{
-              dynamicBullets: true,
-            }}
-            >
-            {
-              carCount.map((a,i)=>(
-                <SwiperSlide key={carCount[i]}>
-                  <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
-                  <p style={{ marginTop: "24px"}}>TITLE</p>
-                  {/* fontSize:"18px", */}
-                  <div>
-                    <S.InfoText>
-                      <span>PRICE : </span>
-                      <span>{a}</span>
-                    </S.InfoText>
-                    <S.InfoText>
-                      <span>CARMILEAGE : </span>
-                      <span>{a}</span>
-                    </S.InfoText>
-                    <S.InfoText>
-                      <span>ENGINE : </span>
-                      <span>{a}</span>
-                    </S.InfoText>
-                  </div>
-                </SwiperSlide>
-              ))
-            }
-          </S.SecondSwiper>
-        </MaxContainer>
-        {/* <S.GradientBox /> */}
+        {/* NewCar SLIDE */}
+        {/* <S.GradientRelative> */}
+        <S.Title>최신 출시 모델</S.Title>
+        <S.SecondSwiper
+          slidesPerView={4}
+          slidesPerGroup={4}
+          spaceBetween={60}
+          modules={[Pagination]}
+          className="mySwiper"
+          pagination={{
+            dynamicBullets: true,
+          }}
+          >
+          {
+            carCount.map((a,i)=>(
+              <SwiperSlide key={carCount[i]}>
+                <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
+                <p style={{ marginTop: "24px"}}>TITLE</p>
+                {/* fontSize:"18px", */}
+                <div>
+                  <S.InfoText>
+                    <span>PRICE : </span>
+                    <span>{a}</span>
+                  </S.InfoText>
+                  <S.InfoText>
+                    <span>CARMILEAGE : </span>
+                    <span>{a}</span>
+                  </S.InfoText>
+                  <S.InfoText>
+                    <span>ENGINE : </span>
+                    <span>{a}</span>
+                  </S.InfoText>
+                </div>
+              </SwiperSlide>
+            ))
+          }
+        </S.SecondSwiper>
       {/* </S.GradientRelative> */}
+      </MaxContainer>
+      {/* <S.GradientBox /> */}
 
       {/* 포토갤러리 */}
       
