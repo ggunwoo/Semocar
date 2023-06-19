@@ -63,12 +63,12 @@ export function Detail():JSX.Element {
     },
   ]);
 
-  const BtnClick = (index: number) => {
-    setClickCheck(ClickCheck.fill(false))
-    const copyCheck = [...ClickCheck]
-    copyCheck[index] = !copyCheck[index]
-    setClickCheck(copyCheck);
-  }
+  // const BtnClick = (index: number) => {
+  //   setClickCheck(ClickCheck.fill(false))
+  //   const copyCheck = [...ClickCheck]
+  //   copyCheck[index] = !copyCheck[index]
+  //   setClickCheck(copyCheck);
+  // }
 
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
@@ -167,10 +167,11 @@ export function Detail():JSX.Element {
             <div 
               key={index}
               className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
-              onClick={()=>{BtnClick(index); targetMove(targetClick[index]);}}><p>{item}</p>
+              onClick={()=>{targetMove(targetClick[index]);}}><p>{item}</p>
             </div>
           ))}
         </S.TargetBtnGroup>
+        <S.tempGroup className={`tempGroup ${tabFixed ? 'block' : 'none'}`}></S.tempGroup>
         
         <S.Title>등급별 제원</S.Title>
         <S.MoreInfo id="grade" >
@@ -204,7 +205,8 @@ export function Detail():JSX.Element {
           
           {/* /SPAC */}
           <S.SpacDl>
-            <S.SpacDt ref={infoRef}>제원</S.SpacDt>
+            <S.SpacDt>제원</S.SpacDt>
+            <div style={{position:"absolute", bottom: "0"}} ref={infoRef}></div>
             {/* 가솔린, 디젤, LPG */}
             {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
               <S.SpacDd>
@@ -477,7 +479,7 @@ export function Detail():JSX.Element {
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
           <S.Title>포토</S.Title>
-          <div style={{position:"relative", top: "30%"}} ref={photoRef}></div>
+          <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
           <S.MainSwiper
             spaceBetween={10}
             navigation={true}

@@ -6,7 +6,7 @@ import { Swiper } from 'swiper/react'
 export const BgBox = styled.div`
 && {
   width: 100%;
-  background-color: #e9e9e9;
+  background-color: #e9eaf1;
   margin-bottom: 40px;
   &.display_none {
     width: 100px;
@@ -16,7 +16,7 @@ export const TitleBox = styled.div`
 && {
   width: 100%;
   height: 400px;
-  background-color: #e2e2e2;
+  background-color: #e9eaf1;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -83,7 +83,8 @@ export const TargetBtnGroup = styled.div`
     }
   }
   .unclick {
-    background-color: #FAF7FF;
+    color: #777;
+    background-color: #f1ebfa;
     border-bottom: 1px solid #E9DCFD;
   }
   .clicked {
@@ -97,6 +98,18 @@ export const TargetBtnGroup = styled.div`
     border-bottom: 1px solid #E9DCFD;
   }
   
+}`;
+
+export const tempGroup = styled.div`
+&& {
+  width: 1100px;
+  height: 120px;
+  &.block {
+    display: block;
+  }
+  &.none {
+    display: none;
+  }
 }`;
 
 export const Title = styled.span`

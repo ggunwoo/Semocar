@@ -35,6 +35,8 @@ function App(): JSX.Element {
 // main : #BA90FD
 // light : #E9DCFD
 // superlight : #FAF7FF
+// 다음자동차 : #e9eaf1
+
 
 
 export default App;
