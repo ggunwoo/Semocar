@@ -27,7 +27,7 @@ export function Main ():JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [carImg, setCarImg] = useState([1,10210,3,4]);
+  const [carImg, setCarImg] = useState(['/brand','/detail/10210','/brand','/brand']);
   const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
 
   const [carPhoto, setCarPhoto] = useState([
@@ -76,10 +76,10 @@ export function Main ():JSX.Element {
         >
         {
           carImg.map((a, i)=>(
-            <SwiperSlide key={carImg[i]}>
+            <SwiperSlide key={i}>
                 <S.BaseBox>
                   <S.BannerImg src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
-                  <S.BannerBtn onClick={()=>{navigate(`/detail/${a}`)}} className={`bannerBtn_${i+1}`} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/btn.png`} />
+                  <S.BannerBtn onClick={()=>{navigate(a)}} className={`bannerBtn_${i+1}`} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/btn.png`} />
                 </S.BaseBox>
                 <S.BannerBackgound src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`BACKGROUND${i+1}`} />
             </SwiperSlide>
