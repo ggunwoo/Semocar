@@ -120,7 +120,7 @@ export function Detail():JSX.Element {
   
   const targetMove = (target: any) => {
     if(target.current){
-      target.current.scrollIntoView({ block: 'center', behavior: 'smooth'});
+      target.current.scrollIntoView({ block: 'center'});
     }
   };
 
@@ -172,8 +172,8 @@ export function Detail():JSX.Element {
           ))}
         </S.TargetBtnGroup>
         
-        <S.Title >등급별 제원</S.Title>
-        <S.MoreInfo id="grade" ref={infoRef}>
+        <S.Title>등급별 제원</S.Title>
+        <S.MoreInfo id="grade" >
           {/* FORM */}
           <form action="#">
             <S.FormDl>
@@ -204,7 +204,7 @@ export function Detail():JSX.Element {
           
           {/* /SPAC */}
           <S.SpacDl>
-            <S.SpacDt>제원</S.SpacDt>
+            <S.SpacDt ref={infoRef}>제원</S.SpacDt>
             {/* 가솔린, 디젤, LPG */}
             {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
               <S.SpacDd>
@@ -473,16 +473,19 @@ export function Detail():JSX.Element {
             </S.SizeBox>
 
         </S.MoreInfo>
-
+        <div ></div>
         {/* PHOTO GALLERY */}
-        <S.SwiperWrap ref={photoRef}>
+        <S.SwiperWrap >
           <S.Title>포토</S.Title>
+          <div style={{position:"relative", top: "30%"}} ref={photoRef}></div>
           <S.MainSwiper
             spaceBetween={10}
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
+            
           >
+            
             {['1','2','3','4','5','6'].map((slide, index)=>(
               <SwiperSlide key={index}>
                 <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
@@ -508,7 +511,7 @@ export function Detail():JSX.Element {
 
         {/* COMMENT */}
         <S.CommentWrap>
-          <div ref={commentRef} className='top_section'>
+          <div  className='top_section'>
             <div className='left'>
               <div style={{width:"100%", display:"flex", alignItems:"center"}}>
                 <GradeIcon className='star'/>
@@ -548,7 +551,7 @@ export function Detail():JSX.Element {
           </S.PostForm>
           
           {/* /sort */}
-          <div className='sort' style={{margin:"24px 0 24px 24px"}}>
+          <div ref={commentRef} className='sort' style={{margin:"24px 0 24px 24px"}}>
             <span style={{marginRight:"16px"}}>최신순</span>
             <span>좋아요순</span>
           </div>
