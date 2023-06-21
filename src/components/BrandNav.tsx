@@ -41,28 +41,30 @@ export function BrandNav () {
 
   return (
     <MaxContainer>
-      <S.FlexBox>
-        {carBrands.map((brand, index):JSX.Element => (
-          <S.LogoButton
-            key={brand.id} 
-            className={`${ toggle[index] ? 'clicked' : 'unclick'}` }
-            onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } 
-            variant='text'
-          >
+      <S.BrandNavWrap>
+        <S.FlexBox>
+          {carBrands.map((brand, index):JSX.Element => (
+            <S.LogoButton
+              key={brand.id} 
+              className={`${ toggle[index] ? 'clicked' : 'unclick'}` }
+              onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } 
+              variant='text'
+            >
+              <S.ImageBox className='imgBox'>
+                <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+              </S.ImageBox>
+              <S.LogoName className='logoName'>{brand.name.kr}</S.LogoName>
+            </S.LogoButton>
+          ))}
+          <S.LogoButton onClick={()=>{brandAll(); navigate(`/brand`)}}>
             <S.ImageBox className='imgBox'>
-              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+              {/* <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' /> */}
+              <MenuIcon sx={{"fontSize":"36px", "color":"#333"}} />
             </S.ImageBox>
-            <S.LogoName className='logoName'>{brand.name.kr}</S.LogoName>
+            <S.LogoName className='logoName'>전체보기</S.LogoName>
           </S.LogoButton>
-        ))}
-        <S.LogoButton onClick={()=>{brandAll(); navigate(`/brand`)}}>
-          <S.ImageBox className='imgBox'>
-            {/* <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' /> */}
-            <MenuIcon sx={{"fontSize":"36px", "color":"#333"}} />
-          </S.ImageBox>
-          <S.LogoName className='logoName'>전체보기</S.LogoName>
-        </S.LogoButton>
-      </S.FlexBox>
+        </S.FlexBox>
+      </S.BrandNavWrap>
     </MaxContainer>
   )
 }
