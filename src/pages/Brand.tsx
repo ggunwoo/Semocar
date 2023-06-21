@@ -94,11 +94,11 @@ export function Brand ():JSX.Element {
           <S.CheckTitle>차급</S.CheckTitle>
           <S.CheckWraper row={true}>
             <S.FormControl control={
-              <Checkbox className="segmentDefalutCheckBox" checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
+              <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
             ></S.FormControl>
             {segmentList.map((segment, index)=>(
               <S.FormControl key={segment} control={
-                <Checkbox className="segmentCheckBox" checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
+                <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
               ></S.FormControl>
             ))}
           </S.CheckWraper>
@@ -107,11 +107,11 @@ export function Brand ():JSX.Element {
           <S.CheckTitle>연료</S.CheckTitle>
           <S.CheckWraper row={true}>
             <S.FormControl control={
-              <Checkbox className="fuelTypeDefalutCheckBox" checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
+              <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
             ></S.FormControl>
             {fuelTypeList.map((fuelType, index)=>(
               <S.FormControl key={fuelType} control={
-                <Checkbox className="fuelTypeCheckBox" checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
+                <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
               ></S.FormControl>
             ))}
           </S.CheckWraper>
