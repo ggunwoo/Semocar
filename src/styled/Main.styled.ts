@@ -131,25 +131,9 @@ export const GradientBox = styled.div`
   z-index: -1;
 }`;
 
-
-// BrandNav
-export const BrandNavWrap = styled.div`
-&& {
-  width: 1100px;
-  height: 100px;
-  background-color: #fcfcfc;
-  padding-top: 20px;
-  margin: 50px 0 0;
-  box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: 20px;
-}`;
-
-
 export const Title = styled(Typography)<{marginTop: string}>`
 && {
   font-size: 18px;
-  /* margin-top: 150px; */
   margin-top: ${props => props.marginTop || '150px'};
 }`;
 export const SecondSwiper = styled(Swiper)`
@@ -163,7 +147,7 @@ export const SecondSwiper = styled(Swiper)`
   }
   .swiper-pagination-bullet-active {
     width : 30px;
-    background-color : #5C477D;
+    background-color : #62478f;
     border-radius: 20px;
   } 
 }`;
