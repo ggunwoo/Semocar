@@ -3,42 +3,39 @@ import { Chip } from '@mui/material'
 import { Swiper } from 'swiper/react'
 
 // FORM
-export const BgBox = styled.div`
+export const FeatureBox = styled.div`
 && {
   width: 100%;
   background-color: #e9eaf1;
-  margin-bottom: 40px;
   &.display_none {
     width: 100px;
   }
-}`;
-export const TitleBox = styled.div`
-&& {
-  width: 100%;
-  height: 400px;
-  background-color: #e9eaf1;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-}`;
-export const InfoBox = styled.div`
-&& {
-  height: 400px;
-  margin-top: 100px;
-  h5.brand {
-    font-size: 1.125rem;
-    margin-bottom: 0 !important;
-    font-weight: bold;
+  .wrap {
+    width: 100%;
+    height: 400px;
+    background-color: #e9eaf1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
   }
-  h1.name {
-    font-size: 3.75rem;
-  }
-  p.price {
-    color: #5C477D;
-    font-weight: bold;
-    font-size: 1.25rem;
-    line-height: 2rem;
-    letter-spacing: 0.125rem;
+  .infoBox {
+    height: 400px;
+    margin-top: 100px;
+    h5.brand {
+      font-size: 1.125rem;
+      margin-bottom: 0 !important;
+      font-weight: bold;
+    }
+    h1.name {
+      font-size: 3.75rem;
+    }
+    p.price {
+      color: #62478f;
+      font-weight: bold;
+      font-size: 1.25rem;
+      line-height: 2rem;
+      letter-spacing: 0.125rem;
+    }
   }
 }`;
 export const StyledChip = styled(Chip)`
@@ -48,78 +45,151 @@ export const StyledChip = styled(Chip)`
 export const ImgBox = styled.div`
 && {
   margin-top: 120px;
+  img {
+    width: 500px;
+  }
 }`;
-export const TargetBtnGroup = styled.div`
-&& {
-  width: 1100px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 2;
 
-  @media (max-width: 1440px) {
-    width: 960px;
-  }
-  &.fixed {
-    position: fixed;
-    top: 0;
-  }
-  .targetBtn {
-    width: calc(100%/3);
-    height: 60px;
-    margin-bottom: 60px;
-    text-align: center;
-    border-top: 1px solid #5C477D;  
-    border-left: 1px solid #E9DCFD;
-    position: relative;
-    p {
+// TargetNav
+export const TartgetNav = styled.div`
+&& {
+  width: 100%;
+  background-color: #fff;
+  .btnGroup {
+    width: 1100px;
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    z-index: 2;
+
+    @media (max-width: 1440px) {
+      width: 960px;
+    }
+    .unclick {
+      color: #cacaca;
+    }
+    .clicked {
+      color: #000;
       position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 7px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #AB9ADD;
+      }
     }
-    &:last-child {
-      /* border-right: none; */
-      border-right: 1px solid #E9DCFD;
-    }
   }
-  .unclick {
-    color: #777;
-    background-color: #f1ebfa;
-    border-bottom: 1px solid #E9DCFD;
-  }
-  .clicked {
-    color: #000;
-    background-color: #fff;
-  }
-  
-  &.fixed .clicked {
-    color: #000;
-    background-color: #fff;
-    border-bottom: 1px solid #E9DCFD;
-  }
-  
 }`;
-
-export const tempGroup = styled.div`
+export const TargetBtn = styled.div`
 && {
-  width: 1100px;
-  height: 120px;
-  &.block {
-    display: block;
-  }
-  &.none {
-    display: none;
+  width: 140px;
+  text-align: center;
+  cursor: pointer;
+  p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }`;
 
+// FixedBox
+export const FixedBox = styled.div`
+&& {
+  width: 100%;
+  height: 150px;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  /* border-bottom: 1px solid #000; */
+  box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
+  overflow: hidden;
+  z-index: 2;
+  &.unfixed { display: none; }
+  &.fixed { display: block; }
+  .wrap {
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    @media (max-width:1440px) {
+      width: 960px;
+    }
+    .featureBox {
+      .titleGroup {
+        margin-top: 30px;
+        .brand {
+          display: flex;
+          img {
+            height: 16px;
+            margin: auto 0;
+            transform: scale(0.7);
+          }
+          span {
+            font-size: 14px;
+            color: #626262;
+            text-align: center;
+          }
+        }
+        p.name {
+          color: #626262;
+          font-size: 38px;
+          line-height: 2.5rem;
+          font-family: "NotoSans KR";
+        }
+      }
+      .btnGroup {
+        display: flex;
+        margin-top: 34px;
+        .targetBtn {
+          height: 100%;
+          line-height: 0.5rem;
+        }
+        .unclick {
+            color: #cacaca;
+          }
+        .clicked {
+          color: #000;
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 7px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            background-color: #AB9ADD;
+          }
+        }
+      }
+    }
+    .imgBax {
+      overflow: hidden;
+      img {
+        width: 500px;
+        position: relative;
+        top: 30px;
+      }
+    }
+  }
+}`;
+
+// INFO
+export const InfoBoxWrap = styled.div`
+&& {
+  margin-top: 50px;
+}`;
 export const Title = styled.span`
 && {
   font-size: 1em;
   font-weight: bold;
   text-align: center;
 }`;
-
-// INFO
 export const MoreInfo = styled.div`
 && {
   width: 100%;
@@ -157,7 +227,7 @@ export const FormDd = styled.dd`
   gap: .7em;
   .clicked {
     color: #fff;
-    background-color: #5C477D;
+    background-color: #62478f;
   }
   .grade {
   }
@@ -413,7 +483,7 @@ export const ThumbsSwiper = styled(Swiper)`
     top: 0;
     left: 0;
     background-color: transparent;
-    border-bottom: 5px solid #5C477D;
+    border-bottom: 5px solid #62478f;
   }
 }`;
 

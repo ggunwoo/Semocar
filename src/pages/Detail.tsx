@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState, useCallback } from 'react'
 import { useParams } from "react-router-dom"
-import { useCarData } from '../hook/useCarData'
+import { useCarData, useCarBrands } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
 import { Rating, TextField, Typography} from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
@@ -19,11 +19,11 @@ import "swiper/css/thumbs";
 // STYLED
 import { MaxContainer } from '../styled/Global'
 import * as S from '../styled/Detail.styled'
-import { Title } from '../styled/Main.styled'
 
 
 export function Detail():JSX.Element {
   const carData = useCarData();
+  const carBrands = useCarBrands();
   const {id} = useParams();
   const searchCar = carData.find((e) => e.id === Number(id))
 
@@ -62,19 +62,14 @@ export function Detail():JSX.Element {
       "text":"이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐",
     },
   ]);
-
-  // const BtnClick = (index: number) => {
-  //   setClickCheck(ClickCheck.fill(false))
-  //   const copyCheck = [...ClickCheck]
-  //   copyCheck[index] = !copyCheck[index]
-  //   setClickCheck(copyCheck);
-  // }
-
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
   const commentRef = useRef<HTMLInputElement>(null)
   const [ClickCheck, setClickCheck] = useState([true, false, false]);
   const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
+
+  // 파라미터로 불러온 차량에 브랜드URL
+  const searchBrandLogo = carBrands.find( e => e.name.en === searchCar?.brand.en)
 
   const [tabFixed, setTabFixed] = useState(false)
 
@@ -103,10 +98,10 @@ export function Detail():JSX.Element {
       if(scrollY > 600 && scrollY < 900){
         setClickCheck([true, false, false])
       }
-      if(scrollY > 1350 && scrollY < 1800){
+      if(scrollY > 1100 && scrollY < 1800){
         setClickCheck([false, true, false])
       }
-      if(scrollY > 2250 && scrollY < 2800){
+      if(scrollY > 2000 && scrollY < 2800){
         setClickCheck([false, false, true])
       }
     }
@@ -125,16 +120,16 @@ export function Detail():JSX.Element {
   };
 
   return (
-    <div className='wrap'>
+    <div className='wrap' style={{background:"#F5F5F5"}}>
     {/* 상단 Article */}
       {searchCar === undefined
         ?
         <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
         :
-      <S.BgBox>
+      <S.FeatureBox>
         <MaxContainer>
-          <S.TitleBox>
-            <S.InfoBox>
+          <div className='wrap'>
+            <div className='infoBox'>
               <h5 className='brand'>{searchCar.brand.kr}</h5>
               <h1 className='name'>{searchCar.name.kr}</h1>
               {
@@ -150,29 +145,63 @@ export function Detail():JSX.Element {
               <S.StyledChip label={`${searchCar.segment}`} variant='outlined' />
               <S.StyledChip label={`${searchCar.fuelTypes}`} variant='outlined' />
               <S.StyledChip label={`${searchCar.gasMileage}`} variant='outlined' />
-            </S.InfoBox>
+            </div>
             <S.ImgBox>
               <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
             </S.ImgBox>
-          </S.TitleBox>
-
+          </div>
         </MaxContainer>
-      </S.BgBox>
+      </S.FeatureBox>
       }
-      <MaxContainer>
-        
-        <S.TargetBtnGroup className={`${tabFixed ? 'fixed': 'unfixed'}`}>
-          {/* 스크롤탭 */}
-          {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
-            <div 
-              key={index}
-              className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
-              onClick={()=>{targetMove(targetClick[index]);}}><p>{item}</p>
+      
+      <S.TartgetNav>
+        <MaxContainer>
+          <div className='btnGroup'>
+            {/* 스크롤탭 */}
+            {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
+              <S.TargetBtn 
+                key={index}
+                className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
+                onClick={()=>{targetMove(targetClick[index]);}}
+              >
+                <p>{item}</p>
+              </S.TargetBtn>
+            ))}
             </div>
-          ))}
-        </S.TargetBtnGroup>
-        <S.tempGroup className={`tempGroup ${tabFixed ? 'block' : 'none'}`}></S.tempGroup>
-        
+        </MaxContainer>
+      </S.TartgetNav>
+
+      {/* fixed FeatureBox */}
+      <S.FixedBox className={`${tabFixed ? 'fixed': 'unfixed'}`}>
+        <div className='wrap'>
+          <div className='featureBox'>
+            <div className='titleGroup'>
+              <div className='brand'>
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchBrandLogo?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <span className='brand'>{searchCar?.brand.kr}</span>
+              </div>
+              <p className='name'>{searchCar?.name.kr}</p>
+            </div>
+            <div className='btnGroup'>
+              {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
+                <S.TargetBtn 
+                    key={index}
+                    className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
+                    onClick={()=>{targetMove(targetClick[index]);}}
+                  >
+                <p>{item}</p>
+              </S.TargetBtn>
+              ))}
+            </div>
+          </div>
+          <div className='imgBax'>
+            <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar?.imgUrl}.png`} alt={searchCar?.name.en} />
+          </div>
+        </div>
+      </S.FixedBox>
+
+      <MaxContainer>
+        <S.InfoBoxWrap>
         <S.Title>등급별 제원</S.Title>
         <S.MoreInfo id="grade" >
           {/* FORM */}
@@ -400,11 +429,7 @@ export function Detail():JSX.Element {
               </S.SpacDd>
             }
           </S.SpacDl>
-
             <S.SizeBox>
-
-
-
               {/* 차량 앞면 이미지 */}
               <div className='size_box front'>
                 <span className='wrap_thumb'>
@@ -426,10 +451,6 @@ export function Detail():JSX.Element {
                 </span>
 
               </div>
-
-
-
-
               {/* 차량 옆면 이미지 */}
               <div className='size_box side'>
                 <span className='wrap_thumb'>
@@ -450,8 +471,6 @@ export function Detail():JSX.Element {
                   <span className='line'></span>
                 </span>
               </div>
-
-
               {/* 차량 뒷면 이미지 */}
               <div className='size_box rear'>
                 <span className='wrap_thumb'>
@@ -476,6 +495,7 @@ export function Detail():JSX.Element {
 
         </S.MoreInfo>
         <div ></div>
+        </S.InfoBoxWrap>
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
           <S.Title>포토</S.Title>
