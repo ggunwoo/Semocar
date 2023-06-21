@@ -54,7 +54,7 @@ export const LogoName = styled.p`
   color: #000;
   font-size: 1rem;
   font-weight: bold;
-  font-family: 'Gmarket Sans medium';
+  font-family: "Gmarket Sans", sans-serif;
   margin: auto 0;
   display: none;
 }`;
