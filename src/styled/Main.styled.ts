@@ -78,7 +78,7 @@ export const BaseBox = styled.div`
 export const BannerImg = styled.img`
 &&{
   z-index: 1;
-  width: 100%;
+  width: 1100px;
   border-radius: 20px;
   position: absolute;
   margin: 0 auto;
@@ -156,7 +156,7 @@ export const GradientBox = styled.div`
 export const Title = styled(Typography)<{marginTop: string}>`
 && {
   font-size: 18px;
-  font-family: "NotoSans KR", sans-serif;
+  font-family: GmarketSans, NotoSans KR, sans-serif;
   margin-top: ${props => props.marginTop || '150px'};
 }`;
 export const SecondSwiper = styled(Swiper)`
