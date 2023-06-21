@@ -70,6 +70,7 @@ interface Trim {
   wheelBase: string;
   track: string;
   tread: string;
+  zero: string | number;
 
   // 전기
   evMileage: string,
