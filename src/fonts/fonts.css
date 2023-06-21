@@ -14,3 +14,7 @@
   font-family: "Gmarket Sans light";
   src: url(./GmarketSansTTFLight.ttf);
 }
+@font-face {
+  font-family: "NotoSans KR";
+  src: url(./NotoSansKR-Medium.otf);
+}
