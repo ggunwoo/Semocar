@@ -164,10 +164,10 @@ export function TabView() {
     <MaxContainer>
       <Box>
         <S.StyledBox>
-          <Tabs sx={{overflow:"visible"}} value={sortOption} onChange={handleSortChange} aria-label="정렬 기준">
-            <Tab label="최신순" value="latest" {...a11yProps(0)} />
-            <Tab label="가격순" value="price" {...a11yProps(1)} />
-            <Tab label="연비순" value="mileage" {...a11yProps(2)} />
+          <Tabs className='tabs' sx={{overflow:"visible"}} value={sortOption} onChange={handleSortChange} aria-label="정렬 기준">
+            <Tab className='tab' label="최신순" value="latest" {...a11yProps(0)} />
+            <Tab className='tab' label="가격순" value="price" {...a11yProps(1)} />
+            <Tab className='tab' label="연비순" value="mileage" {...a11yProps(2)} />
           </Tabs>
           {/* 검색창 */}
           <S.SearchBarWraper>

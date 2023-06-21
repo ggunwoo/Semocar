@@ -17,6 +17,19 @@ export const StyledBox = styled(Box)`
   border-bottom: 0;
   margin-bottom: 3rem;
   border-color: divider;
+  
+  .tabs {
+    .MuiTabs-flexContainer {
+      .tab {
+        &.Mui-selected {
+          color: #9063FF;
+        }
+      }
+    }
+    .MuiTabs-indicator {
+      background-color: #9063FF;
+    }
+  }
 }`;
 export const CarSection = styled.div`
 && {
