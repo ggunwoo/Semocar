@@ -605,11 +605,15 @@ export const CommentList = styled.form`
   .list {
     width: 100%;
     min-height: 128px;
+    margin-bottom: 18px;
     padding: 24px;
     display: flex;
     align-items: center;
     background-color: #f9f9f9;
     border-radius: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
     .rating {
       margin-right: .5em;
     }
