@@ -3,12 +3,19 @@ import { Box, Button } from '@mui/material';
 
 export const FlexBox = styled(Box)`
 && {
+  width: 100%;
   display:flex;
   justify-content: space-evenly;
   align-items: center;
   border-color: #5C477D;
   .clicked {
     border-bottom: 4px solid #5C477D;
+    & > .imgBox {
+      display: none;
+    }
+    & > .logoName {
+      display: block;
+    }
   }
   :hover > .imgBox{
     display: none;
