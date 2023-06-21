@@ -4,11 +4,9 @@ import { Grid, Typography } from '@mui/material'
 
 export const BannerSwiper = styled(Swiper)`
 && {
-  height: 572px;
+  height: 472px;
   margin-bottom: 80px;
   user-select: none;
-  border-bottom-left-radius: 3%;
-  border-bottom-right-radius: 3%;
   .swiper-button-next {
     right: 15%;
     color: black;
@@ -40,9 +38,12 @@ export const BannerSwiper = styled(Swiper)`
   .swiper-scrollbar {
     width: 1072px;
     height: 7px;
-    bottom: 54px;
+    bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
+    .swiper-scrollbar-drag {
+      background-color: #9063FF;
+    }
   }
 }`;
 export const BaseBox = styled.div`
@@ -50,7 +51,7 @@ export const BaseBox = styled.div`
   width: 1100px;
   margin: auto;
   position: relative;
-  top: 50px;
+  /* top: 50px; */
   /* transform: translateY(-50%); */
 }`
 export const BannerImg = styled.img`
@@ -88,16 +89,31 @@ export const BannerBtn = styled.img`
     right: 90px;
   }
 }`;
-export const BannerBackgound = styled.img`
+export const BannerBackgound = styled.div`
 && {
-  width: 95%;
+  width: 100%;
   height: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
-  filter: blur(60px);
-  opacity: .5;
   position: absolute;
+  /* filter: blur(20px); */
+  /* top: -50px; */
   left: 0;
+  img {
+    width: 100%;
+    /* height: 100%; */
+  }
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #2a2b36;
+    opacity: .90;
+  }
 }`;
 export const GradientRelative = styled.div`
 && {
@@ -105,14 +121,11 @@ export const GradientRelative = styled.div`
 }`;
 export const GradientBox = styled.div`
 && {
-  width: 70%;
-  height: 3px;
-  /* background: linear-gradient(0deg, rgba(230, 230, 230, 0) 0%, #E9DCFD 50%); */
-  background-color: #E9DCFD;
-  filter: blur(2px);
-  opacity: .8;
+  width: 100%;
+  height: 171px;
+  background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #e6e6e6 50%);
   position: absolute;
-  top: 33%;
+  top: -27px;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
