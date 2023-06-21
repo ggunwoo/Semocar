@@ -70,9 +70,9 @@ export function Detail():JSX.Element {
 
   // 파라미터로 불러온 차량에 브랜드URL
   const searchBrandLogo = carBrands.find( e => e.name.en === searchCar?.brand.en)
-
+  
   const [tabFixed, setTabFixed] = useState(false)
-
+  
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [])
@@ -116,7 +116,7 @@ export function Detail():JSX.Element {
       target.current.scrollIntoView({ block: 'center'});
     }
   };
-
+  
   return (
     <div className='wrap' style={{background:"#F5F5F5"}}>
     {/* 상단 Article */}
@@ -128,8 +128,11 @@ export function Detail():JSX.Element {
         <MaxContainer>
           <div className='wrap'>
             <div className='infoBox'>
-              <h5 className='brand'>{searchCar.brand.kr}</h5>
-              <h1 className='name'>{searchCar.name.kr}</h1>
+              <p className='brand'>
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchBrandLogo?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <span>{searchCar.brand.kr}</span>
+              </p>
+              <p className='name'>{searchCar.name.kr}</p>
               {
                 minPrice === '-' && maxPrice === '-'
                 ?
@@ -274,7 +277,7 @@ export function Detail():JSX.Element {
                   <S.OptionDt>자율주행 레벨</S.OptionDt>
                   <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
                   <S.OptionDt>제로백</S.OptionDt>
-                  <S.OptionDd>zero100</S.OptionDd>
+                  <S.OptionDd>{choosed?.zero}</S.OptionDd>
                   {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
                 </S.OptionDl>
                 {/* OPTION 3LINE */}

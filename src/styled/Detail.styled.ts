@@ -19,15 +19,28 @@ export const FeatureBox = styled.div`
     align-items: flex-start;
   }
   .infoBox {
-    height: 400px;
+    /* height: 500px; */
     margin-top: 100px;
-    h5.brand {
+    p.brand {
       font-size: 1.125rem;
       margin-bottom: 0 !important;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      img {
+        max-width: 82px;
+        max-height: 42px;
+        transform: scale(.5);
+      }
+      span {
+        font-size: 18px;
+        color: #626262;
+        text-align: center;
+      }
     }
-    h1.name {
-      font-size: 3.75rem;
+    p.name {
+      font-size: 3rem;
+
     }
     p.price {
       color: #62478f;
@@ -41,6 +54,7 @@ export const FeatureBox = styled.div`
 export const StyledChip = styled(Chip)`
 && {
   margin-right: 10px;
+  background-color: #fff;
 }`;
 export const ImgBox = styled.div`
 && {
@@ -55,6 +69,7 @@ export const TartgetNav = styled.div`
 && {
   width: 100%;
   background-color: #fff;
+  box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
   .btnGroup {
     width: 1100px;
     height: 80px;
@@ -100,7 +115,7 @@ export const TargetBtn = styled.div`
 export const FixedBox = styled.div`
 && {
   width: 100%;
-  height: 150px;
+  height: 100px;
   position: fixed;
   top: 0;
   background-color: #fff;
@@ -120,33 +135,37 @@ export const FixedBox = styled.div`
     }
     .featureBox {
       .titleGroup {
-        margin-top: 30px;
+        margin-top: 8px;
         .brand {
           display: flex;
+          align-items: center;
           img {
-            height: 16px;
-            margin: auto 0;
-            transform: scale(0.7);
+            max-width: 22px;
+            min-width: 12px;
+            max-height: 14px;
+
+            margin-right: 5px;
           }
           span {
-            font-size: 14px;
+            font-size: 12px;
             color: #626262;
             text-align: center;
           }
         }
         p.name {
           color: #626262;
-          font-size: 38px;
-          line-height: 2.5rem;
-          font-family: "NotoSans KR";
+          font-size: 1.75rem;
+          font-weight: 600;
+          line-height: 2rem;
         }
       }
       .btnGroup {
         display: flex;
-        margin-top: 34px;
+        margin-top: 22px;
         .targetBtn {
+          font-size: 14px;
           height: 100%;
-          line-height: 0.5rem;
+          line-height: 0.25rem;
         }
         .unclick {
             color: #cacaca;
@@ -162,18 +181,17 @@ export const FixedBox = styled.div`
             position: absolute;
             bottom: 0;
             left: 0;
-
             background-color: #AB9ADD;
           }
         }
       }
     }
     .imgBax {
-      overflow: hidden;
       img {
-        width: 500px;
+        width: 320px;
         position: relative;
-        top: 30px;
+        top: 15px;
+        right: 100px;
       }
     }
   }
@@ -303,6 +321,7 @@ export const OptionDd = styled.dd`
   margin-bottom: 8px;
   /* font-weight: bold; */
 }`;
+// 자동차 치수 단락
 export const SizeBox = styled.div`
 && {
   width: 85%;
@@ -323,23 +342,25 @@ export const SizeBox = styled.div`
       line-height: 1em;
       .txt {
         font-size: .75em;
-        background-color: #fff;
+        background-color: #F5F5F5;
         padding: 0 3px;
+        z-index: 1;
+        position: relative;
       }
       .line {
         width: 100%;
         height: 1px;
-        background-color: #ccc;
+        background-color: #b7b7b7;
         position: absolute;
         left: 0;
         top: 50%;
-        z-index: -1;
+        z-index: 0;
         &::after {
           content: "";
           display: block;
           width: 1px;
           height: 5px;
-          background-color: #ccc;
+          background-color: #b7b7b7;
           position: absolute;
           top: -5px;
           left: 0;
@@ -349,7 +370,7 @@ export const SizeBox = styled.div`
           display: block;
           width: 1px;
           height: 5px;
-          background-color: #ccc;
+          background-color: #b7b7b7;
           position: absolute;
           top: -5px;
           right: 0;
@@ -390,26 +411,27 @@ export const SizeBox = styled.div`
         width: 61px;
         padding: 5px 0;
         font-size: .75em;
-        background-color: #fff;
+        background-color: #F5F5F5;
         position: relative;
         top: 50%;
         left: -50%;
         transform: translateY(-50%);
+        z-index: 2;
       }
       .line {
         width: 1px;
         height: 100%;
-        background-color: #ccc;
+        background-color: #b7b7b7;
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: 0;
         &::after {
           content: "";
           display: block;
           width: 5px;
           height: 1px;
-          background-color: #ccc;
+          background-color: #b7b7b7;
           position: absolute;
           top: 0;
           left: -5px;
@@ -419,7 +441,7 @@ export const SizeBox = styled.div`
           display: block;
           width: 5px;
           height: 1px;
-          background-color: #ccc;
+          background-color: #b7b7b7;
           position: absolute;
           top: 103px;
           left: -5px;
@@ -429,7 +451,7 @@ export const SizeBox = styled.div`
   }
 }`;
 
-// SWIPER
+// 포토갤러리
 export const SwiperWrap = styled.div`
 && {
   width: 100%;
@@ -446,6 +468,7 @@ export const MainSwiper = styled(Swiper)`
   }
 }`;
 
+// 포토갤러리 썸네일
 export const ThumbsSwiper = styled(Swiper)`
 && {
   margin-top: 10px;
