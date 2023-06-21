@@ -61,9 +61,9 @@ export function Main ():JSX.Element {
     <>
       {/* 메인배너 SLIDE */}
       <S.BannerSwiper
-        scrollbar={{
-          hide:false,
-        }}
+        // scrollbar={{
+        //   hide:true,
+        // }}
         autoplay={{
           delay: 7000,
           disableOnInteraction: true,
@@ -71,9 +71,12 @@ export function Main ():JSX.Element {
         }}
         navigation={true}
         loop={true}
-        modules={[Scrollbar, Navigation, Autoplay]}
+        modules={[Pagination, Navigation, Autoplay]}
         slidesPerView={1}
-        >
+        pagination={{
+          clickable: true
+        }}
+      >
         {
           carImg.map((a, i)=>(
             <SwiperSlide key={i}>

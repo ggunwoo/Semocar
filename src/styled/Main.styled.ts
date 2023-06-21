@@ -5,12 +5,20 @@ import { Grid, Typography } from '@mui/material'
 export const BannerSwiper = styled(Swiper)`
 && {
   height: 472px;
-  margin-bottom: 80px;
+  margin-bottom: 160px;
   user-select: none;
+  overflow: visible;
+  position: relative;
+  .swiper-button-next, .swiper-button-prev {
+    color: #E9DCFD;
+    opacity: .4;
+    transition: all .2s;
+    &:hover {
+      color: #62478f;
+    }
+  }
   .swiper-button-next {
     right: 15%;
-    color: black;
-    opacity: .2;
     @media (max-width:1600px) {
       right: 7%;
     }
@@ -23,8 +31,6 @@ export const BannerSwiper = styled(Swiper)`
   }
   .swiper-button-prev {
     left: 15%;
-    color: black; 
-    opacity: .2;
     @media (max-width:1600px) {
       left: 7%;
     }
@@ -35,14 +41,29 @@ export const BannerSwiper = styled(Swiper)`
       left: 2%;
     }
   }
-  .swiper-scrollbar {
+  /* .swiper-scrollbar {
     width: 1072px;
     height: 7px;
-    bottom: 3px;
+    bottom: -45px;
     left: 50%;
     transform: translateX(-50%);
     .swiper-scrollbar-drag {
       background-color: #9063FF;
+    }
+  } */
+  .swiper-pagination {
+    width: 1300px;
+    text-align: end;
+    position: relative;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    .swiper-pagination-bullet {
+      &:last-child {
+      }
+    }
+    .swiper-pagination-bullet-active {
+  
     }
   }
 }`;
@@ -51,13 +72,13 @@ export const BaseBox = styled.div`
   width: 1100px;
   margin: auto;
   position: relative;
-  /* top: 50px; */
+  top: 50px;
   /* transform: translateY(-50%); */
 }`
 export const BannerImg = styled.img`
 &&{
   z-index: 1;
-  width: 1100px;
+  width: 100%;
   border-radius: 20px;
   position: absolute;
   margin: 0 auto;
@@ -95,13 +116,14 @@ export const BannerBackgound = styled.div`
   height: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
-  position: absolute;
   /* filter: blur(20px); */
-  /* top: -50px; */
+  overflow: hidden;
   left: 0;
   img {
     width: 100%;
-    /* height: 100%; */
+    opacity: 0.07;
+    position: relative;
+    /* top: -100px; */
   }
   &::before {
     content: "";
@@ -112,7 +134,7 @@ export const BannerBackgound = styled.div`
     top: 0;
     left: 0;
     background-color: #2a2b36;
-    opacity: .90;
+    opacity: 1;
   }
 }`;
 export const GradientRelative = styled.div`
@@ -134,6 +156,7 @@ export const GradientBox = styled.div`
 export const Title = styled(Typography)<{marginTop: string}>`
 && {
   font-size: 18px;
+  font-family: "NotoSans KR", sans-serif;
   margin-top: ${props => props.marginTop || '150px'};
 }`;
 export const SecondSwiper = styled(Swiper)`
