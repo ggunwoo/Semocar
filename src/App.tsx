@@ -30,12 +30,13 @@ function App(): JSX.Element {
 }
 
 // color
-// dark : #5C477D
+// dark : #62478f
 // deep : #9063FF
 // main : #BA90FD
+// main : #AB9ADD
+// 다음자동차 : #e9eaf1
 // light : #E9DCFD
 // superlight : #FAF7FF
-// 다음자동차 : #e9eaf1
 
 
 
