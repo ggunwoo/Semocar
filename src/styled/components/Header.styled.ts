@@ -28,6 +28,7 @@ export const CustomStyledButton = styled(Button)`
   color:black;
   font-size:14px;
   font-weight: normal;
+  font-family: GmarketSans, NotoSans KR, sans-serif;
   border-color:black;
   margin-right:24px;
   border-radius:1.25rem;

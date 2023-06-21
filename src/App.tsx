@@ -13,7 +13,7 @@ import { Brand } from './pages/Brand';
 
 function App(): JSX.Element {
   return (
-    <>
+    <div style={{fontFamily:"GmarketSans, sans-serif"}}>
       <CssBaseline />
       {/* HEADER */}
       <Header />
@@ -25,7 +25,7 @@ function App(): JSX.Element {
       </Routes>
       {/* FOOTER */}
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -34,8 +34,10 @@ export const CheckWraper = styled(FormGroup)`
 export const FormControl = styled(FormControlLabel)`
 && {
   margin: 2px 0 8px 14px;
+  /* checkbox */
   .MuiTypography-root {
-    margin-left: 4px;
     font-size: 14px;
+    font-family: GmarketSans , NotoSans KR, sans-serif !important;
+    margin-left: 4px;
   }
 }`;

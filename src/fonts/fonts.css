@@ -3,16 +3,17 @@
   src: url(./Anders.ttf);
 }
 @font-face {
-  font-family: "Gmarket Sans bold";
+  font-family: "GmarketSans bold";
   src: url(./GmarketSansTTFBold.ttf);
 }
 @font-face {
-  font-family: "Gmarket Sans";
+  font-family: "GmarketSans";
   src: url(./GmarketSansTTFMedium.ttf);
 }
 @font-face {
-  font-family: "Gmarket Sans light";
+  font-family: "GmarketSans light";
   src: url(./GmarketSansTTFLight.ttf);
+  
 }
 @font-face {
   font-family: "NotoSans KR";
