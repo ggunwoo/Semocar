@@ -201,6 +201,7 @@ export const FixedBox = styled.div`
 export const InfoBoxWrap = styled.div`
 && {
   margin-top: 50px;
+  font-family: NotoSans KR, sans-serif !important;
 }`;
 export const Title = styled.span`
 && {
