@@ -92,9 +92,7 @@ export function Detail():JSX.Element {
           setTabFixed(false)
         }
       }
-
-      console.log()
-  
+      
       if(scrollY > 600 && scrollY < 900){
         setClickCheck([true, false, false])
       }
