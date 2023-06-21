@@ -5,7 +5,7 @@ export const FooterCtn = styled.div`
 && {
   width: 100%;
   height: 150px;
-  margin-top: 200px;
+  /* margin-top: 200px; */
   background: #F9F9F9;
   .infoWrap {
     width: 700px;

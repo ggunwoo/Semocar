@@ -184,6 +184,7 @@ export const InfoText = styled.p`
 export const GalleryGrid = styled(Grid)`
 && {
   margin-top: 36px;
+  margin-bottom: 200px;
   .item {
     position: relative;
     width: 100%;

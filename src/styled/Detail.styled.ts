@@ -517,6 +517,7 @@ export const CommentWrap = styled.div`
   width: 100%;
   /* height: 100%; */
   margin-top: 280px;
+  padding-bottom: 300px;
   .top_section {
     margin-left: 24px;
     margin-bottom: 36px;
@@ -607,7 +608,6 @@ export const CommentList = styled.form`
     padding: 24px;
     display: flex;
     align-items: center;
-    margin-bottom: 18px;
     background-color: #f9f9f9;
     border-radius: 20px;
     .rating {
