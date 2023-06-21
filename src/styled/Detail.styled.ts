@@ -635,11 +635,11 @@ export const CommentList = styled.form`
   }
   }
   .like {
-    width: 100px;
+    width: 80px;
     text-align: center;
     .icon, .offIcon {
       color: #c6c6c6;
-      font-size: 2.5em;
+      font-size: 2rem;
     }
     .icon {}
     .offIcon {}
