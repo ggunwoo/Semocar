@@ -14,7 +14,6 @@ import {TabView} from '../components/TabView';
   // SearchBox Styled
 import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/Brand.styled'
-import { BrandNavWrap } from '../styled/Main.styled';
 
 // Search View Styled
 export function Brand ():JSX.Element {
@@ -87,9 +86,7 @@ export function Brand ():JSX.Element {
   return (
     <MaxContainer>
       {/* Brand Search Nav */}
-      <BrandNavWrap>
-        <BrandNav />
-      </BrandNavWrap>
+      <BrandNav />
 
       {/* Search Check Box */}
       <S.FormWraper>

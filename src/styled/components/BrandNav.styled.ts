@@ -1,15 +1,27 @@
 import { styled } from 'styled-components'
 import { Box, Button } from '@mui/material';
 
+export const BrandNavWrap = styled.div`
+&& {
+  width: 100%;
+  height: 100px;
+  background-color: #fcfcfc;
+  padding-top: 20px;
+  margin: 50px 0 0;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 10px;
+}`;
+
 export const FlexBox = styled(Box)`
 && {
   width: 100%;
   display:flex;
   justify-content: space-evenly;
   align-items: center;
-  border-color: #5C477D;
+  border-color: #62478f;
   .clicked {
-    border-bottom: 4px solid #5C477D;
+    border-bottom: 4px solid #62478f;
     & > .imgBox {
       display: none;
     }
