@@ -5,12 +5,12 @@ export const BrandNavWrap = styled.div`
 && {
   width: 100%;
   height: 100px;
-  background-color: #fcfcfc;
+  background-color: #fff;
   padding-top: 20px;
   margin: 50px 0 0;
   box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: 10px;
+  /* border: 1px solid rgba(0,0,0,.2); */
+  /* border-radius: 10px; */
 }`;
 
 export const FlexBox = styled(Box)`
