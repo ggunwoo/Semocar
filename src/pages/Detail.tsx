@@ -62,6 +62,9 @@ export function Detail():JSX.Element {
       "text":"이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐 이걸 왜 사냐",
     },
   ]);
+
+  const [likeCheck, setLikeCheck] = useState(Array(commentList.length).fill(false))
+
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
   const commentRef = useRef<HTMLInputElement>(null)
@@ -69,14 +72,17 @@ export function Detail():JSX.Element {
   const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
 
   // 파라미터로 불러온 차량에 브랜드URL
-  const searchBrandLogo = carBrands.find( e => e.name.en === searchCar?.brand.en)
-  
+  const OverlapBrand = carBrands.find( e => e.name.en === searchCar?.brand.en)
+  // console.log(OverlapBrand)
+
   const [tabFixed, setTabFixed] = useState(false)
   
+  // Mount
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [])
 
+  // 스크롤 핸들
   useEffect(()=>{
     const handleScroll = () => {
       const targetElement = document.getElementById('grade');
@@ -106,8 +112,10 @@ export function Detail():JSX.Element {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      setTabFixed(false)
+      setTimeout(()=>{
+        window.removeEventListener('scroll', handleScroll);
+        setTabFixed(false)
+      },1000)
     }
   }, [])
   
@@ -129,7 +137,7 @@ export function Detail():JSX.Element {
           <div className='wrap'>
             <div className='infoBox'>
               <p className='brand'>
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchBrandLogo?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
                 <span>{searchCar.brand.kr}</span>
               </p>
               <p className='name'>{searchCar.name.kr}</p>
@@ -154,7 +162,8 @@ export function Detail():JSX.Element {
         </MaxContainer>
       </S.FeatureBox>
       }
-      
+
+      {/* 해당 스크롤위치로 이동하는기능 인터페이스 */}
       <S.TartgetNav>
         <MaxContainer>
           <div className='btnGroup'>
@@ -172,13 +181,13 @@ export function Detail():JSX.Element {
         </MaxContainer>
       </S.TartgetNav>
 
-      {/* fixed FeatureBox */}
+      {/* TargetNav가 화면에서 사라졌을 때 보여줄 섹션 */}
       <S.FixedBox className={`${tabFixed ? 'fixed': 'unfixed'}`}>
         <div className='wrap'>
           <div className='featureBox'>
             <div className='titleGroup'>
               <div className='brand'>
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchBrandLogo?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
                 <span className='brand'>{searchCar?.brand.kr}</span>
               </div>
               <p className='name'>{searchCar?.name.kr}</p>
@@ -201,6 +210,7 @@ export function Detail():JSX.Element {
         </div>
       </S.FixedBox>
 
+      {/* 차량정보 적어놓은 표 */}
       <MaxContainer>
         <S.InfoBoxWrap>
         <S.Title>등급별 제원</S.Title>
@@ -430,69 +440,69 @@ export function Detail():JSX.Element {
               </S.SpacDd>
             }
           </S.SpacDl>
-            <S.SizeBox>
-              {/* 차량 앞면 이미지 */}
-              <div className='size_box front'>
-                <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
+          <S.SizeBox>
+            {/* 차량 앞면 이미지 */}
+            <div className='size_box front'>
+              <span className='wrap_thumb'>
+                <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
+              </span>
+              <span className='wrap_size track'>
+                <span className='txt'>
+                  윤거전
+                  <span> {choosed?.track}</span>
                 </span>
-                <span className='wrap_size track'>
-                  <span className='txt'>
-                    윤거전
-                    <span> {choosed?.track}</span>
-                  </span>
-                  <span className='line'></span>
+                <span className='line'></span>
+              </span>
+              <span className='wrap_size weight'>
+                <span className='txt'>
+                  전폭
+                  <span> {choosed?.weight}</span>
                 </span>
-                <span className='wrap_size weight'>
-                  <span className='txt'>
-                    전폭
-                    <span> {choosed?.weight}</span>
-                  </span>
-                  <span className='line'></span>
-                </span>
+                <span className='line'></span>
+              </span>
 
-              </div>
-              {/* 차량 옆면 이미지 */}
-              <div className='size_box side'>
-                <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
+            </div>
+            {/* 차량 옆면 이미지 */}
+            <div className='size_box side'>
+              <span className='wrap_thumb'>
+                <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
+              </span>
+              <span className='wrap_size wheelbase'>
+                <span className='txt'>
+                  축거
+                  <span> {choosed?.wheelBase}</span>
                 </span>
-                <span className='wrap_size wheelbase'>
-                  <span className='txt'>
-                    축거
-                    <span> {choosed?.wheelBase}</span>
-                  </span>
-                  <span className='line'></span>
+                <span className='line'></span>
+              </span>
+              <span className='wrap_size length'>
+                <span className='txt'>
+                  전장
+                  <span> {choosed?.length}</span>
                 </span>
-                <span className='wrap_size length'>
-                  <span className='txt'>
-                    전장
-                    <span> {choosed?.length}</span>
-                  </span>
-                  <span className='line'></span>
+                <span className='line'></span>
+              </span>
+            </div>
+            {/* 차량 뒷면 이미지 */}
+            <div className='size_box rear'>
+              <span className='wrap_thumb'>
+                <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
+              </span>
+              <span className='wrap_size tread'>
+                <span className='txt'>
+                  윤거후
+                  <span> {choosed?.tread}</span>
                 </span>
-              </div>
-              {/* 차량 뒷면 이미지 */}
-              <div className='size_box rear'>
-                <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
+                <span className='line'></span>
+              </span>
+              <span className='wrap_size height'>
+                <span className='txt'>
+                  전고
+                  <span> {choosed?.height}</span>
                 </span>
-                <span className='wrap_size tread'>
-                  <span className='txt'>
-                    윤거후
-                    <span> {choosed?.tread}</span>
-                  </span>
-                  <span className='line'></span>
-                </span>
-                <span className='wrap_size height'>
-                  <span className='txt'>
-                    전고
-                    <span> {choosed?.height}</span>
-                  </span>
-                  <span className='line'></span>
-                </span>
-              </div>
-            </S.SizeBox>
+                <span className='line'></span>
+              </span>
+            </div>
+          </S.SizeBox>
 
         </S.MoreInfo>
         <div ></div>
@@ -506,12 +516,11 @@ export function Detail():JSX.Element {
             navigation={true}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
-            
           >
-            
             {['1','2','3','4','5','6'].map((slide, index)=>(
               <SwiperSlide key={index}>
                 <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" />
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${OverlapBrand?.name.en}/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
               </SwiperSlide>
             ))}
           </S.MainSwiper>
@@ -595,8 +604,21 @@ export function Detail():JSX.Element {
                 </div>
 
                 <div className='like'>
-                  {/* <ThumbUpAltIcon className='icon' /> */}
-                  <ThumbUpOffAltIcon className='offIcon' />
+                  <ThumbUpOffAltIcon
+                    className={`offIcon ${ likeCheck[index] ? 'clicked' : undefined }`}
+                    onClick={()=>{
+                      if(likeCheck[index]===true){
+                        commentList[index].likeCount--
+                      } else if(likeCheck[index]===false){
+                        commentList[index].likeCount++
+                      }
+                      
+                      const copylike = [...likeCheck]
+                      copylike[index] = !copylike[index]
+                      setLikeCheck(copylike);
+                      
+                    }}
+                  />
                   <p className='likeCtn'>{item.likeCount}</p>
                 </div>
               </div>

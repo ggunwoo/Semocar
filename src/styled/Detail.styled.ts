@@ -143,13 +143,13 @@ export const FixedBox = styled.div`
             max-width: 22px;
             min-width: 12px;
             max-height: 14px;
-
             margin-right: 5px;
           }
           span {
-            font-size: 12px;
+            font-size: 11px;
             color: #626262;
             text-align: center;
+            margin-top: 2px;
           }
         }
         p.name {
@@ -161,7 +161,7 @@ export const FixedBox = styled.div`
       }
       .btnGroup {
         display: flex;
-        margin-top: 22px;
+        margin-top: 21.4px;
         .targetBtn {
           font-size: 14px;
           height: 100%;
@@ -188,10 +188,10 @@ export const FixedBox = styled.div`
     }
     .imgBax {
       img {
-        width: 320px;
+        width: 420px;
         position: relative;
-        top: 15px;
-        right: 100px;
+        top: 7px;
+        right: 60px;
       }
     }
   }
@@ -256,7 +256,7 @@ export const ChipBtn = styled.div`
   padding: 5px 10px;
   padding-left: 20px;
   padding-right: 20px;
-  /* min-width: 60px; */
+  font-family: NotoSans KR, sans-serif !important;
   text-align: center;
   border: 1px solid #d8d8d8;
   border-radius: 1.5em;
@@ -528,7 +528,7 @@ export const CommentWrap = styled.div`
       width: 300px;
       position: relative;
       .star {
-        color: #FFA30B;
+        color: #AB9ADD;
         font-size: 3.5em;
       }
       .int {
@@ -557,7 +557,7 @@ export const CommentWrap = styled.div`
           height: 6px;
           margin: auto 0;
           margin-left: 0.5em;
-          background-color: #FFA30B;
+          background-color: #AB9ADD;
           border-radius: 50px;
         }
       }
@@ -574,6 +574,7 @@ export const PostForm = styled.form`
   display: flex;
   align-items: center;
   .rating {
+    color: #AB9ADD;
     margin-right: 16px;
     margin-left: 24px;
   }
@@ -586,7 +587,7 @@ export const PostForm = styled.form`
     height: 56px;
     border-radius: 100%;
     &:hover {
-      color: #000;
+      color: #AB9ADD;
     }
     .sendIcon {
       font-size: 2em;
@@ -616,6 +617,7 @@ export const CommentList = styled.form`
     }
     .rating {
       margin-right: .5em;
+      color: #AB9ADD;
     }
     .ratingNum {
       color: #000;
@@ -646,7 +648,12 @@ export const CommentList = styled.form`
       font-size: 2rem;
     }
     .icon {}
-    .offIcon {}
+    .offIcon {
+      &.clicked {
+        color: #AB9ADD;
+        /* background-color: #AB9ADD; */
+      }
+    }
     .likeCtn {
       line-height: 2em;
       font-size: 0.75em;
