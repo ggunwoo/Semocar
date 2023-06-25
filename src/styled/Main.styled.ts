@@ -5,7 +5,7 @@ import { Grid, Typography } from '@mui/material'
 export const BannerSwiper = styled(Swiper)`
 && {
   height: 472px;
-  margin-bottom: 160px;
+  margin-bottom: 120px;
   user-select: none;
   overflow: visible;
   position: relative;
@@ -15,6 +15,9 @@ export const BannerSwiper = styled(Swiper)`
     transition: all .2s;
     &:hover {
       color: #62478f;
+    }
+    &::after {
+      font-size: 32px !important;
     }
   }
   .swiper-button-next {
@@ -58,6 +61,7 @@ export const BannerSwiper = styled(Swiper)`
     left: 50%;
     bottom: 40px;
     transform: translateX(-50%);
+    display: none;
     .swiper-pagination-bullet {
       &:last-child {
       }
@@ -145,7 +149,7 @@ export const GradientBox = styled.div`
 && {
   width: 100%;
   height: 171px;
-  background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #e6e6e6 50%);
+  background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #cdc0e2 200%);
   position: absolute;
   top: -27px;
   left: 50%;

@@ -1,21 +1,40 @@
 @font-face {
   font-family: "Anders";
-  src: url(./Anders.ttf);
+  src: url(FontFile/Anders.ttf);
 }
+
+/* GmarketSans */
 @font-face {
   font-family: "GmarketSans bold";
-  src: url(./GmarketSansTTFBold.ttf);
+  src: url(FontFile/GmarketSansTTFBold.ttf);
 }
 @font-face {
   font-family: "GmarketSans";
-  src: url(./GmarketSansTTFMedium.ttf);
+  src: url(FontFile/GmarketSansTTFMedium.ttf);
 }
 @font-face {
   font-family: "GmarketSans light";
-  src: url(./GmarketSansTTFLight.ttf);
-  
+  src: url(FontFile/GmarketSansTTFLight.ttf);
+}
+
+/* NotoSans KR */
+@font-face {
+  font-family: "NotoSans KR bold";
+  src: url(FontFile/NotoSansKR-Bold.otf);
+}
+@font-face {
+  font-family: "NotoSans KR medium";
+  src: url(FontFile/NotoSansKR-Medium.otf);
+}
+@font-face {
+  font-family: "NotoSans KR regular";
+  src: url(FontFile/NotoSansKR-Regular.otf);
+}
+@font-face {
+  font-family: "NotoSans KR light";
+  src: url(FontFile/NotoSansKR-Light.otf);
 }
 @font-face {
   font-family: "NotoSans KR";
-  src: url(./NotoSansKR-Medium.otf);
+  src: url(FontFile/NotoSansKR-Thin.otf);
 }

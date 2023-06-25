@@ -174,10 +174,10 @@ export function TabView() {
             <div></div>
             <FormControl size='small' sx={{m:1}}>
               <OutlinedInput
-              id="input-with-icon-adornment"
-              placeholder='To be implemented'
-              // Icon
-              endAdornment={ <InputAdornment position="end"><SearchIcon /></InputAdornment> }
+                id="input-with-icon-adornment"
+                placeholder='To be implemented'
+                // Icon
+                endAdornment={ <InputAdornment position="end"><SearchIcon className='searchIcon' /></InputAdornment> }
               />
             </FormControl>
           </S.SearchBarWraper>

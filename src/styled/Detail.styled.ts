@@ -28,9 +28,10 @@ export const FeatureBox = styled.div`
       display: flex;
       align-items: center;
       img {
-        max-width: 82px;
-        max-height: 42px;
-        transform: scale(.5);
+        max-width: 36px;
+        max-height: 18px;
+        margin-right: 8px;
+        /* transform: scale(.5); */
       }
       span {
         font-size: 18px;
@@ -40,21 +41,27 @@ export const FeatureBox = styled.div`
     }
     p.name {
       font-size: 3rem;
-
+      margin-bottom: 0 !important;
     }
     p.price {
       color: #62478f;
       font-weight: bold;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       line-height: 2rem;
-      letter-spacing: 0.125rem;
     }
   }
 }`;
 export const StyledChip = styled(Chip)`
 && {
+  color: #626262;
   margin-right: 10px;
   background-color: #fff;
+  padding: 8px 8px;
+  font-size: .75rem;
+  font-family: NotoSans KR bold, sans-serif !important;
+  &.first {
+    margin-left: -6px;
+  }
 }`;
 export const ImgBox = styled.div`
 && {
@@ -84,7 +91,8 @@ export const TartgetNav = styled.div`
       color: #cacaca;
     }
     .clicked {
-      color: #000;
+      color: #AB9ADD;
+      font-weight: bold;
       position: relative;
       &::before {
         content: "";
@@ -171,7 +179,7 @@ export const FixedBox = styled.div`
             color: #cacaca;
           }
         .clicked {
-          color: #000;
+          color: #AB9ADD;
           position: relative;
           &::before {
             content: "";
@@ -200,14 +208,16 @@ export const FixedBox = styled.div`
 // INFO
 export const InfoBoxWrap = styled.div`
 && {
-  margin-top: 50px;
-  font-family: NotoSans KR, sans-serif !important;
+  margin-top: 100px;
+  color: #626262;
+  
 }`;
 export const Title = styled.span`
 && {
   font-size: 1em;
   font-weight: bold;
   text-align: center;
+  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
 }`;
 export const MoreInfo = styled.div`
 && {
@@ -218,7 +228,7 @@ export const MoreInfo = styled.div`
 }`;
 export const FormDl = styled.dl`
 && {
-  background-color: #fbfbfb;
+  background-color: #FBFBFB;
   padding: 24px 0 24px 16px;
   margin-bottom: 0;
   border-bottom: 1px solid #e8e8e8;
@@ -229,9 +239,10 @@ export const FormDl = styled.dl`
 }`;
 export const FormDt = styled.dt`
 && {
+  font-family: NotoSans KR bold, GmarketSans, sans-serif !important;
   width: 90px;
   height: 100%;
-  margin-top: 10px;
+  margin-top: 4px;
   margin-right: 24px;
   text-align: center;
 }`;
@@ -239,6 +250,7 @@ export const FormDd = styled.dd`
 && {
   width: 85%;
   height: 100%;
+  
   margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
@@ -246,19 +258,20 @@ export const FormDd = styled.dd`
   gap: .7em;
   .clicked {
     color: #fff;
-    background-color: #62478f;
+    background-color: #AB9ADD;
   }
   .grade {
   }
 }`;
 export const ChipBtn = styled.div`
 && {
-  padding: 5px 10px;
+  padding: 8px 14px;
   padding-left: 20px;
   padding-right: 20px;
-  font-family: NotoSans KR, sans-serif !important;
+  font-size: .75rem;
+  font-weight: bold;
+  font-family: NotoSans KR bold, sans-serif !important;
   text-align: center;
-  border: 1px solid #d8d8d8;
   border-radius: 1.5em;
 }`;
 export const PriceDl = styled.dl`
@@ -268,17 +281,20 @@ export const PriceDl = styled.dl`
   border-bottom: 1px solid #d8d8d8;
   display: flex;
   align-items: flex-start;
+  font-family: NotoSans KR bold, sans-serif !important;
   dt {
     width: 90px;
     height: 100%;
-    margin-top: 8px;
-    margin-right: 24px;
+    margin-top: 13px;
+    margin-right: 30px;
     text-align: center;
   }
   dd {
     width: 85%;
+    font-size: 1.75rem;
     span {
-      font-size: 14px;
+      font-size: 0.75rem;
+      font-weight: bold;
     }
   }
 }`;
@@ -294,8 +310,9 @@ export const SpacDt = styled.dt`
 && {
   width: 90px;
   height: 85%;
-  margin-right: 24px;
+  margin-right: 30px;
   text-align: center;
+  font-family: NotoSans KR bold, sans-serif !important;
 }`;
 export const SpacDd = styled.dd`
 && {
@@ -308,26 +325,31 @@ export const SpacDd = styled.dd`
 export const OptionDl = styled.dl`
 && {
   width: 33.3333333333%;
+  font-size: .875rem;
+  font-family: NotoSans KR regular, sans-serif;
+  line-height: 1.5rem;
 }`;
 export const OptionDt = styled.dt`
 && {
   width: 40%;
-  color: #999999;
+  color: #9f9f9f;
   font-weight: normal;
   float: left;
   margin-bottom: 8px;
 }`;
 export const OptionDd = styled.dd`
 && {
+  color: #626262;
   margin-bottom: 8px;
-  /* font-weight: bold; */
 }`;
 // 자동차 치수 단락
 export const SizeBox = styled.div`
 && {
   width: 85%;
   height: 100%;
+  margin-top: 50px;
   margin-left: 90px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: space-evenly;
   .size_box {
@@ -343,7 +365,8 @@ export const SizeBox = styled.div`
       line-height: 1em;
       .txt {
         font-size: .75em;
-        background-color: #F5F5F5;
+        color: #9F9F9F;
+        background-color: #fff;
         padding: 0 3px;
         z-index: 1;
         position: relative;
@@ -412,7 +435,7 @@ export const SizeBox = styled.div`
         width: 61px;
         padding: 5px 0;
         font-size: .75em;
-        background-color: #F5F5F5;
+        background-color: #fff;
         position: relative;
         top: 50%;
         left: -50%;
@@ -481,6 +504,13 @@ export const ThumbsSwiper = styled(Swiper)`
     }
   }
   .swiper-slide::after {
+    display: none;
+  }
+  
+  .swiper-slide-thumb-active {
+    position: relative;
+  }
+  .swiper-slide-thumb-active::after { 
     content: "";
     box-sizing: border-box;
     display: block;
@@ -490,13 +520,8 @@ export const ThumbsSwiper = styled(Swiper)`
     top: 0;
     left: 0;
     background-color: #000;
-    opacity: .3;
+    opacity: .63;
   }
-  
-  .swiper-slide-thumb-active {
-    position: relative;
-  }
-  .swiper-slide-thumb-active::after { display: none; }
   .swiper-slide-thumb-active::before {
     content: "";
     box-sizing: border-box;

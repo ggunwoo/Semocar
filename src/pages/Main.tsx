@@ -94,7 +94,7 @@ export function Main ():JSX.Element {
 
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <MaxContainer sx={{ position:'relative' }}>
-        <S.Title marginTop="100px">브랜드별 보러가기</S.Title>
+        {/* <S.Title marginTop="100px">브랜드별 보러가기</S.Title> */}
           <BrandNav />
       </MaxContainer>
 
@@ -111,7 +111,7 @@ export function Main ():JSX.Element {
               pagination={{
                 dynamicBullets: true,
               }}
-              >
+            >
               {
                 carCount.map((a,i)=>(
                   <SwiperSlide key={carCount[i]}>

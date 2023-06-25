@@ -8,6 +8,11 @@ export const SearchBarWraper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  .searchIcon {
+    /* opacity: 0.3; */
+    /* color: #dee2e6; */
+    color: rgba(0, 0, 0, 0.175);
+  }
 }`;
 export const StyledBox = styled(Box)`
 && {
@@ -17,17 +22,22 @@ export const StyledBox = styled(Box)`
   border-bottom: 0;
   margin-bottom: 3rem;
   border-color: divider;
+  margin-top: 50px;
   
   .tabs {
+    height: 20px !important;
     .MuiTabs-flexContainer {
       .tab {
+        font-family: GmarketSans, NotoSans KR, sans-serif;
         &.Mui-selected {
           color: #9063FF;
+          font-weight: bold;
         }
       }
     }
     .MuiTabs-indicator {
       background-color: #9063FF;
+      height: 3px;
     }
   }
 }`;

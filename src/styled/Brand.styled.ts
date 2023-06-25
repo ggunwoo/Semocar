@@ -25,6 +25,8 @@ export const CheckLine = styled.div`
 export const CheckTitle = styled.div`
 && {
   width: 5%;
+  color: #626262;
+  text-align: center;
   /* margin-top: 0.47rem; */
 }`;
 export const CheckWraper = styled(FormGroup)`
@@ -33,11 +35,11 @@ export const CheckWraper = styled(FormGroup)`
 }`;
 export const FormControl = styled(FormControlLabel)`
 && {
-  margin: 2px 0 8px 14px;
+  margin: 2px 0 10px 24px;
   /* checkbox */
   .MuiTypography-root {
     font-size: 14px;
-    font-family: GmarketSans , NotoSans KR, sans-serif !important;
+    font-family: NotoSans KR light, sans-serif !important;
     margin-left: 4px;
   }
 }`;
