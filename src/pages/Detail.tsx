@@ -531,8 +531,8 @@ export function Detail():JSX.Element {
           <div className='slideHead'>
             <S.Title>포토</S.Title>
             <div className='buttonGroup'>
-              {exteriorArr.length > 0 ? <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div> : undefined}
-              {interiorArr.length > 0 ? <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div> : undefined}
+              {searchCar?.photoNumber.exterior === 0 ? <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div> : undefined}
+              {searchCar?.photoNumber.interior === 0 ? <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div> : undefined}
             </div>
           </div>
           <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
