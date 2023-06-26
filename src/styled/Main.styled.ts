@@ -134,6 +134,7 @@ export const GradientBox = styled.div`
   position: absolute;
   top: -27px;
   left: 50%;
+  opacity: .5;
   transform: translateX(-50%);
   z-index: -1;
 }`;
