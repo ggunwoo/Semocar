@@ -531,8 +531,8 @@ export function Detail():JSX.Element {
           <div className='slideHead'>
             <S.Title>포토</S.Title>
             <div className='buttonGroup'>
-              {searchCar?.photoNumber.exterior === 0 ? <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div> : undefined}
-              {searchCar?.photoNumber.interior === 0 ? <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div> : undefined}
+              {searchCar?.photoNumber.exterior === 0 ? undefined : <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div>}
+              {searchCar?.photoNumber.interior === 0 ? undefined : <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div>}
             </div>
           </div>
           <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
@@ -548,7 +548,7 @@ export function Detail():JSX.Element {
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -563,7 +563,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
@@ -580,7 +580,7 @@ export function Detail():JSX.Element {
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+2}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+2}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -595,7 +595,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
