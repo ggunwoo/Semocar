@@ -180,6 +180,7 @@ export const FixedBox = styled.div`
           }
         .clicked {
           color: #AB9ADD;
+          font-weight: bold;
           position: relative;
           &::before {
             content: "";
