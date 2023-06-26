@@ -37,7 +37,8 @@ export function Detail():JSX.Element {
   // VAR :파라미터로 불러온 차량에 브랜드URL
   const OverlapBrand = carBrands.find( e => e.name.en === searchCar?.brand.en)
 
-  const [thumbsSwiper, setThumbsSwiper] = useState<Swiper|null>(null);
+  const [exThumbs, setExThumbs] = useState<Swiper|null>(null);
+  const [inThumbs, setInThumbs] = useState<Swiper|null>(null);
   const [commentList, setCommentList] = useState([
     {
       "rating":5,
@@ -71,19 +72,21 @@ export function Detail():JSX.Element {
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
   const commentRef = useRef<HTMLInputElement>(null)
+  const [tabFixed, setTabFixed] = useState(false)
   const [ClickCheck, setClickCheck] = useState([true, false, false]);
   const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
 
   
-  // console.log(OverlapBrand)
-
-  const [tabFixed, setTabFixed] = useState(false)
+  // 해당 차량 사진 개수 배열로 변환한 변수
+  const [viewPhoto, setViewPhoto] = useState([true, false])
+  const exteriorArr = Array.from(Array(searchCar?.photoNumber.exterior), (_, index) =>  index + 1);
+  const interiorArr = Array.from(Array(searchCar?.photoNumber.interior), (_, index) =>  index + 1);
+  
   
   // Mount
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [])
-
   // 스크롤 핸들
   useEffect(()=>{
     const handleScroll = () => {
@@ -101,6 +104,7 @@ export function Detail():JSX.Element {
         }
       }
       
+      // 스크롤위치에 도달할때마다 targetBtn active 변경
       if(scrollY > 600 && scrollY < 900){
         setClickCheck([true, false, false])
       }
@@ -111,6 +115,7 @@ export function Detail():JSX.Element {
         setClickCheck([false, false, true])
       }
     }
+    // 스크롤할때마다 handleScroll을 실행하는데... 이건 수정필요
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -120,13 +125,20 @@ export function Detail():JSX.Element {
       },1000)
     }
   }, [])
-  
+  // .targetBtn 클릭시 설정값 스크롤 위치로 이동하는 이벤트로직
   const targetMove = (target: any) => {
     if(target.current){
       target.current.scrollIntoView({ block: 'center'});
     }
   };
-
+  
+  // Photo 외관, 내관버튼 클릭시 해당 사진슬라이드 보여주는 로직
+  const viewChange = (index: number) => {
+    const copyArr = [...viewPhoto]
+    copyArr.fill(false)
+    copyArr[index] = !copyArr[index]
+    setViewPhoto(copyArr)
+  }
 
   return (
     <div className='wrap' style={{background:"#FFF"}}>
@@ -213,8 +225,8 @@ export function Detail():JSX.Element {
         </div>
       </S.FixedBox>
 
-      {/* 차량정보 적어놓은 표 */}
       <MaxContainer>
+        {/* 차량정보 적어놓은 표 */}
         <S.InfoBoxWrap>
           <S.Title>등급별 제원</S.Title>
           <S.MoreInfo id="grade" >
@@ -516,36 +528,78 @@ export function Detail():JSX.Element {
 
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
-          <S.Title>포토</S.Title>
+          <div className='slideHead'>
+            <S.Title>포토</S.Title>
+            <div className='buttonGroup'>
+              {exteriorArr.length > 0 ? <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div> : undefined}
+              {interiorArr.length > 0 ? <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div> : undefined}
+            </div>
+          </div>
           <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
-          <S.MainSwiper
-            spaceBetween={10}
-            navigation={true}
-            thumbs={{ swiper: thumbsSwiper }}
-            modules={[FreeMode, Navigation, Thumbs]}
-          >
-            {['1','2','3','4','5','6','7'].map((slide, index)=>(
-              <SwiperSlide key={index}>
-                {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
-              </SwiperSlide>
-            ))}
-          </S.MainSwiper>
-          <S.ThumbsSwiper
-            onSwiper={setThumbsSwiper}
-            spaceBetween={10}
-            slidesPerView={6}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
+
+          {/* 외관 */}
+          <div className={`slides exterior ${viewPhoto[0] ? 'block' : 'none'}`}>
+            <S.MainSwiper
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{ swiper: exThumbs }}
+              modules={[FreeMode, Navigation, Thumbs]}
             >
-            {/* ThumbsSwiper */}
-            {['1','2','3','4','5','6'].map((slide, index)=>(
-              <SwiperSlide key={index}>
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
-              </SwiperSlide>
-            ))}
-          </S.ThumbsSwiper>
+              {exteriorArr.map((slide, index)=>(
+                <SwiperSlide key={index}>
+                  {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                </SwiperSlide>
+              ))}
+            </S.MainSwiper>
+            <S.ThumbsSwiper
+              onSwiper={setExThumbs}
+              spaceBetween={10}
+              slidesPerView={6}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              >
+              {/* ThumbsSwiper */}
+              {exteriorArr.map((slide, index)=>(
+                <SwiperSlide key={index}>
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                </SwiperSlide>
+              ))}
+            </S.ThumbsSwiper>
+          </div>
+
+          {/* 내관 */}
+          <div className={`slides interior ${viewPhoto[1] ? 'block' : 'none'}`}>
+            <S.MainSwiper
+              spaceBetween={10}
+              navigation={true}
+              thumbs={{ swiper: inThumbs }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              >
+              {interiorArr.map((slide, index)=>(
+                <SwiperSlide key={index}>
+                  {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+2}.jpg`} alt={searchCar?.name.en} />
+                </SwiperSlide>
+              ))}
+            </S.MainSwiper>
+            <S.ThumbsSwiper
+              onSwiper={setInThumbs}
+              spaceBetween={10}
+              slidesPerView={6}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              >
+              {/* ThumbsSwiper */}
+              {interiorArr.map((slide, index)=>(
+                <SwiperSlide key={index}>
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/${index+1}.jpg`} alt={searchCar?.name.en} />
+                </SwiperSlide>
+              ))}
+            </S.ThumbsSwiper>
+          </div>
         </S.SwiperWrap>
 
         {/* COMMENT */}

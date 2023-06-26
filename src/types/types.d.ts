@@ -25,6 +25,7 @@ interface Car {
   id: number;
   segment: string;
   imgUrl: string;
+  photoNumber: { "exterior": number, "interior" :number};
   price: {
     min: number;
     max: number;

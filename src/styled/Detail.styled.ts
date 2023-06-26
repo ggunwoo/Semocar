@@ -213,13 +213,6 @@ export const InfoBoxWrap = styled.div`
   color: #626262;
   
 }`;
-export const Title = styled.span`
-&& {
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
-}`;
 export const MoreInfo = styled.div`
 && {
   width: 100%;
@@ -476,12 +469,30 @@ export const SizeBox = styled.div`
   }
 }`;
 
+// Title
+export const Title = styled.span`
+&& {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
+}`;
+
 // 포토갤러리
 export const SwiperWrap = styled.div`
 && {
   width: 100%;
   margin-top: 160px;
   height: 700px;
+  .slideHead {
+    display: flex;
+    justify-content: space-between;
+    .buttonGroup {
+      .btn {}
+    }
+  }
+  .block { display:block }
+  .none { display:none }
 }`;
 export const MainSwiper = styled(Swiper)`
 && {
