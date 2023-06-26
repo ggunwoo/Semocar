@@ -8,11 +8,14 @@ export const FormWraper = styled.div`
   background-color: #fcfcfc;
   border: 1px solid rgba(0,0,0,.2);
   margin-top: 2rem;
-  padding: 4% 36px;
+  padding: 44px 36px;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 20%;
+  @media (max-width: 1440px ) {
+    padding: 48px 36px;
+  }
 }`;
 export const CheckLine = styled.div`
 && {
@@ -33,7 +36,7 @@ export const CheckWraper = styled(FormGroup)`
 }`;
 export const FormControl = styled(FormControlLabel)`
 && {
-  margin: 2px 0 10px 22px;
+  margin: 0 0 10px 22px;
   /* checkbox */
   .MuiTypography-root {
     font-size: 14px;
