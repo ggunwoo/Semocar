@@ -82,10 +82,10 @@ export function Main ():JSX.Element {
             <SwiperSlide key={i}>
                 <S.BaseBox>
                   <S.BannerImg src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
-                  <S.BannerBtn onClick={()=>{navigate(a)}} className={`bannerBtn_${i+1}`} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/btn.png`} />
+                  <S.BannerBtn onClick={()=>{navigate(a)}} className={`bannerBtn_${i+1}`} />
                 </S.BaseBox>
                 <S.BannerBackgound>
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`BACKGROUND${i+1}`} />
+                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
                 </S.BannerBackgound>
             </SwiperSlide>
           ))

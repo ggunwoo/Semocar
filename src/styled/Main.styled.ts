@@ -7,8 +7,8 @@ export const BannerSwiper = styled(Swiper)`
   height: 472px;
   margin-bottom: 120px;
   user-select: none;
-  overflow: visible;
   position: relative;
+  overflow: hidden;
   .swiper-button-next, .swiper-button-prev {
     color: #E9DCFD;
     opacity: .4;
@@ -44,16 +44,6 @@ export const BannerSwiper = styled(Swiper)`
       left: 2%;
     }
   }
-  /* .swiper-scrollbar {
-    width: 1072px;
-    height: 7px;
-    bottom: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    .swiper-scrollbar-drag {
-      background-color: #9063FF;
-    }
-  } */
   .swiper-pagination {
     width: 1300px;
     text-align: end;
@@ -76,13 +66,13 @@ export const BaseBox = styled.div`
   width: 1100px;
   margin: auto;
   position: relative;
-  top: 50px;
-  /* transform: translateY(-50%); */
+  
 }`
 export const BannerImg = styled.img`
 &&{
   z-index: 1;
   width: 1100px;
+  height: 472px;
   border-radius: 20px;
   position: absolute;
   margin: 0 auto;
@@ -91,54 +81,45 @@ export const BannerImg = styled.img`
   transform: translateX(-50%);
 
 }`;
-export const BannerBtn = styled.img`
+export const BannerBtn = styled.div`
 && {
-  width: 175px;
+  width: 157px;
+  height: 42px;
+  /* background-color: #000; */
+  /* opacity: .5; */
+  background-color: transparent;
   z-index: 2;
   cursor: pointer;
   position: absolute;
   &.bannerBtn_1 {
-    top: 387px;
-    left: 26px;
+    top: 353px;
+    left: 86px;
   }
   &.bannerBtn_2 {
-    top: 330px;
-    left: 40px;
+    top: 377px;
+    left: 106px;
   }
   &.bannerBtn_3 {
-    top: 305px;
-    right: 123px;
+    width: 170px;
+    top: 303px;
+    right: 122px;
   }
   &.bannerBtn_4 {
+    width: 170px;
     top: 205px;
-    right: 90px;
+    left: 10px;
   }
 }`;
 export const BannerBackgound = styled.div`
 && {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
   /* filter: blur(20px); */
-  overflow: hidden;
   left: 0;
   img {
     width: 100%;
-    opacity: 0.07;
-    position: relative;
-    /* top: -100px; */
-  }
-  &::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #2a2b36;
-    opacity: 1;
+    height: 472px;
   }
 }`;
 export const GradientRelative = styled.div`
