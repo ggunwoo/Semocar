@@ -93,10 +93,10 @@ export function Detail():JSX.Element {
       // 탭네비 화면에서 사라지면 Fixed 로직
       if (targetElement) {
         const { top } = targetElement.getBoundingClientRect();
-        if (top <= window.innerHeight * 0.30) {
+        if (top <= window.innerHeight * 0.25) {
           // 특정 위치에 도달했을 때 실행할 로직
           setTabFixed(true)
-        } else if ( top > window.innerHeight * 0.30) {
+        } else if ( top > window.innerHeight * 0.25) {
           setTabFixed(false)
         }
       }
