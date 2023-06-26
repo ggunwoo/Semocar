@@ -8,19 +8,17 @@ export const FormWraper = styled.div`
   background-color: #fcfcfc;
   border: 1px solid rgba(0,0,0,.2);
   margin-top: 2rem;
-  padding: 42px 36px 18px;
+  padding: 4% 36px;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
+  gap: 20%;
 }`;
 export const CheckLine = styled.div`
 && {
   width: 100%;
   display: flex;
   align-items: flex-start;
-
-  /* TEMP */
-  /* border: 1px solid #D8D8D8; */
 }`;
 export const CheckTitle = styled.div`
 && {
@@ -35,7 +33,7 @@ export const CheckWraper = styled(FormGroup)`
 }`;
 export const FormControl = styled(FormControlLabel)`
 && {
-  margin: 2px 0 10px 24px;
+  margin: 2px 0 10px 22px;
   /* checkbox */
   .MuiTypography-root {
     font-size: 14px;

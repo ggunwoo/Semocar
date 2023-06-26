@@ -90,6 +90,7 @@ export function Brand ():JSX.Element {
 
       {/* Search Check Box */}
       <S.FormWraper>
+        
         <S.CheckLine>
           <S.CheckTitle>차급</S.CheckTitle>
           <S.CheckWraper row={true}>
