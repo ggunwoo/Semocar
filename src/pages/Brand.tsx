@@ -8,7 +8,7 @@ import { segAllChange, segHandle, fuelAllChange, fuelHandle } from '../store/che
 
 // COMPONENT
 import {BrandNav} from '../components/BrandNav';
-import {TabView} from '../components/TabView';
+import {CarView} from '../components/CarView';
 
 // STYLED COMPONENTS
   // SearchBox Styled
@@ -120,7 +120,7 @@ export function Brand ():JSX.Element {
       </S.FormWraper>
 
       {/* Search View */}
-      <TabView />
+      <CarView />
       
     </MaxContainer>
   )

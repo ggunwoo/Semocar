@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { SwiperSlide } from 'swiper/react';
-import { Scrollbar, Navigation, Pagination, Autoplay } from 'swiper';
-import { Grid, Typography, Button } from '@mui/material'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper';
+import { useCarData } from '../hook/useCarData';
 
 // REDUX
 import { toggleReset } from '../store/brandNav'
@@ -26,17 +26,33 @@ import * as S from '../styled/Main.styled';
 export function Main ():JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const carData = useCarData();
 
   const [carImg, setCarImg] = useState(['/brand','/detail/10210','/brand','/brand']);
-  const [carCount, setCarCount] = useState([1,2,3,4,5,6,7,8,9,10,11]);
+
+  /** 최신 모델로 정렬된 11개 자동차 데이터 */
+  const latestCarHandler = () => {
+    const latestSort = carData.sort((a, b) => {
+      const aDate = parseFloat(a.date);
+      const bDate = parseFloat(b.date);
+      return bDate - aDate;
+    })
+
+    const latest11 = latestSort.slice(0, 11);
+
+    return latest11;
+  }
+  const letestCar = latestCarHandler();
+
+  /** 포토 갤러리 사진 import */
 
   const [carPhoto, setCarPhoto] = useState([
-    {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata'},
-    {id: 15300, name : '트랙스 크로스오버', imgUrl: 'chevrolet/Trax'},
-    {id: 11331, name : 'EV9', imgUrl: 'kia/EV9'},
-    {id: 13320, name : 'QM6', imgUrl: 'renault_korea/Qm6'},
-    {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante'},
-    {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage'},
+    {id: 10220, name : '쏘나타 디 엣지', imgUrl: 'hyundai/Sonata/exterior'},
+    {id: 15300, name : '트랙스 크로스오버', imgUrl: 'chevrolet/TraxCrossover/exterior'},
+    {id: 11331, name : 'EV9', imgUrl: 'kia/EV9/exterior'},
+    {id: 13320, name : 'QM6', imgUrl: 'renault_korea/QM6/exterior'},
+    {id: 10210, name : '아반떼 CN7', imgUrl: 'hyundai/Avante/exterior'},
+    {id: 11310, name : '스포티지', imgUrl: 'kia/Sportage/exterior'},
   ]);
 
   useEffect(()=>{
@@ -98,68 +114,75 @@ export function Main ():JSX.Element {
           <BrandNav />
       </MaxContainer>
 
-        {/* NewCar SLIDE */}
-      <S.GradientRelative>
-        <MaxContainer>
-            <S.Title>최신 출시 모델</S.Title>
-            <S.SecondSwiper
-              slidesPerView={4}
-              slidesPerGroup={4}
-              spaceBetween={60}
-              modules={[Pagination]}
-              className="mySwiper"
-              pagination={{
-                dynamicBullets: true,
-              }}
-            >
-              {
-                carCount.map((a,i)=>(
-                  <SwiperSlide key={carCount[i]}>
-                    <img style={{width:"100%"}} src={`https://via.placeholder.com/150x100?text=NewCar ${i+1}`} alt="NEWCAR" />
-                    <p style={{ marginTop: "24px"}}>TITLE</p>
-                    {/* fontSize:"18px", */}
-                    <div>
-                      <S.InfoText>
-                        <span>PRICE : </span>
-                        <span>{a}</span>
-                      </S.InfoText>
-                      <S.InfoText>
-                        <span>CARMILEAGE : </span>
-                        <span>{a}</span>
-                      </S.InfoText>
-                      <S.InfoText>
-                        <span>ENGINE : </span>
-                        <span>{a}</span>
-                      </S.InfoText>
-                    </div>
-                  </SwiperSlide>
-                ))
-              }
-            </S.SecondSwiper>
-        </MaxContainer>
-        <S.GradientBox />
-      </S.GradientRelative>
+      {/* 최신 출시 모델 */}
+      <S.Letest>
+        <div className='gradientLine' />
+          <MaxContainer>
+              <p className='title'>최신 출시 모델</p>
+              {/* SlideWrap */}
+              <Swiper
+                className="mySwiper carousel"
+                slidesPerView={4}
+                slidesPerGroup={4}
+                spaceBetween={60}
+                modules={[Pagination]}
+                pagination={{
+                  dynamicBullets: true,
+                }}
+              >
+                {
+                  // Slides
+                  letestCar.map((car, index)=>(
+                    <SwiperSlide className='slide' key={car.id}>
+                      <div className="carHead" onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                        {/* 이미지 */}
+                        <div className='images'>
+                          <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
+                        </div>
+                        {/* 자동차 이름 */}
+                        <p>{car.brand.kr} {car.name.kr}</p>
+                      </div>
+                      {/* 자동차 정보 */}
+                      <dl className='infoBox'>
+                        <dt>가격</dt>
+                        <dd>{car.price.min}~{car.price.max}</dd>
+                      
+                        <dt>연비</dt>
+                        <dd>{car.gasMileage}</dd>
+                      
+                        <dt>연료 </dt>
+                        <dd>
+                          {car.fuelTypes.map((fuel, index)=>(
+                            <span style={{marginRight:"5px"}} key={index}>{fuel}</span>
+                          ))}
+                        </dd>
+                      </dl>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
+          </MaxContainer>
+      </S.Letest>
 
-      {/* 포토갤러리 */}
-      
-      <MaxContainer>
-        <S.Title>포토 갤러리</S.Title>
-        <S.GalleryGrid container spacing={0}>
-          {
-            carPhoto.map((photo, i)=>(
-                <Grid className='item' item xs={4} key={carPhoto[i].id}>
-                  <div className='info'>
-                    <Typography className='title'>{photo.name}</Typography>
-                    <Button className='btn' onClick={()=> { navigate(`/detail/${photo.id}`) }}>MORE PROFILE &gt;</Button>
-                  </div>
-                  <picture>
-                    <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${photo.imgUrl}.jpg`} alt="CARPHOTO" />
-                  </picture>
-                </Grid>
-            ))
-          }
-        </S.GalleryGrid>
-      </MaxContainer>
+      {/* 포토 갤러리 */}
+      <S.PhotoGallery>
+        <MaxContainer>
+          {/* 섹션제목 */}
+          <div className='title'>포토 갤러리</div>
+          <div className='galleryWraper'>
+            {carPhoto.map((photo, i)=>(
+              <div className='photoWraper' key={carPhoto[i].id}>
+                {/* hover 보여줄 요소 */}
+                <div className='info'>
+                  <p className='name'>{photo.name}</p>
+                  <div className='linkBtn' onClick={()=>{navigate(`/detail/${photo.id}`)}}>MORE PROFILE &gt;</div>
+                </div>
+                <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${photo.imgUrl}/1.jpg`} alt="CARPHOTO" />
+              </div>
+            ))}
+          </div>
+        </MaxContainer>
+      </S.PhotoGallery>
     </>
   )
 }
