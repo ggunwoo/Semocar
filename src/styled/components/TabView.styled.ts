@@ -14,9 +14,23 @@ export const SearchBarWraper = styled.div`
     color: rgba(0, 0, 0, 0.175);
   }
 }`;
+
+export const CarSection = styled.div`
+&& {
+  width: 1100px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  @media (max-width:1440px) {
+    width: 960px;
+    
+  }
+}`;
+
+// 차량목록
 export const StyledBox = styled(Box)`
 && {
-  /* {display:"flex", borderBottom: 0, borderColor: 'divider' } */
   display: flex;
   justify-content: space-between;
   border-bottom: 0;
@@ -41,31 +55,21 @@ export const StyledBox = styled(Box)`
     }
   }
 }`;
-export const CarSection = styled.div`
-&& {
-  width: 1100px;
-  /* border: 1px solid black; */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  @media (max-width:1440px) {
-    width: 960px;
-    
-  }
-}`;
 export const CarArticle = styled.div`
 && {
-  width: 275px;
+  width: 25%;
   margin-bottom: 70px;
+  
   .car_head {
+    width: 245px;
     cursor: pointer;
     .img_wrap {
-      max-width: 280px;
+      max-width: 220px;
       height: 130px;
       position: relative;
       img {
         margin: auto 0;
-        width: 230px;
+        width: 100%;
         transition: all .5s;
         position: absolute;
         top: 50%;
@@ -73,9 +77,14 @@ export const CarArticle = styled.div`
       }
     }
     p {
+      /* font-family: NotoSans KR; */
+      height: 52px;
       margin-top: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 0;
       font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       transition: all .2s;
     }
     &:hover {
@@ -84,6 +93,8 @@ export const CarArticle = styled.div`
       }
       p {
         color: #9063FF;
+        overflow: visible;
+        white-space: normal;
       }
     }
     &:not(:hover) {
