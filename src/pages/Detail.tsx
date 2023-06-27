@@ -548,7 +548,7 @@ export function Detail():JSX.Element {
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img loading='lazy' src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -563,7 +563,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img loading='lazy' src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
@@ -580,7 +580,7 @@ export function Detail():JSX.Element {
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+2}.jpg`} alt={searchCar?.name.en} />
+                  <img loading='lazy' src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+2}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -595,7 +595,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img loading='lazy' src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
