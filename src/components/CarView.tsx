@@ -9,9 +9,9 @@ import * as type from '../types/types';
 import { Box, Tabs, Tab, FormControl, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { MaxContainer } from '../styled/Global';
-import * as S from '../styled/components/TabView.styled'
+import * as S from '../styled/components/CarView.styled'
 
-export function TabView() {
+export function CarView() {
   const navigate = useNavigate();
   const carData = useCarData();
 

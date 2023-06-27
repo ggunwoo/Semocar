@@ -37,7 +37,6 @@ export const StyledBox = styled(Box)`
   margin-bottom: 3rem;
   border-color: divider;
   margin-top: 50px;
-  
   .tabs {
     height: 20px !important;
     .MuiTabs-flexContainer {
@@ -70,10 +69,11 @@ export const CarArticle = styled.div`
       img {
         margin: auto 0;
         width: 100%;
-        transition: all .5s;
         position: absolute;
         top: 50%;
+        left: 0;
         transform: translateY(-50%);
+        transition: all .3s;
       }
     }
     p {
@@ -88,22 +88,15 @@ export const CarArticle = styled.div`
       transition: all .2s;
     }
     &:hover {
-      img {
-        left: -30px;
-      }
       p {
         color: #9063FF;
         overflow: visible;
         white-space: normal;
       }
-    }
-    &:not(:hover) {
       img {
-        left: 0;
+        left: -30px;
       }
-      p {
-        color: #000;
-      }
+      
     }
   }
   .car_info {
