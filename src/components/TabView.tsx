@@ -198,7 +198,7 @@ export function TabView() {
                         <div className='car_head' onClick={()=>{navigate(`/detail/${car.id}`)}}>
                           <div className='img_wrap'>
                             <img
-                              // style={{ width: '80%' }}
+                              loading='lazy'
                               src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
                               alt={car.name.en}
                             />
