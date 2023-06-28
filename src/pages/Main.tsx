@@ -81,7 +81,7 @@ export function Main ():JSX.Element {
         //   hide:true,
         // }}
         autoplay={{
-          delay: 7000,
+          delay: 70000,
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
@@ -169,9 +169,9 @@ export function Main ():JSX.Element {
         <MaxContainer>
           {/* 섹션제목 */}
           <div className='title'>포토 갤러리</div>
-          <div className='galleryWraper'>
+          <div className='galleryWrapper'>
             {carPhoto.map((photo, i)=>(
-              <div className='photoWraper' key={carPhoto[i].id}>
+              <div className='photoWrapper' key={carPhoto[i].id}>
                 {/* hover 보여줄 요소 */}
                 <div className='info'>
                   <p className='name'>{photo.name}</p>

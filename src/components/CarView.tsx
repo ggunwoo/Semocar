@@ -170,7 +170,7 @@ export function CarView() {
             <Tab className='tab' label="연비순" value="mileage" {...a11yProps(2)} />
           </Tabs>
           {/* 검색창 */}
-          <S.SearchBarWraper>
+          <S.SearchBarWrapper>
             <div></div>
             <FormControl size='small' sx={{m:1}}>
               <OutlinedInput
@@ -180,7 +180,7 @@ export function CarView() {
                 endAdornment={ <InputAdornment position="end"><SearchIcon className='searchIcon' /></InputAdornment> }
               />
             </FormControl>
-          </S.SearchBarWraper>
+          </S.SearchBarWrapper>
         
         {/* 차량목록 */}
         </S.StyledBox>

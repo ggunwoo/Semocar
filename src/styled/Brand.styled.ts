@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { FormGroup, FormControlLabel} from '@mui/material';
 
-export const FormWraper = styled.div`
+export const FormWrapper = styled.div`
 && {
   width: 100%;
   height: 200px;
@@ -30,7 +30,7 @@ export const CheckTitle = styled.div`
   text-align: center;
   /* margin-top: 0.47rem; */
 }`;
-export const CheckWraper = styled(FormGroup)`
+export const CheckWrapper = styled(FormGroup)`
 && {
   width: 95%;
 }`;

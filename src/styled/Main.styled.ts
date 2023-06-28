@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Swiper } from 'swiper/react';
 import { Grid, Typography } from '@mui/material'
 
-export const BannerSwiper = styled(Swiper)`
+export const BannerWrapper = styled(Swiper)`
 && {
   height: 472px;
   margin-bottom: 120px;
@@ -96,7 +96,7 @@ export const BannerBtn = styled.div`
   }
   &.bannerBtn_2 {
     top: 377px;
-    left: 106px;
+    left: 106px;  
   }
   &.bannerBtn_3 {
     width: 170px;
@@ -211,8 +211,6 @@ export const Letest = styled.div`
   }
 }`;
 
-
-
 // 포토 갤러리
 export const PhotoGallery = styled.div`
 &&& {
@@ -222,12 +220,12 @@ export const PhotoGallery = styled.div`
     font-family: GmarketSans, NotoSans KR, sans-serif;
     margin-top: 150px;
   }
-  .galleryWraper {
+  .galleryWrapper {
     margin-top: 24px;
     margin-bottom: 200px;
     display: flex;
     flex-wrap: wrap;
-    .photoWraper {
+    .photoWrapper {
       width: calc(100%/3);
       min-width: calc(100%/3);
       height: 100%;
@@ -266,6 +264,6 @@ export const PhotoGallery = styled.div`
       }
     }
     /* 호버시 info 투명도 조절 */
-    .photoWraper:hover { .info { opacity: .75; } }
+    .photoWrapper:hover { .info { opacity: .75; } }
   }
 }`;

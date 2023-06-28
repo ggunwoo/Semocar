@@ -89,11 +89,11 @@ export function Brand ():JSX.Element {
       <BrandNav />
 
       {/* Search Check Box */}
-      <S.FormWraper>
+      <S.FormWrapper>
         
         <S.CheckLine>
           <S.CheckTitle>차급</S.CheckTitle>
-          <S.CheckWraper row={true}>
+          <S.CheckWrapper row={true}>
             <S.FormControl control={
               <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
             ></S.FormControl>
@@ -102,11 +102,11 @@ export function Brand ():JSX.Element {
                 <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
               ></S.FormControl>
             ))}
-          </S.CheckWraper>
+          </S.CheckWrapper>
         </S.CheckLine>
         <S.CheckLine>
           <S.CheckTitle>연료</S.CheckTitle>
-          <S.CheckWraper row={true}>
+          <S.CheckWrapper row={true}>
             <S.FormControl control={
               <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
             ></S.FormControl>
@@ -115,9 +115,9 @@ export function Brand ():JSX.Element {
                 <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
               ></S.FormControl>
             ))}
-          </S.CheckWraper>
+          </S.CheckWrapper>
         </S.CheckLine>
-      </S.FormWraper>
+      </S.FormWrapper>
 
       {/* Search View */}
       <CarView />

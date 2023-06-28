@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 
 // const maincolor = "#BA90FD";
 
-export const SearchBarWraper = styled.div`
+export const SearchBarWrapper = styled.div`
 && {
   width: 100%;
   display: flex;
