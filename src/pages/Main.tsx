@@ -76,7 +76,7 @@ export function Main ():JSX.Element {
   return (
     <>
       {/* 메인배너 SLIDE */}
-      <S.BannerSwiper
+      <S.BannerWrapper
         // scrollbar={{
         //   hide:true,
         // }}
@@ -96,17 +96,17 @@ export function Main ():JSX.Element {
         {
           carImg.map((a, i)=>(
             <SwiperSlide key={i}>
-                <S.BaseBox>
-                  <S.BannerImg src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
-                  <S.BannerBtn onClick={()=>{navigate(a)}} className={`bannerBtn_${i+1}`} />
-                </S.BaseBox>
-                <S.BannerBackgound>
+                <div className='baseBox'>
+                  <img className='bannerImg' src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
+                  <div className={`bannerBtn bannerBtn_${i+1}`} onClick={()=>{navigate(a)}} />
+                </div>
+                <div className='background'>
                   <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
-                </S.BannerBackgound>
+                </div>
             </SwiperSlide>
           ))
         }
-      </S.BannerSwiper>
+      </S.BannerWrapper>
 
       {/* 브랜드별 차량 NAV COMPONENTS */}
       <MaxContainer sx={{ position:'relative' }}>
@@ -145,17 +145,17 @@ export function Main ():JSX.Element {
                       {/* 자동차 정보 */}
                       <dl className='infoBox'>
                         <dt>가격</dt>
-                        <dd>{car.price.min}~{car.price.max}</dd>
-                      
+                        <dd style={{color: "#9063FF"}}>{car.price.min}~{car.price.max}</dd>
                         <dt>연비</dt>
                         <dd>{car.gasMileage}</dd>
-                      
                         <dt>연료 </dt>
                         <dd>
                           {car.fuelTypes.map((fuel, index)=>(
                             <span style={{marginRight:"5px"}} key={index}>{fuel}</span>
                           ))}
                         </dd>
+                        <dt>출시일</dt>
+                        <dd>{car.date}</dd>
                       </dl>
                     </SwiperSlide>
                   ))
