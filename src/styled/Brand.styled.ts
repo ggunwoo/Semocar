@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const CheckBoxWrapper = styled.div`
-&& {
+&&& {
   width: 100%;
   height: 200px;
   background-color: #fcfcfc;
@@ -17,7 +17,7 @@ export const CheckBoxWrapper = styled.div`
   }
 }`;
 export const CheckLine = styled.div`
-&& {
+&&& {
   width: 100%;
   display: flex;
   align-items: flex-start;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
 
 // STYLED
 import { MaxContainer, Logo } from '../styled/Global';
@@ -21,7 +22,10 @@ export function Header():JSX.Element {
               <S.CustomStyledButton variant="text" onClick={() => { navigate('/') }}>홈</S.CustomStyledButton>
               <S.CustomStyledButton variant="text" onClick={() => { navigate('/brand') }} >브랜드</S.CustomStyledButton>
               {/* <S.CustomStyledButton variant="text">차량목록</S.CustomStyledButton> */}
-              <S.CustomStyledButton variant="outlined">로그인</S.CustomStyledButton>
+              {/* 미구현 툴팁 */}
+              <Tooltip title="미구현">
+                <S.CustomStyledButton variant="outlined">로그인</S.CustomStyledButton>
+              </Tooltip>
             </div>
           </S.Container>
         </MaxContainer>

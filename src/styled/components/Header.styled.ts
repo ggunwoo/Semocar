@@ -2,7 +2,7 @@ import  styled  from 'styled-components'
 import { Toolbar, Button} from '@mui/material'
 
 export const Header = styled.div`
-&& {
+&&& {
   width: 100%;
   /* background-color: #fff; */
   height: 60px;
@@ -10,7 +10,7 @@ export const Header = styled.div`
   box-shadow: none;
 }`;
 export const Container = styled.div`
-&& {
+&&& {
   width: 100%;
   height: 60px;
   margin: 0 auto;
@@ -24,7 +24,7 @@ export const Container = styled.div`
   }
 }`;
 export const CustomStyledButton = styled(Button)`
-&& {
+&&& {
   color:black;
   font-size:14px;
   font-weight: normal;

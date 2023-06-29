@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState, useCallback } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData, useCarBrands } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
-import { Rating, TextField, Typography} from '@mui/material'
+import { Rating, TextField, Typography, Tooltip} from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
 import GradeIcon from '@mui/icons-material/Grade';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -657,9 +657,15 @@ export function Detail():JSX.Element {
           
           {/* /post */}
           <S.PostForm action='#' method='#'>
-            <Rating className='rating' defaultValue={0} precision={1} />
+            {/* 별점 */}
+            <Rating className='rating' defaultValue={5} precision={0.5} />
+            {/* 댓글작성칸 */}
             <TextField  fullWidth label="To be implemented." id="fullWidth"></TextField>
-            <div className='send'><SendIcon className='sendIcon' /></div>
+            {/* 보내기버튼 */}
+
+            <Tooltip title='미구현'>
+              <div className='send'><SendIcon className='sendIcon' /></div>
+            </Tooltip>
           </S.PostForm>
           
           {/* /sort */}
@@ -682,7 +688,6 @@ export function Detail():JSX.Element {
                     <span className='date'>  /  23.12.31</span>
                   </div>
                 </div>
-
                 <div className='like'>
                   <ThumbUpOffAltIcon
                     className={`offIcon ${ likeCheck[index] ? 'clicked' : undefined }`}
@@ -704,6 +709,10 @@ export function Detail():JSX.Element {
               </div>
             ))}
           </S.CommentList>
+          {/* 더보기 버튼 */}
+          <S.MoreBtn>
+            <p>더보기</p>
+          </S.MoreBtn>
         </S.CommentWrap>
       </MaxContainer>
     </div>

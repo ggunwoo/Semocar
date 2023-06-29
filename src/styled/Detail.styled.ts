@@ -516,12 +516,13 @@ export const MainSwiper = styled(Swiper)`
   /* 다음, 이전 버튼 */
   .swiper-button-next, .swiper-button-prev {
     display: block;
-    color: #626262;
+    /* color: #626262; */
+    color: #fff;
     width: 26px;
     height: 72px;
-    background-color: #fff;
-    opacity: .5;
+    background-color: rgba(0,0,0,.3);
     &:hover {
+      background-color: rgba(0,0,0,.5);
     }
     &::after {
       position: absolute;
@@ -536,7 +537,6 @@ export const MainSwiper = styled(Swiper)`
     &::after{
       right: 40%;
       transform: translate(50%, -50%) scale(.5);
-      opacity: 1 !important;
     }
   }
   /* 이전버튼 */
@@ -547,7 +547,6 @@ export const MainSwiper = styled(Swiper)`
     &::after{
       left: 40%;
       transform: translate(-50%, -50%) scale(.5);
-      opacity: 1 !important;
     }
   }
   .swiper-button-disabled {
@@ -747,5 +746,17 @@ export const CommentList = styled.form`
       line-height: 2em;
       font-size: 0.75em;
     }
+  }
+}`;
+// 더보기 버튼
+export const MoreBtn = styled.div`
+&&& {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 20px;
+  p {
+    text-align: center;
+    margin: 0;
+    padding: 8px 0;
   }
 }`;

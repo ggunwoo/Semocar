@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 
 // COMPONENT
@@ -12,6 +12,10 @@ import { Detail } from './pages/Detail';
 import { Brand } from './pages/Brand';
 
 function App(): JSX.Element {
+  const location = useLocation();
+
+  const hideFooter = location.pathname === '/brand';
+
   return (
     <div style={{fontFamily:"GmarketSans, sans-serif"}}>
       <CssBaseline />
@@ -24,7 +28,7 @@ function App(): JSX.Element {
         <Route path="/detail/:id" element={<Detail />} />
       </Routes>
       {/* FOOTER */}
-      <Footer />
+      {!hideFooter && <Footer />}
     </div>
   );
 }
