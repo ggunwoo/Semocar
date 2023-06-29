@@ -751,6 +751,10 @@ export const CommentList = styled.form`
 // 더보기 버튼
 export const MoreBtn = styled.div`
 &&& {
+  /* 임시 */
+  display: none;
+
+  
   width: 100%;
   border: 1px solid #000;
   border-radius: 20px;
