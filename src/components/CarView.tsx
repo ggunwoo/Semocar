@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useCarData } from '../hook/useCarData';
 import * as type from '../types/types';
+import { Tabs, Tab, FormControl, OutlinedInput, InputAdornment, CircularProgress } from '@mui/material';
 
 
 // STYLED
-import { Box, Tabs, Tab, FormControl, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/components/CarView.styled'
@@ -22,8 +22,11 @@ export function CarView() {
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);
   const [sortOption, setSortOption] = useState('latest'); // 최신순, 가격순, 연비순 정렬 기준
+  const [sliceView, setSliceView] = useState(8);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [carLength, setCarLength] = useState(0)
 
-  // 차량 데이터를 필터링, 정렬하는 함수
+  /** ::차량 데이터를 필터링, 정렬하는 함수:: */
   const sortCarData = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[]): any[] => {
     // 전체 데이터
     let sortedData = [...data];
@@ -43,19 +46,20 @@ export function CarView() {
       const filterFuelTypeData = sortedData.filter((cars) =>cars.fuelTypes.includes(a));
       return filterFuelTypeData;
     })
-  
-    // segment Filtered 데이터
-    let segmentFilterData = ([] as any[]).concat(...filterSegHandler)
-    // fuelType Filtered 데이터
-    let fuelTypeFilterData = ([] as any[]).concat(...filterFuelTypeHandler)
-    // brnad & segment & fuelType Filtered
-    let mergedData = segmentFilterData.filter((car) => fuelTypeFilterData.includes(car))
-    
-    let brandFilterData = ([] as any[]).concat(...filterBrandHandler)
 
-    let brandSegFilter = brandFilterData.filter((car) => segmentFilterData.includes(car))
-    let brandFuelFilter = brandFilterData.filter((car) => fuelTypeFilterData.includes(car))
-    let brandMergedFilter = brandFilterData.filter((car) => mergedData.includes(car))
+    // segment Filtered 데이터
+    const segmentFilterData = ([] as any[]).concat(...filterSegHandler)
+    // fuelType Filtered 데이터
+    const fuelTypeFilterData = ([] as any[]).concat(...filterFuelTypeHandler)
+    // brnad & segment & fuelType Filtered
+    const mergedData = segmentFilterData.filter((car) => fuelTypeFilterData.includes(car))
+    
+    const brandFilterData = ([] as any[]).concat(...filterBrandHandler)
+
+    const brandSegFilter = brandFilterData.filter((car) => segmentFilterData.includes(car))
+    const brandFuelFilter = brandFilterData.filter((car) => fuelTypeFilterData.includes(car))
+    const brandMergedFilter = brandFilterData.filter((car) => mergedData.includes(car))
+    
     // 중복 제거
     // let duplicateRemoveData = mergedData.filter((item, pos)=> mergedData.indexOf(item) === pos);
 
@@ -150,19 +154,62 @@ export function CarView() {
         return sortedData;
       }
     };
+    const slicedData = filteredData().slice(0,sliceView);
 
-    return filteredData()
+    return slicedData
   };
+
+  useEffect(() => {
+    const moreData = () => {
+      // 스크롤이 맨 아래에 도달했을 때 실행할 함수
+      console.log('스크롤 맨 아래 도달');
+      if(sliceView < 88){
+        setSliceView(sliceView+8)
+      }
+      console.log(sliceView)
+    };
+
+    const handleScroll = () => {
+      const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+      if (scrollHeight - scrollTop === clientHeight) {
+        console.log('핸들은 돌아간다')
+        // 스크롤이 맨 아래에 도달하면 실행할 함수
+        if(sliceView < 88){
+          setShowSpinner(true)
+          setTimeout(()=>{
+            moreData();
+            setShowSpinner(false)
+          }, 500)
+        }
+      }
+    };
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      // 컴포넌트 언마운트 시 스크롤 이벤트 리스너 제거
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [carLength, sliceView]);
+
 
   // 정렬 기준 변경 시 처리하는 함수
   const handleSortChange = (event: React.SyntheticEvent, value: any) => {
     setSortOption(value);
   };
 
+   
+
   // 렌더링
   return (
     <MaxContainer>
-      <Box>
+      {/* 스피너 */}
+      {
+        showSpinner && <S.StyledSpinner />
+      }
+      <div>
+        {/* 상단 탭 */}
         <S.StyledBox>
           <Tabs className='tabs' sx={{overflow:"visible"}} value={sortOption} onChange={handleSortChange} aria-label="정렬 기준">
             <Tab className='tab' label="최신순" value="latest" {...a11yProps(0)} />
@@ -181,9 +228,9 @@ export function CarView() {
               />
             </FormControl>
           </S.SearchBarWrapper>
-        
-        {/* 차량목록 */}
         </S.StyledBox>
+
+        {/* 차량목록 */}
         {tabIndex.map((tab, i) => (
           <TabPanel key={tab} value={value} index={i}>
             <S.CarSection>
@@ -219,7 +266,8 @@ export function CarView() {
             </S.CarSection>
           </TabPanel>
         ))}
-      </Box>
+        
+      </div>
     </MaxContainer>
   );
 }
@@ -237,7 +285,7 @@ function TabPanel(props: type.TabPanelProps) {
 
   return (
     <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <div>{children}</div>}
     </div>
   );
 }

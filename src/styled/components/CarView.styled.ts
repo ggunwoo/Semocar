@@ -1,36 +1,21 @@
 import { styled } from 'styled-components';
-import { Box } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 
-// const maincolor = "#BA90FD";
 
-export const SearchBarWrapper = styled.div`
-&& {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  .searchIcon {
-    /* opacity: 0.3; */
-    /* color: #dee2e6; */
-    color: rgba(0, 0, 0, 0.175);
-  }
+// 스피너
+export const StyledSpinner = styled(CircularProgress)`&&&
+{
+  color: #9063FF;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }`;
 
-export const CarSection = styled.div`
-&& {
-  width: 1100px;
-  /* border: 1px solid black; */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  @media (max-width:1440px) {
-    width: 960px;
-    
-  }
-}`;
-
-// 차량목록
-export const StyledBox = styled(Box)`
-&& {
+// 상단 탭
+export const StyledBox = styled.div`&&&
+{
   display: flex;
   justify-content: space-between;
   border-bottom: 0;
@@ -54,16 +39,46 @@ export const StyledBox = styled(Box)`
     }
   }
 }`;
+// 검색창
+export const SearchBarWrapper = styled.div`&&&
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .searchIcon {
+    /* opacity: 0.3; */
+    /* color: #dee2e6; */
+    color: rgba(0, 0, 0, 0.175);
+  }
+}`;
+// 차량목록
+export const CarSection = styled.div`&&&
+{
+  width: 1100px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* margin-bottom: 200px; */
+  @media (max-width:1440px) {
+    width: 960px;
+  }
+}`;
+// 차량
 export const CarArticle = styled.div`
-&& {
+&&& {
   width: 25%;
   margin-bottom: 70px;
-  
+  .carWrap {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .car_head {
-    width: 245px;
+    width: 100%;
     cursor: pointer;
     .img_wrap {
-      max-width: 220px;
+      max-width: 235px;
       height: 130px;
       position: relative;
       img {
@@ -107,6 +122,6 @@ export const CarArticle = styled.div`
     }
   }
   @media (max-width: 1440px){
-    width: 320px;
+    transform: scale(.95);
   }
 }`;
