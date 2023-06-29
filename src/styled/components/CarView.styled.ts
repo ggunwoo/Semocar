@@ -68,7 +68,8 @@ export const CarSection = styled.div`&&&
 export const CarArticle = styled.div`
 &&& {
   width: 25%;
-  margin-bottom: 70px;
+  margin-bottom: 70px !important;
+  padding: 30px 0 0 45px;
   .carWrap {
     position: relative;
     left: 50%;
@@ -78,12 +79,12 @@ export const CarArticle = styled.div`
     width: 100%;
     cursor: pointer;
     .img_wrap {
-      max-width: 235px;
+      /* max-width: 215px; */
       height: 130px;
       position: relative;
       img {
         margin: auto 0;
-        width: 100%;
+        width: 90%;
         position: absolute;
         top: 50%;
         left: 0;
@@ -122,6 +123,6 @@ export const CarArticle = styled.div`
     }
   }
   @media (max-width: 1440px){
-    transform: scale(.95);
+    /* transform: scale(.95); */
   }
 }`;
