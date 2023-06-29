@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 import { Button } from '@mui/material'
 
 export const FooterCtn = styled.div`
-&& {
+&&& {
   width: 100%;
   height: 150px;
   /* margin-top: 200px; */
@@ -16,7 +16,6 @@ export const FooterCtn = styled.div`
     align-items: center;
   }
 }`;
-
 export const FooterBtn = styled(Button)`
 && {
   color: black;

@@ -82,7 +82,6 @@ export function Detail():JSX.Element {
   const exteriorArr = Array.from(Array(searchCar?.photoNumber.exterior), (_, index) =>  index + 1);
   const interiorArr = Array.from(Array(searchCar?.photoNumber.interior), (_, index) =>  index + 1);
   
-  
   // Mount
   useEffect(()=>{
     window.scrollTo(0,0)
@@ -131,7 +130,6 @@ export function Detail():JSX.Element {
       target.current.scrollIntoView({ block: 'center'});
     }
   };
-  
   // Photo 외관, 내관버튼 클릭시 해당 사진슬라이드 보여주는 로직
   const viewChange = (index: number) => {
     const copyArr = [...viewPhoto]
@@ -139,17 +137,17 @@ export function Detail():JSX.Element {
     copyArr[index] = !copyArr[index]
     setViewPhoto(copyArr)
   }
-
   return (
-    <div className='wrap' style={{background:"#FFF"}}>
-    {/* 상단 Article */}
+    <div style={{background:"#FFF"}}>
+      {/* 상단 Article */}
       {searchCar === undefined
-        ?
-        <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
-        :
-      <S.FeatureBox>
+      ?
+      // :: 선택된 차량이 undefined라면 
+      <div>해당차량의 정보가 없거나 잘못된 접근입니다.</div>
+      :
+      <S.HeadBox>
         <MaxContainer>
-          <div className='wrap'>
+          <div className='headWrapper'>
             <div className='infoBox'>
               <p className='brand'>
                 <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
@@ -170,12 +168,14 @@ export function Detail():JSX.Element {
               <S.StyledChip label={`${searchCar.fuelTypes}`} variant='outlined' />
               <S.StyledChip label={`${searchCar.gasMileage}`} variant='outlined' />
             </div>
-            <S.ImgBox>
+
+            <div className='image'>
               <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
-            </S.ImgBox>
+            </div>
+
           </div>
         </MaxContainer>
-      </S.FeatureBox>
+      </S.HeadBox>
       }
 
       {/* 해당 스크롤위치로 이동하는기능 인터페이스 */}
@@ -227,33 +227,44 @@ export function Detail():JSX.Element {
 
       <MaxContainer>
         {/* 차량정보 적어놓은 표 */}
-        <S.InfoBoxWrap>
-          <S.Title>등급별 제원</S.Title>
-          <S.MoreInfo id="grade" >
-            {/* FORM */}
-            <form action="#">
-              {/* 등급 */}
-              <S.FormDl>
-                <S.FormDt>등급</S.FormDt>
-                <S.FormDd>
+        <S.ChartWrapper>
+          <div className='title'>등급별 제원</div>
+          <div className='infoWrap' id="grade">
+            <S.SelectWrapper>
+              {/* 등급 Grade */}
+              <dl>
+                <dt>등급</dt>
+                <dd>
                   {searchCar?.grades.map((grade, index)=>(
-                    <S.ChipBtn key={index} className={`${index === selectGrade ? "clicked" : null}  grade`} onClick={()=>{segSelectGrade(index); segSelectTrim(0);}}>{grade.name}</S.ChipBtn>
+                    <div
+                    key={index}
+                    className={`selectBtn ${index === selectGrade ? "clicked" : null}  grade`}
+                    onClick={()=>{segSelectGrade(index); segSelectTrim(0);}}
+                    > 
+                      {grade.name}
+                    </div>
                   ))}
-                </S.FormDd>
-              </S.FormDl>
+                </dd>
+              </dl>
 
-              {/* 트림 */}
-              <S.FormDl>
-                <S.FormDt>트림</S.FormDt>
-                <S.FormDd>
+              {/* 트림 Trim */}
+              <dl>
+                <dt>트림</dt>
+                <dd>
                   {searchCar?.grades[selectGrade].trims.map((trim, index)=>(
-                    <S.ChipBtn key={trim.name} className={`${index === selectTrim ? "clicked" : null} trim`} onClick={()=>{segSelectTrim(index)}}>{trim.name}</S.ChipBtn>
+                    <div
+                    key={trim.name}
+                    className={`selectBtn ${index === selectTrim ? "clicked" : null} trim`}
+                    onClick={()=>{segSelectTrim(index)}}
+                    >
+                      {trim.name}
+                    </div>
                   ))}
-                </S.FormDd>
-              </S.FormDl>
-            </form>
+                </dd>
+              </dl>
+            </S.SelectWrapper>
             
-            {/* INFO */}
+            {/* 가격 price */}
             <S.PriceDl>
               <dt>가격</dt>
               <dd>
@@ -261,206 +272,210 @@ export function Detail():JSX.Element {
               </dd>
             </S.PriceDl>
             
-            {/* /SPAC */}
+            {/* 제원 SPAC */}
             <S.SpacDl>
-              <S.SpacDt>제원</S.SpacDt>
+              <dt>제원</dt>
               <div style={{position:"absolute", bottom: "0"}} ref={infoRef}></div>
               {/* 가솔린, 디젤, LPG */}
               {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
-                <S.SpacDd>
-                  {/* OPTION 1LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연료</S.OptionDt>
-                    <S.OptionDd>{choosed?.fuelType}</S.OptionDd>
-                    <S.OptionDt>엔진형식</S.OptionDt>
-                    <S.OptionDd>{choosed?.engine}</S.OptionDd>
-                    <S.OptionDt>배기량</S.OptionDt>
-                    <S.OptionDd>{choosed?.displacement}</S.OptionDd>
-                    <S.OptionDt>변속기</S.OptionDt>
-                    <S.OptionDd>{choosed?.transMission}</S.OptionDd>
-                    <S.OptionDt>구동방식</S.OptionDt>
-                    <S.OptionDd>{choosed?.drivingSystem}</S.OptionDd>
-                    <S.OptionDt>최고출력</S.OptionDt>
-                    <S.OptionDd>{choosed?.power}</S.OptionDd>
-                    <S.OptionDt>최대토크</S.OptionDt>
-                    <S.OptionDd>{choosed?.torque}</S.OptionDd>
-                    <S.OptionDt>최고속도</S.OptionDt>
-                    <S.OptionDd>-</S.OptionDd>
-                    {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-                  </S.OptionDl>
+                <dd>
+                  {/* OPTION chart 1LINE */}
+                  <S.ChartDl>
+                    <dt>연료</dt>
+                    <dd>{choosed?.fuelType}</dd>
+                    <dt>엔진형식</dt>
+                    <dd>{choosed?.engine}</dd>
+                    <dt>배기량</dt>
+                    <dd>{choosed?.displacement}</dd>
+                    <dt>변속기</dt>
+                    <dd>{choosed?.transMission}</dd>
+                    <dt>구동방식</dt>
+                    <dd>{choosed?.drivingSystem}</dd>
+                    <dt>최고출력</dt>
+                    <dd>{choosed?.power}</dd>
+                    <dt>최대토크</dt>
+                    <dd>{choosed?.torque}</dd>
+                    <dt>최고속도</dt>
+                    <dd>-</dd>
+                    {/* <dd>{choosed?.}</dd> */}
+                  </S.ChartDl>
                   {/* OPTION 2LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연비등급</S.OptionDt>
-                    <S.OptionDd>{choosed?.ratingGasMileage}</S.OptionDd>
-                    <S.OptionDt>복합연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.complexGasMileage}</S.OptionDd>
-                    <S.OptionDt>도심연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.urbanGasMileage}</S.OptionDd>
-                    <S.OptionDt>고속도로연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.highwayGasMileage}</S.OptionDd>
-                    <S.OptionDt>저공해등급</S.OptionDt>
-                    <S.OptionDd>{choosed?.lowEmission}</S.OptionDd>
-                    <S.OptionDt>공차중량</S.OptionDt>
-                    <S.OptionDd>{choosed?.vehicleWeight}</S.OptionDd>
-                    <S.OptionDt>자율주행 레벨</S.OptionDt>
-                    <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
-                    <S.OptionDt>제로백</S.OptionDt>
-                    <S.OptionDd>{choosed?.zero}</S.OptionDd>
-                    {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-                  </S.OptionDl>
+                  <S.ChartDl>
+                    <dt>연비등급</dt>
+                    <dd>{choosed?.ratingGasMileage}</dd>
+                    <dt>복합연비</dt>
+                    <dd>{choosed?.complexGasMileage}</dd>
+                    <dt>도심연비</dt>
+                    <dd>{choosed?.urbanGasMileage}</dd>
+                    <dt>고속도로연비</dt>
+                    <dd>{choosed?.highwayGasMileage}</dd>
+                    <dt>저공해등급</dt>
+                    <dd>{choosed?.lowEmission}</dd>
+                    <dt>공차중량</dt>
+                    <dd>{choosed?.vehicleWeight}</dd>
+                    <dt>자율주행 레벨</dt>
+                    <dd>{choosed?.autoLevel}</dd>
+                    <dt>제로백</dt>
+                    <dd>{choosed?.zero}</dd>
+                    {/* <dd>{choosed?.}</dd> */}
+                  </S.ChartDl>
                   {/* OPTION 3LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>앞타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontTire}</S.OptionDd>
-                    <S.OptionDt>뒷타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearTire}</S.OptionDd>
-                    <S.OptionDt>전륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontSuspension}</S.OptionDd>
-                    <S.OptionDt>후륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearSuspension}</S.OptionDd>
-                    <S.OptionDt>전륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontBrake}</S.OptionDd>
-                    <S.OptionDt>후륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearBrake}</S.OptionDd>
-                    <S.OptionDt>탑승정원</S.OptionDt>
-                    <S.OptionDd>{choosed?.capacity}</S.OptionDd>
-                  </S.OptionDl>
-                </S.SpacDd>}
+                  <S.ChartDl>
+                    <dt>앞타이어규격</dt>
+                    <dd>{choosed?.frontTire}</dd>
+                    <dt>뒷타이어규격</dt>
+                    <dd>{choosed?.rearTire}</dd>
+                    <dt>전륜브레이크</dt>
+                    <dd>{choosed?.frontSuspension}</dd>
+                    <dt>후륜브레이크</dt>
+                    <dd>{choosed?.rearSuspension}</dd>
+                    <dt>전륜서스펜션</dt>
+                    <dd>{choosed?.frontBrake}</dd>
+                    <dt>후륜서스펜션</dt>
+                    <dd>{choosed?.rearBrake}</dd>
+                    <dt>탑승정원</dt>
+                    <dd>{choosed?.capacity}</dd>
+                  </S.ChartDl>
+                </dd>}
+
               {/* 하이브리드 */}
               {choosed?.fuelType === '하이브리드' &&
-                <S.SpacDd>
+                <dd>
                   {/* OPTION 1LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연료</S.OptionDt>
-                    <S.OptionDd>{choosed?.fuelType}</S.OptionDd>
-                    <S.OptionDt>엔진형식</S.OptionDt>
-                    <S.OptionDd>{choosed?.engine}</S.OptionDd>
-                    <S.OptionDt>배기량</S.OptionDt>
-                    <S.OptionDd>{choosed?.displacement}</S.OptionDd>
-                    <S.OptionDt>변속기</S.OptionDt>
-                    <S.OptionDd>{choosed?.transMission}</S.OptionDd>
-                    <S.OptionDt>구동방식</S.OptionDt>
-                    <S.OptionDd>{choosed?.drivingSystem}</S.OptionDd>
-                    <S.OptionDt>최고출력</S.OptionDt>
-                    <S.OptionDd>{choosed?.power}</S.OptionDd>
-                    <S.OptionDt>최대토크</S.OptionDt>
-                    <S.OptionDd>{choosed?.torque}</S.OptionDd>
-                    <S.OptionDt>최고속도</S.OptionDt>
-                    <S.OptionDd>-</S.OptionDd>
-                    {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-                    <S.OptionDt>제로백</S.OptionDt>
-                    <S.OptionDd>zero100</S.OptionDd>
-                    {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-                  </S.OptionDl>
+                  <S.ChartDl>
+                    <dt>연료</dt>
+                    <dd>{choosed?.fuelType}</dd>
+                    <dt>엔진형식</dt>
+                    <dd>{choosed?.engine}</dd>
+                    <dt>배기량</dt>
+                    <dd>{choosed?.displacement}</dd>
+                    <dt>변속기</dt>
+                    <dd>{choosed?.transMission}</dd>
+                    <dt>구동방식</dt>
+                    <dd>{choosed?.drivingSystem}</dd>
+                    <dt>최고출력</dt>
+                    <dd>{choosed?.power}</dd>
+                    <dt>최대토크</dt>
+                    <dd>{choosed?.torque}</dd>
+                    <dt>최고속도</dt>
+                    <dd>-</dd>
+                    {/* <dd>{choosed?.}</dd> */}
+                    <dt>제로백</dt>
+                    <dd>zero100</dd>
+                    {/* <dd>{choosed?.}</dd> */}
+                  </S.ChartDl>
 
                   {/* OPTION 2LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연비등급</S.OptionDt>
-                    <S.OptionDd>{choosed?.ratingGasMileage}</S.OptionDd>
-                    <S.OptionDt>복합연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.complexGasMileage}</S.OptionDd>
-                    <S.OptionDt>도심연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.urbanGasMileage}</S.OptionDd>
-                    <S.OptionDt>고속도로연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.highwayGasMileage}</S.OptionDd>
-                    <S.OptionDt>저공해등급</S.OptionDt>
-                    <S.OptionDd>{choosed?.lowEmission}</S.OptionDd>
-                    <S.OptionDt>모터출력</S.OptionDt>
-                    <S.OptionDd>{choosed?.motorPower}</S.OptionDd>
-                    <S.OptionDt>모터토크</S.OptionDt>
-                    <S.OptionDd>{choosed?.motorTorque}</S.OptionDd>
-                    <S.OptionDt>배터리타입</S.OptionDt>
-                    <S.OptionDd>{choosed?.batteryType}</S.OptionDd>
-                    <S.OptionDt>배터리용량</S.OptionDt>
-                    <S.OptionDd>{choosed?.batteryVolume}</S.OptionDd>
-                  </S.OptionDl>
+                  <S.ChartDl>
+                    <dt>연비등급</dt>
+                    <dd>{choosed?.ratingGasMileage}</dd>
+                    <dt>복합연비</dt>
+                    <dd>{choosed?.complexGasMileage}</dd>
+                    <dt>도심연비</dt>
+                    <dd>{choosed?.urbanGasMileage}</dd>
+                    <dt>고속도로연비</dt>
+                    <dd>{choosed?.highwayGasMileage}</dd>
+                    <dt>저공해등급</dt>
+                    <dd>{choosed?.lowEmission}</dd>
+                    <dt>모터출력</dt>
+                    <dd>{choosed?.motorPower}</dd>
+                    <dt>모터토크</dt>
+                    <dd>{choosed?.motorTorque}</dd>
+                    <dt>배터리타입</dt>
+                    <dd>{choosed?.batteryType}</dd>
+                    <dt>배터리용량</dt>
+                    <dd>{choosed?.batteryVolume}</dd>
+                  </S.ChartDl>
 
                   {/* OPTION 3LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>자율주행 레벨</S.OptionDt>
-                    <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
-                    <S.OptionDt>공차중량</S.OptionDt>
-                    <S.OptionDd>{choosed?.vehicleWeight}</S.OptionDd>
-                    <S.OptionDt>앞타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontTire}</S.OptionDd>
-                    <S.OptionDt>뒷타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearTire}</S.OptionDd>
-                    <S.OptionDt>전륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontSuspension}</S.OptionDd>
-                    <S.OptionDt>후륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearSuspension}</S.OptionDd>
-                    <S.OptionDt>전륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontBrake}</S.OptionDd>
-                    <S.OptionDt>후륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearBrake}</S.OptionDd>
-                    <S.OptionDt>탑승정원</S.OptionDt>
-                    <S.OptionDd>{choosed?.capacity}</S.OptionDd>
-                  </S.OptionDl>
-                </S.SpacDd>}
+                  <S.ChartDl>
+                    <dt>자율주행 레벨</dt>
+                    <dd>{choosed?.autoLevel}</dd>
+                    <dt>공차중량</dt>
+                    <dd>{choosed?.vehicleWeight}</dd>
+                    <dt>앞타이어규격</dt>
+                    <dd>{choosed?.frontTire}</dd>
+                    <dt>뒷타이어규격</dt>
+                    <dd>{choosed?.rearTire}</dd>
+                    <dt>전륜브레이크</dt>
+                    <dd>{choosed?.frontSuspension}</dd>
+                    <dt>후륜브레이크</dt>
+                    <dd>{choosed?.rearSuspension}</dd>
+                    <dt>전륜서스펜션</dt>
+                    <dd>{choosed?.frontBrake}</dd>
+                    <dt>후륜서스펜션</dt>
+                    <dd>{choosed?.rearBrake}</dd>
+                    <dt>탑승정원</dt>
+                    <dd>{choosed?.capacity}</dd>
+                  </S.ChartDl>
+                </dd>}
+
               {/* 전기 */}
               {(choosed?.fuelType === '전기' || choosed?.fuelType === '수소') &&
-                <S.SpacDd>
+                <dd>
                   {/* OPTION 1LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연료</S.OptionDt>
-                    <S.OptionDd>{choosed?.fuelType}</S.OptionDd>
+                  <S.ChartDl>
+                    <dt>연료</dt>
+                    <dd>{choosed?.fuelType}</dd>
                     
-                    <S.OptionDt>모터출력</S.OptionDt>
-                    <S.OptionDd>{choosed?.motorPower}</S.OptionDd>
-                    <S.OptionDt>모터토크</S.OptionDt>
-                    <S.OptionDd>{choosed?.motorTorque}</S.OptionDd>
-                    <S.OptionDt>제로백</S.OptionDt>
-                    <S.OptionDd>zero100</S.OptionDd>
-                    {/* <S.OptionDd>{choosed?.}</S.OptionDd> */}
-                    <S.OptionDt>구동방식</S.OptionDt>
-                    <S.OptionDd>{choosed?.drivingSystem}</S.OptionDd>
-                    <S.OptionDt>배터리종류</S.OptionDt>
-                    <S.OptionDd>{choosed?.batteryType}</S.OptionDd>
-                    <S.OptionDt>배터리용량</S.OptionDt>
-                    <S.OptionDd>{choosed?.batteryVolume}</S.OptionDd>
-                  </S.OptionDl>
+                    <dt>모터출력</dt>
+                    <dd>{choosed?.motorPower}</dd>
+                    <dt>모터토크</dt>
+                    <dd>{choosed?.motorTorque}</dd>
+                    <dt>제로백</dt>
+                    <dd>zero100</dd>
+                    {/* <dd>{choosed?.}</dd> */}
+                    <dt>구동방식</dt>
+                    <dd>{choosed?.drivingSystem}</dd>
+                    <dt>배터리종류</dt>
+                    <dd>{choosed?.batteryType}</dd>
+                    <dt>배터리용량</dt>
+                    <dd>{choosed?.batteryVolume}</dd>
+                  </S.ChartDl>
 
                   {/* OPTION 2LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>연비</S.OptionDt>
-                    <S.OptionDd>{choosed?.complexGasMileage}</S.OptionDd>
-                    <S.OptionDt>저공해등급</S.OptionDt>
-                    <S.OptionDd>{choosed?.lowEmission}</S.OptionDd>
-                    <S.OptionDt>충전방식</S.OptionDt>
-                    <S.OptionDd>{choosed?.charging}</S.OptionDd>
-                    <S.OptionDt>충전시간(급속)</S.OptionDt>
-                    <S.OptionDd>{choosed?.chargingQuick}</S.OptionDd>
-                    <S.OptionDt>충전시간(완속)</S.OptionDt>
-                    <S.OptionDd>{choosed?.chargingSlow}</S.OptionDd>
-                    <S.OptionDt>자율주행 레벨</S.OptionDt>
-                    <S.OptionDd>{choosed?.autoLevel}</S.OptionDd>
-                    <S.OptionDt>공차중량</S.OptionDt>
-                    <S.OptionDd>{choosed?.vehicleWeight}</S.OptionDd>
-                  </S.OptionDl>
+                  <S.ChartDl>
+                    <dt>연비</dt>
+                    <dd>{choosed?.complexGasMileage}</dd>
+                    <dt>저공해등급</dt>
+                    <dd>{choosed?.lowEmission}</dd>
+                    <dt>충전방식</dt>
+                    <dd>{choosed?.charging}</dd>
+                    <dt>충전시간(급속)</dt>
+                    <dd>{choosed?.chargingQuick}</dd>
+                    <dt>충전시간(완속)</dt>
+                    <dd>{choosed?.chargingSlow}</dd>
+                    <dt>자율주행 레벨</dt>
+                    <dd>{choosed?.autoLevel}</dd>
+                    <dt>공차중량</dt>
+                    <dd>{choosed?.vehicleWeight}</dd>
+                  </S.ChartDl>
 
                   {/* OPTION 3LINE */}
-                  <S.OptionDl>
-                    <S.OptionDt>앞타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontTire}</S.OptionDd>
-                    <S.OptionDt>뒷타이어규격</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearTire}</S.OptionDd>
-                    <S.OptionDt>전륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontSuspension}</S.OptionDd>
-                    <S.OptionDt>후륜브레이크</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearSuspension}</S.OptionDd>
-                    <S.OptionDt>전륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.frontBrake}</S.OptionDd>
-                    <S.OptionDt>후륜서스펜션</S.OptionDt>
-                    <S.OptionDd>{choosed?.rearBrake}</S.OptionDd>
-                    <S.OptionDt>탑승정원</S.OptionDt>
-                    <S.OptionDd>{choosed?.capacity}</S.OptionDd>
-                  </S.OptionDl>
-                </S.SpacDd>
+                  <S.ChartDl>
+                    <dt>앞타이어규격</dt>
+                    <dd>{choosed?.frontTire}</dd>
+                    <dt>뒷타이어규격</dt>
+                    <dd>{choosed?.rearTire}</dd>
+                    <dt>전륜브레이크</dt>
+                    <dd>{choosed?.frontSuspension}</dd>
+                    <dt>후륜브레이크</dt>
+                    <dd>{choosed?.rearSuspension}</dd>
+                    <dt>전륜서스펜션</dt>
+                    <dd>{choosed?.frontBrake}</dd>
+                    <dt>후륜서스펜션</dt>
+                    <dd>{choosed?.rearBrake}</dd>
+                    <dt>탑승정원</dt>
+                    <dd>{choosed?.capacity}</dd>
+                  </S.ChartDl>
+                </dd>
               }
             </S.SpacDl>
+
+            {/* 차량 사이즈이미지 */}
             <S.SizeBox>
               {/* 차량 앞면 이미지 */}
-              <div className='size_box front'>
+              <div className='size_img front'>
                 <span className='wrap_thumb'>
                   <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
                 </span>
@@ -481,7 +496,7 @@ export function Detail():JSX.Element {
 
               </div>
               {/* 차량 옆면 이미지 */}
-              <div className='size_box side'>
+              <div className='size_img side'>
                 <span className='wrap_thumb'>
                   <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
                 </span>
@@ -501,7 +516,7 @@ export function Detail():JSX.Element {
                 </span>
               </div>
               {/* 차량 뒷면 이미지 */}
-              <div className='size_box rear'>
+              <div className='size_img rear'>
                 <span className='wrap_thumb'>
                   <img className='sizeimg' src="https://raw.githubusercontent.com/pgw6541/SEMOCAR/main/src/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
                 </span>
@@ -521,23 +536,27 @@ export function Detail():JSX.Element {
                 </span>
               </div>
             </S.SizeBox>
-
-          </S.MoreInfo>
-          <div ></div>
-        </S.InfoBoxWrap>
+          </div>
+        </S.ChartWrapper>
 
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
           <div className='slideHead'>
             <S.Title>포토</S.Title>
             <div className='buttonGroup'>
-              {searchCar?.photoNumber.exterior === 0 ? undefined : <div onClick={()=>{viewChange(0)}} className='btn exBtn'>외관</div>}
-              {searchCar?.photoNumber.interior === 0 ? undefined : <div onClick={()=>{viewChange(1)}} className='btn inBtn'>내관</div>}
+              {/* 외부버튼 */}
+              {searchCar?.photoNumber.exterior === 0 ? undefined
+              :
+              <div onClick={()=>{viewChange(0)}} className={`changeBtn exBtn ${viewPhoto[0] ? 'active' : 'inactive'}`}>외부</div>}
+              {/* 외부버튼 */}
+              {searchCar?.photoNumber.interior === 0 ? undefined 
+              : 
+              <div onClick={()=>{viewChange(1)}} className={`changeBtn inBtn ${viewPhoto[1] ? 'active' : 'inactive'}`}>내부</div>}
             </div>
           </div>
           <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
 
-          {/* 외관 */}
+          {/* 외부 */}
           <div className={`slides exterior ${viewPhoto[0] ? 'block' : 'none'}`}>
             <S.MainSwiper
               spaceBetween={10}
@@ -569,7 +588,7 @@ export function Detail():JSX.Element {
             </S.ThumbsSwiper>
           </div>
 
-          {/* 내관 */}
+          {/* 내부 */}
           <div className={`slides interior ${viewPhoto[1] ? 'block' : 'none'}`}>
             <S.MainSwiper
               spaceBetween={10}

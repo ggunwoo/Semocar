@@ -1,5 +1,5 @@
 import { Checkbox } from '@mui/joy'
-// import * as type from '../types/types'
+import { FormGroup, FormControlLabel} from '@mui/material';
 
 // Redux
 import { useAppSelector, useAppDispatch } from '../store/hooks';
@@ -87,39 +87,51 @@ export function Brand ():JSX.Element {
     <MaxContainer>
       {/* Brand Search Nav */}
       <BrandNav />
-
       {/* Search Check Box */}
-      <S.FormWrapper>
-        
-        <S.CheckLine>
-          <S.CheckTitle>차급</S.CheckTitle>
-          <S.CheckWrapper row={true}>
-            <S.FormControl control={
-              <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
-            ></S.FormControl>
-            {segmentList.map((segment, index)=>(
-              <S.FormControl key={segment} control={
-                <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
-              ></S.FormControl>
-            ))}
-          </S.CheckWrapper>
-        </S.CheckLine>
-        <S.CheckLine>
-          <S.CheckTitle>연료</S.CheckTitle>
-          <S.CheckWrapper row={true}>
-            <S.FormControl control={
-              <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
-            ></S.FormControl>
-            {fuelTypeList.map((fuelType, index)=>(
-              <S.FormControl key={fuelType} control={
-                <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
-              ></S.FormControl>
-            ))}
-          </S.CheckWrapper>
-        </S.CheckLine>
-      </S.FormWrapper>
 
-      {/* Search View */}
+
+      <S.CheckBoxWrapper>
+        {/* 차급라인 */}
+        <S.CheckLine>
+          <div className='checkTitle'>차급</div>
+          {/* 체크박스 */}
+          <FormGroup className='checkBoxs' row={true}>
+            {/* 차급 전체 체크박스 */}
+            <FormControlLabel className='check' control={
+              <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
+            ></FormControlLabel>
+            {/* 차급 체크박스들 */}
+            {segmentList.map((segment, index)=>(
+              <FormControlLabel className='check' key={segment} control={
+                <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
+              ></FormControlLabel>
+            ))}
+          </FormGroup>
+        </S.CheckLine>
+
+        {/* ----------------------------------------- */}
+
+        {/* 연료라인 */}
+        <S.CheckLine>
+          <div className='checkTitle'>연료</div>
+          {/* 체크박스 */}
+          <FormGroup className='checkBoxs' row={true}>
+            {/* 연료 전체 체크박스 */}
+            <FormControlLabel className='check' control={
+              <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
+            ></FormControlLabel>
+            {/* 연료 체크박스들 */}
+            {fuelTypeList.map((fuelType, index)=>(
+              <FormControlLabel className='check' key={fuelType} control={
+                <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
+              ></FormControlLabel>
+            ))}
+          </FormGroup>
+        </S.CheckLine>
+      </S.CheckBoxWrapper>
+
+
+      {/* 차 목록 */}
       <CarView />
       
     </MaxContainer>

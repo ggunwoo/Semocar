@@ -14,10 +14,11 @@ export const MaxContainer = styled(Container)`
   }
 }`;
 
-export const Logo = styled.h2<{fontSize : string}>`
+export const Logo = styled.p<{fontSize : string}>`
 && {
-  font-size: ${props => props.fontSize};
   color: black;
+  font-size: ${props => props.fontSize};
   font-family: Anders, Arial, sans-serif;
+  margin-bottom: 0;
   cursor: pointer;
 }`;

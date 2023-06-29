@@ -13,7 +13,7 @@ export function Header():JSX.Element {
       {/* <div style={{"height":"80px"}}></div> */}
       <S.Header>
         <MaxContainer>
-          <S.FlexToolbar>
+          <S.Container>
             <Logo fontSize='28px' className='logo' onClick={() => { navigate('/') }}>
               SEMO CAR
             </Logo>
@@ -23,7 +23,7 @@ export function Header():JSX.Element {
               {/* <S.CustomStyledButton variant="text">차량목록</S.CustomStyledButton> */}
               <S.CustomStyledButton variant="outlined">로그인</S.CustomStyledButton>
             </div>
-          </S.FlexToolbar>
+          </S.Container>
         </MaxContainer>
       </S.Header>
     </>

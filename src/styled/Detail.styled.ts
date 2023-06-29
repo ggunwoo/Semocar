@@ -2,15 +2,24 @@ import { styled } from 'styled-components'
 import { Chip } from '@mui/material'
 import { Swiper } from 'swiper/react'
 
-// FORM
-export const FeatureBox = styled.div`
-&& {
+// Title
+export const Title = styled.span`
+&&& {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
+}`;
+
+// 메인배너
+export const HeadBox = styled.div`
+&&& {
   width: 100%;
   background-color: #e9eaf1;
   &.display_none {
     width: 100px;
   }
-  .wrap {
+  .headWrapper {
     width: 100%;
     height: 400px;
     background-color: #e9eaf1;
@@ -18,41 +27,53 @@ export const FeatureBox = styled.div`
     justify-content: space-around;
     align-items: flex-start;
   }
+  /* 좌측 정보 */
   .infoBox {
-    /* height: 500px; */
     margin-top: 100px;
-    p.brand {
+    /* 브랜드 */
+    .brand {
       font-size: 1.125rem;
       margin-bottom: 0 !important;
       font-weight: bold;
       display: flex;
       align-items: center;
+      /* 브랜드-아이콘 */
       img {
         max-width: 36px;
         max-height: 18px;
         margin-right: 8px;
-        /* transform: scale(.5); */
       }
+      /* 브랜드-이름 */
       span {
         font-size: 18px;
         color: #626262;
         text-align: center;
       }
     }
-    p.name {
+    /* 차량 이름 */
+    .name {
       font-size: 3rem;
       margin-bottom: 0 !important;
     }
-    p.price {
+    /* 차량 가격 */
+    .price {
       color: #62478f;
       font-weight: bold;
       font-size: 1.5rem;
       line-height: 2rem;
     }
   }
+  /* 우측 이미지 */
+  .image {
+    margin-top: 120px;
+    img {
+      width: 500px;
+    }
+  }
 }`;
+// 차량 정보 칩
 export const StyledChip = styled(Chip)`
-&& {
+&&& {
   color: #626262;
   margin-right: 10px;
   background-color: #fff;
@@ -63,17 +84,9 @@ export const StyledChip = styled(Chip)`
     margin-left: -6px;
   }
 }`;
-export const ImgBox = styled.div`
-&& {
-  margin-top: 120px;
-  img {
-    width: 500px;
-  }
-}`;
-
-// TargetNav
+// 스크롤 위치 이동 버튼그룹
 export const TartgetNav = styled.div`
-&& {
+&&& {
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
@@ -83,7 +96,7 @@ export const TartgetNav = styled.div`
     display: flex;
     justify-content: flex-start;
     z-index: 2;
-
+    /* 1440px Responsive */
     @media (max-width: 1440px) {
       width: 960px;
     }
@@ -107,8 +120,9 @@ export const TartgetNav = styled.div`
     }
   }
 }`;
+// 스크롤 위치 이동 버튼
 export const TargetBtn = styled.div`
-&& {
+&&& {
   width: 140px;
   text-align: center;
   cursor: pointer;
@@ -118,10 +132,9 @@ export const TargetBtn = styled.div`
     transform: translateY(-50%);
   }
 }`;
-
-// FixedBox
+// 상단고정사이드 (FeatureBox가 화면에서 사라질 때 보여줄 요소)
 export const FixedBox = styled.div`
-&& {
+&&& {
   width: 100%;
   height: 100px;
   position: fixed;
@@ -131,6 +144,7 @@ export const FixedBox = styled.div`
   box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
   overflow: hidden;
   z-index: 2;
+  /* TargetNav가 화면에 가려질때 보여주기 */
   &.unfixed { display: none; }
   &.fixed { display: block; }
   .wrap {
@@ -141,18 +155,23 @@ export const FixedBox = styled.div`
     @media (max-width:1440px) {
       width: 960px;
     }
+    /* 좌측요소 */
     .featureBox {
+      /* 타이틀*/
       .titleGroup {
         margin-top: 8px;
+        /* 브랜드 */
         .brand {
           display: flex;
           align-items: center;
+          /* 브랜드-이미지 */
           img {
             max-width: 22px;
             min-width: 12px;
             max-height: 14px;
             margin-right: 5px;
           }
+          /* 브랜드-이름 */
           span {
             font-size: 11px;
             color: #626262;
@@ -160,13 +179,15 @@ export const FixedBox = styled.div`
             margin-top: 2px;
           }
         }
-        p.name {
+        /* 차량이름 */
+        .name {
           color: #626262;
           font-size: 1.75rem;
           font-weight: 600;
           line-height: 2rem;
         }
       }
+      /* 스크롤위치이동 탭(TargetNav) */
       .btnGroup {
         display: flex;
         margin-top: 21.4px;
@@ -195,6 +216,7 @@ export const FixedBox = styled.div`
         }
       }
     }
+    /* 우측이미지 */
     .imgBax {
       img {
         width: 420px;
@@ -205,71 +227,71 @@ export const FixedBox = styled.div`
     }
   }
 }`;
-
-// INFO
-export const InfoBoxWrap = styled.div`
-&& {
+// 차량 상세정보 표 (등급별 제원)
+export const ChartWrapper = styled.div`
+&&& {
+  .title {
+    font-size: 1em;
+    font-weight: bold;
+    font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
+  }
   margin-top: 100px;
   color: #626262;
-  
-}`;
-export const MoreInfo = styled.div`
-&& {
-  width: 100%;
-  margin-top: 20px;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}`;
-export const FormDl = styled.dl`
-&& {
-  background-color: #FBFBFB;
-  padding: 24px 0 24px 16px;
-  margin-bottom: 0;
-  border-bottom: 1px solid #e8e8e8;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  min-height: 46px;
-}`;
-export const FormDt = styled.dt`
-&& {
-  font-family: NotoSans KR bold, GmarketSans, sans-serif !important;
-  width: 90px;
-  height: 100%;
-  margin-top: 4px;
-  margin-right: 24px;
-  text-align: center;
-}`;
-export const FormDd = styled.dd`
-&& {
-  width: 85%;
-  height: 100%;
-  
-  margin-bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  cursor: pointer;
-  gap: .7em;
-  .clicked {
-    color: #fff;
-    background-color: #AB9ADD;
-  }
-  .grade {
+  .infoWrap {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
   }
 }`;
-export const ChipBtn = styled.div`
-&& {
-  padding: 8px 14px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: .75rem;
-  font-weight: bold;
-  font-family: NotoSans KR bold, sans-serif !important;
-  text-align: center;
-  border-radius: 1.5em;
+// 등급, 트림 표
+export const SelectWrapper = styled.div`
+&&& {
+  dl {
+    background-color: #FBFBFB;
+    padding: 24px 0 24px 16px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e8e8e8;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    min-height: 46px;
+  }
+  dt {
+    font-family: NotoSans KR bold, GmarketSans, sans-serif !important;
+    width: 90px;
+    height: 100%;
+    margin-top: 4px;
+    margin-right: 24px;
+    text-align: center;
+  }
+  dd {
+    font-family: NotoSans KR light, GmarketSans, sans-serif !important;
+    width: 85%;
+    height: 100%;
+    font-size: .825rem;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7em;
+    .clicked {
+      color: #fff;
+      background-color: #AB9ADD;
+    }
+  }
+  /* 선택 버튼 */
+  .selectBtn {
+    cursor: pointer;
+    padding: 8px 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    border-radius: 1.5em;
+  }
 }`;
+// 가격
 export const PriceDl = styled.dl`
-&& {
+&&& {
   margin: 18px 16px 0;
   padding-bottom: 6px;
   border-bottom: 1px solid #d8d8d8;
@@ -292,61 +314,58 @@ export const PriceDl = styled.dl`
     }
   }
 }`;
-
-// SPAC
+// 스펙
 export const SpacDl = styled.dl`
-&& {
+&&& {
   margin-top: 48px;
   margin-left: 16px;
   display: flex;
-}`;
-export const SpacDt = styled.dt`
-&& {
-  width: 90px;
-  height: 85%;
-  margin-right: 30px;
-  text-align: center;
-  font-family: NotoSans KR bold, sans-serif !important;
-}`;
-export const SpacDd = styled.dd`
-&& {
-  display: flex;
-  width: 85%;
-  span {
-    font-size: 0.825em;
+  &>dt {
+    width: 90px;
+    height: 85%;
+    margin-right: 30px;
+    text-align: center;
+    font-family: NotoSans KR bold, sans-serif !important;
+  }
+  &>dd {
+    display: flex;
+    width: 85%;
+    span {
+      font-size: 0.825em;
+    }
   }
 }`;
-export const OptionDl = styled.dl`
-&& {
+// 스펙-차트
+export const ChartDl = styled.dl`
+&&& {
   width: 33.3333333333%;
   font-size: .875rem;
   font-family: NotoSans KR regular, sans-serif;
   line-height: 1.5rem;
+  &>dt {
+    width: 40%;
+    color: #9f9f9f;
+    font-weight: normal;
+    float: left;
+    margin-bottom: 8px;
+  }
+  &>dd {
+    color: #626262;
+    margin-bottom: 8px;
+  }
 }`;
-export const OptionDt = styled.dt`
-&& {
-  width: 40%;
-  color: #9f9f9f;
-  font-weight: normal;
-  float: left;
-  margin-bottom: 8px;
-}`;
-export const OptionDd = styled.dd`
-&& {
-  color: #626262;
-  margin-bottom: 8px;
-}`;
-// 자동차 치수 단락
+// 자동차 치수 이미지
 export const SizeBox = styled.div`
-&& {
-  width: 85%;
+&&& {
+  width: 70%;
   height: 100%;
   margin-top: 50px;
-  margin-left: 90px;
+  margin-left: 136px;
   margin-bottom: 50px;
   display: flex;
-  justify-content: space-evenly;
-  .size_box {
+  justify-content: space-between;
+  /* 차량 이미지 공통속성 */
+  .size_img {
     .wrap_thumb .sizeimg {
       height: 104px;
       margin-bottom: 3px;
@@ -396,44 +415,48 @@ export const SizeBox = styled.div`
       }
     }
   }
-  .front {
+  /* 차량 앞면 이미지 */
+  .size_img.front {
+    /* 윤거전 */
     .track {
       width: 94px;
     }
+    /* 전폭 */
     .weight {
       width: 100%;
     }
   }
-  .side {
+  /* 차량 옆면 이미지 */
+  .size_img.side {
+    /* 축거 */
     .wheelbase {
       width: 180px;
     }
-    .length {}
+    /* 전장 */
+    .length {
+      width: 100%;
+    }
   }
-  .rear {
+  /* 차량 뒷면 이미지 */
+  .size_img.rear {
     position: relative;
+    /* 윤거후 */
     .tread {
       width: 94px;
       margin-top: 8px;
     }
+    /* 전고 (세로) */
     .height {
       height: 104px;
-      margin: 0 auto;
-      text-align: center;
       position: absolute;
       top: 0;
-      left: 152px;
-      line-height: 1em;
+      right: -75%;
       .txt {
-        display: block;
-        width: 61px;
+        white-space: nowrap;
         padding: 5px 0;
-        font-size: .75em;
-        background-color: #fff;
         position: relative;
-        top: 50%;
+        top: 45%;
         left: -50%;
-        transform: translateY(-50%);
         z-index: 2;
       }
       .line {
@@ -445,22 +468,14 @@ export const SizeBox = styled.div`
         left: 0;
         z-index: 0;
         &::after {
-          content: "";
-          display: block;
           width: 5px;
           height: 1px;
-          background-color: #b7b7b7;
-          position: absolute;
           top: 0;
           left: -5px;
         }
         &::before {
-          content: "";
-          display: block;
           width: 5px;
           height: 1px;
-          background-color: #b7b7b7;
-          position: absolute;
           top: 103px;
           left: -5px;
         }
@@ -468,45 +483,83 @@ export const SizeBox = styled.div`
     }
   }
 }`;
-
-// Title
-export const Title = styled.span`
-&& {
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
-}`;
-
 // 포토갤러리
 export const SwiperWrap = styled.div`
-&& {
+&&& {
   width: 100%;
   margin-top: 160px;
   height: 700px;
+  user-select: none;
   .slideHead {
     display: flex;
     justify-content: space-between;
     .buttonGroup {
-      .btn {}
+      display: flex;
+      gap: 0;
+      cursor: pointer;
+      .changeBtn {
+        background-color: #F9F9F9;
+        padding: 5px 20px;
+        &.active {
+          color: #fff;
+          background-color: #AB9ADD;
+        }
+      }
     }
   }
   .block { display:block }
   .none { display:none }
 }`;
 export const MainSwiper = styled(Swiper)`
-&& {
+&&& {
   margin-top: 20px;
-  --swiper-navigation-color : #fff;
-  --swiper-pagination-color : #fff;
+  /* 다음, 이전 버튼 */
+  .swiper-button-next, .swiper-button-prev {
+    display: block;
+    color: #626262;
+    width: 26px;
+    height: 72px;
+    background-color: #fff;
+    opacity: .5;
+    &:hover {
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+    }
+  }
+  /* 다음버튼 */
+  .swiper-button-next {
+    right: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    &::after{
+      right: 40%;
+      transform: translate(50%, -50%) scale(.5);
+      opacity: 1 !important;
+    }
+  }
+  /* 이전버튼 */
+  .swiper-button-prev {
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    &::after{
+      left: 40%;
+      transform: translate(-50%, -50%) scale(.5);
+      opacity: 1 !important;
+    }
+  }
+  .swiper-button-disabled {
+    display: none !important;
+  }
   img {
     width: 100%;
   }
 }`;
-
-// 포토갤러리 썸네일
+// 포토갤러리-썸네일
 export const ThumbsSwiper = styled(Swiper)`
-&& {
+&&& {
   margin-top: 10px;
   .swiper-slide {
     position: relative;
@@ -547,10 +600,9 @@ export const ThumbsSwiper = styled(Swiper)`
     border-bottom: 5px solid #62478f;
   }
 }`;
-
-// COMMENT
+// 댓글
 export const CommentWrap = styled.div`
-&& {
+&&& {
   width: 100%;
   /* height: 100%; */
   margin-top: 280px;
@@ -605,8 +657,9 @@ export const CommentWrap = styled.div`
     cursor: pointer;
   }
 }`;
+// 댓글-쓰기
 export const PostForm = styled.form`
-&& {
+&&& {
   padding: 10px 0;
   display: flex;
   align-items: center;
@@ -636,10 +689,9 @@ export const PostForm = styled.form`
     }
   }
 }`;
-
-// COMMENT-list
+// 댓글-리스트
 export const CommentList = styled.form`
-&& {
+&&& {
   .list {
     width: 100%;
     min-height: 128px;

@@ -3,7 +3,7 @@ import { Swiper } from 'swiper/react';
 
 // 매인배너
 export const BannerWrapper = styled(Swiper)`
-&& {
+&&& {
   height: 472px;
   margin-bottom: 120px;
   user-select: none;

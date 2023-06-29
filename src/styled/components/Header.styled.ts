@@ -9,7 +9,7 @@ export const Header = styled.div`
   border-bottom: 1px solid #D7D7D7;
   box-shadow: none;
 }`;
-export const FlexToolbar = styled(Toolbar)`
+export const Container = styled.div`
 && {
   width: 100%;
   height: 60px;
