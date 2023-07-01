@@ -7,20 +7,21 @@
 
 </div>
 
-> <div style='width: 120px; text-align: color:#f9f9f9; display:inline-block'>프로젝트 :</div><span>자동차 정보제공 웹사이트 포트폴리오</span>
+> ***프로젝트*** : 자동차 정보제공 웹사이트 포트폴리오
 >
-> <div style='width: 120px; text-align: color:#f9f9f9; display:inline-block'>프로젝트 분류 :</div><span>토이 프로젝트</span>
+> ***프로젝트 분류*** : 토이 프로젝트
 >
-> <div style='width: 120px; text-align: color:#f9f9f9; display:inline-block'>팀규모 :</div><span>UXUI디자이너(1) 프론트엔드(1)</span>
+> ***팀규모*** : UXUI디자이너(1) 프론트엔드(1)
 >
-> <div style='width: 120px; text-align: color:#f9f9f9; display:inline-block'>제작기간 :</div><span>23.05.08 ~ 23.06.28</span>
-
+> ***참여분야*** : 클라이언트 개발, 프로젝트기획
+>
+> ***제작기간*** : 23.05.08 ~ 23.06.28
 
 <br />
 <br />
 
 ## 👨‍🔧기술 스택
----
+
 ![React](https://img.shields.io/badge/React-61DAFB?style=react&logo=react&logoColor=white)
 ![Typescript](https://img.shields.io/badge/Typescript-3178C6?style=typescript&logo=typescript&logoColor=white)
 ![Reactrouter](https://img.shields.io/badge/reactrouter-CA4245?style=reactrouter&logo=reactrouter&logoColor=white)
@@ -31,5 +32,10 @@
 <br />
 
 ## 👪협업
----
-![styled_components](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-181717?style=github&logo=github&logoColor=white)
+
+<br />
+
+## 👀핵심기능
+
