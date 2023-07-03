@@ -3,12 +3,13 @@ import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useCarData } from '../hook/useCarData';
 import * as type from '../types/types';
-import { Tabs, Tab, OutlinedInput, InputAdornment } from '@mui/material';
+import { Tabs, Tab } from '@mui/material';
 
+// COMPONENTS
+import { Search } from '../components/SearchBar';
 
 // STYLED
-import SearchIcon from '@mui/icons-material/Search';
-import ClearIcon from '@mui/icons-material/Clear';
+
 import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/components/CarView.styled'
 
@@ -26,8 +27,7 @@ export function CarView() {
   const [sliceView, setSliceView] = useState(8);
   const [showSpinner, setShowSpinner] = useState(false);
   const [carLength, setCarLength] = useState(0)
-  const [searchText, setSearchText] = useState<string|number>('')
-  const [submitValue, setSubmitValue] = useState<string|number>('')
+  
 
   /** ::차량 데이터를 필터링, 정렬하는 함수:: */
   const handleCarfilter = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[]): any[] => {
@@ -201,25 +201,6 @@ export function CarView() {
     setSortOption(value);
   };
 
-  // 검색창 인풋텍스트 -> searchText
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
-  // 인풋텍스트로 차량 검색하기
-  const handleSearch = () => {
-    setSubmitValue(searchText)
-  }
-  const handleKeyPress = (e: React.KeyboardEvent<SVGSVGElement>) => {
-    if(e.key === 'Enter'){
-      setSubmitValue(searchText)
-    }
-  }
-  // 인풋텍스트 초기화
-  const handleInputClear = () => {
-    setSearchText('')
-  }
-
-  console.log(searchText)
 
   // 렌더링
   return (
@@ -236,30 +217,8 @@ export function CarView() {
             <Tab className='tab' label="가격순" value="price" {...a11yProps(1)} />
             <Tab className='tab' label="연비순" value="mileage" {...a11yProps(2)} />
           </Tabs>
-          {/* 검색창 */}
-          <S.SearchBarWrapper>
-            <div></div>
-            <S.InputForm size='small' sx={{m:1}}>
-              <OutlinedInput
-                id="input-with-icon-adornment"
-                style={{cursor:'default'}}
-                placeholder='자동차검색'
-                type='text'
-                onChange={handleInputChange}
-                value={searchText}
-                // 아이콘
-                endAdornment={
-                  <InputAdornment position="end" style={{gap: '10px'}}>
-                    {/* INPUT 초기화 아이콘 */}
-                    {searchText === '' && <ClearIcon style={{opacity:0, cursor:'default'}} />}
-                    {searchText !== '' && <ClearIcon onClick={handleInputClear} style={{cursor:'pointer'}} />}
-                    {/* 검색아이콘 */}
-                    <SearchIcon onKeyPress={handleKeyPress} onClick={handleSearch} className='searchIcon' style={{color: searchText === '' ? '' : '#626262', cursor:'pointer'}} />
-                  </InputAdornment>
-                }
-              />
-            </S.InputForm>
-          </S.SearchBarWrapper>
+          {/* 검색 컴포넌트 */}
+          <Search />
         </S.StyledBox>
 
         {/* 차량목록 */}
