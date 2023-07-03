@@ -27,9 +27,10 @@ export function CarView() {
   const [showSpinner, setShowSpinner] = useState(false);
   const [carLength, setCarLength] = useState(0)
   const [searchText, setSearchText] = useState<string|number>('')
+  const [submitValue, setSubmitValue] = useState<string|number>('')
 
   /** ::차량 데이터를 필터링, 정렬하는 함수:: */
-  const handleCarfilter = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[], search:string|number): any[] => {
+  const handleCarfilter = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[]): any[] => {
     // 전체 데이터
     let sortedData = [...data];
     
@@ -88,7 +89,6 @@ export function CarView() {
     }
     // return Checked
     const handlefilter = (): type.Car[] | string[] => {
-
       // 체크값이 있다면 length는 1이상
       const CheckNullTest = [...segmentFilterData, ...fuelTypeFilterData].length;
       const brandLength = checkBrand.length;
@@ -156,10 +156,6 @@ export function CarView() {
         return sortedData;
       }
     };
-    if(search !== ''){
-      
-      // handlefilter().find(()=>{});
-    }
     const slicedData = handlefilter().slice(0,sliceView);
 
     return slicedData
@@ -211,11 +207,11 @@ export function CarView() {
   }
   // 인풋텍스트로 차량 검색하기
   const handleSearch = () => {
-    setSearchText(searchText)
+    setSubmitValue(searchText)
   }
   const handleKeyPress = (e: React.KeyboardEvent<SVGSVGElement>) => {
     if(e.key === 'Enter'){
-      setSearchText(searchText)
+      setSubmitValue(searchText)
     }
   }
   // 인풋텍스트 초기화
@@ -272,7 +268,7 @@ export function CarView() {
             <S.CarSection>
               {
                 (() => {
-                  const filteredCars = handleCarfilter(carData, selectedBrand, selectedSeg, selectedFuel, searchText);
+                  const filteredCars = handleCarfilter(carData, selectedBrand, selectedSeg, selectedFuel);
                  if (filteredCars.includes('selectAgain')) {
                     return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {
