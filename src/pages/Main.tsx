@@ -81,7 +81,7 @@ export function Main ():JSX.Element {
         //   hide:true,
         // }}
         autoplay={{
-          delay: 70000,
+          delay: 7000,
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
