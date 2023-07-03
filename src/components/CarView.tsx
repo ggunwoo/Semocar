@@ -1,13 +1,14 @@
-import React, {useEffect, useState } from 'react';
+import React, {ChangeEvent, useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useCarData } from '../hook/useCarData';
 import * as type from '../types/types';
-import { Tabs, Tab, FormControl, OutlinedInput, InputAdornment, CircularProgress } from '@mui/material';
+import { Tabs, Tab, OutlinedInput, InputAdornment } from '@mui/material';
 
 
 // STYLED
 import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
 import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/components/CarView.styled'
 
@@ -25,9 +26,10 @@ export function CarView() {
   const [sliceView, setSliceView] = useState(8);
   const [showSpinner, setShowSpinner] = useState(false);
   const [carLength, setCarLength] = useState(0)
+  const [searchText, setSearchText] = useState<string|number>('')
 
   /** ::차량 데이터를 필터링, 정렬하는 함수:: */
-  const sortCarData = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[]): any[] => {
+  const handleCarfilter = (data: any, checkBrand:string[], checkSegment:string[], checkFuelType:string[], search:string|number): any[] => {
     // 전체 데이터
     let sortedData = [...data];
     
@@ -85,7 +87,7 @@ export function CarView() {
       }
     }
     // return Checked
-    const filteredData = (): type.Car[] | string[] => {
+    const handlefilter = (): type.Car[] | string[] => {
 
       // 체크값이 있다면 length는 1이상
       const CheckNullTest = [...segmentFilterData, ...fuelTypeFilterData].length;
@@ -154,7 +156,11 @@ export function CarView() {
         return sortedData;
       }
     };
-    const slicedData = filteredData().slice(0,sliceView);
+    if(search !== ''){
+      
+      // handlefilter().find(()=>{});
+    }
+    const slicedData = handlefilter().slice(0,sliceView);
 
     return slicedData
   };
@@ -162,17 +168,17 @@ export function CarView() {
   useEffect(() => {
     const moreData = () => {
       // 스크롤이 맨 아래에 도달했을 때 실행할 함수
-      console.log('스크롤 맨 아래 도달');
+      // console.log('스크롤 맨 아래 도달');
       if(sliceView < 88){
         setSliceView(sliceView+8)
       }
-      console.log(sliceView)
+      // console.log(sliceView)
     };
 
     const handleScroll = () => {
       const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
       if (scrollHeight - scrollTop === clientHeight) {
-        console.log('핸들은 돌아간다')
+        // console.log('핸들은 돌아간다')
         // 스크롤이 맨 아래에 도달하면 실행할 함수
         if(sliceView < 88){
           setShowSpinner(true)
@@ -199,7 +205,25 @@ export function CarView() {
     setSortOption(value);
   };
 
-   
+  // 검색창 인풋텍스트 -> searchText
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value)
+  }
+  // 인풋텍스트로 차량 검색하기
+  const handleSearch = () => {
+    setSearchText(searchText)
+  }
+  const handleKeyPress = (e: React.KeyboardEvent<SVGSVGElement>) => {
+    if(e.key === 'Enter'){
+      setSearchText(searchText)
+    }
+  }
+  // 인풋텍스트 초기화
+  const handleInputClear = () => {
+    setSearchText('')
+  }
+
+  console.log(searchText)
 
   // 렌더링
   return (
@@ -219,14 +243,26 @@ export function CarView() {
           {/* 검색창 */}
           <S.SearchBarWrapper>
             <div></div>
-            <FormControl size='small' sx={{m:1}}>
+            <S.InputForm size='small' sx={{m:1}}>
               <OutlinedInput
                 id="input-with-icon-adornment"
-                placeholder='To be implemented'
-                // Icon
-                endAdornment={ <InputAdornment position="end"><SearchIcon className='searchIcon' /></InputAdornment> }
+                style={{cursor:'default'}}
+                placeholder='자동차검색'
+                type='text'
+                onChange={handleInputChange}
+                value={searchText}
+                // 아이콘
+                endAdornment={
+                  <InputAdornment position="end" style={{gap: '10px'}}>
+                    {/* INPUT 초기화 아이콘 */}
+                    {searchText === '' && <ClearIcon style={{opacity:0, cursor:'default'}} />}
+                    {searchText !== '' && <ClearIcon onClick={handleInputClear} style={{cursor:'pointer'}} />}
+                    {/* 검색아이콘 */}
+                    <SearchIcon onKeyPress={handleKeyPress} onClick={handleSearch} className='searchIcon' style={{color: searchText === '' ? '' : '#626262', cursor:'pointer'}} />
+                  </InputAdornment>
+                }
               />
-            </FormControl>
+            </S.InputForm>
           </S.SearchBarWrapper>
         </S.StyledBox>
 
@@ -236,7 +272,7 @@ export function CarView() {
             <S.CarSection>
               {
                 (() => {
-                  const filteredCars = sortCarData(carData, selectedBrand, selectedSeg, selectedFuel);
+                  const filteredCars = handleCarfilter(carData, selectedBrand, selectedSeg, selectedFuel, searchText);
                  if (filteredCars.includes('selectAgain')) {
                     return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
                   } else {
