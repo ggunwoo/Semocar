@@ -52,7 +52,8 @@ export const ListWrapper = styled(List)`&&&
   position: absolute;
   right: 8px;
   top: 55px;
-  border: 1px solid #000;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
   z-index: 9;
 }`;
 export const ListTexts = styled.div`&&&

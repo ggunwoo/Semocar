@@ -18,7 +18,7 @@ export function Search() {
   const navigate = useNavigate(); 
   const [searchText, setSearchText] = useState('');
   const [filteredCars, setFilteredCars] = useState<type.Car[]>([]);
-  const [listHover, setListHover] = useState<string>('');
+  const [listHover, setListHover] = useState<string>('photo/select_model');
 
   // 검색 함수
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +73,10 @@ export function Search() {
   const handleHover = (url:string) => {
     setListHover(url)
   }
+  /** 리스트 리브시 이미지 초기화 */
+  const handleLeave = () => {
+    setListHover('photo/select_model')
+  }
   return (
     <>
     {/* 검색창 */}
@@ -106,7 +110,7 @@ export function Search() {
             <S.ListTexts>
               {filteredCars?.map((car, index)=>(
                 <ListItem className='item' key={index} disablePadding>
-                  <ListItemButton onMouseEnter={()=>{handleHover(car.imgUrl)}} className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                  <ListItemButton onMouseLeave={()=>{handleLeave()}} onMouseEnter={()=>{handleHover(car.imgUrl)}} className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
                       <ListItemText className='name'>{car.name.kr}</ListItemText>
                   </ListItemButton>
                 </ListItem>
