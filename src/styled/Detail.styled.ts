@@ -96,10 +96,6 @@ export const TartgetNav = styled.div`
     display: flex;
     justify-content: flex-start;
     z-index: 2;
-    /* 1440px Responsive */
-    @media (max-width: 1440px) {
-      width: 960px;
-    }
     .unclick {
       color: #cacaca;
     }
@@ -152,9 +148,6 @@ export const FixedBox = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    @media (max-width:1440px) {
-      width: 960px;
-    }
     /* 좌측요소 */
     .featureBox {
       /* 타이틀*/

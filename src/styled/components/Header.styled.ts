@@ -18,10 +18,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (max-width:1440px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }`;
 export const CustomStyledButton = styled(Button)`
 &&& {

@@ -12,9 +12,6 @@ export const CheckBoxWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20%;
-  @media (max-width: 1440px ) {
-    padding: 48px 36px;
-  }
 }`;
 export const CheckLine = styled.div`
 &&& {
