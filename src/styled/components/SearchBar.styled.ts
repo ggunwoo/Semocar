@@ -72,14 +72,13 @@ export const ListTexts = styled.div`&&&
 }`;
 export const ListPhoto = styled.div`&&&
 {
-  max-width: 50%;
+  width: 50%;
   img {
-    width: 100%;
+    max-width: 100%;
     max-height: 100%;
-    margin: auto 0;
     position: relative;
     top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }`;
