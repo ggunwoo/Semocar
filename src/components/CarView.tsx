@@ -209,7 +209,7 @@ export function CarView() {
       {
         showSpinner && <S.StyledSpinner />
       }
-      <div>
+      {/* <div> */}
         {/* 상단 탭 */}
         <S.StyledBox>
           <Tabs className='tabs' sx={{overflow:"visible"}} value={sortOption} onChange={handleSortChange} aria-label="정렬 기준">
@@ -218,7 +218,9 @@ export function CarView() {
             <Tab className='tab' label="연비순" value="mileage" {...a11yProps(2)} />
           </Tabs>
           {/* 검색 컴포넌트 */}
-          <Search />
+          <div>
+            <Search />
+          </div>
         </S.StyledBox>
 
         {/* 차량목록 */}
@@ -258,7 +260,7 @@ export function CarView() {
           </TabPanel>
         ))}
         
-      </div>
+      {/* </div> */}
     </MaxContainer>
   );
 }

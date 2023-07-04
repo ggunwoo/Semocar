@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { FormControl } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -17,8 +16,10 @@ export const StyledSpinner = styled(CircularProgress)`&&&
 // 상단 탭
 export const StyledBox = styled.div`&&&
 {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 0;
   margin-bottom: 3rem;
   border-color: divider;
@@ -49,9 +50,6 @@ export const CarSection = styled.div`&&&
   flex-wrap: wrap;
   align-items: center;
   /* margin-bottom: 200px; */
-  @media (max-width:1440px) {
-    width: 960px;
-  }
 }`;
 // 차량
 export const CarArticle = styled.div`
@@ -110,8 +108,5 @@ export const CarArticle = styled.div`
       color: #999;
       margin-right: 8px;
     }
-  }
-  @media (max-width: 1440px){
-    /* transform: scale(.95); */
   }
 }`;
