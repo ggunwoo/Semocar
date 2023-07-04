@@ -16,17 +16,18 @@ import * as S from '../styled/components/SearchBar.styled'
 export function Search() {
   const carData = useCarData();
   const navigate = useNavigate(); 
-  const [searchText, setSearchText] = useState('')
-  const [filteredCars, setFilteredCars] = useState<type.Car[]>([])
+  const [searchText, setSearchText] = useState('');
+  const [filteredCars, setFilteredCars] = useState<type.Car[]>([]);
+  const [listHover, setListHover] = useState<string>('');
 
-  // 검색창 인풋텍스트 -> searchText
+  // 검색 함수
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value;
     setSearchText(searchValue)
     if(searchValue === ''){
       setFilteredCars([]);
-    // 사용자가 검색어를 입력하면 결과물 보여주는 로직(초성가능)
     } else {
+      // 사용자가 검색어를 입력하면 결과물 보여주는 로직(초성가능)
       const filtered = carData.filter((car)=>{
         const carName = car.name.kr;
         const carInitials = Hangul.disassemble(carName)
@@ -63,10 +64,14 @@ export function Search() {
       setFilteredCars(filtered);
     }
   }
-  // 인풋텍스트 초기화(Clear)
+  // 인풋텍스트 초기화(Clear) 함수
   const handleInputClear = () => {
     setSearchText('');
     setFilteredCars([]);
+  }
+  /** 리스트 호버시 이미지 변경 함수 */
+  const handleHover = (url:string) => {
+    setListHover(url)
   }
   return (
     <>
@@ -101,14 +106,14 @@ export function Search() {
             <S.ListTexts>
               {filteredCars?.map((car, index)=>(
                 <ListItem className='item' key={index} disablePadding>
-                  <ListItemButton className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                  <ListItemButton onMouseEnter={()=>{handleHover(car.imgUrl)}} className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
                       <ListItemText className='name'>{car.name.kr}</ListItemText>
                   </ListItemButton>
                 </ListItem>
               ))}
             </S.ListTexts>
             <S.ListPhoto>
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/hyundai/Avante.png`} alt="" />
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${listHover}.png`} alt="" />
             </S.ListPhoto>
           </S.ListWrapper>
         }
