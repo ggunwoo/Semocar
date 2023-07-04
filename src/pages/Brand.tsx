@@ -1,4 +1,4 @@
-import { Checkbox } from '@mui/joy'
+import { Checkbox } from '@mui/material'
 import { FormGroup, FormControlLabel} from '@mui/material';
 
 // Redux
@@ -98,12 +98,12 @@ export function Brand ():JSX.Element {
           <FormGroup className='checkBoxs' row={true}>
             {/* 차급 전체 체크박스 */}
             <FormControlLabel className='check' control={
-              <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} variant='outlined' size="sm" color="neutral" />} label="전체"
+              <Checkbox checked={segAll} onChange={() => {segmentAllHandle();}} />} label="전체"
             ></FormControlLabel>
             {/* 차급 체크박스들 */}
             {segmentList.map((segment, index)=>(
               <FormControlLabel className='check' key={segment} control={
-                <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}} variant='outlined' size="sm" color="neutral" />} label={`${segment}`}
+                <Checkbox checked={segChecked[index]} onChange={() => { segmentHandle(segment, index);}}  />} label={`${segment}`}
               ></FormControlLabel>
             ))}
           </FormGroup>
@@ -118,12 +118,12 @@ export function Brand ():JSX.Element {
           <FormGroup className='checkBoxs' row={true}>
             {/* 연료 전체 체크박스 */}
             <FormControlLabel className='check' control={
-              <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }} variant='outlined' size="sm" color="neutral" />} label="전체"
+              <Checkbox checked={fuelAll} onChange={() => { fuelTypeAllHandle() }}  />} label="전체"
             ></FormControlLabel>
             {/* 연료 체크박스들 */}
             {fuelTypeList.map((fuelType, index)=>(
               <FormControlLabel className='check' key={fuelType} control={
-                <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }} variant='outlined' size="sm" color="neutral" />} label={`${fuelType}`}
+                <Checkbox checked={fuelChecked[index]} onChange={()=> { fuelTypeHandle(fuelType, index) }}  />} label={`${fuelType}`}
               ></FormControlLabel>
             ))}
           </FormGroup>
@@ -133,6 +133,8 @@ export function Brand ():JSX.Element {
 
       {/* 차 목록 */}
       <CarView />
+
+      {/* variant='outlined' size="sm" color="neutral" */}
       
     </MaxContainer>
   )

@@ -3,15 +3,15 @@ import { styled } from 'styled-components'
 export const CheckBoxWrapper = styled.div`
 &&& {
   width: 100%;
-  height: 200px;
+  height: 100%;
   background-color: #fcfcfc;
   border: 1px solid rgba(0,0,0,.2);
   margin-top: 2rem;
-  padding: 44px 36px;
+  padding: 36px;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20%;
+  gap: 1.125rem;
 }`;
 export const CheckLine = styled.div`
 &&& {
@@ -19,19 +19,19 @@ export const CheckLine = styled.div`
   display: flex;
   align-items: flex-start;
   .checkTitle {
-    width: 5%;
+    width: 4rem;
+    line-height: 2.75rem;
     color: #626262;
     text-align: center;
   }
   .checkBoxs {
     width: 95%;
     .check {
-      margin: 0 0 10px 22px;
       /* checkbox */
       .MuiTypography-root {
         font-size: 14px;
         font-family: NotoSans KR light, sans-serif !important;
-        margin-left: 4px;
+        /* margin-left: 4px; */
       }
     }
   }
