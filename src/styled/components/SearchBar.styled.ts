@@ -1,5 +1,6 @@
 import {styled} from 'styled-components'
 import { FormControl } from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 // 검색창
 export const SearchBarWrapper = styled.div`&&&
@@ -7,6 +8,7 @@ export const SearchBarWrapper = styled.div`&&&
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
   .searchIcon {
     /* opacity: 0.3; */
     /* color: #dee2e6; */
@@ -36,3 +38,14 @@ export const InputForm = styled(FormControl)({
     },
   },
 });
+// 검색리스트
+export const ListWrapper = styled(List)`&&&
+{
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  right: 8px;
+  top: 55px;
+  border: 1px solid #000;
+  z-index: 9;
+}`;

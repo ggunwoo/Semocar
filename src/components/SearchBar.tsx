@@ -1,5 +1,8 @@
 import React, {ChangeEvent, useState } from 'react';
-import {OutlinedInput, InputAdornment} from '@mui/material';
+import {OutlinedInput, InputAdornment, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
+import { useCarData } from '../hook/useCarData';
+import * as type from '../types/types'
+import Hangul from 'hangul-js';
 
 // ICON
 import SearchIcon from '@mui/icons-material/Search';
@@ -8,33 +11,65 @@ import ClearIcon from '@mui/icons-material/Clear';
 // STYLED
 import * as S from '../styled/components/SearchBar.styled'
 
+
 export function Search() {
+  const carData = useCarData();
   const [searchText, setSearchText] = useState('')
-  const [submitValue, setSubmitValue] = useState('')
+  const [filteredCars, setFilteredCars] = useState<type.Car[]>([])
 
   // 검색창 인풋텍스트 -> searchText
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
-  // 인풋텍스트로 차량 검색하기
-  const handleSearch = () => {
-    setSubmitValue(searchText)
-  }
-  const handleKeyPress = (e: React.KeyboardEvent<SVGSVGElement>) => {
-    if(e.key === 'Enter'){
-      setSubmitValue(searchText)
+    const searchValue = e.target.value;
+    setSearchText(searchValue)
+    if(searchValue === ''){
+      setFilteredCars([]);
+    // 사용자가 검색어를 입력하면 결과물 보여주는 로직(초성가능)
+    } else {
+      const filtered = carData.filter((car)=>{
+        const carName = car.name.kr;
+        const carInitials = Hangul.disassemble(carName)
+        .reduce((acc, curr)=>{
+          if(Hangul.isComplete(curr)){
+            const initial = Hangul.assemble([curr]);
+            if(initial !== ''){
+              acc += initial;
+            }
+          } else {
+            acc += curr
+          }
+          return acc;
+        }, '')
+        .toLowerCase();
+
+        const searchInitials = Hangul.disassemble(searchValue)
+        .reduce((acc, curr) => {
+          if (Hangul.isComplete(curr)) {
+            const initial = Hangul.assemble([curr]);
+            if (initial !== '') {
+              acc += initial;
+            }
+          } else {
+            acc += curr;
+          }
+          return acc;
+        }, '')
+        .toLowerCase();
+
+        return carInitials.includes(searchInitials);
+      });
+
+      setFilteredCars(filtered);
     }
   }
-  // 인풋텍스트 초기화
+  // 인풋텍스트 초기화(Clear)
   const handleInputClear = () => {
     setSearchText('')
   }
-
   return (
     <>
     {/* 검색창 */}
         <S.SearchBarWrapper>
-        <div></div>
+        {/* <div></div> */}
         <S.InputForm size='small' sx={{m:1}}>
           <OutlinedInput
             id="input-with-icon-adornment"
@@ -50,11 +85,25 @@ export function Search() {
                 {searchText === '' && <ClearIcon style={{opacity:0, cursor:'default'}} />}
                 {searchText !== '' && <ClearIcon onClick={handleInputClear} style={{cursor:'pointer'}} />}
                 {/* 검색아이콘 */}
-                <SearchIcon onKeyPress={handleKeyPress} onClick={handleSearch} className='searchIcon' style={{color: searchText === '' ? '' : '#626262', cursor:'pointer'}} />
+                <SearchIcon className='searchIcon' style={{color: searchText === '' ? '' : '#626262', cursor:'pointer'}} />
               </InputAdornment>
             }
           />
         </S.InputForm>
+        {/* 검색리스트 */}
+        {
+          filteredCars.length !== 0
+          &&
+          <S.ListWrapper>
+            {filteredCars?.map((car, index)=>(
+              <ListItem key={index} disablePadding>
+                <ListItemButton>
+                    <ListItemText>{car.name.kr}</ListItemText>
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </S.ListWrapper>
+        }
       </S.SearchBarWrapper>
     </>
   )
