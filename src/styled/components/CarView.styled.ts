@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { FormControl } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -37,18 +38,6 @@ export const StyledBox = styled.div`&&&
       background-color: #9063FF;
       height: 3px;
     }
-  }
-}`;
-// 검색창
-export const SearchBarWrapper = styled.div`&&&
-{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  .searchIcon {
-    /* opacity: 0.3; */
-    /* color: #dee2e6; */
-    color: rgba(0, 0, 0, 0.175);
   }
 }`;
 // 차량목록
