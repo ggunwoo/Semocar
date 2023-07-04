@@ -59,13 +59,14 @@ export function Search() {
 
         return carInitials.includes(searchInitials);
       });
-
+      console.log(filtered)
       setFilteredCars(filtered);
     }
   }
   // 인풋텍스트 초기화(Clear)
   const handleInputClear = () => {
-    setSearchText('')
+    setSearchText('');
+    setFilteredCars([]);
   }
   return (
     <>
@@ -97,15 +98,15 @@ export function Search() {
           filteredCars.length !== 0
           &&
           <S.ListWrapper>
-            <div>
+            <S.ListTexts>
               {filteredCars?.map((car, index)=>(
-                <ListItem key={index} disablePadding>
-                  <ListItemButton onClick={()=>{navigate(`/detail/${car.id}`)}}>
-                      <ListItemText>{car.name.kr}</ListItemText>
+                <ListItem className='item' key={index} disablePadding>
+                  <ListItemButton className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                      <ListItemText className='name'>{car.name.kr}</ListItemText>
                   </ListItemButton>
                 </ListItem>
               ))}
-            </div>
+            </S.ListTexts>
             <S.ListPhoto>
                 <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/hyundai/Avante.png`} alt="" />
             </S.ListPhoto>

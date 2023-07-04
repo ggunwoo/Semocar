@@ -19,7 +19,8 @@ export const SearchBarWrapper = styled.div`&&&
   }
 }`;
 // 검색폼
-export const InputForm = styled(FormControl)({
+export const InputForm = styled(FormControl)
+({
   '& label.Mui-focused': {
     color: '#A0AAB4',
   },
@@ -54,9 +55,30 @@ export const ListWrapper = styled(List)`&&&
   border: 1px solid #000;
   z-index: 9;
 }`;
+export const ListTexts = styled.div`&&&
+{
+  width: 50%;
+  height: 300px;
+  white-space: nowrap;
+  overflow: scroll;
+  .item .btn .name {
+    white-space: nowrap;
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}`;
 export const ListPhoto = styled.div`&&&
 {
+  max-width: 50%;
   img {
-    width: 9rem;
+    width: 100%;
+    max-height: 100%;
+    margin: auto 0;
+    position: relative;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
   }
 }`;
