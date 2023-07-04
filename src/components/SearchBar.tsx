@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState } from 'react';
 import {OutlinedInput, InputAdornment, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import { useCarData } from '../hook/useCarData';
+import { useNavigate } from 'react-router-dom';
 import * as type from '../types/types'
 import Hangul from 'hangul-js';
 
@@ -14,6 +15,7 @@ import * as S from '../styled/components/SearchBar.styled'
 
 export function Search() {
   const carData = useCarData();
+  const navigate = useNavigate(); 
   const [searchText, setSearchText] = useState('')
   const [filteredCars, setFilteredCars] = useState<type.Car[]>([])
 
@@ -95,13 +97,18 @@ export function Search() {
           filteredCars.length !== 0
           &&
           <S.ListWrapper>
-            {filteredCars?.map((car, index)=>(
-              <ListItem key={index} disablePadding>
-                <ListItemButton>
-                    <ListItemText>{car.name.kr}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-            ))}
+            <div>
+              {filteredCars?.map((car, index)=>(
+                <ListItem key={index} disablePadding>
+                  <ListItemButton onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                      <ListItemText>{car.name.kr}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </div>
+            <S.ListPhoto>
+                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/hyundai/Avante.png`} alt="" />
+            </S.ListPhoto>
           </S.ListWrapper>
         }
       </S.SearchBarWrapper>

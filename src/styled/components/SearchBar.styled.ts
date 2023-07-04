@@ -41,11 +41,22 @@ export const InputForm = styled(FormControl)({
 // 검색리스트
 export const ListWrapper = styled(List)`&&&
 {
-  width: 100%;
+  width: 500px;
+  height: auto;
   background-color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+
   position: absolute;
   right: 8px;
   top: 55px;
   border: 1px solid #000;
   z-index: 9;
+}`;
+export const ListPhoto = styled.div`&&&
+{
+  img {
+    width: 9rem;
+  }
 }`;
