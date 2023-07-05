@@ -1,7 +1,7 @@
 
 
-# SEMO CAR
-### 웹사이트 링크 : <https://semocar.netlify.app>
+# **SEMO CAR**
+#### 웹사이트 링크 : <https://semocar.netlify.app>
 <br />
 
 > ***프로젝트*** : 자동차 정보제공 웹사이트 포트폴리오
@@ -25,8 +25,6 @@
 ![Redux](https://img.shields.io/badge/Redux/Toolkit-764ABC?style=redux&logo=redux&logoColor=white)
 ![mui](https://img.shields.io/badge/mui-007FFF?style=mui&logo=mui&logoColor=white)
 ![styled_components](https://img.shields.io/badge/styled_components-DB7093?style=styledcomponents&logo=styledcomponents&logoColor=white)
-
-
 <br />
 
 #### *왜 이 기술을 사용했는가?*  
@@ -72,7 +70,7 @@
 ## **2. 검색**
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250912291-bd7c3785-1b01-4f46-8de1-9fb28ec54839.gif' />
 
-검색
+> 차량에 이름을 검색이 가능하며 빠르게 상세페이지 링크를 제공합니다.
 
 <br />
 <Hr />
