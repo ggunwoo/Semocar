@@ -2,18 +2,17 @@ import { styled } from 'styled-components'
 import { Chip } from '@mui/material'
 import { Swiper } from 'swiper/react'
 
-// Title
-export const Title = styled.span`
-&&& {
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
+// Nav 이동시 위치 요소
+export const MoveRef = styled.div<{height:string, mt?:string}>`&&&
+{
+  width: 100%;
+  height: ${props => props.height || 0};
+  margin-top: ${props => props.mt || 0};
 }`;
 
 // 메인배너
-export const HeadBox = styled.div`
-&&& {
+export const HeadBox = styled.div`&&&
+{
   width: 100%;
   background-color: #e9eaf1;
   &.display_none {
@@ -72,8 +71,8 @@ export const HeadBox = styled.div`
   }
 }`;
 // 차량 정보 칩
-export const StyledChip = styled(Chip)`
-&&& {
+export const StyledChip = styled(Chip)`&&&
+{
   color: #626262;
   margin-right: 10px;
   background-color: #fff;
@@ -85,8 +84,8 @@ export const StyledChip = styled(Chip)`
   }
 }`;
 // 스크롤 위치 이동 버튼그룹
-export const TartgetNav = styled.div`
-&&& {
+export const TartgetNav = styled.div`&&&
+{
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
@@ -117,8 +116,8 @@ export const TartgetNav = styled.div`
   }
 }`;
 // 스크롤 위치 이동 버튼
-export const TargetBtn = styled.div`
-&&& {
+export const TargetBtn = styled.div`&&&
+{
   width: 140px;
   text-align: center;
   cursor: pointer;
@@ -129,10 +128,10 @@ export const TargetBtn = styled.div`
   }
 }`;
 // 상단고정사이드 (FeatureBox가 화면에서 사라질 때 보여줄 요소)
-export const FixedBox = styled.div`
-&&& {
+export const FixedBox = styled.div`&&&
+{
   width: 100%;
-  height: 100px;
+  height: 140px;
   position: fixed;
   top: 0;
   background-color: #fff;
@@ -228,7 +227,6 @@ export const ChartWrapper = styled.div`
     font-weight: bold;
     font-family: GmarketSans, NotoSans KR bold, sans-serif !important;
   }
-  margin-top: 100px;
   color: #626262;
   .infoWrap {
     width: 100%;
@@ -480,7 +478,7 @@ export const SizeBox = styled.div`
 export const SwiperWrap = styled.div`
 &&& {
   width: 100%;
-  margin-top: 160px;
+  /* margin-top: 160px; */
   height: 700px;
   user-select: none;
   .slideHead {
@@ -597,7 +595,6 @@ export const CommentWrap = styled.div`
 &&& {
   width: 100%;
   /* height: 100%; */
-  margin-top: 280px;
   padding-bottom: 300px;
   .top_section {
     margin-left: 24px;

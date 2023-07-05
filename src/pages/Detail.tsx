@@ -127,7 +127,7 @@ export function Detail():JSX.Element {
   // .targetBtn 클릭시 설정값 스크롤 위치로 이동하는 이벤트로직
   const targetMove = (target: any) => {
     if(target.current){
-      target.current.scrollIntoView({ block: 'center'});
+      target.current.scrollIntoView({ block: 'start'});
     }
   };
   // Photo 외관, 내관버튼 클릭시 해당 사진슬라이드 보여주는 로직
@@ -224,11 +224,10 @@ export function Detail():JSX.Element {
           </div>
         </div>
       </S.FixedBox>
-
+      <S.MoveRef height='150px' ref={infoRef}></S.MoveRef>
       <MaxContainer>
         {/* 차량정보 적어놓은 표 */}
-        <S.ChartWrapper>
-          <div className='title'>등급별 제원</div>
+        <S.ChartWrapper >
           <div className='infoWrap' id="grade">
             <S.SelectWrapper>
               {/* 등급 Grade */}
@@ -275,7 +274,7 @@ export function Detail():JSX.Element {
             {/* 제원 SPAC */}
             <S.SpacDl>
               <dt>제원</dt>
-              <div style={{position:"absolute", bottom: "0"}} ref={infoRef}></div>
+              <div style={{position:"absolute", bottom: "0"}}></div>
               {/* 가솔린, 디젤, LPG */}
               {(choosed?.fuelType === '가솔린' || choosed?.fuelType === '디젤' || choosed?.fuelType ==='LPG') &&
                 <dd>
@@ -539,10 +538,10 @@ export function Detail():JSX.Element {
           </div>
         </S.ChartWrapper>
 
+        <S.MoveRef height='180px' ref={photoRef}></S.MoveRef>
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
           <div className='slideHead'>
-            <S.Title>포토</S.Title>
             <div className='buttonGroup'>
               {/* 외부버튼 */}
               {searchCar?.photoNumber.exterior === 0 ? undefined
@@ -554,7 +553,7 @@ export function Detail():JSX.Element {
               <div onClick={()=>{viewChange(1)}} className={`changeBtn inBtn ${viewPhoto[1] ? 'active' : 'inactive'}`}>내부</div>}
             </div>
           </div>
-          <div style={{position:"relative", top: "50%"}} ref={photoRef}></div>
+          <div style={{position:"relative", top: "50%"}}></div>
 
           {/* 외부 */}
           <div className={`slides exterior ${viewPhoto[0] ? 'block' : 'none'}`}>
@@ -621,6 +620,7 @@ export function Detail():JSX.Element {
           </div>
         </S.SwiperWrap>
 
+        <S.MoveRef height='200px' mt='150px' ref={commentRef}></S.MoveRef>
         {/* COMMENT */}
         <S.CommentWrap>
           <div  className='top_section'>
@@ -669,7 +669,7 @@ export function Detail():JSX.Element {
           </S.PostForm>
           
           {/* /sort */}
-          <div ref={commentRef} className='sort' style={{margin:"24px 0 24px 24px"}}>
+          <div className='sort' style={{margin:"24px 0 24px 24px"}}>
             <span style={{marginRight:"16px"}}>최신순</span>
             <span>좋아요순</span>
           </div>
