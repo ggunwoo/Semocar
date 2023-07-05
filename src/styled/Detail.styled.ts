@@ -131,7 +131,7 @@ export const TargetBtn = styled.div`&&&
 export const FixedBox = styled.div`&&&
 {
   width: 100%;
-  height: 140px;
+  height: 130px;
   position: fixed;
   top: 0;
   background-color: #fff;
@@ -144,49 +144,54 @@ export const FixedBox = styled.div`&&&
   &.fixed { display: block; }
   .wrap {
     width: 1100px;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    position: relative;
     /* 좌측요소 */
     .featureBox {
       /* 타이틀*/
       .titleGroup {
-        margin-top: 8px;
+        margin-top: 18px;
         /* 브랜드 */
         .brand {
           display: flex;
           align-items: center;
           /* 브랜드-이미지 */
           img {
-            max-width: 22px;
-            min-width: 12px;
-            max-height: 14px;
-            margin-right: 5px;
+            max-width: 25px;
+            min-width: 15px;
+            max-height: 17px;
+            margin-right: 8px;
+            opacity: .75;
           }
           /* 브랜드-이름 */
           span {
-            font-size: 11px;
+            font-size: 0.75rem;
             color: #626262;
             text-align: center;
-            margin-top: 2px;
+            margin-top: 3px;
           }
         }
         /* 차량이름 */
         .name {
           color: #626262;
-          font-size: 1.75rem;
+          font-size: 2.125rem;
           font-weight: 600;
-          line-height: 2rem;
+          line-height: 2.5rem;
         }
       }
       /* 스크롤위치이동 탭(TargetNav) */
       .btnGroup {
         display: flex;
-        margin-top: 21.4px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        p {
+        }
         .targetBtn {
-          font-size: 14px;
-          height: 100%;
-          line-height: 0.25rem;
+          font-size: 1rem;
         }
         .unclick {
             color: #cacaca;
@@ -199,7 +204,7 @@ export const FixedBox = styled.div`&&&
             content: "";
             display: block;
             width: 100%;
-            height: 7px;
+            height: 5px;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -211,7 +216,7 @@ export const FixedBox = styled.div`&&&
     /* 우측이미지 */
     .imgBax {
       img {
-        width: 420px;
+        width: 460px;
         position: relative;
         top: 7px;
         right: 60px;
