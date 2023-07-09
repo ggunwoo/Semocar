@@ -15,7 +15,6 @@
 > ***제작기간*** : 23.05.08 ~ 23.06.28
 
 <br />
-<br />
 
 # 👨‍🔧 **기술**
 
@@ -48,14 +47,12 @@
 <br />
 
 # 👀 **기능**
-
-> 디자인과 기능을 다음자동차 웹사이트를 참고하였습니다.  
-> Reference : <https://auto.daum.net/>
-
 <br />
 <!-- 체크박스 -->
 
-## **1. 체크박스**
+## **1. 체크박스**  
+_src/pages/Brand:90_
+
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250579327-611c017d-526a-4d60-934c-307e1e075921.gif' />
 
 > 1차카테고리 : 브랜드  
@@ -67,7 +64,9 @@
 <br />
 <!-- 검색 -->
 
-## **2. 검색**
+## **2. 검색**  
+_src/components/SearchBar_
+
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250912291-bd7c3785-1b01-4f46-8de1-9fb28ec54839.gif' />
 
 > 차량에 이름을 검색이 가능하며 빠르게 상세페이지 링크를 제공합니다.
@@ -77,8 +76,10 @@
 <br />
 <!-- 상세페이지 -->
 
-## **3. 상세페이지 Nav**
-<img width='80%' src='https://user-images.githubusercontent.com/74530907/250581097-2c843606-1b84-4c34-8baf-400a8670dd69.gif' />
+## **3. 헤더 고정**  
+_src/pages/Detail:200_
+
+<img width='80%' src='https://github.com/pgw6541/SEMOCAR/assets/74530907/98cdf9ef-f40e-4816-adea-aa205a5bfd60' />
 
 > 스크롤하여 자동차이름, 이미지가 있는 단락이 화면에서 사라지면  
 > 화면 최상단에 Fixed요소가 나옵니다.  
@@ -87,17 +88,22 @@
 <Hr />
 <br />
 
-## **4. 스크롤 위치 이동**
-<img width='80%' src='https://user-images.githubusercontent.com/74530907/250577089-f63aad8c-f992-40d7-85ec-f4f836f70f7c.gif' />
+## **4. 스크롤 위치 이동**  
+_src/pages/Detail:183_
 
-> 상세페이지 Navigation 버튼 클릭시 해당요소가 있는 스크롤위치로 이동합니다.
+<img width='80%' src='https://github.com/pgw6541/SEMOCAR/assets/74530907/04a484d6-d759-4a8f-a474-8b3c46291ed8' />
+
+> 상세페이지 Navigation 버튼 클릭시 해당요소가 있는 스크롤위치로 이동합니다.  
+> useRef로 DOM에 접근해 해당 요소 상단으로 이동하게끔 구현했습니다.
 
 <br />
 <Hr />
 <br />
 
 
-## **5. 등급및 제원**
+## **5. 등급및 제원**  
+_src/pages/Detail:234_
+
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250577293-015f760e-352c-4c17-b75d-bd470ab0de38.gif' />
 
 > 1차 카테고리 : 차량의 등급(grades)  
@@ -109,6 +115,9 @@
 <br />
 
 ## **6. 캐러셀 슬라이드**
+**배너** _src/pages/Main:79_  
+**포토갤러리** _src/pages/Detail:549_
+
 <img width='50%' src='https://user-images.githubusercontent.com/74530907/250577043-a3c03a91-be06-4ef0-afea-df31af017fc3.gif' /><img width='50%' src='https://user-images.githubusercontent.com/74530907/250576700-47e73051-bb43-46cf-885c-e96f9b400245.gif' />
 
 > 메인페이지 배너, 최신 출시모델 상세페이지 차량외부, 내부에서 이미지 슬라이드를 구현하였습니다.
@@ -120,20 +129,29 @@
 <br />
 <!-- Spinners -->
 
+<!-- 
 ## **7. 차량목록 로딩**  
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250577105-1811ba71-f9b3-47b7-8dc0-f3f2e9dc134e.gif' />
+-->
 
-
-<Hr />
+<!-- <Hr /> -->
 <br />
 <br />
-<br />
+<br /> 
 
-# 🗒️기획
+# 🗒️기획  
+
+> 디자인과 기능을 다음자동차 웹사이트를 참고하였습니다.  
+> Reference : <https://auto.daum.net/>
+
+
+<br />
 
 자동차 데이터는 json형식으로 작성한뒤 GitHub gist에서 관리합니다.  
 
-> 해당 데이터에 타입입니다.
+> <br />
+>
+> 차량 데이터에 타입.  
 > ```TypeScript
 > // carData.json TYPE
 > interface Car {
