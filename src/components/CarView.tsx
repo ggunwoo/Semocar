@@ -160,7 +160,6 @@ export function CarView() {
 
     return slicedData
   };
-
   useEffect(() => {
     const moreData = () => {
       // 스크롤이 맨 아래에 도달했을 때 실행할 함수
@@ -170,7 +169,6 @@ export function CarView() {
       }
       // console.log(sliceView)
     };
-
     const handleScroll = () => {
       const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
       if (scrollHeight - scrollTop === clientHeight) {
@@ -185,7 +183,6 @@ export function CarView() {
         }
       }
     };
-
     // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', handleScroll);
 

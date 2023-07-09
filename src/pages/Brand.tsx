@@ -28,7 +28,6 @@ export function Brand ():JSX.Element {
   const fuelChecked = useAppSelector((state)=> state.fuelCheck);
   const fuelAll = useAppSelector((state)=> state.fuelAll)
 
-// 차급 체크박스 Checked 로직
   // 차급 전체 체크박스 로직
   const segmentAllHandle = () => {
     const updatedChecked = Array(segmentList.length).fill(false);
@@ -55,8 +54,6 @@ export function Brand ():JSX.Element {
     // selected Segment
     dispatch(segIn(segment));
   };
-
-// 연료 체크박스 Checked 로직
   // 연료 전체 체크박스 로직
   const fuelTypeAllHandle = () => {
     const updatedChecked = Array(fuelTypeList.length).fill(false);

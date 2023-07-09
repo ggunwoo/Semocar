@@ -84,6 +84,7 @@ export function Detail():JSX.Element {
   
   // Mount
   useEffect(()=>{
+    // 페이지 접근시 최상단으로 이동
     window.scrollTo(0,0)
   }, [])
   // 스크롤 핸들
@@ -104,13 +105,13 @@ export function Detail():JSX.Element {
       }
       
       // 스크롤위치에 도달할때마다 targetBtn active 변경
-      if(scrollY > 600 && scrollY < 900){
+      if(scrollY > 600 && scrollY < 1000){
         setClickCheck([true, false, false])
       }
-      if(scrollY > 1100 && scrollY < 1800){
+      if(scrollY > 1300 && scrollY < 1800){
         setClickCheck([false, true, false])
       }
-      if(scrollY > 2000 && scrollY < 2800){
+      if(scrollY > 2200 && scrollY < 2800){
         setClickCheck([false, false, true])
       }
     }
@@ -224,7 +225,10 @@ export function Detail():JSX.Element {
           </div>
         </div>
       </S.FixedBox>
+
+      {/* 차량정보 스크롤이동 위치, height = section간격 */}
       <S.MoveRef height='150px' ref={infoRef}></S.MoveRef>
+
       <MaxContainer>
         {/* 차량정보 적어놓은 표 */}
         <S.ChartWrapper >
@@ -537,8 +541,10 @@ export function Detail():JSX.Element {
             </S.SizeBox>
           </div>
         </S.ChartWrapper>
-
+        
+        {/* 포토갤러리 스크롤이동 위치, height = section간격 */}
         <S.MoveRef height='180px' ref={photoRef}></S.MoveRef>
+
         {/* PHOTO GALLERY */}
         <S.SwiperWrap >
           <div className='slideHead'>
@@ -620,7 +626,9 @@ export function Detail():JSX.Element {
           </div>
         </S.SwiperWrap>
 
+        {/* 댓글 스크롤이동 위치, height = section간격 */}
         <S.MoveRef height='200px' mt='150px' ref={commentRef}></S.MoveRef>
+
         {/* COMMENT */}
         <S.CommentWrap>
           <div  className='top_section'>
