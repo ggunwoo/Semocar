@@ -15,6 +15,9 @@
 > ***제작기간*** : 23.05.08 ~ 23.06.28
 
 <br />
+<br />
+<br />
+
 
 # 👨‍🔧 **기술**
 
@@ -137,23 +140,29 @@ _src/pages/Detail:234_
 <!-- <Hr /> -->
 <br />
 <br />
-<br /> 
 
 # 🗒️기획  
 
 > 디자인과 기능을 다음자동차 웹사이트를 참고하였습니다.  
 > Reference : <https://auto.daum.net/>
 
+<br />
+
+전체적인 웹사이트 목표  
+차량 상세한 정보를 사용자에게 제공하는 것입니다.  
+차량 검색, 차량 카테고리로 분류, 상세제원 제공, 추가로 비교기능을 기획하고있습니다.
+
+대상 사용자 정의  
+주요 사용자는 차량 구매를 고려하거나 관심이 있는 차량에 
 
 <br />
 
-자동차 데이터는 json형식으로 작성한뒤 GitHub gist에서 관리합니다.  
-
-> <br />
+> ## _**API**_
 >
-> 차량 데이터에 타입.  
+> carData.json type  
+>
 > ```TypeScript
-> // carData.json TYPE
+> // src/types/types.d.ts
 > interface Car {
 >   brand: {
 >     kr: string;
@@ -225,4 +234,6 @@ _src/pages/Detail:234_
 >   motorTorque: string;
 > }
 > ```
+> _자동차 데이터는 json형식으로 작성한뒤 GitHub gist에서 관리합니다._
+
 
