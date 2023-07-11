@@ -145,7 +145,7 @@ export function Main ():JSX.Element {
                       {/* 자동차 정보 */}
                       <dl className='infoBox'>
                         <dt>가격</dt>
-                        <dd style={{color: "#9063FF"}}>{car.price.min}~{car.price.max}</dd>
+                        <dd style={{color: "#62478f"}}>{car.price.min}~{car.price.max}</dd>
                         <dt>연비</dt>
                         <dd>{car.gasMileage}</dd>
                         <dt>연료 </dt>
