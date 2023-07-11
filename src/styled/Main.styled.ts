@@ -145,6 +145,7 @@ export const Letest = styled.div`
     margin: 48px 0 100px;
     display: flex;
     user-select: none;
+    /* pagination */
     .swiper-pagination-bullets {
       width: 150px !important;
     }
@@ -184,7 +185,7 @@ export const Letest = styled.div`
     /* 호버효과 */
     &:hover {
       p {
-        color: #9063FF;
+        color: #62478f;
         overflow: visible;
         white-space: normal;
       }
