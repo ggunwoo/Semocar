@@ -30,13 +30,13 @@ export const StyledBox = styled.div`&&&
       .tab {
         font-family: GmarketSans, NotoSans KR, sans-serif;
         &.Mui-selected {
-          color: #9063FF;
+          color: #AB9ADD;
           font-weight: bold;
         }
       }
     }
     .MuiTabs-indicator {
-      background-color: #9063FF;
+      background-color: #AB9ADD;
       height: 3px;
     }
   }
