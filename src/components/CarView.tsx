@@ -156,13 +156,14 @@ export function CarView() {
         return sortedData;
       }
     };
-    const slicedData = handlefilter().slice(0,sliceView);
+    // const slicedData = handlefilter().slice(0,sliceView);
 
-    return slicedData
+    return handlefilter();
+    // return slicedData
   };
   useEffect(() => {
     const moreData = () => {
-      // 스크롤이 맨 아래에 도달했을 때 실행할 함수
+      // 스크롤이 맨 아래에 도달했을 때 실행할 함수 (임시제거)
       // console.log('스크롤 맨 아래 도달');
       if(sliceView < 88){
         setSliceView(sliceView+8)
@@ -171,7 +172,8 @@ export function CarView() {
     };
     const handleScroll = () => {
       const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-      if (scrollHeight - scrollTop === clientHeight) {
+      // if (scrollHeight - scrollTop === clientHeight) {
+      if(false){
         // console.log('핸들은 돌아간다')
         // 스크롤이 맨 아래에 도달하면 실행할 함수
         if(sliceView < 88){
