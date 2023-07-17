@@ -115,54 +115,55 @@ export function Main ():JSX.Element {
       </MaxContainer>
 
       {/* 최신 출시 모델 */}
-      <S.Letest>
+      <S.GradientGuide>
         <div className='gradientLine' />
-          <MaxContainer>
-              <p className='title'>최신 출시 모델</p>
-              {/* SlideWrap */}
-              <Swiper
-                className="mySwiper carousel"
-                slidesPerView={4}
-                slidesPerGroup={4}
-                spaceBetween={60}
-                modules={[Pagination]}
-                pagination={{
-                  dynamicBullets: true,
-                }}
-              >
-                {
-                  // Slides
-                  letestCar.map((car, index)=>(
-                    <SwiperSlide className='slide' key={car.id}>
-                      <div className="carHead" onClick={()=>{navigate(`/detail/${car.id}`)}}>
-                        {/* 이미지 */}
-                        <div className='images'>
-                          <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
-                        </div>
-                        {/* 자동차 이름 */}
-                        <p>{car.brand.kr} {car.name.kr}</p>
+        <S.Letest>
+            <p className='title'>최신 출시 모델</p>
+            {/* SlideWrap */}
+            <Swiper
+              className="mySwiper carousel"
+              slidesPerView={4}
+              slidesPerGroup={4}
+              spaceBetween={60}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              pagination={{
+                clickable: true,
+              }}
+            >
+              {
+                // Slides
+                letestCar.map((car, index)=>(
+                  <SwiperSlide className='slide' key={car.id}>
+                    <div className="carHead" onClick={()=>{navigate(`/detail/${car.id}`)}}>
+                      {/* 이미지 */}
+                      <div className='images'>
+                        <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
                       </div>
-                      {/* 자동차 정보 */}
-                      <dl className='infoBox'>
-                        <dt>가격</dt>
-                        <dd style={{color: "#62478f"}}>{car.price.min}~{car.price.max}</dd>
-                        <dt>연비</dt>
-                        <dd>{car.gasMileage}</dd>
-                        <dt>연료 </dt>
-                        <dd>
-                          {car.fuelTypes.map((fuel, index)=>(
-                            <span style={{marginRight:"5px"}} key={index}>{fuel}</span>
-                          ))}
-                        </dd>
-                        <dt>출시일</dt>
-                        <dd>{car.date}</dd>
-                      </dl>
-                    </SwiperSlide>
-                  ))
-                }
-              </Swiper>
-          </MaxContainer>
-      </S.Letest>
+                      {/* 자동차 이름 */}
+                      <p>{car.brand.kr} {car.name.kr}</p>
+                    </div>
+                    {/* 자동차 정보 */}
+                    <dl className='infoBox'>
+                      <dt>가격</dt>
+                      <dd style={{color: "#62478f"}}>{car.price.min}~{car.price.max}</dd>
+                      <dt>연비</dt>
+                      <dd>{car.gasMileage}</dd>
+                      <dt>연료 </dt>
+                      <dd>
+                        {car.fuelTypes.map((fuel, index)=>(
+                          <span style={{marginRight:"5px"}} key={index}>{fuel}</span>
+                        ))}
+                      </dd>
+                      <dt>출시일</dt>
+                      <dd>{car.date}</dd>
+                    </dl>
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+        </S.Letest>
+      </S.GradientGuide>
 
       {/* 포토 갤러리 */}
       <S.PhotoGallery>

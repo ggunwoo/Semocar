@@ -58,9 +58,6 @@ export const BannerWrapper = styled(Swiper)`
       &:last-child {
       }
     }
-    .swiper-pagination-bullet-active {
-  
-    }
   }
 
   .baseBox {
@@ -118,34 +115,41 @@ export const BannerWrapper = styled(Swiper)`
 }`;
 
 // 최신 출시 모델
-export const Letest = styled.div`
-&&& {
-  position: relative;
-  /* 뒷배경 그라데이션 */
-  .gradientLine {
-    width: 100%;
-    height: 171px;
-    background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #cdc0e2 200%);
-    position: absolute;
-    top: -47px;
-    left: 50%;
-    opacity: .5;
-    transform: translateX(-50%);
-    z-index: -1;
-  }
+export const Letest = styled.div`&&&
+{
+  /* 임시가이드 */
+  /* border: 1px solid #000; */
+
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  
   /* 섹션 제목 */
   .title {
     font-size: 18px;
     font-family: GmarketSans, NotoSans KR, sans-serif;
     margin-top: 150px;
+    margin-left: 50px;
   }
   /* 캐러셀 슬라이드(Swiper) */
   .carousel {
+    /* 임시가이드 */
+    /* border: 1px solid #000; */
+
+    width: 1100px;
+    overflow: visible;
     height: 370px;
-    margin: 48px 0 100px;
+    margin: 48px auto 100px;
     display: flex;
     user-select: none;
     /* pagination */
+    .swiper-pagination {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .swiper-pagination-bullets {
       width: 150px !important;
     }
@@ -153,6 +157,21 @@ export const Letest = styled.div`
       width : 30px;
       background-color : #62478f;
       border-radius: 20px;
+    }
+    .swiper-button-prev::after, .swiper-button-next::after {
+      color: #62478f;
+      font-size: .75rem;
+      font-weight: bold;
+    }
+    .swiper-button-prev, .swiper-button-next {
+      top: 311px;
+      z-index: 11;
+    }
+    .swiper-button-prev {
+      left: 43%;
+    }
+    .swiper-button-next {
+      right: 43%;
     }
   }
     /* 슬라이드, 자동차 머릿말정보 */
@@ -192,7 +211,6 @@ export const Letest = styled.div`
       .images {
         left: -30px;
       }
-      
     }
   }
   /* 자동차 정보 */
@@ -206,10 +224,26 @@ export const Letest = styled.div`
     dd {}
   }
 }`;
-
+export const GradientGuide = styled.div`&&&
+{
+  width: 100%;
+  position: relative;
+  /* 뒷배경 그라데이션 */
+  .gradientLine {
+    width: 100%;
+    height: 171px;
+    background: linear-gradient(180deg, rgba(230, 230, 230, 0) 0%, #cdc0e2 200%);
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    opacity: .5;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+}`;
 // 포토 갤러리
-export const PhotoGallery = styled.div`
-&&& {
+export const PhotoGallery = styled.div`&&&
+{
   user-select: none;
   .title {
     font-size: 18px;
