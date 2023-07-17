@@ -122,6 +122,7 @@ export const TargetBtn = styled.div`&&&
   text-align: center;
   cursor: pointer;
   p {
+    font-weight: 500;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
