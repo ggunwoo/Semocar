@@ -28,12 +28,12 @@ export const CustomStyledButton = styled(Button)`
   border-color:black;
   margin-right:24px;
   border-radius:1.25rem;
-  &:last-child {
+  /* &:last-child {
     line-height: 1.25rem;
     margin-right: 0;
     margin-left: 12px;
     &:hover {
       border: 1px solid #BA90FD;
     }
-  }
+  } */
 }`;
