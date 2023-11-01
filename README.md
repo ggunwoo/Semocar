@@ -1,7 +1,6 @@
 
 
 # **SEMO CAR**
-#### 웹사이트 링크 : <https://semocar.netlify.app>
 <br />
 
 > ***프로젝트*** : 자동차 정보제공 웹사이트 포트폴리오
@@ -13,6 +12,12 @@
 > ***참여분야*** : 클라이언트 개발, 프로젝트기획
 >
 > ***제작기간*** : 23.05.08 ~ 23.06.28
+
+### ✈️ **배포**
+
+> Netlify에 Github 저장소를 연동하여 배포하였습니다.   
+> <https://semocar.netlify.app>
+
 <br />
 <br />
 <br />
@@ -26,14 +31,18 @@
 ![Redux](https://img.shields.io/badge/Redux/Toolkit-764ABC?style=redux&logo=redux&logoColor=white)
 ![mui](https://img.shields.io/badge/mui-007FFF?style=mui&logo=mui&logoColor=white)
 ![styled_components](https://img.shields.io/badge/styled_components-DB7093?style=styledcomponents&logo=styledcomponents&logoColor=white)
-<br />
 
-#### *왜 이 기술을 사용했는가?*  
-> 학습한 내용을 바탕으로 프로젝트에 적용해보는 것이 주목적이였습니다.  
-> JavsScript -> React -> TypeScript 순으로 학습한 뒤 프로젝트를 기획하게되었으며  
-> 이후 React 라이브러리들을 학습함과 동시에 프로젝트에 계속해서 적용하였습니다.
-> UI라이브러리에 경우 기존에 BootStrap을 사용해왔지만 React를 학습한뒤 Mui에 관심을 가지게되어 사용했습니다.  
-> CSS-in-JS(styled-components)는 Mui요소를 유연하게 다루기 위해 사용했습니다.
+### *왜 이 기술을 사용했는가?*  
+> "학습한 내용을 바탕으로 프로젝트에 적용해보는 것이 주목적이였습니다."  
+> "JavsScript -> React -> TypeScript 순으로 학습한 뒤 프로젝트를 기획하게되었으며"  
+> "이후 React 라이브러리들을 학습함과 동시에 프로젝트에 계속해서 적용하였습니다."  
+> "UI라이브러리에 경우 기존에 BootStrap을 사용해왔지만 React를 학습한뒤 Mui에 관심을 가지게되어 사용했습니다."  
+> "CSS-in-JS(styled-components)는 Mui요소를 유연하게 다루기 위해 사용했습니다."
+
+### *서버 개발?*
+> "서버 개발 경험이 전무해 차량데이터 같은 경우 json코드를 직접 하드코딩한 뒤 GitHub Gist를 사용해 데이터를 관리했습니다."
+
+<br />
 <br />
 <br />
 
@@ -42,11 +51,12 @@
 ![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)
 
 > UX디자이너 지인과 간단한 토이 프로젝트를 진행했습니다.  
-> 
+> 피그마로 기획 및 디자인을 관리, 개인 GitHub로 프로젝트 관리하였습니다.
 
 
 [*클릭시 피그마로 이동*](https://www.figma.com/file/cU9wY1NIxTCAtWET80BYvB/%EC%95%BC%EC%98%B9?type=design&mode=dev)
 
+<br />
 <br />
 <br />
 
@@ -54,8 +64,7 @@
 <br />
 <!-- 체크박스 -->
 
-## **1. 체크박스**  
-_src/pages/Brand:90_
+### **✅ 체크박스**
 
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250579327-611c017d-526a-4d60-934c-307e1e075921.gif' />
 
@@ -65,24 +74,20 @@ _src/pages/Brand:90_
 
 <br />
 <br />
-<!-- 검색 -->
+<br />
 
-## **2. 검색**  
-_src/components/SearchBar_
+## **🔍 검색**
 
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250912291-bd7c3785-1b01-4f46-8de1-9fb28ec54839.gif' />
 
 > 차량에 이름을 검색이 가능하며 빠르게 상세페이지 링크를 제공합니다.
-```
-
-```
 
 <br />
 <br />
-<!-- 상세페이지 -->
+<br />
 
-## **3. 상세페이지 Header**  
-_src/pages/Detail:200_
+
+## **📜 상세페이지 Header**
 
 <img width='80%' src='https://github.com/pgw6541/SEMOCAR/assets/74530907/98cdf9ef-f40e-4816-adea-aa205a5bfd60' />
 
@@ -91,9 +96,9 @@ _src/pages/Detail:200_
 
 <br />
 <br />
+<br />
 
-## **4. 스크롤 위치 이동**  
-_src/pages/Detail:183_
+## **🖱️ 스크롤 위치 이동**
 
 <img width='80%' src='https://github.com/pgw6541/SEMOCAR/assets/74530907/04a484d6-d759-4a8f-a474-8b3c46291ed8' />
 
@@ -102,10 +107,9 @@ _src/pages/Detail:183_
 
 <br />
 <br />
+<br />
 
-
-## **5. 등급및 제원**  
-_src/pages/Detail:234_
+## **🔠 등급및 제원**
 
 <img width='80%' src='https://user-images.githubusercontent.com/74530907/250577293-015f760e-352c-4c17-b75d-bd470ab0de38.gif' />
 
@@ -115,10 +119,9 @@ _src/pages/Detail:234_
 
 <br />
 <br />
+<br />
 
-## **6. 캐러셀 슬라이드**
-**배너** _src/pages/Main:79_  
-**포토갤러리** _src/pages/Detail:549_
+## **📲 캐러셀 슬라이드**
 
 <img width='50%' src='https://user-images.githubusercontent.com/74530907/250577043-a3c03a91-be06-4ef0-afea-df31af017fc3.gif' /><img width='50%' src='https://user-images.githubusercontent.com/74530907/250576700-47e73051-bb43-46cf-885c-e96f9b400245.gif' />
 
@@ -127,16 +130,17 @@ _src/pages/Detail:234_
 
 <br />
 <br />
-<!-- Spinners -->
 
-<!-- 
-## **7. 차량목록 로딩**  
-<img width='80%' src='https://user-images.githubusercontent.com/74530907/250577105-1811ba71-f9b3-47b7-8dc0-f3f2e9dc134e.gif' />
--->
 
-<!-- <Hr /> -->
+
 <br />
 <br />
+<br />
+<Hr />
 
-> 디자인과 기능을 다음자동차 웹사이트를 참고하였습니다.  
-> Reference : <https://auto.daum.net/>
+<br />
+
+*디자인과 기능, 다음자동차 웹사이트를 참고하였습니다.*  
+*Reference : <https://auto.daum.net/>*
+
+<Hr />
