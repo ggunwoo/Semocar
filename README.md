@@ -58,7 +58,7 @@
 ![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)  
 [*클릭시 피그마로 이동*](https://www.figma.com/file/cU9wY1NIxTCAtWET80BYvB/%EC%95%BC%EC%98%B9?type=design&mode=dev)
 
-> UX디자이너 지인과 간단한 토이 프로젝트를 진행했습니다.  
+> 프로덕트 디자이너와 간단한 토이 프로젝트를 진행했습니다.  
 > 피그마로 기획 및 디자인을 관리, 개인 GitHub로 프로젝트 관리하였습니다.
 
 
