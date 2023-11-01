@@ -13,11 +13,15 @@
 >
 > ***제작기간*** : 23.05.08 ~ 23.06.28
 
+<br />
+
 ### ✈️ **배포**
 
 > Netlify에 Github 저장소를 연동하여 배포하였습니다.   
 > <https://semocar.netlify.app>
 
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -39,23 +43,28 @@
 > "UI라이브러리에 경우 기존에 BootStrap을 사용해왔지만 React를 학습한뒤 Mui에 관심을 가지게되어 사용했습니다."  
 > "CSS-in-JS(styled-components)는 Mui요소를 유연하게 다루기 위해 사용했습니다."
 
+<br />
+
 ### *서버 개발?*
 > "서버 개발 경험이 전무해 차량데이터 같은 경우 json코드를 직접 하드코딩한 뒤 GitHub Gist를 사용해 데이터를 관리했습니다."
 
 <br />
 <br />
 <br />
+<br />
+<br />
 
 # 👪 **협업**
 
-![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)  
+[*클릭시 피그마로 이동*](https://www.figma.com/file/cU9wY1NIxTCAtWET80BYvB/%EC%95%BC%EC%98%B9?type=design&mode=dev)
 
 > UX디자이너 지인과 간단한 토이 프로젝트를 진행했습니다.  
 > 피그마로 기획 및 디자인을 관리, 개인 GitHub로 프로젝트 관리하였습니다.
 
 
-[*클릭시 피그마로 이동*](https://www.figma.com/file/cU9wY1NIxTCAtWET80BYvB/%EC%95%BC%EC%98%B9?type=design&mode=dev)
-
+<br />
+<br />
 <br />
 <br />
 <br />
