@@ -17,7 +17,7 @@
 
 ### ✈️ **배포**
 
-> Netlify에 Github 저장소를 연동하여 배포하였습니다.   
+> Netlify 배포  
 > <https://semocar.netlify.app>
 
 <br />
