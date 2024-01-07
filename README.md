@@ -47,6 +47,10 @@
 ### *서버 개발?*
 > "서버 개발 경험이 전무하여 차량데이터 같은 경우 json형식으로 직접 작성한 뒤 GitHub Gist를 사용해 데이터를 관리했습니다."
 
+<img width='50%' src='https://user-images.githubusercontent.com/74530907/279672947-9dd3585b-d78a-4cee-95c0-4a3c11c523da.PNG' /> *( GitHub Gist / CarData.json )*
+
+
+
 <br />
 <br />
 <br />
@@ -79,6 +83,8 @@
 > 1차카테고리 : 브랜드  
 > 2차카테고리 : 차급(Segment), 연료(FuleType)  
 > 체크박스 형식의 카테고리를 설정하면 해당되는 차량만 필터링되어 보여줍니다.
+
+> 
 
 <br />
 <br />
