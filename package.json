@@ -22,7 +22,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.0.0-rc.2",
+    "styled-components": "^6.1.8",
     "swiper": "^9.3.2",
     "tss-react": "^4.8.3",
     "typescript": "^4.9.5",
@@ -54,5 +54,6 @@
   },
   "main": "index.js",
   "author": "pgw6541 <pgw6541@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/pgw6541/SEMOCAR.git"
 }
