@@ -45,7 +45,7 @@
 <br />
 
 ### *자동차 API*
-> "json형식으로 직접 작성후 GitHub Gist에 저장한 뒤 차량 데이터를 불러왔습니다."
+> "json형식으로 직접 작성후 GitHub Gist에 저장하여 관리하고 있습니다.."
 
 <img width='50%' src='https://user-images.githubusercontent.com/74530907/279672947-9dd3585b-d78a-4cee-95c0-4a3c11c523da.PNG' /> *( GitHub Gist / CarData.json )*
 
