@@ -1,12 +1,11 @@
-import React, {useRef, useEffect, useState, useCallback } from 'react'
+import React, {useRef, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import { useCarData, useCarBrands } from '../hook/useCarData'
 import { SwiperSlide } from 'swiper/react'
-import { Rating, TextField, Typography, Tooltip} from '@mui/material'
-import SendIcon from '@mui/icons-material/Send';
-import GradeIcon from '@mui/icons-material/Grade';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+// import { Rating, TextField, Tooltip} from '@mui/material'
+// import SendIcon from '@mui/icons-material/Send';
+// import GradeIcon from '@mui/icons-material/Grade';
+// import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 // SWIPER
 import { FreeMode, Navigation, Thumbs } from "swiper";
@@ -39,35 +38,35 @@ export function Detail():JSX.Element {
 
   const [exThumbs, setExThumbs] = useState<Swiper|null>(null);
   const [inThumbs, setInThumbs] = useState<Swiper|null>(null);
-  const [commentList, setCommentList] = useState([
-    {
-      "rating":5,
-      "likeCount":79,
-      "text":"정말 매력적이다~",
-    },
-    {
-      "rating":4,
-      "likeCount":12,
-      "text":"출력이 좀 아쉽지만 디자인이 이뻐서 합격!",
-    },
-    {
-      "rating":2,
-      "likeCount":43,
-      "text":"정말 갖고 싶넹..",
-    },
-    {
-      "rating":1,
-      "likeCount":4,
-      "text":"시승해봤는데 별로였음",
-    },
-    {
-      "rating":1,
-      "likeCount":2,
-      "text":"차 멋지네",
-    },
-  ]);
+  // const [commentList, setCommentList] = useState([
+  //   {
+  //     "rating":5,
+  //     "likeCount":79,
+  //     "text":"정말 매력적이다~",
+  //   },
+  //   {
+  //     "rating":4,
+  //     "likeCount":12,
+  //     "text":"출력이 좀 아쉽지만 디자인이 이뻐서 합격!",
+  //   },
+  //   {
+  //     "rating":2,
+      // "likeCount":43,
+  //     "text":"정말 갖고 싶넹..",
+  //   },
+  //   {
+  //     "rating":1,
+  //     "likeCount":4,
+  //     "text":"시승해봤는데 별로였음",
+  //   },
+  //   {
+  //     "rating":1,
+  //     "likeCount":2,
+  //     "text":"차 멋지네",
+  //   },
+  // ]);
 
-  const [likeCheck, setLikeCheck] = useState(Array(commentList.length).fill(false))
+  // const [likeCheck, setLikeCheck] = useState(Array(commentList.length).fill(false))
 
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
@@ -184,7 +183,7 @@ export function Detail():JSX.Element {
         <MaxContainer>
           <div className='btnGroup'>
             {/* 스크롤탭 */}
-            {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
+            {['등급별 제원','포토'].map((item, index)=>(
               <S.TargetBtn 
                 key={index}
                 className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
@@ -209,7 +208,7 @@ export function Detail():JSX.Element {
               <p className='name'>{searchCar?.name.kr}</p>
             </div>
             <div className='btnGroup'>
-              {['등급별 제원','포토','네티즌평점'].map((item, index)=>(
+              {['등급별 제원','포토'].map((item, index)=>(
                 <S.TargetBtn 
                     key={index}
                     className={`targetBtn ${ClickCheck[index] ? 'clicked' : 'unclick'}`}
@@ -630,7 +629,7 @@ export function Detail():JSX.Element {
         <S.MoveRef height='200px' mt='150px' ref={commentRef}></S.MoveRef>
 
         {/* COMMENT */}
-        <S.CommentWrap>
+        {/* <S.CommentWrap>
           <div  className='top_section'>
             <div className='left'>
               <div style={{width:"100%", display:"flex", alignItems:"center"}}>
@@ -661,29 +660,29 @@ export function Detail():JSX.Element {
                 <div className='line'></div>
               </div>
             </div>
-          </div>
+          </div> */}
           
           {/* /post */}
-          <S.PostForm action='#' method='#'>
+          {/* <S.PostForm action='#' method='#'> */}
             {/* 별점 */}
-            <Rating className='rating' defaultValue={5} precision={0.5} />
+            {/* <Rating className='rating' defaultValue={5} precision={0.5} /> */}
             {/* 댓글작성칸 */}
-            <TextField  fullWidth label="To be implemented." id="fullWidth"></TextField>
+            {/* <TextField  fullWidth label="To be implemented." id="fullWidth"></TextField> */}
             {/* 보내기버튼 */}
 
-            <Tooltip title='미구현'>
-              <div className='send'><SendIcon className='sendIcon' /></div>
-            </Tooltip>
-          </S.PostForm>
+            {/* <Tooltip title='미구현'> */}
+              {/* <div className='send'><SendIcon className='sendIcon' /></div> */}
+            {/* </Tooltip> */}
+          {/* </S.PostForm> */}
           
           {/* /sort */}
-          <div className='sort' style={{margin:"24px 0 24px 24px"}}>
+          {/* <div className='sort' style={{margin:"24px 0 24px 24px"}}>
             <span style={{marginRight:"16px"}}>최신순</span>
             <span>좋아요순</span>
-          </div>
+          </div> */}
 
           {/* /list */}
-          <S.CommentList>
+          {/* <S.CommentList>
             {commentList.map((item, index)=>(
               <div className='list' key={index}>
                 <Rating className='rating' defaultValue={item.rating} readOnly />
@@ -716,12 +715,12 @@ export function Detail():JSX.Element {
                 </div>
               </div>
             ))}
-          </S.CommentList>
+          </S.CommentList> */}
           {/* 더보기 버튼 */}
-          <S.MoreBtn>
+          {/* <S.MoreBtn>
             <p>더보기</p>
-          </S.MoreBtn>
-        </S.CommentWrap>
+          </S.MoreBtn> */}
+        {/* </S.CommentWrap> */}
       </MaxContainer>
     </div>
   )
