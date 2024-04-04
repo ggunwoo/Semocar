@@ -15,7 +15,7 @@
 
 <br />
 
-### ✈️ **배포**
+### **배포**
 
 > Netlify 배포  
 > <https://semocar.netlify.app>
@@ -27,7 +27,7 @@
 <br />
 
 
-# 👨‍🔧 **기술**
+# **기술**
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=react&logo=react&logoColor=white)
 ![Typescript](https://img.shields.io/badge/TypeScript-3178C6?style=typescript&logo=typescript&logoColor=white)
@@ -52,7 +52,7 @@
 <br />
 <br />
 
-# 👪 **협업**
+# **협업**
 
 ![Figma](https://img.shields.io/badge/figma-F24E1E?style=figma&logo=figma&logoColor=white)  
 [*클릭시 피그마로 이동*](https://www.figma.com/file/cU9wY1NIxTCAtWET80BYvB/%EC%95%BC%EC%98%B9?type=design&mode=dev)
