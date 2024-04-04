@@ -15,8 +15,6 @@
 
 <br />
 
-### **배포**
-
 > Netlify 배포  
 > <https://semocar.netlify.app>
 
