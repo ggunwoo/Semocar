@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState } from 'react';
-import {OutlinedInput, InputAdornment, List, ListItem, ListItemButton, ListItemText} from '@mui/material';
+import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import { useCarData } from '../hook/useCarData';
 import { useNavigate } from 'react-router-dom';
 import * as type from '../types/types'
@@ -117,7 +117,7 @@ export function Search() {
               ))}
             </S.ListTexts>
             <S.ListPhoto>
-                <img src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${listHover}.png`} alt="" />
+                <img src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/${listHover}.png`} alt="" />
             </S.ListPhoto>
           </S.ListWrapper>
         }

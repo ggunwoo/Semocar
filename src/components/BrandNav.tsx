@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCarBrands } from '../hook/useCarData';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 
 import {
   brandIn,
@@ -51,7 +51,7 @@ export function BrandNav () {
             variant='text'
           >
             <div className='imgBox'>
-              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
             </div>
             <p className='logoName'>{brand.name.kr}</p>
           </Button>

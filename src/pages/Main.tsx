@@ -97,11 +97,11 @@ export function Main ():JSX.Element {
           carImg.map((a, i)=>(
             <SwiperSlide key={i}>
                 <div className='baseBox'>
-                  <img className='bannerImg' src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
+                  <img className='bannerImg' src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
                   <div className={`bannerBtn bannerBtn_${i+1}`} onClick={()=>{navigate(a)}} />
                 </div>
                 <div className='background'>
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
+                  <img src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
                 </div>
             </SwiperSlide>
           ))
@@ -138,7 +138,7 @@ export function Main ():JSX.Element {
                     <div className="carHead" onClick={()=>{navigate(`/detail/${car.id}`)}}>
                       {/* 이미지 */}
                       <div className='images'>
-                        <img src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
+                        <img src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
                       </div>
                       {/* 자동차 이름 */}
                       <p>{car.brand.kr} {car.name.kr}</p>
@@ -178,7 +178,7 @@ export function Main ():JSX.Element {
                   <p className='name'>{photo.name}</p>
                   <div className='linkBtn' onClick={()=>{navigate(`/detail/${photo.id}`)}}>MORE PROFILE &gt;</div>
                 </div>
-                <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/photo/${photo.imgUrl}/1.jpg`} alt="CARPHOTO" />
+                <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/photo/${photo.imgUrl}/1.jpg`} alt="CARPHOTO" />
               </div>
             ))}
           </div>

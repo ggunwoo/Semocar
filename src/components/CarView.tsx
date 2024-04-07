@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useCarData } from '../hook/useCarData';
@@ -156,7 +156,6 @@ export function CarView() {
         return sortedData;
       }
     };
-    // const slicedData = handlefilter().slice(0,sliceView);
 
     return handlefilter();
     // return slicedData
@@ -238,7 +237,7 @@ export function CarView() {
                           <div className='img_wrap'>
                             <img
                               loading='lazy'
-                              src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${car.imgUrl}.png`}
+                              src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/${car.imgUrl}.png`}
                               alt={car.name.en}
                             />
                           </div>

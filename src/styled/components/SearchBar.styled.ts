@@ -1,6 +1,6 @@
 import {styled} from 'styled-components'
 import { FormControl } from '@mui/material';
-import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { List } from '@mui/material';
 
 // 검색창
 export const SearchBarWrapper = styled.div`&&&
