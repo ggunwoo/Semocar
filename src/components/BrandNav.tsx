@@ -51,7 +51,7 @@ export function BrandNav () {
             variant='text'
           >
             <div className='imgBox'>
-              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
             </div>
             <p className='logoName'>{brand.name.kr}</p>
           </Button>

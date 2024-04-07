@@ -117,7 +117,7 @@ export function Search() {
               ))}
             </S.ListTexts>
             <S.ListPhoto>
-                <img src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${listHover}.png`} alt="" />
+                <img src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${listHover}.png`} alt="" />
             </S.ListPhoto>
           </S.ListWrapper>
         }

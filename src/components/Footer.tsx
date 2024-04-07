@@ -15,7 +15,7 @@ export function Footer():JSX.Element {
           <Logo fontSize='32px' >SEMO CAR</Logo>
           <div className='btnGroup'>
             <S.FooterBtn onClick={()=>{navigate('/');}}>Home</S.FooterBtn>
-            <S.FooterBtn onClick={()=>{window.open('https://github.com/pgw6541/SEMOCAR');}}>GitHub</S.FooterBtn>
+            <S.FooterBtn onClick={()=>{window.open('https://github.com/ggunwoo/SEMOCAR');}}>GitHub</S.FooterBtn>
             <S.FooterBtn onClick={()=>{window.open('https://gunw.notion.site/Front-end-0457d968679b49a29c020092b049895a?pvs=4');}}>Notion</S.FooterBtn>
             <S.FooterBtn onClick={()=>{navigate('/');}}>Contact</S.FooterBtn>
           </div>

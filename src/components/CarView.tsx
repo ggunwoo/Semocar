@@ -238,7 +238,7 @@ export function CarView() {
                           <div className='img_wrap'>
                             <img
                               loading='lazy'
-                              src={`https://raw.githubusercontent.com/pgw6541/CarSite/main/src/images/${car.imgUrl}.png`}
+                              src={`https://raw.githubusercontent.com/ggunwoo/CarSite/main/src/images/${car.imgUrl}.png`}
                               alt={car.name.en}
                             />
                           </div>
