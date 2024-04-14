@@ -13,13 +13,11 @@
 >
 > ***제작기간*** : 23.05.08 ~ 23.06.28
 
-<br />
+> 국내 신차 정보를 제공하는 웹사이트입니다. UX/UI 디자이너와 함께 Figma로 협업하며 2인 토이프로젝트를 진행하게되었습니다. 기술 채택, 기능 기획 및 프론트엔드 개발에 기여하였습니다.
 
 > Netlify 배포  
 > <https://semocar.netlify.app>
 
-<br />
-<br />
 <br />
 <br />
 <br />
@@ -29,8 +27,8 @@
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=react&logo=react&logoColor=white)
 ![Typescript](https://img.shields.io/badge/TypeScript-3178C6?style=typescript&logo=typescript&logoColor=white)
-![Reactrouter](https://img.shields.io/badge/reactrouter-CA4245?style=reactrouter&logo=reactrouter&logoColor=white)
 ![Redux](https://img.shields.io/badge/Redux/Toolkit-764ABC?style=redux&logo=redux&logoColor=white)
+![Reactrouter](https://img.shields.io/badge/reactrouter-CA4245?style=reactrouter&logo=reactrouter&logoColor=white)
 ![mui](https://img.shields.io/badge/mui-007FFF?style=mui&logo=mui&logoColor=white)
 ![styled_components](https://img.shields.io/badge/styled_components-DB7093?style=styledcomponents&logo=styledcomponents&logoColor=white)
 
@@ -47,8 +45,7 @@
 <br />
 <br />
 <br />
-<br />
-<br />
+
 
 # **협업**
 
@@ -62,11 +59,7 @@
 <br />
 <br />
 <br />
-<br />
-<br />
 
 
-*다음자동차 웹사이트를 참고하였습니다.*  
-*Reference : <https://auto.daum.net/>*
 
 <Hr />
