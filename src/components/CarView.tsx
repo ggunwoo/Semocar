@@ -237,7 +237,7 @@ export function CarView() {
                           <div className='img_wrap'>
                             <img
                               loading='lazy'
-                              src={`https://raw.githubusercontent.com/ggunwoo/SEMOCAR/main/src/images/${car.imgUrl}.png`}
+                              src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${car.imgUrl}.png`}
                               alt={car.name.en}
                             />
                           </div>
