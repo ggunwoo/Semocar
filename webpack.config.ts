@@ -6,11 +6,19 @@ module.exports = {
   name: "semocar",
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "build"), // 출력 디렉토리
+    path: path.resolve(__dirname, "dist"), // 출력 디렉토리
     filename: "bundle.js", // 출력 할 파일 이름
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // 확장자 처리 파일
+    alias: {
+      "@mui/material": "@mui/material/legacy",
+      "@mui/styled-engine": "@mui/styled-engine/legacy",
+      "@mui/system": "@mui/system/legacy",
+      "@mui/base": "@mui/base/legacy",
+      "@mui/utils": "@mui/utils/legacy",
+      "@mui/lab": "@mui/lab/legacy",
+    },
   },
   module: {
     rules: [
@@ -25,20 +33,21 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i, // 이미지 파일 처리
-        type: 'asset/resource'
+        type: "asset/resource",
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
+      template: "./public/index.html",
+      publicPath: "/",
+    }),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public')
+      directory: path.resolve(__dirname, "dist"),
     },
     compress: true,
-    port: 3000
-  }
+    port: 3000,
+  },
 };

@@ -9,6 +9,9 @@
 /src/images/구형
 /src/images/photo/구형
 
+# dev
+/dist
+
 # testing
 /coverage
 
