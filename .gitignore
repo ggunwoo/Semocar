@@ -1,14 +1,15 @@
 # -----------client-----------
 # dependencies
+.gitignore
 */node_modules
-/client//.pnp
-/client/.pnp.js
+*/.pnp
+*/.pnp.js
 
 # testing
-/client//coverage
+*/coverage
 
 # production
-/client//build
+/client/build
 
 # misc
 /client/.DS_Store
@@ -18,6 +19,4 @@
 /client/.env.production.local
 
 /client/npm-debug.log*
-/client/yarn-debug.log*
-/client/yarn-error.log*
 # ----------------------------
