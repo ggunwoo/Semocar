@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Brand</title>
+  </head>
+  <body>
+    <h1>Add a New Brand</h1>
+    <form action="/brand" method="post"> <!-- 폼 액션 수정 -->
+      <label for="kr">Brand Name (KR)</label>
+      <input type="text" id="kr" name="kr" required /> <!-- 한국어 이름 입력 필드 -->
+      <br />
+      <label for="en">Brand Name (EN)</label>
+      <input type="text" id="en" name="en" required /> <!-- 영어 이름 입력 필드 -->
+      <br />
+      <label for="id">ID</label>
+      <input type="number" id="id" name="id" required />
+      <br />
+      <label for="logo_path">Logo URL Path</label>
+      <input type="text" id="logo_path" name="logo_path" required />
+      <br />
+      <label for="tagline">Brand Tagline</label>
+      <input type="text" id="tagline" name="tagline" required />
+      <br />
+      <button type="submit">Submit</button> <!-- 제출 버튼 추가 -->
+    </form>
+  </body>
+</html>
