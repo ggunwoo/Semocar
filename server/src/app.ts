@@ -32,8 +32,9 @@ async function main() {
 }
 main(); // DB 연결 함수 실행
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page" });
+// 문서 생성 .ejs
+app.get("/create", (req, res) => {
+  res.render("create", { title: "Home Page" });
 });
 
 // 서버 실행

@@ -4,19 +4,22 @@ import Brand from "../models/brand"; // Model
 const router = express.Router();
 
 // 브랜드 생성 POST 요청
-router.post('/brand', async (req: Request, res:Response) => {
+router.post('/create/brand', async (req: Request, res:Response) => {
   try {
-    const { kr, en, id, logo_path, tagline} = req.body;
+    const { name, english_name, id, logo_path} = req.body;
     const newBrand = new Brand({
-      name: {kr, en},
+      name,
+      english_name,
       logo_path,
-      tagline,
       id,
     });
 
     await newBrand.save();
-    res.redirect('/');  // 성공 시 메인 페이지로 리다이렉트
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
+    res.write("<script>alert('전송완료')</script>");
+    res.write("<script>window.location=\"/create\"</script>");
 } catch (error: any) {
+    res.write(`<script>alert('전송실패' ${error})</script>`);
     res.status(500).send(error.message);
 }
 })
