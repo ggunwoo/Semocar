@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin")
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -45,8 +45,8 @@ module.exports = {
     }),
     new FaviconsWebpackPlugin({
       logo: "./public/logo-512x512.png",
-      manifest: "./public/manifest.json"
-    })
+      manifest: "./public/manifest.json",
+    }),
   ],
   devServer: {
     static: {
@@ -54,5 +54,6 @@ module.exports = {
     },
     compress: true,
     port: 3000,
+    historyApiFallback: true
   },
 };
