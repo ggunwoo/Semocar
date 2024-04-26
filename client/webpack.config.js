@@ -30,7 +30,17 @@ module.exports = {
       },
       {
         test: /\.css$/, // css 파일 처리
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [
+                require('tailwindcss'),
+                require('autoprefixer')
+              ]
+            }
+          }
+        }],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i, // 이미지 파일 처리
@@ -54,6 +64,6 @@ module.exports = {
     },
     compress: true,
     port: 3000,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
 };

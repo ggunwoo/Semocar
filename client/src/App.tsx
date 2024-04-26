@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 
@@ -10,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { Main } from "./pages/Main";
 import { Detail } from "./pages/Detail";
 import { Brand } from "./pages/Brand";
+import AdminPage from "./pages/admin";
 
 function App(): JSX.Element {
   const location = useLocation();
@@ -26,6 +26,7 @@ function App(): JSX.Element {
         <Route path={"/"} element={<Main />} />
         <Route path="/brand" element={<Brand />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {/* FOOTER */}
       {!hideFooter && <Footer />}
