@@ -6,9 +6,9 @@ import { Navigation, Pagination, Autoplay } from 'swiper';
 import { useCarData } from '../hook/useCarData';
 
 // REDUX
-import { toggleReset } from '../store/brandNav'
-import { segReset, fuelReset, brandReset } from '../store/carFilter';
-import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/check';
+import { toggleReset } from '../store/slice/brandNav'
+import { segReset, fuelReset, brandReset } from '../store/slice/carFilter';
+import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/slice/carCheck-slice';
 
 // SWIPER CSS
 import 'swiper/css';
