@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCarBrands } from '../hook/useCarData';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
@@ -8,12 +7,12 @@ import { Button } from '@mui/material';
 import {
   brandIn,
   brandReset,
-} from '../store/carFilter'
+} from '../store/slice/carFilter'
 
 import {
   toggleHandler,
   toggleReset,
-} from '../store/brandNav'
+} from '../store/slice/brandNav'
 
 // STYLED
 import { MaxContainer } from '../styled/Global';
