@@ -9,7 +9,6 @@ import { Tabs, Tab } from '@mui/material';
 import { Search } from '../components/SearchBar';
 
 // STYLED
-
 import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/components/CarView.styled'
 
@@ -17,9 +16,9 @@ export function CarView() {
   const navigate = useNavigate();
   const carData = useCarData();
 
-  const selectedSeg = useAppSelector(state => {return state.selectedSeg})
-  const selectedFuel = useAppSelector(state => {return state.selectedFuel})
-  const selectedBrand = useAppSelector(state => {return state.selectedBrand})
+  const selectedSeg = useAppSelector((state) => state.selectedSeg)
+  const selectedFuel = useAppSelector((state) => state.selectedFuel)
+  const selectedBrand = useAppSelector((state) => state.selectedBrand)
 
   const [value, setValue] = useState(0);
   const [tabIndex, setTabIndex] = useState([0, 1, 2]);
