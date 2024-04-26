@@ -6,6 +6,8 @@
 
 # dev
 */dist
+*/dist/**.*
+*/dist/*
 
 # testing
 */coverage
@@ -24,4 +26,3 @@
 
 npm-debug.log*
 *.zip
-
