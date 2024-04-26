@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 // Router Import
-import brandsRouter from "./routes/brand";
+import brandsRouter from "./routes/brand.js";
 
 dotenv.config();
 const app = express();
@@ -34,6 +34,11 @@ main(); // DB 연결 함수 실행
 
 app.get("/", (req, res) => {
   res.render("index", { title: "Home Page" });
+});
+
+// 문서 생성 .ejs
+app.get("/create", (req, res) => {
+  res.render("create", { title: "Create Page" });
 });
 
 // 서버 실행
