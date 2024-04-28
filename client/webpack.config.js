@@ -8,7 +8,8 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"), // 출력 디렉토리
-    filename: "bundle.js", // 출력 할 파일 이름
+    filename: "bundle.[contenthash].js", // 출력 할 파일 이름
+    publicPath: '/'
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // 확장자 처리 파일
@@ -24,7 +25,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/, // .ts와 .tsx ES5 처리
+        test: /\.tsx?$/, // .tsx ES5 처리
         use: "babel-loader",
         exclude: /node_modules/,
       },
