@@ -1,5 +1,5 @@
 import { useState } from "react";
-import verifyPassword from "../../utils/adminVerify";
+import verifyPassword from "../api/adminVerify";
 
 export default function AdminPage(): JSX.Element {
   const [password, setPassword] = useState<string>("");

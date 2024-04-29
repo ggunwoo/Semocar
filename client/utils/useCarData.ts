@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCarData, getCarBrands } from './getCarData';
+import { getCarData, getCarBrands } from '../src/api/getCarData';
 import * as type from '../src/types/types'
 
 export const useCarData = () => {
