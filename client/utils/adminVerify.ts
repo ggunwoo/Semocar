@@ -2,12 +2,12 @@ import axios from "axios";
 
 const verifyPassword = async (pw: string) => {
 
-  const serverUrl = process.env.WEB_SERVER_URL
+  const serverUrl = process.env.WEB_SERVER_URL // AWS 클라우드 서버 URL
   
   try {
     console.log(serverUrl)
     const response = await axios.post(
-      `${serverUrl}/api/verify-password`,
+      `${serverUrl}/api/verify-password`, // 어드민 비밀번호 검증 요청
       {
         password: pw,
       }

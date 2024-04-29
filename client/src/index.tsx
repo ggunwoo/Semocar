@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 // Fonts
-import "./fonts/fonts.css";
+import "./styled/fonts.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

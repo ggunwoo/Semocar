@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
-import { useCarData, useCarBrands } from '../hook/useCarData'
+import { useCarData, useCarBrands } from '../../utils/useCarData'
 import { SwiperSlide } from 'swiper/react'
 // import { Rating, TextField, Tooltip} from '@mui/material'
 // import SendIcon from '@mui/icons-material/Send';

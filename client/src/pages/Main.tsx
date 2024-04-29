@@ -3,7 +3,7 @@ import { useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper';
-import { useCarData } from '../hook/useCarData';
+import { useCarData } from '../../utils/useCarData';
 
 // REDUX
 import { toggleReset } from '../store/slice/brandNav'

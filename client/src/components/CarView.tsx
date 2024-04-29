@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useCarData } from '../hook/useCarData';
+import { useCarData } from '../../utils/useCarData';
 import * as type from '../types/types';
 import { Tabs, Tab } from '@mui/material';
 
