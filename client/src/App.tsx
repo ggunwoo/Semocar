@@ -1,15 +1,20 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 
-// COMPONENT
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-
 // PAGES
 import { Main } from "./pages/Main";
 import { Detail } from "./pages/Detail";
 import { Brand } from "./pages/Brand";
 import AdminPage from "./pages/admin";
+
+// COMPONENT
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import CreateBrandPage from "./components/admin/CreateBrand";
+import CreateCarPage from "./components/admin/create-cars/CreateCar";
+import CreateICEPage from "./components/admin/create-cars/Ice";
+import CreateHEVPage from "./components/admin/create-cars/hev";
+import CreateEVPage from "./components/admin/create-cars/ev";
 
 function App(): JSX.Element {
   const location = useLocation();
@@ -26,7 +31,16 @@ function App(): JSX.Element {
         <Route path={"/"} element={<Main />} />
         <Route path="/brand" element={<Brand />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/admin" element={<AdminPage />} />
+        {/* ======= 어드민 페이지 ======= */}
+        <Route path="/admin" element={<AdminPage />}>
+          <Route path="create-brand" element={<CreateBrandPage />} />
+          <Route path="create-car" element={<CreateCarPage />}>
+            <Route path="gs-dz-lpg" element={<CreateICEPage />} /> 
+            <Route path="hybrid" element={<CreateHEVPage />} />
+            <Route path="electiric" element={<CreateEVPage />} />
+          </Route>
+        </Route>
+        {/* ============================ */}
       </Routes>
       {/* FOOTER */}
       {!hideFooter && <Footer />}
