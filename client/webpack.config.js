@@ -65,7 +65,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env.WEB_SERVER_URL": JSON.stringify(process.env.WEB_SERVER_URL),
-      "process.env.LOCAL_SEVER_URL": JSON.stringify(process.env.LOCAL_SEVER_URL),
+      "process.env.LOCAL_SERVER_URL": JSON.stringify(process.env.LOCAL_SERVER_URL),
     }),
   ],
   devServer: {
