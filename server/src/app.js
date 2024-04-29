@@ -1,16 +1,18 @@
 dotenv.config();
 
-import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv"; // .env 사용하기위한 라이브러리
+import mongoose from "mongoose";
+
 // Router Import
-import brandsRouter from "./routes/brandRoute.js";
+import newBrandsRouter from "./routes/newBrandRoute.js";
 import adminRouter from "./routes/adminRoute.js";
+import getBrandsRouter from "./routes/getBrandsRoute.js";
 
 const app = express();
-app.use(cors());
+app.use(cors()); // cors 전체 url 허용
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs"); // EJS를 뷰 엔진으로 설정
@@ -18,30 +20,34 @@ app.set("views", "./views"); // EJS 파일이 위치할 디렉토리 지정
 
 // .ejs 문서 생성
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home Page" });
+  res.render("index", { title: "Home Page" }); // 서버 메인 페이지
 });
 app.get("/create", (req, res) => {
-  res.render("create", { title: "Create Page" });
+  res.render("create", { title: "Create Page" }); // 브랜드 생성 임시 페이지
 });
 
 // Use Router
-app.use("/create", brandsRouter); // 브랜드 생성 라우트
-app.use("/api", adminRouter); // 어드민 비밀번호 검증 라우트
+app.use("/api", adminRouter); // Admin password 검증 라우트
+app.use("/create", newBrandsRouter); // 브랜드 생성 라우트
+app.use("/", getBrandsRouter); // 브랜드 데이터 가져오기 라우트
 
-// MongoDB 연결
+// ==================================================
+// ================== MongoDB 연결 ==================
+// ==================================================
+
 async function main() {
   const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/semocar";
 
   try {
     await mongoose.connect(dbURI);
-    console.log("MongoDB connected"); // DB연결 성공
-    // 서버 실행
+    console.log("MongoDB connected, MongoDB 연결 성공"); // DB연결 성공
+    // === 서버 실행 ===
     const port = process.env.PORT || 8080;
     app.listen(port, () =>
       console.log(`
-      ########################################################
-      서버에 성공적으로 연결되었습니다. http://localhost:${port}/
-      ########################################################
+      ##############################################################
+      ## 서버에 성공적으로 연결되었습니다. http://localhost:${port}/ ##
+      ##############################################################
       `)
     );
   } catch (err) {
