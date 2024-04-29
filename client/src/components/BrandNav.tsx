@@ -1,71 +1,85 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useCarBrands } from '../hook/useCarData';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from '@mui/material';
-
-import {
-  brandIn,
-  brandReset,
-} from '../store/carFilter'
-
-import {
-  toggleHandler,
-  toggleReset,
-} from '../store/brandNav'
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useCarBrands } from "../../utils/useCarData";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { brandIn, brandReset } from "../store/slice/carFilter";
+import { toggleHandler, toggleReset } from "../store/slice/brands";
 
 // STYLED
-import { MaxContainer } from '../styled/Global';
-import * as S from '../styled/components/BrandNav.styled'
+import { Button } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { MaxContainer } from "../styled/Global";
+import * as S from "../styled/components/BrandNav.styled";
 
+import { fetchBrands } from "../store/slice/brands";
 
-export function BrandNav () {
-  const navigate = useNavigate();
+export function BrandNav() {
   const dispatch = useAppDispatch();
-  const carBrands = useCarBrands();
-  
-  
-  // const selectedBrand = useAppSelector((state)=> state.selectedBrand )
-  // const brand = ['현대', '기아', 'KG', '제네시스', '르노코리아', '쉐보레']
-  // const [toggle, setToggle] = useState(Array(brand.length).fill(false));
-  const toggle = useAppSelector((state)=>{ return state.toggle })
+  const navigate = useNavigate();
 
-  const brandHandler = (brand:string, index: number) => {
+  useEffect(() => {
+    dispatch(fetchBrands()); // Redux => Brands fetch함수 실행
+  }, []);
+
+  const brands = useAppSelector((state) => state.brands); // Brands 가져오기(items, status, error)
+  console.log(brands);
+
+  const toggle = useAppSelector((state) => {
+    return state.toggle;
+  });
+
+  const brandHandler = (brand: string, index: number) => {
     dispatch(brandIn(brand));
     dispatch(toggleHandler(index));
-  }
+  };
   const brandAll = () => {
     dispatch(brandReset());
-    dispatch(toggleReset())
-  }
+    dispatch(toggleReset());
+  };
 
   return (
     <S.NavWrapper>
       <MaxContainer>
-      <S.Nav>
-        {carBrands.map((brand, index):JSX.Element => (
+        <S.Nav>
+          {}
+          {brands.status === "succeeded" ? (
+            brands.items.map((brand, index) => (
+              <Button
+                className={`logoBtn ${toggle[index] ? "clicked" : "unclick"}`}
+                key={brand.id}
+                onClick={() => {
+                  brandHandler(brand.name, index);
+                  navigate(`/brand`);
+                }}
+                variant="text"
+              >
+                <div className="imgBox">
+                  <img
+                    style={{ width: "40px" }}
+                    src={brand.logo_path}
+                    alt={brand.english_name}
+                  />
+                </div>
+                <p className="logoName">{brand.name}</p>
+              </Button>
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
           <Button
-            className={`logoBtn ${ toggle[index] ? 'clicked' : 'unclick'}` }
-            key={brand.id} 
-            onClick={()=>{brandHandler(brand.name.kr, index); navigate(`/brand`);} } 
-            variant='text'
+            className="logoBtn"
+            onClick={() => {
+              brandAll();
+              navigate(`/brand`);
+            }}
           >
-            <div className='imgBox'>
-              <img style={{width:"40px"}} src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${brand.imgUrl}.png`} alt={brand.name.en} />
+            <div className="imgBox">
+              <MenuIcon sx={{ fontSize: "36px", color: "#333" }} />
             </div>
-            <p className='logoName'>{brand.name.kr}</p>
+            <p className="logoName">전체보기</p>
           </Button>
-        ))}
-        <Button className='logoBtn' onClick={()=>{brandAll(); navigate(`/brand`)}}>
-          <div className='imgBox'>
-            {/* <img style={{width:"40px"}} src={`https://via.placeholder.com/40x40`} alt='ICON' /> */}
-            <MenuIcon sx={{"fontSize":"36px", "color":"#333"}} />
-          </div>
-          <p className='logoName'>전체보기</p>
-        </Button>
-      </S.Nav>
+        </S.Nav>
       </MaxContainer>
     </S.NavWrapper>
-  )
+  );
 }

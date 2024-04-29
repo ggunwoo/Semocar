@@ -3,12 +3,12 @@ import { useAppDispatch } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper';
-import { useCarData } from '../hook/useCarData';
+import { useCarData } from '../../utils/useCarData';
 
 // REDUX
-import { toggleReset } from '../store/brandNav'
-import { segReset, fuelReset, brandReset } from '../store/carFilter';
-import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/check';
+import { toggleReset } from '../store/slice/brands'
+import { segReset, fuelReset, brandReset } from '../store/slice/carFilter';
+import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/slice/carCheck-slice';
 
 // SWIPER CSS
 import 'swiper/css';
@@ -97,11 +97,11 @@ export function Main ():JSX.Element {
           carImg.map((a, i)=>(
             <SwiperSlide key={i}>
                 <div className='baseBox'>
-                  <img className='bannerImg' src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
+                  <img className='bannerImg' src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/banner/banner${i+1}.png`} alt={`SLIDE${i+1}`} />
                   <div className={`bannerBtn bannerBtn_${i+1}`} onClick={()=>{navigate(a)}} />
                 </div>
                 <div className='background'>
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
+                  <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/banner/background/banner${i+1}_bg.png`} alt={`BACKGROUND${i+1}`} />
                 </div>
             </SwiperSlide>
           ))
@@ -138,7 +138,7 @@ export function Main ():JSX.Element {
                     <div className="carHead" onClick={()=>{navigate(`/detail/${car.id}`)}}>
                       {/* 이미지 */}
                       <div className='images'>
-                        <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${car.imgUrl}.png`} alt="NEWCAR" />
+                        <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/cars/${car.imgUrl.toLowerCase()}.png`} alt={car.imgUrl.toLowerCase()} />
                       </div>
                       {/* 자동차 이름 */}
                       <p>{car.brand.kr} {car.name.kr}</p>
@@ -178,7 +178,7 @@ export function Main ():JSX.Element {
                   <p className='name'>{photo.name}</p>
                   <div className='linkBtn' onClick={()=>{navigate(`/detail/${photo.id}`)}}>MORE PROFILE &gt;</div>
                 </div>
-                <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/${photo.imgUrl}/1.jpg`} alt="CARPHOTO" />
+                <img className='img' style={{width:'100%'}} src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${photo.imgUrl}/1.jpg`} alt="CARPHOTO" />
               </div>
             ))}
           </div>

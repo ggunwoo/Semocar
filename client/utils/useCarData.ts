@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getCarData, getCarBrands } from '../api/getCarData';
-import * as type from '../types/types'
+import { getCarData, getCarBrands } from '../src/api/getCarData';
+import * as type from '../src/types/types'
 
 export const useCarData = () => {
   const [carData, setCarData] = useState<type.Car[]>([]);

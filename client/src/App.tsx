@@ -1,31 +1,32 @@
-import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { CssBaseline } from '@mui/material';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 
 // COMPONENT
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 // PAGES
-import { Main } from './pages/Main'
-import { Detail } from './pages/Detail';
-import { Brand } from './pages/Brand';
+import { Main } from "./pages/Main";
+import { Detail } from "./pages/Detail";
+import { Brand } from "./pages/Brand";
+import AdminPage from "./pages/admin";
 
 function App(): JSX.Element {
   const location = useLocation();
 
-  const hideFooter = location.pathname === '/brand';
+  const hideFooter = location.pathname === "/brand";
 
   return (
-    <div style={{fontFamily:"GmarketSans, sans-serif"}}>
+    <div style={{ fontFamily: "GmarketSans, sans-serif" }}>
       <CssBaseline />
       {/* HEADER */}
       <Header />
       {/* ARTICLE */}
       <Routes>
-        <Route path={'/'} element={<Main />} />
+        <Route path={"/"} element={<Main />} />
         <Route path="/brand" element={<Brand />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {/* FOOTER */}
       {!hideFooter && <Footer />}
@@ -42,7 +43,5 @@ function App(): JSX.Element {
 // light : #E9DCFD
 // light : #cdc0e2
 // superlight : #FAF7FF
-
-
 
 export default App;

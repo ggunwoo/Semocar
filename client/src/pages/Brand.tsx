@@ -1,11 +1,10 @@
-import React from 'react';
 import { Checkbox } from '@mui/material'
 import { FormGroup, FormControlLabel} from '@mui/material';
 
 // Redux
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { segIn, segReset, fuelIn, fuelReset } from '../store/carFilter';
-import { segAllChange, segHandle, fuelAllChange, fuelHandle } from '../store/check';
+import { segIn, segReset, fuelIn, fuelReset } from '../store/slice/carFilter';
+import { segAllChange, segHandle, fuelAllChange, fuelHandle } from '../store/slice/carCheck-slice';
 
 // COMPONENT
 import {BrandNav} from '../components/BrandNav';

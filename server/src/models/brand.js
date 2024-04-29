@@ -1,7 +1,7 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 // Brand 생성 스키마
-const BrandSchema = new Schema({
+const BrandSchema = new mongoose.Schema({
   name: { type: String, required: true },
   english_name: { type: String, required: true },
   logo_path: { type: String, required: true },
