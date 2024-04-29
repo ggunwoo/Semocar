@@ -1,36 +1,38 @@
 import mongoose, { Schema } from "mongoose";
 
-// 기초 제원 스키마
+// 기본 제원 스키마
 const baseCarSchema = new mongoose.Schema({
-  brand: { type: Schema.Types.ObjectId, ref: "Brand" },
-  name: String,
-  english_name: String,
-  id: Number,
-  segment: String,
+  //■■■■■ 기본 제원 필드■■■■■
+  brand: { type: Schema.Types.ObjectId, ref: "Brand" }, // 브랜드 콜렉션 참조
+  name: String, // 차량 모델명 ▶ 쏘나타, 콜로라도, GV90 등
+  english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
+  id: Number, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
+  segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
   photoNumber: {
-    exterior: Number,
-    interior: Number,
+    exterior: Number, // 차량 외관 사진 개수 ▶ 0~99
+    interior: Number, // 차량 내장 사진 개수 ▶ 0~99
   },
   price: {
-    min: Number,
-    max: number,
+    min: Number, // 차량 낮은등급 가격 ▶ ----~원
+    max: Number, // 차량 높은등급 가격 ▶ ----~원
   },
-  date: String,
-  gasMileage: String,
-  fuelTypes: [String],
+  date: String, // 차량 출시일 ▶ "----.--" = 연도.월
+  gasMileage: String, // 연비 ▶ "--.-~--.-" km/l
+  fuelTypes: [String], // 모델 연료 정보 ▶ [가솔린, 디젤, LPG, 하이브리드], [전기(배터리)], [전기(수소)]
   grades: [gradeSchema],
 });
 
 // 모델(Grades) 스키마
 const gradeSchema = new Schema({
-  name: String,
-  id: Number,
-  trims: [],
+  //■■■■■ Grades 필드■■■■■
+  name: String, // Grades명 ▶ 프리미엄, 익스클루시브 등
+  id: Number, // Grades ID(고유값) ▶ 0 ~ 99
+  trims: [trimSchema],
 });
 
 // 트림(Trims) 스키마
 const trimSchema = new Schema({
-  //■■■■■전 차종 기본 필드■■■■■
+  //■■■■■전 차종 Trim 기본 필드■■■■■
   name: String, // 이름
   price: Number, // 가격
   fuel_Type: { name: String, id: Number }, // 연료 ▶ 가솔린(1), 디젤(1), 하이브리드(2), 전기,수소(3)
@@ -59,14 +61,14 @@ const trimSchema = new Schema({
   track: Number, // 윤거전 ▶ ----mm
   tread: Number, // 윤거후 ▶ ----mm
 
-  //■■■■■하이브리드, 전기(수소) 추가 필드■■■■■
+  //■■■■■하이브리드, 전기(수소) Trim 추가 필드■■■■■
   motor_power: { type: Number, required: false }, // 모터출력 ▶ ---kw
   motor_torque: { type: Number, required: false }, // 모터토크 ▶ --.-kg.m
   battery_type: { type: Number, required: false }, // 배터리 종류 ▶ 리튬이온, 리튬 인산철 등
   battery_volume: { type: Number, required: false }, // 배터리 용량 ▶ kWh
   battery_voltage: { type: Number, required: false },
 
-  //■■■■■플러그인 하이브리드, 전기(수소) 고유 필드■■■■■
+  //■■■■■플러그인 하이브리드, 전기(수소) Trim 고유 필드■■■■■
   ev_mileage: { type: Number, required: false }, // 복합전비 ▶ ---km/kWh
   urban_ev_mileage: { type: Number, required: false }, // 도심전비 ▶ ---km/kWh
   highway_ev_mileage: { type: Number, required: false }, // 고속전비 ▶ ---km/kWh
