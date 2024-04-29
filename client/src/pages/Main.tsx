@@ -6,7 +6,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper';
 import { useCarData } from '../../utils/useCarData';
 
 // REDUX
-import { toggleReset } from '../store/slice/brandNav'
+import { toggleReset } from '../store/slice/brands'
 import { segReset, fuelReset, brandReset } from '../store/slice/carFilter';
 import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/slice/carCheck-slice';
 

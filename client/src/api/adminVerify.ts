@@ -3,7 +3,7 @@ import axios from "axios";
 const verifyPassword = async (pw: string) => {
 
   const serverUrl = process.env.WEB_SERVER_URL // AWS 클라우드 서버 URL
-  // const serverUrl = process.env.LOCAL_SEVER_URL // 로컬 서버 URL
+  // const serverUrl = process.env.LOCAL_SERVER_URL // 로컬 서버 URL
 
   try {
     console.log(serverUrl)
