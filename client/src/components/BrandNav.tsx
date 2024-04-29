@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCarBrands } from "../../utils/useCarData";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { brandIn, brandReset } from "../store/slice/carFilter";
 import { toggleHandler, toggleReset } from "../store/slice/brands";

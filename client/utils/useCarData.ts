@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCarData, getCarBrands } from '../src/api/getCarData';
+import { getCarData } from '../src/api/getCarData';
 import * as type from '../src/types/types'
 
 export const useCarData = () => {
@@ -20,21 +20,3 @@ export const useCarData = () => {
 
   return carData;
 };
-
-export const useCarBrands = () => {
-  const [carBrands, setCarBrands] = useState<type.Brands[]>([]);
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getCarBrands();
-        setCarBrands(data);
-      } catch (error) {
-        console.log('Error fetching car data:', error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  return carBrands
-}
