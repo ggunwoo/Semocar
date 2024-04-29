@@ -1,10 +1,13 @@
 import axios from "axios";
 
 const verifyPassword = async (pw: string) => {
+
+  const serverUrl = process.env.WEB_SERVER_URL
+  
   try {
-    // http://www.gunw-cars.shop/
+    console.log(serverUrl)
     const response = await axios.post(
-      "http://localhost:8080/api/verify-password",
+      `${serverUrl}/api/verify-password`,
       {
         password: pw,
       }

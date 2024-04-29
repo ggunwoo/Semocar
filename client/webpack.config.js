@@ -1,6 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const dotenv = require("dotenv");
+const webpack = require("webpack");
+
+dotenv.config();
 
 module.exports = {
   mode: "development",
@@ -9,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"), // 출력 디렉토리
     filename: "bundle.[contenthash].js", // 출력 할 파일 이름
-    publicPath: '/'
+    publicPath: "/",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"], // 확장자 처리 파일
@@ -31,17 +35,18 @@ module.exports = {
       },
       {
         test: /\.css$/, // css 파일 처리
-        use: ["style-loader", "css-loader", {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              plugins: [
-                require('tailwindcss'),
-                require('autoprefixer')
-              ]
-            }
-          }
-        }],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [require("tailwindcss"), require("autoprefixer")],
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i, // 이미지 파일 처리
@@ -57,6 +62,9 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: "./public/logo-512x512.png",
       manifest: "./public/manifest.json",
+    }),
+    new webpack.DefinePlugin({
+      "process.env.WEB_SERVER_URL": JSON.stringify(process.env.WEB_SERVER_URL),
     }),
   ],
   devServer: {
