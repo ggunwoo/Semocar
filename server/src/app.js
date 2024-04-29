@@ -7,9 +7,10 @@ import dotenv from "dotenv"; // .env 사용하기위한 라이브러리
 import mongoose from "mongoose";
 
 // Router Import
-import newBrandsRouter from "./routes/newBrandRoute.js";
+import createBrandsRouter from "./routes/createBrandRoute.js";
 import adminRouter from "./routes/adminRoute.js";
 import getBrandsRouter from "./routes/getBrandsRoute.js";
+import createCarRouter from "./routes/createCarRoute.js";
 
 const app = express();
 app.use(cors()); // cors 전체 url 허용
@@ -28,13 +29,14 @@ app.get("/create", (req, res) => {
 
 // Use Router
 app.use("/api", adminRouter); // Admin password 검증 라우트
-app.use("/create", newBrandsRouter); // 브랜드 생성 라우트
+app.use("/create", createBrandsRouter); // 브랜드 생성 라우트
 app.use("/", getBrandsRouter); // 브랜드 데이터 가져오기 라우트
+app.use("/create", createCarRouter);
+
 
 // ==================================================
 // ================== MongoDB 연결 ==================
 // ==================================================
-
 async function main() {
   const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/semocar";
 
@@ -53,7 +55,10 @@ async function main() {
   } catch (err) {
     console.error("MongoDB connection error:", err); // 실패
   }
-}
-main(); // DB 연결 함수 실행
+} 
+// ==================================================
+    main(); // DB 연결 함수 실행 =====================
+// ==================================================
+
 
 export default app;
