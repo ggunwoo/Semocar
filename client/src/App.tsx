@@ -19,7 +19,7 @@ import CreateEVPage from "./components/admin/create-cars/ev";
 function App(): JSX.Element {
   const location = useLocation();
 
-  const hideFooter = location.pathname === "/brand";
+  const hideFooter = location.pathname.includes("/brand") || location.pathname.includes("/admin");
 
   return (
     <div style={{ fontFamily: "GmarketSans, sans-serif" }}>
