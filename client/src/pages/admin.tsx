@@ -1,9 +1,11 @@
 import { useState } from "react";
 import verifyPassword from "../api/adminVerify";
+import { Link, Outlet } from "react-router-dom";
 
 export default function AdminPage(): JSX.Element {
   const [password, setPassword] = useState<string>("");
-  const [isVerified, setIsVerified] = useState(false);
+  // const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(true);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -18,17 +20,17 @@ export default function AdminPage(): JSX.Element {
         alert("비밀번호가 틀렸습니다.");
       }
     } catch (error) {
-      alert("비밀번호 검증 중 오류 발생");
+      alert("비밀번호 검증 중 오류 발생" + error);
     }
   };
 
   if (!isVerified) {
     return (
-      <section>
+      <section className="grid gap-4 place-content-center text-center h-48">
         <h1>비밀번호 입력</h1>
         <form onSubmit={handleSubmit}>
           <input
-            className="ring-2"
+            className="ring-2 block mb-4"
             type="text"
             onChange={(e) => setPassword(e.target.value)} // 비밀번호 변경 핸들
             value={password}
@@ -42,7 +44,12 @@ export default function AdminPage(): JSX.Element {
   }
   return (
     <section>
-      <h1>Admin pages 접속</h1>
+      <h1 className="m-4">Admin pages 접속</h1>
+      <nav className="flax justify-evenly mx-8 h-24">
+      <Link to="create-brand" className="mr-4 hover:text-sky-400">브랜드 DB 생성</Link>
+      <Link to="create-car" className="hover:text-sky-400">자동차 DB 생성</Link>
+      </nav>
+      <Outlet />
     </section>
   );
 }
