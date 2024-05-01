@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const serverUrl = process.env.LOCAL_SERVER_URL
+// 개발 => 로컬서버 URL, 배포(환경설정) => aws 클라우드 서버)
+export const serverUrl = process.env.SERVER_URL
 
 export const getCarData = async () => {
   try {
