@@ -1,7 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const serverUrl = `${process.env.LOCAL_SERVER_URL}`;
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { serverUrl } from "../../api/getCarData";
 
 export const fetchBrands = createAsyncThunk("brands/fetchBrands", async () => {
   const response = await axios.get(`${serverUrl}/brands`);
