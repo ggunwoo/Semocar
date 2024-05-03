@@ -3,10 +3,14 @@ import mongoose from "mongoose";
 // 트림(Trims) 스키마
 const trimSchema = new mongoose.Schema({
   //■■■■■전 차종 Trim 기본 필드■■■■■
-  name: { type: String, required: true }, // 이름
+  // name: { type: String, required: true }, // 이름
+  id: Number, // 고유값 id할당 ▶ 오름차순 정렬을 위한
+  name: String, // 이름
   price: Number, // 가격
-  fuel_type: { name: String, id: Number }, // 연료 ▶ 가솔린(1), 디젤(1), 하이브리드(2), 전기,수소(3)
-  engine: { type: String, required: true }, // 엔진 종류 ▶ 직렬, v6 등
+  // fuel_type: { name: String, id: Number }, // 연료 ▶ 가솔린(1), 디젤(1), 하이브리드(2), 전기,수소(3)
+  fuel_type: String, // 연료 ▶ 가솔린(1), 디젤(1), 하이브리드(2), 전기,수소(3)
+  // engine: { type: String, required: true }, // 엔진 종류 ▶ 직렬, v6 등
+  engine: String, // 엔진 종류 ▶ 직렬, v6 등
   displacement: String, // 배기량 ▶ ----cc
   trans_mission: String, // 변속기 ▶ 수동, 8단자동, 7단DCT, CVT 등
   driving_system: String, // 구동타입 ▶ FF, FR, RR, 4WD 등
@@ -58,12 +62,12 @@ const gradeSchema = new mongoose.Schema({
 // 기본 제원 스키마
 const baseCarSchema = new mongoose.Schema({
   //■■■■■ 기본 제원 필드■■■■■
-  brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brand" }, // 브랜드 콜렉션 참조
+  brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brands" }, // ref: 브랜드 콜렉션 참조
   name: String, // 차량 모델명 ▶ 쏘나타, 콜로라도, GV90 등
   english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
   id: Number, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
   segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
-  photoNumber: {
+  photo_count: {
     exterior: Number, // 차량 외관 사진 개수 ▶ 0~99
     interior: Number, // 차량 내장 사진 개수 ▶ 0~99
   },
@@ -71,9 +75,18 @@ const baseCarSchema = new mongoose.Schema({
     min: Number, // 차량 낮은등급 가격 ▶ ----~원
     max: Number, // 차량 높은등급 가격 ▶ ----~원
   },
-  date: String, // 차량 출시일 ▶ "----.--" = 연도.월
-  gas_mileage: String, // 연비 ▶ "--.-~--.-" km/l
-  fuel_types: [String], // 모델 연료 정보 ▶ [가솔린, 디젤, LPG, 하이브리드], [전기(배터리)], [전기(수소)]
+  date: {
+    year: Number,
+    month: Number,
+  }, // 차량 출시일 ▶ "----.--" = 연도.월
+  gas_mileage: {
+    min: Number,
+    max: Number,
+  }, // 연비 ▶ "--.-~--.-" km/l
+  fuel_types: [{
+    name: String,
+    id: Number
+  }], // 모델 연료 정보 ▶ [가솔린, 디젤, LPG, 하이브리드], [전기(배터리)], [전기(수소)]
   grades: [gradeSchema], // Grade스키마 참조
 }, { versionKey : false });
 
