@@ -1,6 +1,6 @@
 import { Checkbox } from '@mui/material'
 import { FormGroup, FormControlLabel} from '@mui/material';
-import { segments } from '../api/getCarData';
+import { segments } from '../../utils/constants';
 
 // Redux
 import { useAppSelector, useAppDispatch } from '../store/hooks';

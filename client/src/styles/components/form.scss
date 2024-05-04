@@ -1,0 +1,53 @@
+@import "color";
+
+.form {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+}
+
+//BaseForm 스타일 정의
+.left-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 36px;
+  overflow-y: none;
+  label {
+    color: $--color-deep-dark;
+    input,
+    select {
+      margin-left: 8px;
+    }
+    input {
+      width: 92px;
+    }
+    select {
+      width: 56px;
+    }
+    &.seg {
+      select {
+        width: 102px;
+      }
+    }
+    &.ft {
+      // FuelType label(CheckBox)
+      color: black;
+      input {
+        width: 16px;
+      }
+    }
+  }
+}
+
+.right-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 36px;
+  overflow-y: scroll;
+  
+}
+
+.submit {
+  width: 100%;
+}

@@ -44,9 +44,9 @@ export default function AdminPage(): JSX.Element {
   }
   return (
     <section>
-      <h1 className="m-4">Admin pages 접속</h1>
-      <nav className="flax justify-evenly mx-8 h-24">
-      <Link to="create-brand" className="mr-4 hover:text-sky-400">브랜드 DB 생성</Link>
+      <h1 className="m-4">Admin pages</h1>
+      <nav className="flax justify-evenly mx-8 h-8">
+      {/* <Link to="create-brand" className="mr-4 hover:text-sky-400">브랜드 DB 생성</Link> */}
       <Link to="create-car" className="hover:text-sky-400">자동차 DB 생성</Link>
       </nav>
       <Outlet />
