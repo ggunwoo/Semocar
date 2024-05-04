@@ -35,12 +35,3 @@ export const months = [
   "11",
   "12",
 ];
-
-export const fuelTypes = [
-  {name: '가솔린', id: 1},
-  {name: '디젤', id: 2},
-  {name: 'LPG', id: 3},
-  {name: '하이브리드', id: 4},
-  {name: '전기', id: 5},
-  {name: '수소', id: 6},
-]
