@@ -1,18 +1,45 @@
-// brand.json
-export interface Brands {
-  name : { kr : string, en: string}
-  id : number
-  imgUrl : string
+interface trim {
+  name: string;
+  id: number;
+  fuel_type: string;
 }
 
-// Brand.tsx
+interface grade {
+  name: string;
+  id: number;
+  trims: trim[];
+}
+
+//■■ 자동차 제원 데이터 서버 전송 타입 ■■
+export interface CarData_Type {
+  brand: string;
+  name: string;
+  english_name: string;
+  id: number;
+  segment: string;
+  photo_count: { exterior: number; interior: number };
+  price: { min: number; max: number };
+  date: { year: number; month: number };
+  gas_mileage: { min: number; max: number };
+  fuel_types: { name: string; id: number }[];
+  grades: grade[];
+}
+
+// brand.json (Old)
+export interface Brands {
+  name: { kr: string; en: string };
+  id: number;
+  imgUrl: string;
+}
+
+// Brand.tsx (Old)
 export interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
 
-// carData.json
+// carData.json (Old)
 interface Car {
   brand: {
     kr: string;
@@ -25,7 +52,7 @@ interface Car {
   id: number;
   segment: string;
   imgUrl: string;
-  photoNumber: { "exterior": number, "interior" :number};
+  photoNumber: { exterior: number; interior: number };
   price: {
     min: number;
     max: number;
@@ -74,14 +101,14 @@ interface Trim {
   zero: string | number;
 
   // 전기
-  evMileage: string,
-  charging: string,
-  chargingQuick: string,
-  chargingSlow: string,
+  evMileage: string;
+  charging: string;
+  chargingQuick: string;
+  chargingSlow: string;
 
   // + 하이브리드
-  batteryType: string,
-  batteryVolume: string,
+  batteryType: string;
+  batteryVolume: string;
   motorPower: string;
   motorTorque: string;
 }
