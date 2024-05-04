@@ -49,7 +49,7 @@ const trimSchema = new mongoose.Schema({
   range: Number, // 복합 주행거리 ▶ ---km/kWh
   urban_range: Number, // 도심 주행거리 ▶ ---km/kWh
   highway_range: Number, // 고속 주행거리 ▶ ---km/kWh
-}, { versionKey : false });
+}, { versionKey: false });
 
 // 모델(Grades) 스키마
 const gradeSchema = new mongoose.Schema({
@@ -57,7 +57,7 @@ const gradeSchema = new mongoose.Schema({
   name: String, // Grades명 ▶ 프리미엄, 익스클루시브 등
   id: Number, // Grades ID(고유값) ▶ 0 ~ 99
   trims: [trimSchema], // Trim스키마 참조
-}, { versionKey : false });
+}, { versionKey: false });
 
 // 기본 제원 스키마
 const baseCarSchema = new mongoose.Schema({
@@ -88,7 +88,7 @@ const baseCarSchema = new mongoose.Schema({
     id: Number
   }], // 모델 연료 정보 ▶ [가솔린, 디젤, LPG, 하이브리드], [전기(배터리)], [전기(수소)]
   grades: [gradeSchema], // Grade스키마 참조
-}, { versionKey : false });
+}, { versionKey: false });
 
 
 
