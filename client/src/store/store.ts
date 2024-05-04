@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { selectedSeg, selectedFuel, selectedBrand } from "./slice/carFilter";
 import { brandsSlice, toggleSlice } from "./slice/brands";
 import { segAll, segCheck, fuelAll, fuelCheck } from "./slice/carCheck-slice";
+import { formDataSlice } from "./slice/formDataSlice";
+import { gradesFormSlice, trimsFormSlice } from "./slice/refFormSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +16,9 @@ export const store = configureStore({
     segCheck: segCheck.reducer,
     fuelAll: fuelAll.reducer,
     fuelCheck: fuelCheck.reducer,
+    formSlice: formDataSlice.reducer,
+    gradesSlice: gradesFormSlice.reducer,
+    trimsSlice: trimsFormSlice.reducer,
   },
 });
 
