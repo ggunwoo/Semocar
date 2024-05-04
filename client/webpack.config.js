@@ -34,15 +34,15 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/, // css 파일 처리
+        test: /\.(css|scss)$/, // scss 파일 처리
         use: [
           "style-loader",
           "css-loader",
           {
-            loader: "postcss-loader",
+            loader: "sass-loader",
             options: {
-              postcssOptions: {
-                plugins: [require("tailwindcss"), require("autoprefixer")],
+              sassOptions: {
+                includePaths: ["./src/styles"],
               },
             },
           },

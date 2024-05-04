@@ -15,6 +15,6 @@ export const Logo = styled.p<{fontSize : string}>`
   color: black;
   font-size: ${props => props.fontSize};
   font-family: Anders, Arial, sans-serif;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   cursor: pointer;
 }`;
