@@ -43,7 +43,7 @@ export default function BaseCarForm() {
   // TODO : 정렬된 배열 만들기
   const copy = [];
   const handleChangeFuelType = (e, fuelType, index) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
 
     // TODO : 만약에(if) checkbox 클릭시 필드안에 데이터가있으면 체크 해제 없으면 체크
     if (!getFuelTypes.some(ft => ft.id === fuelTypes[index].id)) {
@@ -68,6 +68,7 @@ export default function BaseCarForm() {
 
   return (
     <article className="left-form-container">
+      <p className="text-1xl">차량 정보 등록</p>
       {/* ■■■■■■ 브랜드 선택(ObjectId) ■■■■■■ */}
       <label>
         brand(브랜드):

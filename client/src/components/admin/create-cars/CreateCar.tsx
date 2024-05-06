@@ -18,7 +18,6 @@ export default function CreateCarPage() {
   return (
     <div>
       <section>
-        <p className="text-1xl">차량 정보 등록</p>
         {/* 차량 제원 전송 폼 */}
         <form onSubmit={handleSubmit} className="form">
           {/* 기본제원 Form */}

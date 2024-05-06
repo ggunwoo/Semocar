@@ -5,7 +5,7 @@ import { RootState } from "../store";
 import * as type from "../../types/types";
 
 interface FormDataState {
-  formData: type.CarData_Type;
+  formData: type.CarDataType;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -22,46 +22,97 @@ const initialState: FormDataState = {
     date: { year: 0, month: 0 },
     gas_mileage: { min: 0, max: 0 },
     fuel_types: [],
-    grades: [],
+    grades: [
+      {
+        id: 1,
+        name: "",
+        trims: [
+          {
+            id: 1,
+            name: "",
+          },
+        ],
+      },
+    ],
   },
   status: "idle",
   error: null,
 };
 
 // --차량 데이터 전송 함수
-export const submitFormData = createAsyncThunk("form/submitFormData", async (_, { getState, rejectWithValue }) => {
-  try {
-    const state = getState() as RootState;
-    const formData = state.baseForm.formData;
-    const response = await axios.post(`${serverUrl}/create/cars`, formData);
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const submitFormData = createAsyncThunk(
+  "form/submitFormData",
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const state = getState() as RootState;
+      const formData = state.baseForm.formData;
+      const response = await axios.post(`${serverUrl}/create/cars`, formData);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 export const formDataSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
+    // --formData 상태 변경 함수
     // TODO : grades, trims 같은 객체배열 처리함수
     updateField: (state, action) => {
       const { name, value } = action.payload;
-      const keys = name.split("."); // (".") 기준으로 경로 분할
-      if (keys.length > 1) {
-        state.formData[keys[0]] = {
-          ...state.formData[keys[0]],
-          [keys[1]]: value,
-        };
-      } else {
-        state.formData[name] = value;
+      console.log(name, value);
+      const keys = name.split("."); // --(".") 기준으로 경로 분할
+      let ref = state.formData; // formData 객체 초기 참조
+
+      // 경로 분할이 된 keys배열을 순회하면서 경로에 접근하여 참조 받은 객체를 갱신
+      for (let i = 0; i < keys.length - 1; i++) {
+        const key = keys[i];
+        const nextKey = keys[i + 1];
+
+        // 다음 키(nextKey)가 숫자인 경우에 배열에 접근
+        if (!isNaN(parseInt(nextKey))) {
+          ref = ref[key][parseInt(nextKey)];
+          i++; // 한단계 건너뛰기
+        } else {
+          // 다음 키(nextKey)가 숫자가 아닌 경우 객체에 접근
+          ref = ref[key];
+        }
       }
+      // 접근한 필드에 속성값을 업데이트하기
+      ref[keys[keys.length - 1]] = value;
     },
-    // --fuel_types에 새로운 연료타입 객체 생성 및 삭제 액션
+    // --grade배열에 객체 추가 함수
+    addGrade: state => {
+      const newGrade = {
+        id: state.formData.grades.length + 1, // --id값을 현재 길이 + 1로 설정
+        name: "",
+        trims: [
+          {
+            id: 1,
+            name: "",
+          },
+        ],
+      };
+      state.formData.grades.push(newGrade);
+    },
+    // --grade배열에 id값이 일치하는 객체 삭제 함수
+    removeGrade: (state, action: PayloadAction<number>) => {
+      state.formData.grades = state.formData.grades.filter(grade => grade.id !== action.payload);
+    },
+    addTrim: (state, action) => {
+      const { gradeId } = action.payload;
+      const newTrim = {
+        id: state.formData.grades[gradeId].trims.length + 1,
+        name: "",
+      };
+    },
+    // fuel_types은 배열객체, 새로운 연료타입 객체 생성 및 삭제 액션함수
     addFuelType: (state, action) => {
       const { name, fuelType } = action.payload;
       state.formData[name].push(fuelType);
-      state.formData.fuel_types.sort((a, b) => a.id - b.id); // 추가 후 오름차순 정렬
+      state.formData.fuel_types.sort((a, b) => a.id - b.id); // --추가 후 오름차순 정렬
     },
     removeFuelType: (state, action) => {
       const { name, fuelTypeId } = action.payload;
@@ -87,7 +138,18 @@ export const formDataSlice = createSlice({
           date: { year: 0, month: 0 },
           gas_mileage: { min: 0, max: 0 },
           fuel_types: [],
-          grades: [],
+          grades: [
+            {
+              id: 1,
+              name: "",
+              trims: [
+                {
+                  id: 1,
+                  name: "",
+                },
+              ],
+            },
+          ],
         };
         alert("전송성공!");
       })
@@ -99,4 +161,5 @@ export const formDataSlice = createSlice({
   },
 });
 
-export const { updateField, addFuelType, removeFuelType } = formDataSlice.actions;
+export const { updateField, addGrade, removeGrade, addTrim, addFuelType, removeFuelType } =
+  formDataSlice.actions;

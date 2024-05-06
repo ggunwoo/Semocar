@@ -1,51 +1,74 @@
 import { useState } from "react";
 import "../../../styles/components/form.scss";
-import TrimesForm from "./TrimsFrom";
+import TrimesForm from "./trimsFrom";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { updateField, addGrade, removeGrade } from "../../../store/slice/formDataSlice";
 
 // TODO : 하단에 grades 추가 버튼으로 grades 개수를 늘릴수 있게끔 구현
 // TODO : grades안에 마찬가지로 Trims를 추가할 수 있는 버튼 구현
 // TODO : grades객체들을 배열로 할당 후 id값으로 오름차순 정렬 trims 또한 마찬가지
 
 export default function GradesForm() {
-  const [gradesCount, setGradesCount] = useState<number>(1);
-  const [grades, setGrades] = useState(new Array(gradesCount).fill([]));
+  const dispatch = useAppDispatch();
+  const grades = useAppSelector(state => state.baseForm.formData.grades);
 
-  console.log(gradesCount);
-  console.log(grades);
+  // --TODO--
+  // grades index는 객체 id로 할당,
+  // grades는 grades state에 배열로 저장(push),
+  // 새로 추가된 grades는 다음 배열아이템이 되도록 설계
+  // index는 배열에 자릿값으로 사용하기,
+  // --------
+  const handleGrades = e => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    dispatch(updateField({ name: name, value }));
+  };
 
-  const handleChange = (e, index) => {};
+  const handleAddGrades = () => {
+    dispatch(addGrade());
+  };
+  const handleRemoveGrades = id => {
+    dispatch(removeGrade(id));
+  };
 
   return (
     <article className="right-form-container">
-      {Array(gradesCount)
-        .fill(0)
-        .map((_, index) => (
-          <section>
-            <h2>Grades</h2>
-            <label>
-              name:
-              <input></input>
-            </label>
-            <label>
-              id:
-              <input></input>
-            </label>
-            <TrimesForm id={index} />
-          </section>
-        ))}
-      <button
-        type="button"
-        onClick={() => {
-          setGradesCount(gradesCount + 1);
-        }}>
+      {grades.map((grade, index) => (
+        <section key={index} className="grades">
+          <article className="head">
+            <h2>Grade {grades[index].id}</h2>
+            {grades[index].id !== 1 && (
+              <button
+                type="button"
+                onClick={() => {
+                  handleRemoveGrades(grades[index].id);
+                }}>
+                X
+              </button>
+            )}
+          </article>
+          <label>
+            name:
+            <input
+              type="text"
+              name={`grades.${index}.name`}
+              value={grades[index].name}
+              onChange={handleGrades}></input>
+          </label>
+          <label>
+            id:
+            <input
+              readOnly
+              type="number"
+              name={`grades.${index}.id`}
+              value={grades[index].id}
+              onChange={handleGrades}></input>
+          </label>
+          <TrimesForm gradeId={index} />
+        </section>
+      ))}
+      <button type="button" onClick={handleAddGrades}>
         Grades 추가 버튼
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          setGradesCount(gradesCount - 1);
-        }}>
-        Grades 삭제 버튼
       </button>
     </article>
   );
