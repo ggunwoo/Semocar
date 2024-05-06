@@ -1,10 +1,10 @@
-interface trim {
+export interface Trims {
   name: string;
   id: number;
   fuel_type: string;
 }
 
-interface grade {
+export interface Grades {
   name: string;
   id: number;
   trims: trim[];
