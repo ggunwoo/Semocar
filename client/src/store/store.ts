@@ -16,9 +16,10 @@ export const store = configureStore({
     segCheck: segCheck.reducer,
     fuelAll: fuelAll.reducer,
     fuelCheck: fuelCheck.reducer,
-    formSlice: formDataSlice.reducer,
-    gradesSlice: gradesFormSlice.reducer,
-    trimsSlice: trimsFormSlice.reducer,
+    // Form데이터
+    baseForm: formDataSlice.reducer,
+    grades: gradesFormSlice.reducer,
+    trims: trimsFormSlice.reducer,
   },
 });
 
