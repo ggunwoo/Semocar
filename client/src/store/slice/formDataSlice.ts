@@ -3,7 +3,6 @@ import axios from "axios";
 import { serverUrl } from "../../api/getCarData";
 import { RootState } from "../store";
 import * as type from "../../types/types";
-import { getGgradesInitialState, gradesFormSlice } from "./refFormSlice";
 
 interface FormDataState {
   formData: type.CarData_Type;
@@ -30,10 +29,10 @@ const initialState: FormDataState = {
 };
 
 // --차량 데이터 전송 함수
-export const submitFormData = createAsyncThunk("form/submitDormData", async (_, { getState, rejectWithValue }) => {
+export const submitFormData = createAsyncThunk("form/submitFormData", async (_, { getState, rejectWithValue }) => {
   try {
     const state = getState() as RootState;
-    const formData = state.formSlice.formData;
+    const formData = state.baseForm.formData;
     const response = await axios.post(`${serverUrl}/create/cars`, formData);
     return response.data;
   } catch (error) {
@@ -45,9 +44,10 @@ export const formDataSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
+    // TODO : grades, trims 같은 객체배열 처리함수
     updateField: (state, action) => {
       const { name, value } = action.payload;
-      const keys = name.split("."); // 객체 형식인지 확인 name={price.min} => ['price','min']
+      const keys = name.split("."); // (".") 기준으로 경로 분할
       if (keys.length > 1) {
         state.formData[keys[0]] = {
           ...state.formData[keys[0]],
@@ -57,6 +57,7 @@ export const formDataSlice = createSlice({
         state.formData[name] = value;
       }
     },
+    // --fuel_types에 새로운 연료타입 객체 생성 및 삭제 액션
     addFuelType: (state, action) => {
       const { name, fuelType } = action.payload;
       state.formData[name].push(fuelType);
@@ -65,7 +66,6 @@ export const formDataSlice = createSlice({
     removeFuelType: (state, action) => {
       const { name, fuelTypeId } = action.payload;
       state.formData[name] = state.formData[name].filter(ft => ft.id !== fuelTypeId);
-      state.formData.fuel_types.sort((a, b) => a.id - b.id); // 제거 후 오름차순 정렬
     },
   },
   extraReducers: builder => {
@@ -76,6 +76,7 @@ export const formDataSlice = createSlice({
       .addCase(submitFormData.fulfilled, state => {
         state.status = "succeeded"; // 전송완료
         state.formData = {
+          //--전송 후 state 초기화
           brand: "",
           name: "",
           english_name: "",
@@ -86,6 +87,7 @@ export const formDataSlice = createSlice({
           date: { year: 0, month: 0 },
           gas_mileage: { min: 0, max: 0 },
           fuel_types: [],
+          grades: [],
         };
         alert("전송성공!");
       })
