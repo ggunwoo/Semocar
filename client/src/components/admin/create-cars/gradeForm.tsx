@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../../../styles/components/form.scss";
-import TrimesForm from "./trimsFrom";
+import TrimForm from "./trimFrom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { updateField, addGrade, removeGrade } from "../../../store/slice/formDataSlice";
+import { updateField, addGrade, removeGrade } from "../../../store/slice/createCarSlice";
 
 // TODO : 하단에 grades 추가 버튼으로 grades 개수를 늘릴수 있게끔 구현
 // TODO : grades안에 마찬가지로 Trims를 추가할 수 있는 버튼 구현
@@ -10,7 +10,7 @@ import { updateField, addGrade, removeGrade } from "../../../store/slice/formDat
 
 export default function GradesForm() {
   const dispatch = useAppDispatch();
-  const grades = useAppSelector(state => state.baseForm.formData.grades);
+  const grades = useAppSelector(state => state.createCar.formData.grades);
 
   // --TODO--
   // grades index는 객체 id로 할당,
@@ -18,9 +18,8 @@ export default function GradesForm() {
   // 새로 추가된 grades는 다음 배열아이템이 되도록 설계
   // index는 배열에 자릿값으로 사용하기,
   // --------
-  const handleGrades = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    console.log(name, value);
     dispatch(updateField({ name: name, value }));
   };
 
@@ -53,7 +52,7 @@ export default function GradesForm() {
               type="text"
               name={`grades.${index}.name`}
               value={grades[index].name}
-              onChange={handleGrades}></input>
+              onChange={handleChange}></input>
           </label>
           <label>
             id:
@@ -62,9 +61,9 @@ export default function GradesForm() {
               type="number"
               name={`grades.${index}.id`}
               value={grades[index].id}
-              onChange={handleGrades}></input>
+              onChange={handleChange}></input>
           </label>
-          <TrimesForm gradeId={index} />
+          <TrimForm gradeIdx={index} />
         </section>
       ))}
       <button type="button" onClick={handleAddGrades}>
