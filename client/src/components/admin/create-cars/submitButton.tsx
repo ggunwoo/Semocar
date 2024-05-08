@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../store/hooks";
 
 export default function SubmitButton() {
-  const formData = useAppSelector(state => state.baseForm.formData);
+  const formData = useAppSelector(state => state.createCar.formData);
   const [submitEnable, setSubmitEnable] = useState(false);
 
   //--FormData 변화를 감지하고 값이 전부 할당되면 전송버튼 활성화
@@ -22,7 +22,10 @@ export default function SubmitButton() {
   };
 
   return (
-    <button type="submit" className="submit" disabled={!submitEnable}>
+    // <button type="submit" className="submit" disabled={!submitEnable}>
+    //   DB전송
+    // </button>
+    <button type="submit" className="submit">
       DB전송
     </button>
   );

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/slice/brands";
 import { segments, months } from "../../../../utils/constants"; // 상수 데이터 불러오기
-import { updateField, addFuelType, removeFuelType } from "../../../store/slice/formDataSlice";
+import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./submitButton";
 // ===============================================================
 //
@@ -25,8 +25,8 @@ export default function BaseCarForm() {
     { name: "수소", id: 6, checked: false },
   ]);
   const brandsSlice = useAppSelector(state => state.brands);
-  const formData = useAppSelector(state => state.baseForm.formData);
-  const getFuelTypes = useAppSelector(state => state.baseForm.formData.fuel_types);
+  const formData = useAppSelector(state => state.createCar.formData);
+  const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
 
   useEffect(() => {
     if (brandsSlice.status === "idle") {
