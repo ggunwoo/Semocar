@@ -1,11 +1,11 @@
 export interface TrimType {
-  id: number;
+  id: string;
   name: string;
   price: number;
   field?: string;
   engine?: string;
   fuel_type: string;
-  displacement?: string;
+  displacement?: number;
   trans_mission: {
     type: string,
     gear: string,
@@ -13,7 +13,7 @@ export interface TrimType {
   driving_system: string;
   power?: number;
   torque?: number;
-  gas_mileage?: string;
+  gas_mileage?: number;
   urban_gas_mileage?: number;
   highway_gas_mileage?: number;
   low_emission: string;
@@ -33,7 +33,7 @@ export interface TrimType {
   tread: number;
   motor_power?: number;
   motor_torque?: number;
-  battery_type?: number;
+  battery_type?: string;
   battery_volume?: number;
   battery_voltage?: number;
   ev_mileage?: number;
@@ -46,7 +46,7 @@ export interface TrimType {
 
 export interface GradeType {
   name: string;
-  id: number;
+  id: string;
   trims: trim[];
 }
 
@@ -55,13 +55,13 @@ export interface CarDataType {
   brand: string;
   name: string;
   english_name: string;
-  id: number;
+  model_initial: string | null;
+  id: string;
   segment: string;
   photo_count: { exterior: number; interior: number };
   price: { min: number; max: number };
   date: { year: number; month: number };
-  gas_mileage: { min: number; max: number };
-  fuel_types: { name: string; id: number }[];
+  fuel_types: { name: string; id: string }[];
   grades: grade[];
 }
 
