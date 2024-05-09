@@ -2,7 +2,7 @@ import "../../../styles/components/form.scss";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { submitFormData } from "../../../store/slice/createCarSlice";
-import BaseCarForm from "./bbBaseForm";
+import BaseCarForm from "./BaseForm";
 import Grades_Trims_Form from "./GradeForm";
 
 export default function CreateCarPage() {
