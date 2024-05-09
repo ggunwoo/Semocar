@@ -1,30 +1,37 @@
 import React, {useRef, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
-import { useCarData, useCarBrands } from '../hook/useCarData'
+import { useCarData } from '../../utils/useCarData'
 import { SwiperSlide } from 'swiper/react'
-// import { Rating, TextField, Tooltip} from '@mui/material'
-// import SendIcon from '@mui/icons-material/Send';
-// import GradeIcon from '@mui/icons-material/Grade';
-// import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-
-// SWIPER
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import type { Swiper } from 'swiper';
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 
 // STYLED
 import { MaxContainer } from '../styled/Global'
 import * as S from '../styled/Detail.styled'
 
+// SWIPER
+import { FreeMode, Navigation, Thumbs } from "swiper";
+import type { Swiper } from 'swiper';
+import 'swiper/swiper-bundle.css'
+// import "swiper/css";
+// import "swiper/css/free-mode";
+// import "swiper/scss/navigation";
+// import "swiper/scss/thumbs";
+import { useAppSelector, useAppDispatch } from '../store/hooks';
+import { fetchBrands } from '../store/slice/brands';
+
+
 
 export function Detail():JSX.Element {
+  const dispatch = useAppDispatch();
+
+  
   const carData = useCarData();
-  const carBrands = useCarBrands();
+  const carBrands = useAppSelector(state => state.brands.items);
   const {id} = useParams();
   const searchCar = carData.find((e) => e.id === Number(id))
+
+  useEffect(() => {
+    dispatch(fetchBrands()); // Redux => Brands fetch함수 실행
+  }, []);
 
   // VAR : 검색된 차량에 가격 원화표기법으로 변경
   const minPrice = (searchCar?.price.min)?.toLocaleString('ko-KR');
@@ -34,12 +41,15 @@ export function Detail():JSX.Element {
   // VAR : 선택된 모델의 트림
   const choosed = searchCar?.grades[selectGrade].trims[selectTrim];
   // VAR :파라미터로 불러온 차량에 브랜드URL
-  const OverlapBrand = carBrands.find( e => e.name.en === searchCar?.brand.en)
+  const OverlapBrand = carBrands.find( e => e.english_name === searchCar?.brand.en)
+
+  console.log(carBrands)
+  console.log(searchCar)
+
+  console.log(OverlapBrand)
 
   const [exThumbs, setExThumbs] = useState<Swiper|null>(null);
   const [inThumbs, setInThumbs] = useState<Swiper|null>(null);
-
-  // const [likeCheck, setLikeCheck] = useState(Array(commentList.length).fill(false))
 
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
@@ -123,7 +133,7 @@ export function Detail():JSX.Element {
           <div className='headWrapper'>
             <div className='infoBox'>
               <p className='brand'>
-                <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <img src={OverlapBrand?.logo_path} alt={searchCar?.brand.en} />
                 <span>{searchCar.brand.kr}</span>
               </p>
               <p className='name'>{searchCar.name.kr}</p>
@@ -143,7 +153,7 @@ export function Detail():JSX.Element {
             </div>
 
             <div className='image'>
-              <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
+              <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/cars/${searchCar.imgUrl}.png`} alt={searchCar?.name.en} />
             </div>
 
           </div>
@@ -175,7 +185,7 @@ export function Detail():JSX.Element {
           <div className='featureBox'>
             <div className='titleGroup'>
               <div className='brand'>
-                <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
+                <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/cars/${OverlapBrand?.imgUrl}.png`} alt={searchCar?.brand.en} />
                 <span className='brand'>{searchCar?.brand.kr}</span>
               </div>
               <p className='name'>{searchCar?.name.kr}</p>
@@ -193,7 +203,7 @@ export function Detail():JSX.Element {
             </div>
           </div>
           <div className='imgBax'>
-            <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${searchCar?.imgUrl}.png`} alt={searchCar?.name.en} />
+            <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/cars/${searchCar?.imgUrl}.png`} alt={searchCar?.name.en} />
           </div>
         </div>
       </S.FixedBox>
@@ -452,7 +462,7 @@ export function Detail():JSX.Element {
               {/* 차량 앞면 이미지 */}
               <div className='size_img front'>
                 <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/size_info/suv/img_suv_front.png" alt="SUVFrontImage" />
                 </span>
                 <span className='wrap_size track'>
                   <span className='txt'>
@@ -473,7 +483,7 @@ export function Detail():JSX.Element {
               {/* 차량 옆면 이미지 */}
               <div className='size_img side'>
                 <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/size_info/suv/img_suv_side.png" alt="SUVsideImage" />
                 </span>
                 <span className='wrap_size wheelbase'>
                   <span className='txt'>
@@ -493,7 +503,7 @@ export function Detail():JSX.Element {
               {/* 차량 뒷면 이미지 */}
               <div className='size_img rear'>
                 <span className='wrap_thumb'>
-                  <img className='sizeimg' src="https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
+                  <img className='sizeimg' src="https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/size_info/suv/img_suv_rear.png" alt="SUVrearImage" />
                 </span>
                 <span className='wrap_size tread'>
                   <span className='txt'>
@@ -544,7 +554,7 @@ export function Detail():JSX.Element {
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -559,7 +569,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {exteriorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${searchCar?.imgUrl}/exterior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
@@ -576,7 +586,7 @@ export function Detail():JSX.Element {
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
                   {/* <img src={`https://via.placeholder.com/1100x620?text=${searchCar?.name.en} ${index+1}`} alt="searchCar?.name.en" /> */}
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.MainSwiper>
@@ -591,7 +601,7 @@ export function Detail():JSX.Element {
               {/* ThumbsSwiper */}
               {interiorArr.map((slide, index)=>(
                 <SwiperSlide key={index}>
-                  <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
+                  <img src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${searchCar?.imgUrl}/interior/${index+1}.jpg`} alt={searchCar?.name.en} />
                 </SwiperSlide>
               ))}
             </S.ThumbsSwiper>
