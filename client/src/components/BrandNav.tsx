@@ -41,9 +41,8 @@ export function BrandNav() {
     <S.NavWrapper>
       <MaxContainer>
         <S.Nav>
-          {}
-          {brands.status === "succeeded" ? (
-            brands.items.map((brand, index) => (
+          {brands?.status === "succeeded" ? (
+            brands?.items.map((brand, index) => (
               <Button
                 className={`logoBtn ${toggle[index] ? "clicked" : "unclick"}`}
                 key={brand.id}
