@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const trimSchema = new mongoose.Schema({
   // ■■■■■전 차종 Trim 기본 필드■■■■■
   name: String, // 이름
-  id: Number, // 고유값 id할당 ▶ 오름차순 정렬을 위한
+  id: String, // 고유값 id할당 ▶ 오름차순 정렬을 위한
   field: String, // 트림 연료 유형 ▶ ICE(내연기관), HEV, PHEV(하이브리드), EV(전기)
   price: Number, // 가격
   fuel_type: String, // 연료 ▶ 가솔린, 디젤, 하이브리드, 전기, 수소
@@ -60,7 +60,7 @@ const trimSchema = new mongoose.Schema({
 const gradeSchema = new mongoose.Schema({
   // ■■■■■ Grades 필드■■■■■
   name: String, // Grades명 ▶ 프리미엄, 익스클루시브 등
-  id: Number, // Grades ID(고유값) ▶ 0 ~ 99
+  id: String, // Grades ID(고유값) ▶ 0 ~ 99
   trims: [trimSchema], // Trim스키마 참조
 }, { versionKey: false });
 
@@ -70,7 +70,7 @@ const baseCarSchema = new mongoose.Schema({
   brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brands" }, // ref: 브랜드 콜렉션 참조
   name: String, // 차량 모델명 ▶ 쏘나타, 콜로라도, GV90 등
   english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
-  id: Number, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
+  id: String, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
   segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
   photo_count: {
     exterior: Number, // 차량 외관 사진 개수 ▶ 0~99
@@ -86,7 +86,7 @@ const baseCarSchema = new mongoose.Schema({
   }, // 차량 출시일 ▶ "----.--" = 연도.월
   fuel_types: [{
     name: String,
-    id: Number
+    id: String
   }], // 모델 연료 정보 ▶ [가솔린, 디젤, LPG, 하이브리드], [전기(배터리)], [전기(수소)]
   grades: [gradeSchema], // Grade스키마 참조
 }, { versionKey: false });
