@@ -11,8 +11,8 @@ import { segReset, fuelReset, brandReset } from '../store/slice/carFilter';
 import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList  } from '../store/slice/carCheck-slice';
 
 // SWIPER CSS
-import 'swiper/css';
-import 'swiper/css/scrollbar';
+import "swiper/css"
+import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 

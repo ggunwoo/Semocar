@@ -1,0 +1,110 @@
+@import "color";
+
+$header-height: 60px;
+$admin-page-height: 76px;
+$nav-height: 24px;
+
+.form {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  height: calc(100vh - ($header-height + $admin-page-height + $nav-height));
+  overflow: hidden;
+}
+
+//BaseForm 스타일 정의
+.left-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 36px;
+  overflow-y: auto;
+  max-height: calc(100vh - ($header-height + $admin-page-height + $nav-height));
+  label {
+    color: $--color-deep-dark;
+    input,
+    select {
+      margin-left: 8px;
+    }
+    input {
+      width: 92px;
+    }
+    select {
+      width: 56px;
+    }
+    &.seg {
+      select {
+        width: 102px;
+      }
+    }
+    &.ft {
+      // FuelType label(CheckBox)
+      color: black;
+      input {
+        width: 16px;
+      }
+    }
+  }
+}
+
+.right-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 36px;
+  overflow-y: auto;
+  max-height: 100vh;
+  section {
+    display: flex;
+    flex-direction: column;
+    .head {
+      display: inherit;
+      gap: 36px;
+      button {
+        height: 100%;
+      }
+    }
+  }
+  article.trims {
+    .section-trim {
+      .head {
+        justify-self: start;
+        flex-direction: row;
+        align-items: center;
+        overflow: unset;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        padding: 3px 5px;
+        h4 {
+          text-align: center;
+        }
+        button {
+          // width: 100%;
+          height: 50%;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        transition: all .3s ease-in-out;
+        .category_field {
+          display: inherit;
+          flex-direction: column;
+        }
+      }
+      .field.hide {
+        max-height: 0;
+      }
+      .field.show {
+        max-height: 1000px;
+      }
+    }
+  }
+}
+
+.submit {
+  width: 100%;
+}

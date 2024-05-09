@@ -1,14 +1,12 @@
 import axios from "axios";
+import { serverUrl } from "./getCarData";
 
 const verifyPassword = async (pw: string) => {
-
-  const serverUrl = process.env.WEB_SERVER_URL // AWS 클라우드 서버 URL
-  // const serverUrl = process.env.LOCAL_SERVER_URL // 로컬 서버 URL
 
   try {
     console.log(serverUrl)
     const response = await axios.post(
-      `${serverUrl}/api/verify-password`, // 어드민 비밀번호 검증 요청
+      `${serverUrl}/api/verify-password`, // 어드민 비밀번호 검증 엔드포인트
       {
         password: pw,
       }

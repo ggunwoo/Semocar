@@ -10,10 +10,11 @@ import * as S from '../styled/Detail.styled'
 // SWIPER
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import type { Swiper } from 'swiper';
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+import 'swiper/swiper-bundle.css'
+// import "swiper/css";
+// import "swiper/css/free-mode";
+// import "swiper/scss/navigation";
+// import "swiper/scss/thumbs";
 import { useAppSelector, useAppDispatch } from '../store/hooks';
 import { fetchBrands } from '../store/slice/brands';
 

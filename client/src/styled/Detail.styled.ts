@@ -180,7 +180,7 @@ export const FixedBox = styled.div`&&&
           color: #626262;
           font-size: 2.125rem;
           font-weight: 600;
-          line-height: 2.5rem;
+          line-height: 1rem;
         }
       }
       /* 스크롤위치이동 탭(TargetNav) */

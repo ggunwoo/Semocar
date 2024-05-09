@@ -17,11 +17,12 @@ export function BrandNav() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchBrands()); // Redux => Brands fetch함수 실행
+    if(brands.status === 'idle'){
+      dispatch(fetchBrands()); // Redux => Brands fetch함수 실행
+    }
   }, []);
 
-  const brands = useAppSelector((state) => state.brands); // Brands 가져오기(items, status, error)
-  console.log(brands);
+  const brands = useAppSelector((state) => state.brands);
 
   const toggle = useAppSelector((state) => {
     return state.toggle;

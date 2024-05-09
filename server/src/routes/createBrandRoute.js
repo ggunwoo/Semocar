@@ -13,8 +13,8 @@ router.post("/brand", async (req, res) => {
       logo_path,
       id,
     });
-
     await newBrand.save();
+
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     res.write("<script>alert('전송완료')</script>");
     res.write('<script>window.location="/create"</script>');
