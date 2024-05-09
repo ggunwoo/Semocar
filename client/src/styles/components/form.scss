@@ -53,11 +53,54 @@ $nav-height: 24px;
   margin-left: 36px;
   overflow-y: auto;
   max-height: 100vh;
-  .head {
+  section {
     display: flex;
-    gap: 6px;
-    button {
-      height: 100%;
+    flex-direction: column;
+    .head {
+      display: inherit;
+      gap: 36px;
+      button {
+        height: 100%;
+      }
+    }
+  }
+  article.trims {
+    .section-trim {
+      .head {
+        justify-self: start;
+        flex-direction: row;
+        align-items: center;
+        overflow: unset;
+        height: 50px;
+        background-color: #eee;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        padding: 3px 5px;
+        h4 {
+          text-align: center;
+        }
+        button {
+          // width: 100%;
+          height: 50%;
+        }
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        transition: all .3s ease-in-out;
+        .category_field {
+          display: inherit;
+          flex-direction: column;
+        }
+      }
+      .field.hide {
+        max-height: 0;
+      }
+      .field.show {
+        max-height: 1000px;
+      }
     }
   }
 }
