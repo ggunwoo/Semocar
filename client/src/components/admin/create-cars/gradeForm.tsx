@@ -1,5 +1,5 @@
 import "../../../styles/components/form.scss";
-import TrimForm from "./trimFrom";
+import TrimForm from "./TrimFrom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateField, addGrade, removeGrade } from "../../../store/slice/createCarSlice";
 

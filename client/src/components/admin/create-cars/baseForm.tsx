@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/slice/brands";
 import { segments, months, BRAND_IDS, SEGMENT_IDS } from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
-import SubmitButton from "./submitButton";
+import SubmitButton from "./SubmitButton";
 // ===============================================================
 //
 // ===============================================================
