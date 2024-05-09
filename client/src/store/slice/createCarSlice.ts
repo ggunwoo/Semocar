@@ -19,7 +19,7 @@ const initialState: FormDataState = {
     segment: "",
     photo_count: { exterior: 0, interior: 0 },
     price: { min: 0, max: 0 },
-    date: { year: 0, month: 0 },
+    date: { year: 0, month: 1 },
     gas_mileage: { min: 0, max: 0 },
     fuel_types: [],
     grades: [
@@ -50,8 +50,8 @@ export const formDataSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    // ==formData 상태 변경 함수
     // TODO : grades, trims 같은 객체배열 처리함수
+    // ==formData 상태 변경 함수
     updateField: (state, action) => {
       const { name, value } = action.payload;
       console.log(name, value);
@@ -100,7 +100,7 @@ export const formDataSlice = createSlice({
           price: 0,
           fuel_type: "",
           engine: "",
-          displacement: "",
+          displacement: 0,
           trans_mission: {
             gear: "",
             type: "",
@@ -108,7 +108,7 @@ export const formDataSlice = createSlice({
           driving_system: "",
           power: 0,
           torque: 0,
-          gas_mileage: "",
+          gas_mileage: 0,
           urban_gas_mileage: 0,
           highway_gas_mileage: 0,
           low_emission: "",
@@ -126,7 +126,6 @@ export const formDataSlice = createSlice({
           wheel_base: 0,
           track: 0,
           tread: 0,
-          // HEV,
           motor_power: 0,
           motor_torque: 0,
           battery_type: 0,
