@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../../../styles/components/form.scss";
 import TrimForm from "./trimFrom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
@@ -18,9 +17,12 @@ export default function GradesForm() {
   // 새로 추가된 grades는 다음 배열아이템이 되도록 설계
   // index는 배열에 자릿값으로 사용하기,
   // --------
-  const handleChange = e => {
+  // --formData state 변경 처리 함수
+  const handleChange = (e, type) => {
     const { name, value } = e.target;
-    dispatch(updateField({ name: name, value }));
+    //  --type에 따른 value변환 후 값 전달
+    if (type === "string") dispatch(updateField({ name: name, value: String(value) }));
+    if (type === "number" && !isNaN(value)) dispatch(updateField({ name: name, value: Number(value) }));
   };
 
   const handleAddGrades = () => {
@@ -52,16 +54,13 @@ export default function GradesForm() {
               type="text"
               name={`grades.${index}.name`}
               value={grades[index].name}
-              onChange={handleChange}></input>
+              onChange={e => {
+                handleChange(e, "string");
+              }}></input>
           </label>
           <label>
             id:
-            <input
-              readOnly
-              type="number"
-              name={`grades.${index}.id`}
-              value={grades[index].id}
-              onChange={handleChange}></input>
+            <input readOnly type="number" name={`grades.${index}.id`} value={grades[index].id}></input>
           </label>
           <TrimForm gradeIdx={index} />
         </section>
