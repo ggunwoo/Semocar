@@ -15,16 +15,16 @@ const initialState: FormDataState = {
     brand: "",
     name: "",
     english_name: "",
-    id: 0,
+    model_initial: "",
+    id: "",
     segment: "",
     photo_count: { exterior: 0, interior: 0 },
     price: { min: 0, max: 0 },
     date: { year: 0, month: 1 },
-    gas_mileage: { min: 0, max: 0 },
     fuel_types: [],
     grades: [
       {
-        id: 1,
+        id: "1",
         name: "",
         trims: [],
       },
@@ -40,9 +40,11 @@ export const submitFormData = createAsyncThunk("form/submitFormData", async (_, 
     const state = getState() as RootState;
     const formData = state.createCar.formData;
     const response = await axios.post(`${serverUrl}/create/cars`, formData);
+    console.log(`${serverUrl}/create/cars`)
     return response.data;
   } catch (error) {
-    return rejectWithValue(error.response.data);
+    console.error("Error sending data:", error.response?.data || error.message);
+    return rejectWithValue(error.response?.data || "Unknown error");
   }
 });
 
@@ -92,7 +94,7 @@ export const formDataSlice = createSlice({
       const grade = state.formData.grades.find(grade => grade.id === action.payload);
       if (grade) {
         console.log("생성");
-        const newTrim = {
+        const newTrim: type.TrimType = {
           // 기본값 ICE 필드
           id: grade.trims.length + 1,
           name: "",
@@ -128,7 +130,7 @@ export const formDataSlice = createSlice({
           tread: 0,
           motor_power: 0,
           motor_torque: 0,
-          battery_type: 0,
+          battery_type: "",
           battery_volume: 0,
           battery_voltage: 0,
           ev_mileage: 0,
@@ -150,7 +152,7 @@ export const formDataSlice = createSlice({
     addFuelType: (state, action) => {
       const { name, fuelType } = action.payload;
       state.formData[name].push(fuelType);
-      state.formData.fuel_types.sort((a, b) => a.id - b.id); // --추가 후 오름차순 정렬
+      state.formData.fuel_types.sort((a, b) => parseInt(a.id) - parseInt(b.id)); // --추가 후 오름차순 정렬
     },
     removeFuelType: (state, action) => {
       const { name, fuelTypeId } = action.payload;
