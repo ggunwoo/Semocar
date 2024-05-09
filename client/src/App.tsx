@@ -5,13 +5,13 @@ import { CssBaseline } from "@mui/material";
 import { Main } from "./pages/Main";
 import { Detail } from "./pages/Detail";
 import { Brand } from "./pages/Brand";
-import AdminPage from "./pages/admin";
+import AdminPage from "./pages/Admin";
 
 // COMPONENT
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import CreateBrandPage from "./components/admin/CreateBrand";
-import CreateCarPage from "./components/admin/create-cars/createCar";
+import CreateCarPage from "./components/admin/create-cars/CreateCar";
 
 function App(): JSX.Element {
   const location = useLocation();
