@@ -67,6 +67,9 @@ module.exports = {
       "process.env.SERVER_URL": JSON.stringify(process.env.SERVER_URL),
     }),
   ],
+  stats: {
+    errorDetails: true,
+  },
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),
