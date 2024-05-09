@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useCarData } from '../hook/useCarData';
+import { useCarData } from '../../utils/useCarData';
 import * as type from '../types/types';
 import { Tabs, Tab } from '@mui/material';
 
@@ -236,7 +236,7 @@ export function CarView() {
                           <div className='img_wrap'>
                             <img
                               loading='lazy'
-                              src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${car.imgUrl}.png`}
+                              src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/cars/${car.imgUrl.toLowerCase()}.png`}
                               alt={car.name.en}
                             />
                           </div>
