@@ -84,10 +84,6 @@ const baseCarSchema = new mongoose.Schema({
     year: Number,
     month: Number,
   }, // 차량 출시일 ▶ "----.--" = 연도.월
-  gas_mileage: {
-    min: Number,
-    max: Number,
-  }, // 연비 ▶ "--.-~--.-" km/l(ICE, HEV) or kWh(EV)
   fuel_types: [{
     name: String,
     id: Number
