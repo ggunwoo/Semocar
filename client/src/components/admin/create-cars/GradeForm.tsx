@@ -38,7 +38,7 @@ export default function GradesForm() {
         <section key={index} className="grades">
           <article className="head">
             <h2>Grade {grades[index].id}</h2>
-            {grades[index].id !== 1 && (
+            {grades[index]===0 && (
               <button
                 type="button"
                 onClick={() => {
