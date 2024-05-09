@@ -56,6 +56,7 @@ export default function TrimeForm({ gradeIdx }) {
             </button>
           </article>
           <article className={`field ${isShowField[index] ? `show` : "hide"}`}>
+            {/* TODO : 연료 종류에서 체크된 연료만 유형에 나오게끔 설계 */}
             <label>유형 선택</label>
             <select
               name={`grades.${gradeIdx}.trims.${index}.field`}
@@ -87,7 +88,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.price`}
-                value={trim.price}
+                value={trim.price !== 0 ? trim.price : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -169,18 +170,18 @@ export default function TrimeForm({ gradeIdx }) {
                 }}
                 className="low_emission">
                 <option value={null}>=선택=</option>
-                <option value="I3">1등급</option> {/* 리터당 16.0 이상 */}
-                <option value="I4">2등급</option> {/* 리터당 15.9 ~ 13.8 */}
-                <option value="I5">3등급</option> {/* 리터당 13.7 ~ 11.6 */}
-                <option value="I6">4등급</option> {/* 리터당 11.5 ~ 9.4 */}
-                <option value="V6">5등급</option> {/* 리터당 9.3 이하 */}
+                <option value="1등급">1등급</option> {/* 리터당 16.0 이상 */}
+                <option value="2등급">2등급</option> {/* 리터당 15.9 ~ 13.8 */}
+                <option value="3등급">3등급</option> {/* 리터당 13.7 ~ 11.6 */}
+                <option value="4등급">4등급</option> {/* 리터당 11.5 ~ 9.4 */}
+                <option value="5등급">5등급</option> {/* 리터당 9.3 이하 */}
               </select>
               <span>등급</span>
             </label>
             <label>
               변속기:
               <select
-                name={`grades.${gradeIdx}.trims.${index}.trans_mission.gear`}
+                name={`grades.${gradeIdx}.trims.${index}.trans_mission`}
                 onChange={e => {
                   handleChange(e, "string");
                 }}
@@ -233,7 +234,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.vehicle_weight`}
-                value={trim.vehicle_weight}
+                value={trim.vehicle_weight !== 0 ? trim.vehicle_weight : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -313,7 +314,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.capacity`}
-                value={trim.capacity}
+                value={trim.capacity !== 0 ? trim.capacity : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -325,7 +326,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.length`}
-                value={trim.length}
+                value={trim.length !== 0 ? trim.length : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -337,7 +338,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.weight`}
-                value={trim.weight}
+                value={trim.weight !== 0 ? trim.weight : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -349,7 +350,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="number"
                 name={`grades.${gradeIdx}.trims.${index}.height`}
-                value={trim.height}
+                value={trim.height !== 0 ? trim.height : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
@@ -361,7 +362,7 @@ export default function TrimeForm({ gradeIdx }) {
               <input
                 type="tnumberext"
                 name={`grades.${gradeIdx}.trims.${index}.wheel_base`}
-                value={trim.wheel_base}
+                value={trim.wheel_base !== 0 ? trim.wheel_base : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}

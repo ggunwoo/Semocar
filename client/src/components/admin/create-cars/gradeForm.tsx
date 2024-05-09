@@ -60,7 +60,7 @@ export default function GradesForm() {
           </label>
           <label>
             id:
-            <input readOnly type="number" name={`grades.${index}.id`} value={grades[index].id}></input>
+            <input readOnly type="text" name={`grades.${index}.id`} value={grades[index].id}></input>
           </label>
           <TrimForm gradeIdx={index} />
         </section>
