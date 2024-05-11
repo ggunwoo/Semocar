@@ -56,6 +56,7 @@ export interface CarDataType {
   name: string;
   english_name: string;
   model_initial: string | null;
+  image_path: string;
   id: string;
   segment: string;
   photo_count: { exterior: number; interior: number };

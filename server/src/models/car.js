@@ -69,8 +69,9 @@ const baseCarSchema = new mongoose.Schema({
   // ■■■■■ 기본 제원 필드■■■■■
   brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brands" }, // ref: 브랜드 콜렉션 참조
   name: String, // 차량 모델명 ▶ 쏘나타, 콜로라도, GV90 등
-  model_initial: String || null,
   english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
+  model_initial: String || null,
+  image_path: String,
   id: String, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
   segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
   photo_count: {

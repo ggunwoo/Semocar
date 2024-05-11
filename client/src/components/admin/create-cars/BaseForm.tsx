@@ -152,6 +152,17 @@ export default function BaseCarForm() {
           }}
         />
       </label>
+      <label>
+        이미지 URL:
+        <input
+          type="text"
+          name="image_path"
+          value={formData.image_path}
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
+      </label>
       <label className="seg">
         차급:
         <select
