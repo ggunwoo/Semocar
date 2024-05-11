@@ -12,7 +12,7 @@ export default function TrimeForm({ gradeIdx }) {
   // TODO:: true일때만 field 보여주기
 
   useEffect(() => {
-    setIsShowfield(Array(trims.length).fill(false));
+    setIsShowfield(Array(trims.length).fill(true));
   }, [trims.length]);
 
   const toggleDropdown = index => {
@@ -619,6 +619,14 @@ export default function TrimeForm({ gradeIdx }) {
               </article>
             )}
           </article>
+          <button
+              type="button"
+              style={{ margin: "6px 0" }}
+              onClick={() => {
+                toggleDropdown(index);
+              }}>
+              {isShowField[index] ? "up" : "down"}
+            </button>
         </section>
       ))}
       {/* TODO : 트림 추가 버튼 */}
@@ -629,6 +637,7 @@ export default function TrimeForm({ gradeIdx }) {
         }}>
         Trim 추가
       </button>
+      
     </article>
   );
 }
