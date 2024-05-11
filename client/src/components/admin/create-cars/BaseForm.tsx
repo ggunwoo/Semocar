@@ -154,10 +154,10 @@ export default function BaseCarForm() {
       </label>
       <label>
         이미지 URL:
-        <input
-          type="text"
+        <textarea
           name="image_path"
           value={formData.image_path}
+          style={{width: "100%", height: "50px"}}
           onChange={e => {
             handleChange(e, "string");
           }}
