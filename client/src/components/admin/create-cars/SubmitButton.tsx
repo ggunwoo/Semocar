@@ -22,10 +22,7 @@ export default function SubmitButton() {
   };
 
   return (
-    // <button type="submit" className="submit" disabled={!submitEnable}>
-    //   DB전송
-    // </button>
-    <button type="submit" className="submit">
+    <button type="submit" className="submit" disabled={!submitEnable}>
       DB전송
     </button>
   );
