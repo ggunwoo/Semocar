@@ -190,27 +190,6 @@ export default function BaseCarForm() {
         />
       </label>
       <label>
-        가격:
-        <input
-          type="text"
-          name="price.min"
-          value={formData.price.min !== 0 ? formData.price.min : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="최소"
-        />
-        <input
-          type="text"
-          name="price.max"
-          value={formData.price.max !== 0 ? formData.price.max : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="최대"
-        />
-      </label>
-      <label>
         출시일:
         <input
           type="number"

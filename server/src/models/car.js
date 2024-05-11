@@ -77,10 +77,6 @@ const baseCarSchema = new mongoose.Schema({
     exterior: Number, // 차량 외관 사진 개수 ▶ 0~99
     interior: Number, // 차량 내장 사진 개수 ▶ 0~99
   },
-  price: {
-    min: Number, // 차량 낮은등급 가격 ▶ ----~원
-    max: Number, // 차량 높은등급 가격 ▶ ----~원
-  },
   date: {
     year: Number,
     month: Number,

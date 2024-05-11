@@ -59,7 +59,6 @@ export interface CarDataType {
   id: string;
   segment: string;
   photo_count: { exterior: number; interior: number };
-  price: { min: number; max: number };
   date: { year: number; month: number };
   fuel_types: { name: string; id: string }[];
   grades: grade[];
