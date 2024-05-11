@@ -102,17 +102,21 @@ export default function TrimeForm({ gradeIdx }) {
           </article>
           <article className={`field ${isShowField[index] ? `show` : "hide"}`}>
             {/* TODO : 연료 종류에서 체크된 연료만 유형에 나오게끔 설계 */}
-            <label>유형 선택</label>
-            <select
-              name={`grades.${gradeIdx}.trims.${index}.field`}
-              onChange={e => {
-                handleChange(e, "string");
-              }}>
-              <option value="ICE">ICE</option>
-              <option value="HEV">HEV</option>
-              <option value="HEV">PHEV</option>
-              <option value="EV">EV</option>
-            </select>
+            <label>
+              유형 선택
+              <select
+                name={`grades.${gradeIdx}.trims.${index}.field`}
+                value={grade.trims[index].field}
+                onChange={e => {
+                  handleChange(e, "string");
+                  changeFieldValueReset(e, gradeIdx, index);
+                }}>
+                <option value="ICE">ICE</option>
+                <option value="HEV">HEV</option>
+                <option value="PHEV">PHEV</option>
+                <option value="EV">EV</option>
+              </select>
+            </label>
             {/* 전 차량 필수 필드 */}
             <label>
               트림명:
