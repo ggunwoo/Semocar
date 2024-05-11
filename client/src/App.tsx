@@ -16,13 +16,14 @@ import CreateCarPage from "./components/admin/create-cars/CreateCar";
 function App(): JSX.Element {
   const location = useLocation();
 
+  const hideHeader = location.pathname.includes("/admin");
   const hideFooter = location.pathname.includes("/brand") || location.pathname.includes("/admin");
 
   return (
     <div style={{ fontFamily: "GmarketSans, sans-serif" }}>
       <CssBaseline />
       {/* HEADER */}
-      <Header />
+      {!hideHeader && <Header />}
       {/* ARTICLE */}
       <Routes>
         <Route path={"/"} element={<Main />} />
