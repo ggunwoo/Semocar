@@ -152,7 +152,7 @@ export default function BaseCarForm() {
           }}
         />
       </label>
-      <label>
+      {/* <label>``
         이미지 URL:
         <textarea
           name="image_path"
@@ -162,7 +162,7 @@ export default function BaseCarForm() {
             handleChange(e, "string");
           }}
         />
-      </label>
+      </label> */}
       <label className="seg">
         차급:
         <select
