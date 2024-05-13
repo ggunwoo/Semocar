@@ -46,8 +46,8 @@ async function main() {
     await mongoose.connect(dbURI);
     console.log("MongoDB connected, MongoDB 연결 성공"); // DB연결 성공
     // === 서버 실행 ===
-    const port = process.env.PORT || 8080;
-    app.listen(port, () =>
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () =>
       console.log(`
       ##############################################################
       ## 서버에 성공적으로 연결되었습니다. ${port} ##
