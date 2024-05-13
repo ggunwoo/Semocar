@@ -180,27 +180,6 @@ export default function BaseCarForm() {
         </select>
       </label>
       <label>
-        차량 사진 개수:
-        <input
-          type="text"
-          name="photo_count.exterior"
-          value={formData.photo_count.exterior !== 0 ? formData.photo_count.exterior : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="외관 사진 개수"
-        />
-        <input
-          type="text"
-          name="photo_count.interior"
-          value={formData.photo_count.interior !== 0 ? formData.photo_count.interior : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="내관 사진 개수"
-        />
-      </label>
-      <label>
         출시일:
         <input
           type="number"

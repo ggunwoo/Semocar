@@ -19,7 +19,6 @@ const initialState: FormDataState = {
     // image_path: "",
     id: "",
     segment: "",
-    photo_count: { exterior: 0, interior: 0 },
     date: { year: 0, month: 1 },
     fuel_types: [],
     grades: [
