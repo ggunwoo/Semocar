@@ -74,10 +74,6 @@ const baseCarSchema = new mongoose.Schema({
   // image_path: String,
   id: String, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
   segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
-  photo_count: {
-    exterior: Number, // 차량 외관 사진 개수 ▶ 0~99
-    interior: Number, // 차량 내장 사진 개수 ▶ 0~99
-  },
   date: {
     year: Number,
     month: Number,
