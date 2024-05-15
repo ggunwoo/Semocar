@@ -16,7 +16,7 @@ const initialState: FormDataState = {
     name: "",
     english_name: "",
     model_initial: "",
-    // image_path: "",
+    image_path: "",
     id: "",
     segment: "",
     date: { year: 0, month: 1 },
