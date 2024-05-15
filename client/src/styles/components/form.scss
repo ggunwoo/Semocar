@@ -94,6 +94,9 @@ $nav-height: 24px;
           display: inherit;
           flex-direction: column;
         }
+        .tire_width, .tire_flatness, .tire_inch {
+          width: 50px;
+        }
       }
       .field.hide {
         max-height: 0;

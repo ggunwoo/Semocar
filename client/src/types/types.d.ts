@@ -18,8 +18,16 @@ export interface TrimType {
   highway_gas_mileage?: number;
   low_emission: string;
   vehicle_weight: number;
-  front_tire: string;
-  rear_tire: string;
+  front_tire: {
+    width: string,
+    flatness: string,
+    inch: string,
+  };
+  rear_tire: {
+    width: string,
+    flatness: string,
+    inch: string,
+  }, 
   front_brake: string;
   rear_brake: string;
   front_suspension: string;

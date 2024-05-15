@@ -117,8 +117,16 @@ export const formDataSlice = createSlice({
               highway_gas_mileage: 0,
               low_emission: "",
               vehicle_weight: 0,
-              front_tire: "",
-              rear_tire: "",
+              front_tire: {
+                width: "",
+                flatness: "",
+                inch: ""
+              },
+              rear_tire: {
+                width: "",
+                flatness: "",
+                inch: ""
+              },
               front_brake: "",
               rear_brake: "",
               front_suspension: "",

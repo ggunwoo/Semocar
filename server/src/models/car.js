@@ -12,11 +12,15 @@ const trimSchema = new mongoose.Schema({
   driving_system: String, // 구동타입 ▶ FF, FR, RR, 4WD AWD 등
   vehicle_weight: Number, // 공차중량 ▶ ----kg
   front_tire: {
-    width: String,
-    flatness: String,
-    inch: String,
-  }, // 앞 타이어 규격 ▶ --- --R --
-  rear_tire: {}, // 뒷 타이어 규격 ▶ --- --R --
+    width: {type: String, required: true}, // 앞 타이어 폭 ▶ --- 
+    flatness: {type: String, required: true}, // 앞 타이어 편평비 ▶ --R
+    inch: {type: String, required: true}, // 앞 타이어 휠 사이즈 ▶ -- (inch)
+  },
+  rear_tire: {
+    width: {type: String, required: true}, // 뒷 타이어 폭 ▶ --- 
+    flatness: {type: String, required: true}, // 뒷 타이어 편평비 ▶ --R
+    inch: {type: String, required: true}, // 뒷 타이어 휠 사이즈 ▶ -- (inch)
+  },
   front_brake: String, // 전륜 브레이크
   rear_brake: String, // 후륜 브레이크
   front_suspension: String, // 전륜 서스펜션

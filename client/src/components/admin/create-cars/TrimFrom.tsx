@@ -127,7 +127,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="name"></input>
+                className="name" />
             </label>
             <label>
               id: <input readOnly type="text" value={trim.id} className="id" />
@@ -141,7 +141,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="price"></input>
+                className="price" />
               만원
             </label>
             {trim.field === "ICE" ? (
@@ -171,7 +171,7 @@ export default function TrimeForm({ gradeIdx }) {
                   onChange={e => {
                     handleChange(e, "string");
                   }}
-                  className="fuel_type"></input>
+                  className="fuel_type" />
               </label>
             ) : (
               trim.field === "EV" && (
@@ -287,31 +287,65 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="vehicle_weight"></input>
+                className="vehicle_weight" />
               <span>kg</span>
             </label>
             <label>
               앞 타이어 규격:
               <input
                 type="text"
-                name={`grades.${gradeIdx}.trims.${index}.front_tire`}
-                value={trim.front_tire}
+                name={`grades.${gradeIdx}.trims.${index}.front_tire.width`}
+                value={trim.front_tire.width}
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="front_tire"></input>
+                className="tire_width" />
+              <input
+                type="text"
+                name={`grades.${gradeIdx}.trims.${index}.front_tire.flatness`}
+                value={trim.front_tire.flatness}
+                onChange={e => {
+                  handleChange(e, "string");
+                }}
+                className="tire_flatness" />
+                <span>R</span>
+              <input
+                type="text"
+                name={`grades.${gradeIdx}.trims.${index}.front_tire.inch`}
+                value={trim.front_tire.inch}
+                onChange={e => {
+                  handleChange(e, "string");
+                }}
+                className="tire_inch" />
               <span>(000 00R 00)</span>
             </label>
             <label>
               뒷 타이어 규격:
               <input
                 type="text"
-                name={`grades.${gradeIdx}.trims.${index}.rear_tire`}
-                value={trim.rear_tire}
+                name={`grades.${gradeIdx}.trims.${index}.rear_tire.width`}
+                value={trim.rear_tire.width}
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="rear_tire"></input>
+                className="tire_width" />
+              <input
+                type="text"
+                name={`grades.${gradeIdx}.trims.${index}.rear_tire.flatness`}
+                value={trim.rear_tire.flatness}
+                onChange={e => {
+                  handleChange(e, "string");
+                }}
+                className="tire_flatness" />
+                <span>R</span>
+              <input
+                type="text"
+                name={`grades.${gradeIdx}.trims.${index}.rear_tire.inch`}
+                value={trim.rear_tire.inch}
+                onChange={e => {
+                  handleChange(e, "string");
+                }}
+                className="tire_inch" />
               <span>(000 00R 00)</span>
             </label>
             <label>
@@ -323,7 +357,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="front_brake"></input>
+                className="front_brake" />
             </label>
             <label>
               후륜 브레이크:
@@ -334,7 +368,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="rear_brake"></input>
+                className="rear_brake" />
             </label>
             <label>
               전륜 서스펜션:
@@ -345,7 +379,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="front_suspension"></input>
+                className="front_suspension" />
             </label>
             <label>
               후륜 서스펜션:
@@ -356,7 +390,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "string");
                 }}
-                className="rear_suspension"></input>
+                className="rear_suspension" />
             </label>
             <label>
               승차전원:
@@ -367,7 +401,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="capacity"></input>
+                className="capacity" />
               <span>인승</span>
             </label>
             <label>
@@ -379,7 +413,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="length"></input>
+                className="length" />
               <span>mm</span>
             </label>
             <label>
@@ -391,7 +425,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="width"></input>
+                className="width" />
               <span>mm</span>
             </label>
             <label>
@@ -403,7 +437,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="height"></input>
+                className="height" />
               <span>mm</span>
             </label>
             <label>
@@ -415,7 +449,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="wheel_base"></input>
+                className="wheel_base" />
               <span>mm</span>
             </label>
             <label>
@@ -427,7 +461,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="track"></input>
+                className="track" />
               <span>mm</span>
             </label>
             <label>
@@ -439,7 +473,7 @@ export default function TrimeForm({ gradeIdx }) {
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="tread"></input>
+                className="tread" />
               <span>mm</span>
             </label>
 
@@ -455,7 +489,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="power"></input>
+                    className="power" />
                   <span>마력</span>
                 </label>
                 <label>
@@ -467,7 +501,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="torque"></input>
+                    className="torque" />
                   <span>kg.m</span>
                 </label>
                 <label>
@@ -479,7 +513,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="displacement"></input>
+                    className="displacement" />
                   <span>cc</span>
                 </label>
                 <label>
@@ -491,7 +525,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="gas_mileage"></input>
+                    className="gas_mileage" />
                   <span>km/l</span>
                 </label>
                 <label>
@@ -503,7 +537,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="urban_gas_mileage"></input>
+                    className="urban_gas_mileage" />
                   <span>km/l</span>
                 </label>
                 <label>
@@ -515,7 +549,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="highway_gas_mileage"></input>
+                    className="highway_gas_mileage" />
                   <span>km/l</span>
                 </label>
               </article>
@@ -531,7 +565,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="motor_power"></input>
+                    className="motor_power" />
                   <span>kw</span>
                 </label>
                 <label>
@@ -543,7 +577,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="motor_torque"></input>
+                    className="motor_torque" />
                   <span>kg.m</span>
                 </label>
               </article>
@@ -559,7 +593,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="ev_mileage"></input>
+                    className="ev_mileage" />
                   <span>km/kWh</span>
                 </label>
                 <label>
@@ -571,7 +605,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="urban_ev_mileage"></input>
+                    className="urban_ev_mileage" />
                   <span>km/kWh</span>
                 </label>
                 <label>
@@ -583,7 +617,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="highway_ev_mileage"></input>
+                    className="highway_ev_mileage" />
                   <span>km/kWh</span>
                 </label>
                 <label>
@@ -610,7 +644,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="battery_volume"></input>
+                    className="battery_volume" />
                   <span>kWh</span>
                 </label>
               </article>
@@ -626,7 +660,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="battery_voltage"></input>
+                    className="battery_voltage" />
                   <span>V</span>
                 </label>
                 <label>
@@ -638,7 +672,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="range"></input>
+                    className="range" />
                   <span>km/kWh</span>
                 </label>
                 <label>
@@ -650,7 +684,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="urban_range"></input>
+                    className="urban_range" />
                   <span>km/kWh</span>
                 </label>
                 <label>
@@ -662,7 +696,7 @@ export default function TrimeForm({ gradeIdx }) {
                     onChange={e => {
                       handleChange(e, "number");
                     }}
-                    className="highway_range"></input>
+                    className="highway_range" />
                   <span>km/kWh</span>
                 </label>
               </article>
