@@ -6,28 +6,32 @@ const trimSchema = new mongoose.Schema({
   name: String, // 이름
   id: String, // 고유값 id할당 ▶ 오름차순 정렬을 위한
   field: String, // 트림 연료 유형 ▶ ICE(내연기관), HEV, PHEV(하이브리드), EV(전기)
-  price: Number, // 가격
+  price: Number, // ----가격 (만원)
   fuel_type: String, // 연료 ▶ 가솔린, 디젤, 하이브리드, 전기, 수소
   low_emission: String, // 에너지 소비 효율 ▶ -등급
-  trans_mission: {
-    gear: String, // 변속기단수 ▶ 1단~8단 (일단 8단까지만)
-    type: String, // 변속기종류 ▶ 수동, 토크컨버터, DCT, CVT, AMT, IVT 등
-  }, 
   driving_system: String, // 구동타입 ▶ FF, FR, RR, 4WD AWD 등
   vehicle_weight: Number, // 공차중량 ▶ ----kg
-  front_tire: String, // 앞 타이어 규격 ▶ --- --R --
-  rear_tire: String, // 뒷 타이어 규격 ▶ --- --R --
+  front_tire: {
+    width: String,
+    flatness: String,
+    inch: String,
+  }, // 앞 타이어 규격 ▶ --- --R --
+  rear_tire: {}, // 뒷 타이어 규격 ▶ --- --R --
   front_brake: String, // 전륜 브레이크
   rear_brake: String, // 후륜 브레이크
   front_suspension: String, // 전륜 서스펜션
   rear_suspension: String, // 후륜 서스펜션
   capacity: Number, // 승차정원 ▶ -인승
   length: Number, // 전장(길이) ▶ ----mm
-  weight: Number, // 전폭(넓이) ▶ ----mm
+  width: Number, // 전폭(넓이) ▶ ----mm
   height: Number, // 전고(높이) ▶ ----mm
   wheel_base: Number, // 축거(휠베이스) ▶ ----mm
   track: Number, // 윤거전 ▶ ----mm
   tread: Number, // 윤거후 ▶ ----mm
+  trans_mission: {
+    gear: {type: String, required: true}, // 변속기단수 ▶ 1단~8단 (일단 8단까지만)
+    type: {type: String, required: true}, // 변속기종류 ▶ 수동, 토크컨버터, DCT, CVT, AMT, IVT 등
+  },
   
   // ■■■■■내연기관(ICE), 하이브리드(HEV, PHEV) 추가 필드■■■■■
   engine: String, // 엔진 종류 ▶ 직렬, v6 등

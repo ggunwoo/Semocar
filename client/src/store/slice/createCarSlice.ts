@@ -38,7 +38,8 @@ export const submitFormData = createAsyncThunk("form/submitFormData", async (_, 
   try {
     const state = getState() as RootState;
     const formData = state.createCar.formData;
-    const response = await axios.post(`${serverUrl}/create/cars`, formData);
+    console.log("Sending formData:", formData); // 전송 전 formData 로그 출력
+    const response = await axios.post(`${serverUrl}/create/car`, formData);
     console.log(`${serverUrl}/create/cars`);
     return response.data;
   } catch (error) {
@@ -124,7 +125,7 @@ export const formDataSlice = createSlice({
               rear_suspension: "",
               capacity: 0,
               length: 0,
-              weight: 0,
+              width: 0,
               height: 0,
               wheel_base: 0,
               track: 0,

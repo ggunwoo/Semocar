@@ -26,7 +26,7 @@ export interface TrimType {
   rear_suspension: string;
   capacity: number;
   length: number;
-  weight: number;
+  width: number;
   height: number;
   wheel_base: number;
   track: number;

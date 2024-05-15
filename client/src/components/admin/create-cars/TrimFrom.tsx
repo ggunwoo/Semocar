@@ -142,7 +142,7 @@ export default function TrimeForm({ gradeIdx }) {
                   handleChange(e, "number");
                 }}
                 className="price"></input>
-              원
+              만원
             </label>
             {trim.field === "ICE" ? (
               <label>
@@ -218,7 +218,7 @@ export default function TrimeForm({ gradeIdx }) {
                   handleChange(e, "string");
                 }}
                 className="low_emission">
-                <option value={null}>=선택=</option>
+                <option value="">=선택=</option>
                 <option value="1등급">1등급</option> {/* 리터당 16.0 이상 */}
                 <option value="2등급">2등급</option> {/* 리터당 15.9 ~ 13.8 */}
                 <option value="3등급">3등급</option> {/* 리터당 13.7 ~ 11.6 */}
@@ -230,12 +230,12 @@ export default function TrimeForm({ gradeIdx }) {
             <label>
               변속기:
               <select
-                name={`grades.${gradeIdx}.trims.${index}.trans_mission`}
+                name={`grades.${gradeIdx}.trims.${index}.trans_mission.gear`}
                 onChange={e => {
                   handleChange(e, "string");
                 }}
                 className="trans_mission_gear">
-                <option value={null}>=선택=</option>
+                <option value="">=선택=</option>
                 <option value="8단">8단</option>
                 <option value="7단">7단</option>
                 <option value="6단">6단</option>
@@ -251,14 +251,14 @@ export default function TrimeForm({ gradeIdx }) {
                   handleChange(e, "string");
                 }}
                 className="trans_mission_type">
-                <option value={null}>=선택=</option>
-                <option value="토크컨버터">토크컨버터</option>
+                <option value="">=선택=</option>
+                {/* <option value="토크컨버터">토크컨버터</option> */}
+                <option value="자동">자동</option>
                 <option value="DCT">DCT</option>
                 <option value="CVT">CVT</option>
-                <option value="수동">자동</option>
-                <option value="수동">수동</option>
                 <option value="IVT">IVT</option>
                 <option value="AMT">AMT</option>
+                <option value="수동">수동</option>
               </select>
             </label>
             <label>
@@ -386,12 +386,12 @@ export default function TrimeForm({ gradeIdx }) {
               전폭(넓이):
               <input
                 type="number"
-                name={`grades.${gradeIdx}.trims.${index}.weight`}
-                value={trim.weight !== 0 ? trim.weight : ""}
+                name={`grades.${gradeIdx}.trims.${index}.width`}
+                value={trim.width !== 0 ? trim.width : ""}
                 onChange={e => {
                   handleChange(e, "number");
                 }}
-                className="weight"></input>
+                className="width"></input>
               <span>mm</span>
             </label>
             <label>

@@ -21,20 +21,20 @@ async function generateSequenceId(baseId) {
   return finalId;
 }
 
-router.post("/cars", async (req, res) => {
+router.post("/car", async (req, res) => {
   try {
     const { id: baseId, ...otherCarData } = req.body;
-    console.log("req.body : ", req.body);
 
     const finalId = await generateSequenceId(baseId);
 
     const newCar = new Car({ id: finalId, ...otherCarData });
-    console.log("newCar : ", newCar);
+    console.log("Constructed newCar object:", newCar.grades[0]);
     await newCar.save();
 
     res.status(201).send("전송완료");
+    res.status(201).json({ message: "전송완료", car: newCar });
   } catch (error) {
-    res.status(400).send("전송실패: " + error.message);
+    res.status(400).json({ message: "전송실패", error: error.message });
     // TODO : DB에 같은 ID값이 존재할 시 state(400) 요청 및 같은 ID값이 존재하다는 메세지 반환
   }
 });
