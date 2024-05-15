@@ -152,7 +152,7 @@ export default function BaseCarForm() {
           }}
         />
       </label>
-      <label>``
+      <label>
         이미지 URL:
         <textarea
           name="image_path"
