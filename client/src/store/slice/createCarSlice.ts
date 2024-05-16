@@ -13,9 +13,11 @@ interface FormDataState {
 const initialState: FormDataState = {
   formData: {
     brand: "",
+    model: "",
     name: "",
     english_name: "",
     model_initial: "",
+    is_facelift: false,
     image_path: "",
     id: "",
     segment: "",
@@ -80,7 +82,7 @@ export const formDataSlice = createSlice({
     // ==grade배열에 객체 추가 함수
     addGrade: state => {
       const newGrade = {
-        id: state.formData.grades.length + 1, // --id값을 현재 길이 + 1로 설정
+        id: String(state.formData.grades.length + 1), // --id값을 현재 길이 + 1로 설정
         name: "",
         trims: [],
       };

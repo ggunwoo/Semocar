@@ -61,9 +61,11 @@ export interface GradeType {
 // ■■ 자동차 제원 데이터 서버 전송 타입 ■■
 export interface CarDataType {
   brand: string;
+  model: string;
   name: string;
   english_name: string;
   model_initial: string | null;
+  is_facelift: boolean,
   image_path: string;
   id: string;
   segment: string;
