@@ -1,6 +1,6 @@
 @import "color";
 
-$header-height: 60px;
+$header-height: 0px;
 $admin-page-height: 76px;
 $nav-height: 24px;
 
@@ -96,6 +96,13 @@ $nav-height: 24px;
         }
         .tire_width, .tire_flatness, .tire_inch {
           width: 50px;
+        }
+        .middle_title {
+          width: 100%;
+          padding: 4px 0 4px 6px;
+          background-color: #eee;
+          font-weight: bold;
+          font-size: 12px;
         }
       }
       .field.hide {
