@@ -22,7 +22,16 @@ export default function SubmitButton() {
   };
 
   return (
-    <button type="submit" className="submit" disabled={!submitEnable}>
+    <button
+      type="submit"
+      onClick={e => {
+        if (e.detail === 0) {
+          // enter키로 인한 summit 방지
+          e.preventDefault();
+        }
+      }}
+      className="submit"
+      disabled={!submitEnable}>
       DB전송
     </button>
   );
