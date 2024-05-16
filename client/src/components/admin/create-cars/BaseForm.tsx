@@ -21,6 +21,7 @@ export default function BaseCarForm() {
     { name: "하이브리드", id: "4", checked: false },
     { name: "전기", id: "5", checked: false },
     { name: "수소", id: "6", checked: false },
+    { name: "바이퓨얼", id: "7", checked: false },
   ]);
   const brandsSlice = useAppSelector(state => state.brands);
   const formData = useAppSelector(state => state.createCar.formData);
@@ -38,8 +39,9 @@ export default function BaseCarForm() {
 
   // --formData state 변경 처리 함수
   const handleChange = (e, type) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     //  --type에 따른 value변환 후 값 전달
+    if (type === "boolean") dispatch(updateField({ name : name, value: checked }))
     if (type === "string") dispatch(updateField({ name: name, value: String(value) }));
     if (type === "number" && !isNaN(value)) dispatch(updateField({ name: name, value: Number(value) }));
   };
@@ -120,6 +122,17 @@ export default function BaseCarForm() {
         </select>
       </label>
       <label>
+        모델명:
+        <input
+          type="text"
+          name="model"
+          value={formData.model}
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
+      </label>
+      <label>
         한글이름:
         <input
           type="text"
@@ -151,6 +164,10 @@ export default function BaseCarForm() {
             handleChange(e, "string");
           }}
         />
+      </label>
+      <label>
+        페이스리프트
+        <input type="checkbox" name="is_facelift" checked={formData.is_facelift} onChange={(e)=>{handleChange(e, "boolean")}} />
       </label>
       <label>
         이미지 URL:
