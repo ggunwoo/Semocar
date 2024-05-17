@@ -5,10 +5,25 @@ import { RootState } from "../store";
 import * as type from "../../types/types";
 
 interface FormDataState {
-  formData: type.CarDataType;
+  formData: type.CarType;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
+
+// --차량 데이터 전송 함수
+export const submitFormData = createAsyncThunk("form/submitFormData", async (_, { getState, rejectWithValue }) => {
+  try {
+    const state = getState() as RootState;
+    const formData = state.createCar.formData;
+    console.log("Sending formData:", formData); // 전송 전 formData 로그 출력
+    const response = await axios.post(`${serverUrl}/create/car`, formData);
+    console.log(`${serverUrl}/create/cars`);
+    return response.data;
+  } catch (error) {
+    console.error("Error sending data:", error.response?.data || error.message);
+    return rejectWithValue(error.response?.data || "Unknown error");
+  }
+});
 
 const initialState: FormDataState = {
   formData: {
@@ -34,21 +49,6 @@ const initialState: FormDataState = {
   status: "idle",
   error: null,
 };
-
-// --차량 데이터 전송 함수
-export const submitFormData = createAsyncThunk("form/submitFormData", async (_, { getState, rejectWithValue }) => {
-  try {
-    const state = getState() as RootState;
-    const formData = state.createCar.formData;
-    console.log("Sending formData:", formData); // 전송 전 formData 로그 출력
-    const response = await axios.post(`${serverUrl}/create/car`, formData);
-    console.log(`${serverUrl}/create/cars`);
-    return response.data;
-  } catch (error) {
-    console.error("Error sending data:", error.response?.data || error.message);
-    return rejectWithValue(error.response?.data || "Unknown error");
-  }
-});
 
 export const formDataSlice = createSlice({
   name: "form",
@@ -122,12 +122,12 @@ export const formDataSlice = createSlice({
               front_tire: {
                 width: "",
                 flatness: "",
-                inch: ""
+                inch: "",
               },
               rear_tire: {
                 width: "",
                 flatness: "",
-                inch: ""
+                inch: "",
               },
               front_brake: "",
               rear_brake: "",
