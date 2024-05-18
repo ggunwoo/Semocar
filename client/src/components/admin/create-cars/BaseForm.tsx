@@ -1,7 +1,7 @@
 import "../../../styles/components/form.scss";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { fetchBrands } from "../../../store/slice/brands";
+import { fetchBrands } from "../../../store/slice/useBrandsSlice";
 import { segments, months, BRAND_IDS, SEGMENT_IDS } from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./SubmitButton";
@@ -23,7 +23,7 @@ export default function BaseCarForm() {
     { name: "수소", id: "6", checked: false },
     { name: "바이퓨얼", id: "7", checked: false },
   ]);
-  const brandsSlice = useAppSelector(state => state.brands);
+  const useBrands = useAppSelector(state => state.brands);
   const formData = useAppSelector(state => state.createCar.formData);
   const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
   const [brand, setBrand] = useState("");
@@ -32,7 +32,7 @@ export default function BaseCarForm() {
   const [generateId, setGenerateId] = useState("");
 
   useEffect(() => {
-    if (brandsSlice.status === "idle") {
+    if (useBrands.status === "idle") {
       dispatch(fetchBrands()); // --Redux => Brands fetch함수 실행
     }
   }, []);
@@ -48,7 +48,7 @@ export default function BaseCarForm() {
 
   // TODO : 상수데이터 brand, segment 그리고 출시년도 뒷 두자리를 이용해 ID값 자동생성
   const getBrandName = brandId => {
-    const getBrand = brandsSlice.items.find(item => item._id === brandId);
+    const getBrand = useBrands.items.find(item => item._id === brandId);
     setBrand(getBrand.name);
   };
   const generateBaseId = () => {
@@ -114,7 +114,7 @@ export default function BaseCarForm() {
             getBrandName(e.target.value);
           }}>
           <option value={null}>=선택=</option>
-          {brandsSlice.items.map(brand => (
+          {useBrands.items.map(brand => (
             <option key={brand._id} value={brand._id}>
               {brand.name}
             </option>
