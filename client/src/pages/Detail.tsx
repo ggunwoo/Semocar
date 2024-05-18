@@ -16,7 +16,7 @@ import 'swiper/swiper-bundle.css'
 // import "swiper/scss/navigation";
 // import "swiper/scss/thumbs";
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { fetchBrands } from '../store/slice/brands';
+import { fetchBrands } from '../store/slice/useBrandsSlice';
 
 
 
