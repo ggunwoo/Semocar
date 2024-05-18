@@ -1,3 +1,11 @@
+export interface BrandType {
+    _id: string;
+    name: string;
+    english_name: string;
+    logo_path: string;
+    id: string;
+}
+
 export interface TrimType {
   id: string;
   name: string;
@@ -60,7 +68,7 @@ export interface GradeType {
 
 // ■■ 자동차 제원 데이터 서버 전송 타입 ■■
 export interface CarType {
-  brand: string;
+  brand: BrandType | string;
   model: string;
   name: string;
   english_name: string;
