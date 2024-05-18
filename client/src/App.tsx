@@ -12,6 +12,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import CreateBrandPage from "./components/admin/CreateBrand";
 import CreateCarPage from "./components/admin/create-cars/CreateCar";
+import CarListPage from "./components/admin/CarList";
 
 function App(): JSX.Element {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App(): JSX.Element {
         <Route path="/admin" element={<AdminPage />}>
           <Route path="create-brand" element={<CreateBrandPage />} />
           <Route path="create-car" element={<CreateCarPage />} />
+          <Route path="get-car" element={<CarListPage />} />
         </Route>
         {/* ============================ */}
       </Routes>
