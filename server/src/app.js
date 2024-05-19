@@ -10,8 +10,10 @@ import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoute.js";
 import createBrandsRouter from "./routes/createBrandRoute.js";
 import createCarRouter from "./routes/createCarRoute.js";
-import getBrandsRouter from "./routes/getBrandsRoute.js";
-import getCarsRouter from "./routes/getCarsRoute.js";
+import getBrandListRouter from "./routes/getBrandListRoute.js";
+import getBrandRouter from "./routes/getBrandRoute.js"
+import getCarListRouter from "./routes/getCarListRoute.js";
+import getCarRouter from "./routes/getCarRoute.js";
 
 const app = express();
 app.use(cors()); // cors 전체 url 허용
@@ -32,8 +34,10 @@ app.get("/create", (req, res) => {
 app.use("/api", adminRouter); // Admin password 검증 라우트
 app.use("/create", createBrandsRouter); // 브랜드 생성 라우트
 app.use("/create", createCarRouter);
-app.use("/", getBrandsRouter); // 브랜드 데이터 가져오기 라우트
-app.use("/", getCarsRouter); // 자동차 데이터 가져오기 라우트
+app.use("/", getBrandListRouter); // 브랜드 리스트 데이터 가져오기 라우트
+app.use("/", getCarListRouter); // 자동차 리스트 가져오기 라우트
+app.use("/", getBrandRouter); // 특정 브랜드 데이터 가져오기 라우트
+app.use("/", getCarRouter); // 특정 자동차 데이터 가져오기 라우트
 
 
 // ==================================================
