@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Brand from "./brand.js";
 
 // 트림(Trims) 스키마
 const trimSchema = new mongoose.Schema({
@@ -75,7 +76,7 @@ const gradeSchema = new mongoose.Schema({
 // 기본 제원 스키마
 const baseCarSchema = new mongoose.Schema({
   // ■■■■■ 기본 제원 필드■■■■■
-  brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brands" }, // ref: 브랜드 콜렉션 참조
+  brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brand" }, // ref: 브랜드 콜렉션 참조
   model: String, // 차량 모델명 (항상 소문자) avante(Avante, The new Avante)
   name: String, // 차량명 ▶ 쏘나타 디 엣지, 콜로라도, GV90 등
   english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
