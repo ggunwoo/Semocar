@@ -7,7 +7,7 @@ export const fetchBrands = createAsyncThunk("brands/fetchBrands", async () => {
   return response.data;
 });
 
-export const brandsSlice = createSlice({
+export const brandListSlice = createSlice({
   name: "brand",
   initialState: {
     items: [],
