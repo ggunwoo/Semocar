@@ -99,7 +99,6 @@ export const formDataSlice = createSlice({
         const newTrim: type.TrimType = lastTrim
           ? { ...lastTrim, id: grade.trims.length + 1 }
           : {
-              // 기본값 ICE 필드
               id: grade.trims.length + 1,
               name: "",
               field: "ICE",
