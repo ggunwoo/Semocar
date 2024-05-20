@@ -7,7 +7,6 @@ import CarEditForm from "./CarEditForm";
 export default function CarListPage() {
   const dispatch = useAppDispatch();
   const cars = useAppSelector(state => state.carList.items);
-  // const editingCarId = useAppSelector(state => state.carList.editingCarId);
   const status = useAppSelector(state => state.carList.status);
   const error = useAppSelector(state => state.carList.error);
 
@@ -33,11 +32,11 @@ export default function CarListPage() {
     setEditingCarIds(prev => ({ ...prev, [carId]: false }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     // TODO : CarEditForm에 있는 수정된 carData가 차량 데이터 수정
     // 엔드포인트 : "/cars/:id", HTTP 요청 : put
-  }
+  };
 
   return (
     <section>
@@ -45,23 +44,27 @@ export default function CarListPage() {
       <ul>
         {cars.map((car, i) => (
           <li key={car.id}>
-            <form>
-              <article className="top_article">
-                <span>{car.name}</span>
-                {!editingCarIds[car.id] ? (
-                  <button onClick={() => handleEditClick(car.id)}>보기</button>
-                ) : (
-                  <>
-                    {/* <button>저장</button> */}
-                    <button type="button" onClick={() => onCancelEdit(car.id)}>
-                      닫기
-                    </button>
-                  </>
-                )}
-                {/* <button>down</button> */}
-              </article>
-              {editingCarIds[car.id] ? <CarEditForm carId={car.id} /> : <div></div>}
-            </form>
+            {/* <form> */}
+            <article className="top_article">
+              <span>{car.name}</span>
+              {!editingCarIds[car.id] ? (
+                <button onClick={() => handleEditClick(car.id)}>보기</button>
+              ) : (
+                <>
+                  {/* <button>저장</button> */}
+                  <button type="button" onClick={() => onCancelEdit(car.id)}>
+                    닫기
+                  </button>
+                </>
+              )}
+              {/* <button>down</button> */}
+            </article>
+            {editingCarIds[car.id] ? (
+              <CarEditForm carId={car.id} />
+            ) : (
+              <div></div>
+            )}
+            {/* </form> */}
           </li>
         ))}
       </ul>

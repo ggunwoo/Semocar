@@ -1,7 +1,7 @@
 import "../../../styles/components/form.scss";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { fetchBrands } from "../../../store/slice/useBrandsSlice";
+import { fetchBrands } from "../../../store/slice/useBrandListSlice";
 import { segments, months, BRAND_IDS, SEGMENT_IDS } from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./SubmitButton";
@@ -23,7 +23,7 @@ export default function BaseCarForm() {
     { name: "수소", id: "6", checked: false },
     { name: "바이퓨얼", id: "7", checked: false },
   ]);
-  const useBrands = useAppSelector(state => state.brands);
+  const useBrands = useAppSelector(state => state.brandList);
   const formData = useAppSelector(state => state.createCar.formData);
   const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
   const [brand, setBrand] = useState("");
@@ -41,7 +41,7 @@ export default function BaseCarForm() {
   const handleChange = (e, type) => {
     const { name, value, checked } = e.target;
     //  --type에 따른 value변환 후 값 전달
-    if (type === "boolean") dispatch(updateField({ name : name, value: checked }))
+    if (type === "boolean") dispatch(updateField({ name: name, value: checked }));
     if (type === "string") dispatch(updateField({ name: name, value: String(value) }));
     if (type === "number" && !isNaN(value)) dispatch(updateField({ name: name, value: Number(value) }));
   };
@@ -82,8 +82,6 @@ export default function BaseCarForm() {
       dispatch(removeFuelType({ name: name, fuelTypeId: fuelType.id }));
     }
   };
-  console.log(generateId);
-  console.log(formData);
 
   return (
     <article className="left-form-container">
@@ -167,14 +165,21 @@ export default function BaseCarForm() {
       </label>
       <label>
         페이스리프트
-        <input type="checkbox" name="is_facelift" checked={formData.is_facelift} onChange={(e)=>{handleChange(e, "boolean")}} />
+        <input
+          type="checkbox"
+          name="is_facelift"
+          checked={formData.is_facelift}
+          onChange={e => {
+            handleChange(e, "boolean");
+          }}
+        />
       </label>
       <label>
         이미지 URL:
         <textarea
           name="image_path"
           value={formData.image_path}
-          style={{width: "100%", height: "50px"}}
+          style={{ width: "100%", height: "50px" }}
           onChange={e => {
             handleChange(e, "string");
           }}

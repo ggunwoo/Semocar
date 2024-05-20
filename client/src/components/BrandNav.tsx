@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { brandIn, brandReset } from "../store/slice/carFilter";
-import { toggleHandler, toggleReset } from "../store/slice/useBrandsSlice";
+import { toggleHandler, toggleReset } from "../store/slice/useBrandListSlice";
 
 // STYLED
 import { Button } from "@mui/material";
@@ -10,15 +10,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MaxContainer } from "../styled/Global";
 import * as S from "../styled/components/BrandNav.styled";
 
-import { fetchBrands } from "../store/slice/useBrandsSlice";
+import { fetchBrands } from "../store/slice/useBrandListSlice";
 
 export function BrandNav() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const brands = useAppSelector(state => state.brands.items);
-  const status = useAppSelector(state => state.brands.status); // idle, loading, secceeded, faild
-  const error = useAppSelector(state => state.brands.error);
+  const brands = useAppSelector(state => state.brandList.items);
+  const status = useAppSelector(state => state.brandList.status); // idle, loading, secceeded, faild
+  const error = useAppSelector(state => state.brandList.error);
 
   useEffect(() => {
     if (status === "idle") {

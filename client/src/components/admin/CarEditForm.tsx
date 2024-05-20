@@ -30,7 +30,7 @@ export default function CarEditForm({ carId }) {
   console.log(carData);
 
   return (
-    <article className={`detail_article`}>
+    <article className={`detail-article`}>
       <dl>
         <dt>id :</dt>
         <dd>{carData.id}</dd>
