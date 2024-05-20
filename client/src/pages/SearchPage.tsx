@@ -17,7 +17,7 @@ import { MaxContainer } from '../styled/Global';
 import * as S from '../styled/Brand.styled'
 
 // Search View Styled
-export function Brand ():JSX.Element {
+export default function SearchPage () {
   const dispatch = useAppDispatch();
 
   const segmentList = segments

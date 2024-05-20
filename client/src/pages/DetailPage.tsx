@@ -16,16 +16,16 @@ import 'swiper/swiper-bundle.css'
 // import "swiper/scss/navigation";
 // import "swiper/scss/thumbs";
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { fetchBrands } from '../store/slice/useBrandsSlice';
+import { fetchBrands } from '../store/slice/useBrandListSlice';
 
 
 
-export function Detail():JSX.Element {
+export default function DetailPage(){
   const dispatch = useAppDispatch();
 
   
   const carData = useCarData();
-  const carBrands = useAppSelector(state => state.brands.items);
+  const carBrand = useAppSelector(state => state.brandList.items);
   const {id} = useParams();
   const searchCar = carData.find((e) => e.id === Number(id))
 
@@ -41,9 +41,9 @@ export function Detail():JSX.Element {
   // VAR : 선택된 모델의 트림
   const choosed = searchCar?.grades[selectGrade].trims[selectTrim];
   // VAR :파라미터로 불러온 차량에 브랜드URL
-  const OverlapBrand = carBrands.find( e => e.english_name === searchCar?.brand.en)
+  const OverlapBrand = carBrand.find( e => e.english_name === searchCar?.brand.en)
 
-  console.log(carBrands)
+  console.log(carBrand)
   console.log(searchCar)
 
   console.log(OverlapBrand)
@@ -54,10 +54,10 @@ export function Detail():JSX.Element {
   const infoRef = useRef<HTMLInputElement>(null)
   const photoRef = useRef<HTMLInputElement>(null)
   const commentRef = useRef<HTMLInputElement>(null)
+
   const [tabFixed, setTabFixed] = useState(false)
   const [ClickCheck, setClickCheck] = useState([true, false, false]);
   const [targetClick, setTargetClick] = useState([infoRef, photoRef, commentRef])
-
   
   // 해당 차량 사진 개수 배열로 변환한 변수
   const [viewPhoto, setViewPhoto] = useState([true, false])
@@ -610,100 +610,6 @@ export function Detail():JSX.Element {
 
         {/* 댓글 스크롤이동 위치, height = section간격 */}
         <S.MoveRef height='200px' mt='150px' ref={commentRef}></S.MoveRef>
-
-        {/* COMMENT */}
-        {/* <S.CommentWrap>
-          <div  className='top_section'>
-            <div className='left'>
-              <div style={{width:"100%", display:"flex", alignItems:"center"}}>
-                <GradeIcon className='star'/>
-                <p className='int'>3.0</p>
-              </div>
-              <p className='commentCount'>23개의리뷰</p>
-            </div>
-            <div className='right'>
-              <div className='box'>
-                <span>5</span>
-                <div className='line'></div>
-              </div>
-              <div className='box'>
-                <span>4</span>
-                <div className='line'></div>
-              </div>
-              <div className='box'>
-                <span>3</span>
-                <div className='line'></div>
-              </div>
-              <div className='box'>
-                <span>2</span>
-                <div className='line'></div>
-              </div>
-              <div className='box'>
-                <span>1</span>
-                <div className='line'></div>
-              </div>
-            </div>
-          </div> */}
-          
-          {/* /post */}
-          {/* <S.PostForm action='#' method='#'> */}
-            {/* 별점 */}
-            {/* <Rating className='rating' defaultValue={5} precision={0.5} /> */}
-            {/* 댓글작성칸 */}
-            {/* <TextField  fullWidth label="To be implemented." id="fullWidth"></TextField> */}
-            {/* 보내기버튼 */}
-
-            {/* <Tooltip title='미구현'> */}
-              {/* <div className='send'><SendIcon className='sendIcon' /></div> */}
-            {/* </Tooltip> */}
-          {/* </S.PostForm> */}
-          
-          {/* /sort */}
-          {/* <div className='sort' style={{margin:"24px 0 24px 24px"}}>
-            <span style={{marginRight:"16px"}}>최신순</span>
-            <span>좋아요순</span>
-          </div> */}
-
-          {/* /list */}
-          {/* <S.CommentList>
-            {commentList.map((item, index)=>(
-              <div className='list' key={index}>
-                <Rating className='rating' defaultValue={item.rating} readOnly />
-                <span className='ratingNum'>{item.rating}</span>
-
-                <div className='textBox'>
-                  <div className='typo'>{item.text}</div>
-                  <div className='userInfo'>
-                    <span className='userName'>사용자</span>
-                    <span className='date'>  /  23.12.31</span>
-                  </div>
-                </div>
-                <div className='like'>
-                  <ThumbUpOffAltIcon
-                    className={`offIcon ${ likeCheck[index] ? 'clicked' : undefined }`}
-                    onClick={()=>{
-                      if(likeCheck[index]===true){
-                        commentList[index].likeCount--
-                      } else if(likeCheck[index]===false){
-                        commentList[index].likeCount++
-                      }
-                      
-                      const copylike = [...likeCheck]
-                      copylike[index] = !copylike[index]
-                      setLikeCheck(copylike);
-                      
-                    }}
-                  />
-                  <p className='likeCtn'>{item.likeCount}</p>
-                </div>
-              </div>
-            ))}
-          </S.CommentList> */}
-          {/* 더보기 버튼 */}
-          {/* <S.MoreBtn>
-            <p>더보기</p>
-          </S.MoreBtn> */}
-        {/* </S.CommentWrap> */}
       </MaxContainer>
     </div>
   )
