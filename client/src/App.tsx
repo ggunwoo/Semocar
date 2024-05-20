@@ -2,10 +2,10 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 
 // PAGES
-import { Main } from "./pages/Main";
-import { Detail } from "./pages/Detail";
-import { Brand } from "./pages/Brand";
-import AdminPage from "./pages/Admin";
+import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
+import SearchPage from "./pages/SearchPage";
+import AdminPage from "./pages/AdminPage";
 
 // COMPONENT
 import { Header } from "./components/Header";
@@ -27,9 +27,9 @@ function App(): JSX.Element {
       {!hideHeader && <Header />}
       {/* ARTICLE */}
       <Routes>
-        <Route path={"/"} element={<Main />} />
-        <Route path="/brand" element={<Brand />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        {/* <Route path={"/"} element={<MainPage />} /> */}
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
         {/* ======= 어드민 페이지 ======= */}
         <Route path="/admin" element={<AdminPage />}>
           <Route path="create-brand" element={<CreateBrandPage />} />
