@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { selectedSeg, selectedFuel, selectedBrand } from "./slice/carFilter";
-import { brandsSlice, toggleSlice } from "./slice/useBrandsSlice";
+import { brandListSlice, toggleSlice } from "./slice/useBrandListSlice";
 import { carsListSlice, getCarSlice } from "./slice/useCarSlice";
 import { segAll, segCheck, fuelAll, fuelCheck } from "./slice/carCheck-slice";
 import { formDataSlice } from "./slice/createCarSlice";
@@ -16,10 +16,10 @@ export const store = configureStore({
     fuelAll: fuelAll.reducer,
     fuelCheck: fuelCheck.reducer,
     // Form데이터
-    brands: brandsSlice.reducer,
+    createCar: formDataSlice.reducer,
+    brandList: brandListSlice.reducer,
     carList: carsListSlice.reducer,
     car: getCarSlice.reducer,
-    createCar: formDataSlice.reducer,
   },
 });
 
