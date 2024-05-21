@@ -12,7 +12,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import CreateBrandPage from "./components/admin/CreateBrand";
 import CreateCarPage from "./components/admin/create-cars/CreateCar";
-import CarListPage from "./components/admin/CarList";
+import CarListPage from "./components/admin/GetCarList";
 
 function App(): JSX.Element {
   const location = useLocation();
