@@ -12,13 +12,23 @@ import { SearchBar } from "./SearchBar";
 import { MaxContainer } from "../../styled/Global";
 import * as S from "../../styled/components/CarView.styled";
 
-export function CarView() {
+// TYPE
+interface ModelListType {
+  model: string;
+  segment: string;
+  fuel_types: { name: string; id: string }[];
+  generations: type.CarType[];
+}
+
+export function CarList() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // Cars Data
   const getCars: type.CarType[] = useAppSelector(state => state.carList.items);
   const [cars, setCars] = useState([]);
-  const [modelList, setModelList] = useState<{ model: string; generations: type.CarType[] }[]>([]);
+  const [modelList, setModelList] = useState([]);
+  const [thumnail, setThumnail] = useState([]);
+  const [toggleOpen, setToggleOpen] = useState([]);
   const status = useAppSelector(state => state.carList.status);
   const error = useAppSelector(state => state.carList.error);
 
@@ -44,44 +54,62 @@ export function CarView() {
     // default값을 가지고 카드형식에 목록에 썸네일 정보 표시 후
     // 드롭 다운 형식으로 이전 세대 모델 선택가능, 선택 시 썸네일 정보 변경
     const handleModelList = () => {
-      const modelMap: { [Key: string]: type.CarType[] } = {};
+      const modelMap = {};
 
       getCars.forEach(car => {
         const modelName = car.model;
+        // 객체에 키값이 존재하지않으면 빈 배열 생성
         if (!modelMap[modelName]) {
-          modelMap[modelName] = [];
+          modelMap[modelName] = {
+            generations: [],
+            segment: car.segment,
+            fuel_types: new Set(),
+          };
         }
-        modelMap[modelName].push(car);
+        // 배열에 객체 추가
+        modelMap[modelName].generations.push(car);
+        car.fuel_types.forEach(fuel => modelMap[modelName].fuel_types.add(fuel.name));
       });
-
+      // 세대별 차량을 배열 형식으로 오름차순 저장(generations)
       const sortedModelList = Object.keys(modelMap).map(modelName => {
-        const sortedGenerations = modelMap[modelName].sort((a, b) => {
+        const sortedGenerations = modelMap[modelName].generations.sort((a, b) => {
           const dateA: number = new Date(a.date.year, a.date.month - 1).getTime();
           const dateB: number = new Date(b.date.year, b.date.month - 1).getTime();
           console.log(dateA, dateB);
           return dateB - dateA;
         });
+
         return {
           model: modelName,
           generations: sortedGenerations,
+          segment: modelMap[modelName].segment,
+          fuel_types: Array.from(modelMap[modelName].fuel_types),
         };
       });
 
       setModelList(sortedModelList);
     };
 
-    const handleCarfilter = () => {
-      let copyCars = [...getCars];
-      setCars(copyCars);
-    };
-
     handleModelList();
-    handleCarfilter();
-  }, [getCars]);
+  }, [getCars, selectBrand, selectSeg, selectFuel]);
 
-  console.log(cars);
+  useEffect(() => {
+    setToggleOpen(Array(modelList.length).fill(false));
+    setThumnail(Array(modelList.length).fill(0));
+  }, [modelList]);
 
-  console.log(modelList);
+  const handleToggle = idx => {
+    let copyArr = [...toggleOpen];
+    copyArr[idx] = !copyArr[idx];
+    setToggleOpen(copyArr);
+  };
+
+  const handleThumnail = (listIdx, generIdx) => {
+    console.log(listIdx, generIdx);
+    let copyArr = [...thumnail];
+    copyArr[listIdx] = generIdx;
+    setThumnail(copyArr);
+  };
 
   if (status == "loading") {
     return <div>Loading...!</div>;
@@ -90,6 +118,11 @@ export function CarView() {
   if (status === "failed") {
     return <div>Error!</div>;
   }
+
+  console.log("cars: ", cars);
+  console.log("modelList: ", modelList);
+  console.log("thumnail Number: ", thumnail);
+  console.log("toggle: ", toggleOpen);
 
   return (
     <section className="container-car-list">
@@ -102,54 +135,75 @@ export function CarView() {
         </div>
       </article>
       {/* TODO: 목록은 model 기준으로만 구성하기 */}
-      <S.CarSection>
+      <S.CarSection className="car-list">
         {(() => {
-          if (cars.length === 0) {
+          if (thumnail.length === 0) {
             return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
           } else {
-            return modelList.map((cars, index) => (
-              <S.CarArticle key={index}>
+            return modelList.map((cars, idx) => (
+              <S.CarArticle key={idx}>
                 <div
                   className="car_head"
                   onClick={() => {
-                    navigate(`/detail/${cars.generations[0].id}`);
+                    navigate(`/detail/${cars.generations[thumnail[idx]].id}`);
                   }}>
                   <div className="img_wrap">
                     <img
-                      loading="lazy"
-                      src={`${cars.generations[0].image_path}/model_image.png`}
-                      alt={cars.generations[0].name}
+                      src={`${cars.generations[thumnail[idx]].image_path}/model_image.png`}
+                      alt={cars.generations[thumnail[idx]].name}
                     />
                   </div>
                   <span>
-                    {typeof cars.generations[0].brand === "string"
-                      ? `${cars.generations[0].brand}`
-                      : `${cars.generations[0].brand.name} ${cars.generations[0].name}`}
-                  </span>
-                  {" "}
-                  <span>{cars.generations[0].model_initial.toUpperCase()}</span>
+                    {typeof cars.generations[thumnail[idx]].brand === "string"
+                      ? `${cars.generations[thumnail[idx]].brand}`
+                      : `${cars.generations[thumnail[idx]].brand.name} ${cars.generations[thumnail[idx]].name}`}
+                  </span>{" "}
+                  <span>{cars.generations[thumnail[idx]].model_initial.toUpperCase()}</span>
                   <br />
                   <span>
-                    {cars.generations[0].date.year}.
-                    {cars.generations[0].date.month.toString().length === 1
-                      ? "0" + cars.generations[0].date.month
-                      : cars.generations[0].date.month}
+                    {cars.generations[thumnail[idx]].date.year}.
+                    {cars.generations[thumnail[idx]].date.month.toString().length === 1
+                      ? "0" + cars.generations[thumnail[idx]].date.month
+                      : cars.generations[thumnail[idx]].date.month}
                   </span>
                 </div>
-                <div className="prev-button">이전 세대 모델 ▽</div>
-                <div className="prev-car">
-                  {cars.generations.map((car, idx, arr) => {
-                    if (idx > 0) {
+                {cars.generations.length != 1 ? (
+                  <div
+                    className="prev-button"
+                    onClick={() => {
+                      handleToggle(idx);
+                    }}>
+                    {toggleOpen[idx] ? (
+                      <p
+                        onClick={() => {
+                          handleThumnail(idx, 0);
+                        }}>
+                        닫기 △
+                      </p>
+                    ) : (
+                      <p>이전 모델 ▽</p>
+                    )}
+                  </div>
+                ) : (
+                  <div>
+                    <p>이전 모델 없음</p>
+                  </div>
+                )}
+
+                <div className={`prev-car ${toggleOpen[idx] ? "prev-open" : "prev-close"}`}>
+                  {cars.generations.map((car, generIdx) => {
+                    if (generIdx > 0) {
                       return (
-                        <div key={car.id}>
+                        <div
+                          key={car.id}
+                          onMouseOver={() => {
+                            handleThumnail(idx, generIdx);
+                          }}>
                           <span>
                             {car.date.year}.
                             {car.date.month.toString().length === 1 ? "0" + car.date.month : car.date.month}
-                          </span>
-                          {" "}
-                          {car.name}
-                          {" "}
-                          {car.model_initial.toUpperCase()}
+                          </span>{" "}
+                          {car.name} {car.model_initial.toUpperCase()}
                         </div>
                       );
                     }

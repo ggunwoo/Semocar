@@ -9,7 +9,7 @@ import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/sli
 
 // COMPONENT
 import { BrandNav } from "../components/BrandNav";
-import { CarView } from "../components/search/CarList";
+import { CarList } from "../components/search/CarList";
 
 // STYLED COMPONENTS
 // SearchBox Styled
@@ -158,7 +158,7 @@ export default function SearchPage() {
       </S.CheckBoxWrapper>
 
       {/* 차 목록 */}
-      <CarView />
+      <CarList />
 
       {/* variant='outlined' size="sm" color="neutral" */}
     </MaxContainer>

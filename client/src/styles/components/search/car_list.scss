@@ -11,21 +11,28 @@
     margin-bottom: 3rem;
     border-color: divider;
     margin-top: 50px;
-    .tabs {
-      height: 20px !important;
-      .MuiTabs-flexContainer {
-        .tab {
-          font-family: GmarketSans, NotoSans KR, sans-serif;
-          &.Mui-selected {
-            color: #ab9add;
-            font-weight: bold;
-          }
-        }
-      }
-      .MuiTabs-indicator {
-        background-color: #ab9add;
-        height: 3px;
-      }
+  }
+
+  .car-list {
+    position: relative;
+    .prev-car {
+      background-color: #ccc;
+      position: absolute;
+      overflow: hidden;
+      z-index: 5;
+    }
+    .prev-close {
+      display: none;
+      border: 0px solid black;
+      max-height: 0;
+      
+    }
+    .prev-open {
+      max-width: 500px;
+      display: block;
+      border: 1px solid black;
+      max-height: 500px;
+      padding: 16px;
     }
   }
 }
