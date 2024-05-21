@@ -1,25 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { segments } from "../../../utils/constants";
 
-export const segList = [
-  "경차",
-  "소형세단",
-  "준중형세단",
-  "중형세단",
-  "준대형세단",
-  "대형세단",
-  "소형SUV",
-  "준중형SUV",
-  "중형SUV",
-  "준대형SUV",
-  "대형SUV",
-  "RV",
-  "MPV",
-  "픽업",
-  "벤",
-  "쿠페",
-  "해치백",
-  "왜건",
-];
 export const fuelList = ["가솔린", "디젤", "LPG", "하이브리드", "전기", "수소"];
 
 export const segAll = createSlice({
@@ -34,7 +15,7 @@ export const segAll = createSlice({
 
 export const segCheck = createSlice({
   name: "segCheck",
-  initialState: Array(segList.length).fill(false),
+  initialState: Array(segments.length).fill(false),
   reducers: {
     segHandle: (state, action) => {
       return action.payload;
