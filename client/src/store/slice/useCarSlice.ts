@@ -32,8 +32,8 @@ export const updateCar = createAsyncThunk("car/updateCar", async (carData: type.
   return response.data
 });
 
-export const carsListSlice = createSlice({
-  name: "cars",
+export const carListSlice = createSlice({
+  name: "carList",
   initialState: {
     items: [],
     status: "idle",
@@ -52,6 +52,7 @@ export const carsListSlice = createSlice({
       })
       .addCase(fetchCarList.rejected, (state, action) => {
         state.status = "failed";
+        console.log('error')
         state.error = action.error?.message ?? null;
       })
   },
