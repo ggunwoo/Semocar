@@ -1,8 +1,8 @@
 import React, {ChangeEvent, useState } from 'react';
 import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
-import { useCarData } from '../../utils/useCarData';
+import { useCarData } from '../../../utils/useCarData';
 import { useNavigate } from 'react-router-dom';
-import * as type from '../types/types'
+import * as type from '../../types/types'
 import Hangul from 'hangul-js';
 
 // ICON
@@ -10,10 +10,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 
 // STYLED
-import * as S from '../styled/components/SearchBar.styled'
+import * as S from '../../styled/components/SearchBar.styled'
 
 
-export function Search() {
+export function SearchBar() {
   const carData = useCarData();
   const navigate = useNavigate(); 
   const [searchText, setSearchText] = useState('');
