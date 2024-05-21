@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/cars", async (req, res) => {
   try {
-    const cars = await Car.find({});
+    const cars = await Car.find({}).populate('brand');
     res.json(cars);
   } catch (error) {
     res.status(500).send({ message: error.message });
