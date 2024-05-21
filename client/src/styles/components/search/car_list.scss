@@ -1,0 +1,31 @@
+@import 'main';
+
+.container-car-list {
+  @include container-style;
+  .list-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0;
+    margin-bottom: 3rem;
+    border-color: divider;
+    margin-top: 50px;
+    .tabs {
+      height: 20px !important;
+      .MuiTabs-flexContainer {
+        .tab {
+          font-family: GmarketSans, NotoSans KR, sans-serif;
+          &.Mui-selected {
+            color: #ab9add;
+            font-weight: bold;
+          }
+        }
+      }
+      .MuiTabs-indicator {
+        background-color: #ab9add;
+        height: 3px;
+      }
+    }
+  }
+}
