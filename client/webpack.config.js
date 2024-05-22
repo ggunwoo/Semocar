@@ -37,7 +37,12 @@ module.exports = {
         test: /\.(css|scss)$/, // scss 파일 처리
         use: [
           "style-loader",
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
           {
             loader: "sass-loader",
             options: {
@@ -78,5 +83,5 @@ module.exports = {
   stats: {
     errorDetails: true,
   },
-  devtool: 'eval-source-map', // 개발 환경
+  devtool: "eval-source-map", // 개발 환경
 };
