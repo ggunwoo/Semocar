@@ -34,53 +34,6 @@ export default function TrimeForm({ gradeIdx }) {
     dispatch(removeTrim({ gradeIdx, id }));
   };
 
-  // const trimFieldDefaults = {
-  //   ICE: {
-  //     motor_power: 0,
-  //     motor_torque: 0,
-  //     battery_type: "",
-  //     battery_volume: 0,
-  //     battery_voltage: 0,
-  //     ev_mileage: 0,
-  //     urban_ev_mileage: 0,
-  //     highway_ev_mileage: 0,
-  //     range: 0,
-  //     urban_range: 0,
-  //     highway_range: 0,
-  //   },
-  //   HEV: {
-  //     battery_voltage: 0,
-  //     range: 0,
-  //     urban_range: 0,
-  //     highway_range: 0,
-  //     fuel_type: "가솔린+전기",
-  //   },
-  //   PHEV: {
-  //     // PHEV에 특화된 필드 초기화 값들을 추가
-  //     fuel_type: "가솔린+전기",
-  //   },
-  //   EV: {
-  //     engine: "",
-  //     power: 0,
-  //     torque: 0,
-  //     displacement: 0,
-  //     gas_mileage: 0,
-  //     urban_gas_mileage: 0,
-  //     highway_gas_mileage: 0,
-  //   },
-  // };
-
-  // const changeFieldValueReset = (e, gradeIdx, index) => {
-  //   const { name, value } = e.target; // 'value'는 선택된 트림 유형
-  //   console.log(value);
-
-  //   const fieldsToReset = trimFieldDefaults[value];
-  //   Object.keys(fieldsToReset).forEach(field => {
-  //     const fieldName = `grades.${gradeIdx}.trims.${index}.${field}`;
-  //     dispatch(updateField({ name: fieldName, value: fieldsToReset[field] }));
-  //   });
-  // };
-
   return (
     <article className="trims">
       {trims?.map((trim, index) => (

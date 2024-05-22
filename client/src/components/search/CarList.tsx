@@ -153,19 +153,10 @@ export function CarList() {
                       alt={cars.generations[thumnail[idx]].name}
                     />
                   </div>
-                  <span>
-                    {typeof cars.generations[thumnail[idx]].brand === "string"
-                      ? `${cars.generations[thumnail[idx]].brand}`
-                      : `${cars.generations[thumnail[idx]].brand.name} ${cars.generations[thumnail[idx]].name}`}
-                  </span>{" "}
+                  <span>{cars.generations[thumnail[idx]].date.year} </span>
+                  <span>{cars.generations[thumnail[idx]].name}</span>{" "}
                   <span>{cars.generations[thumnail[idx]].model_initial.toUpperCase()}</span>
                   <br />
-                  <span>
-                    {cars.generations[thumnail[idx]].date.year}.
-                    {cars.generations[thumnail[idx]].date.month.toString().length === 1
-                      ? "0" + cars.generations[thumnail[idx]].date.month
-                      : cars.generations[thumnail[idx]].date.month}
-                  </span>
                 </div>
                 {cars.generations.length != 1 ? (
                   <div
