@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MaxContainer } from "../styled/Global";
 import * as S from "../styled/components/BrandNav.styled";
 
-import { fetchBrands } from "../store/slice/useBrandListSlice";
+import { fetchBrands } from "../store/api/brandApi";
 
 export function BrandNav() {
   const dispatch = useAppDispatch();

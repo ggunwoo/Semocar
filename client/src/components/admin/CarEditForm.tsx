@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchCar } from "../../store/slice/useCarSlice";
+import { fetchCar } from "../../store/api/carApi";
 import * as type from "../../types/types";
 
 export default function CarEditForm({ carId }) {
