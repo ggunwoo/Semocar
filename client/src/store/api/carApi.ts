@@ -21,13 +21,13 @@ export const submitFormData = createAsyncThunk("form/submitFormData", async (_, 
 
 // -- 데이터 전체 리스트 호출
 export const fetchCarAllList = createAsyncThunk("cars/fetchCars", async () => {
-  const response = await axios.get(`${serverUrl}/cars`);
+  const response = await axios.get(`${serverUrl}/get/cars`);
   return response.data;
 });
 
 // --데이터 Model 구분 객체 형식으로 호출
 export const fetchCarMaps = createAsyncThunk("cars/fetchCars", async () => {
-  const response = await axios.get(`${serverUrl}/cars`);
+  const response = await axios.get(`${serverUrl}/get/cars`);
   const carList = response.data;
   const modelMap = {};
   carList.forEach(car => {
@@ -67,12 +67,12 @@ export const fetchCarMaps = createAsyncThunk("cars/fetchCars", async () => {
 
 // --특정 데이터 호출
 export const fetchCar = createAsyncThunk<type.CarType, string>("car/getCar", async carId => {
-  const response = await axios.get(`${serverUrl}/cars/${carId}`);
+  const response = await axios.get(`${serverUrl}/get/cars/${carId}`);
   return response.data;
 });
 
 // -- 데이터 수정
 export const updateCar = createAsyncThunk("car/updateCar", async (carData: type.CarType) => {
-  const response = await axios.put(`${serverUrl}/cars/${carData.id}`);
+  const response = await axios.put(`${serverUrl}/get/cars/${carData.id}`);
   return response.data;
 });
