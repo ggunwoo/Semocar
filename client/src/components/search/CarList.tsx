@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import * as type from "../../types/types";
-import { fetchCarList } from "../../store/slice/useCarSlice";
+import { fetchCarAllList } from "../../store/api/carApi";
 
 // COMPONENTS
 import { SearchBar } from "./SearchBar";
+import TestList from "./testList";
 
 // STYLED
 import { MaxContainer } from "../../styled/Global";
@@ -40,9 +41,10 @@ export function CarList() {
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(fetchCarList());
+      dispatch(fetchCarAllList());
     }
   }, []);
+
 
   useEffect(() => {
     // TODO: getCars를 selected된 데이터에 의거하여 필터링하기
@@ -75,7 +77,6 @@ export function CarList() {
         const sortedGenerations = modelMap[modelName].generations.sort((a, b) => {
           const dateA: number = new Date(a.date.year, a.date.month - 1).getTime();
           const dateB: number = new Date(b.date.year, b.date.month - 1).getTime();
-          console.log(dateA, dateB);
           return dateB - dateA;
         });
 
@@ -86,6 +87,8 @@ export function CarList() {
           fuel_types: Array.from(modelMap[modelName].fuel_types),
         };
       });
+
+      sortedModelList.sort()
 
       setModelList(sortedModelList);
     };
@@ -145,17 +148,17 @@ export function CarList() {
                 <div
                   className="car_head"
                   onClick={() => {
-                    navigate(`/detail/${cars.generations[thumnail[idx]].id}`);
+                    navigate(`/detail/${cars.generations[0].id}`);
                   }}>
                   <div className="img_wrap">
                     <img
-                      src={`${cars.generations[thumnail[idx]].image_path}/model_image.png`}
-                      alt={cars.generations[thumnail[idx]].name}
+                      src={`${cars.generations[0].image_path}/model_image.png`}
+                      alt={cars.generations[0].name}
                     />
                   </div>
-                  <span>{cars.generations[thumnail[idx]].date.year} </span>
-                  <span>{cars.generations[thumnail[idx]].name}</span>{" "}
-                  <span>{cars.generations[thumnail[idx]].model_initial.toUpperCase()}</span>
+                  <span>{cars.generations[0].date.year} </span>
+                  <span>{cars.generations[0].name}</span>{" "}
+                  <span>{cars.generations[0].model_initial.toUpperCase()}</span>
                   <br />
                 </div>
                 {cars.generations.length != 1 ? (
@@ -206,7 +209,7 @@ export function CarList() {
         })()}
       </S.CarSection>
 
-      {/* </div> */}
+      {/* <TestList /> */}
     </section>
   );
 }

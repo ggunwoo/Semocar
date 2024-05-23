@@ -1,6 +1,6 @@
 import "../../styles/components/admin.scss";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { fetchCarList, fetchCar } from "../../store/slice/useCarSlice";
+import { fetchCarAllList, fetchCar } from "../../store/api/carApi";
 import { useState, useEffect } from "react";
 import CarEditForm from "./CarEditForm";
 
@@ -14,7 +14,7 @@ export default function CarListPage() {
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(fetchCarList());
+      dispatch(fetchCarAllList());
     }
   }, [status, dispatch]);
 

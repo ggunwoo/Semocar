@@ -1,8 +1,7 @@
-import axios from "axios";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../api/getCarData";
+
+import { createSlice,  } from "@reduxjs/toolkit";
 import * as type from "../../types/types";
-import { RootState } from "../store";
+import { fetchCarAllList, fetchCarMaps, fetchCar, updateCar } from "../api/carApi";
 
 interface CarState {
   item: type.CarType | null;
@@ -17,21 +16,6 @@ interface CarListState {
   // editingCarId: string | null;
 }
 
-export const fetchCarList = createAsyncThunk("cars/fetchCars", async () => {
-  const response = await axios.get(`${serverUrl}/cars`);
-  return response.data;
-});
-
-export const fetchCar = createAsyncThunk<type.CarType, string>("car/getCar", async carId => {
-  const response = await axios.get(`${serverUrl}/cars/${carId}`);
-  return response.data;
-});
-
-export const updateCar = createAsyncThunk("car/updateCar", async (carData: type.CarType) => {
-  const response = await axios.put(`${serverUrl}/cars/${carData.id}`);
-  return response.data
-});
-
 export const carListSlice = createSlice({
   name: "carList",
   initialState: {
@@ -43,18 +27,18 @@ export const carListSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchCarList.pending, state => {
+      .addCase(fetchCarAllList.pending, state => {
         state.status = "loading";
       })
-      .addCase(fetchCarList.fulfilled, (state, action) => {
+      .addCase(fetchCarAllList.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.items = action.payload;
       })
-      .addCase(fetchCarList.rejected, (state, action) => {
+      .addCase(fetchCarAllList.rejected, (state, action) => {
         state.status = "failed";
-        console.log('error')
+        console.log("error");
         state.error = action.error?.message ?? null;
-      })
+      });
   },
 });
 
