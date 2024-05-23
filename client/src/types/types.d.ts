@@ -66,7 +66,10 @@ export interface BrandType {
 // ■■ 자동차 제원 데이터 서버 전송 타입 ■■
 export interface CarType {
   brand: string | BrandType;
-  model: string;
+  model: {
+    name: string,
+    english_name: string
+  };
   name: string;
   english_name: string;
   model_initial: string | null;

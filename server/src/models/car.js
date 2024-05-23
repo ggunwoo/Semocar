@@ -77,10 +77,13 @@ const gradeSchema = new mongoose.Schema({
 const baseCarSchema = new mongoose.Schema({
   // ■■■■■ 기본 제원 필드■■■■■
   brand: { type: mongoose.Schema.Types.ObjectId, ref: "Brand" }, // ref: 브랜드 콜렉션 참조
-  model: String, // 차량 모델명 (항상 소문자) avante(Avante, The new Avante)
+  model: {
+    name: {type: String, required: true}, // 차량 모델명(한글) ▶ 아반떼(아반뗴, 더 뉴 아반떼)
+    english_name: {type: String, required: true}, // 차량 모델명 (항상 소문자) ▶ avante(Avante, The new Avante)
+  }, 
+  model_initial: String || null,
   name: String, // 차량명 ▶ 쏘나타 디 엣지, 콜로라도, GV90 등
   english_name: String, // 차량 모델명(영어) ▶ Sonata, Colorado, GV90
-  model_initial: String || null,
   is_facelift: Boolean,
   image_path: String,
   id: String, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
