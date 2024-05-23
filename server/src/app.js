@@ -31,13 +31,14 @@ app.get("/create", (req, res) => {
 });
 
 // Use Router
-app.use("/api", adminRouter); // Admin password 검증 라우트
+app.use("/", adminRouter); // Admin password 검증 라우트
 app.use("/create", createBrandsRouter); // 브랜드 생성 라우트
 app.use("/create", createCarRouter);
-app.use("/", getBrandListRouter); // 브랜드 리스트 데이터 가져오기 라우트
-app.use("/", getCarListRouter); // 자동차 리스트 가져오기 라우트
-app.use("/", getBrandRouter); // 특정 브랜드 데이터 가져오기 라우트
-app.use("/", getCarRouter); // 특정 자동차 데이터 가져오기 라우트
+app.use("/get", getBrandListRouter); // 전체 브랜드 리스트 데이터 라우터
+app.use("/get", getCarListRouter); // 전체 자동차 리스트 라우터
+app.use("/get", getBrandRouter); // 특정 브랜드 데이터 라우터
+app.use("/get", getCarRouter); // 특정 자동차 데이터 라우터
+app.use("/get", getCarImageRouter); // 특정 자동차 이미지 라우터
 
 
 // ==================================================
