@@ -14,6 +14,7 @@ import getBrandListRouter from "./routes/getBrandListRoute.js";
 import getBrandRouter from "./routes/getBrandRoute.js"
 import getCarListRouter from "./routes/getCarListRoute.js";
 import getCarRouter from "./routes/getCarRoute.js";
+import getCarImageRouter from "./routes/getCarImageRoute.js"
 
 const app = express();
 app.use(cors()); // cors 전체 url 허용
