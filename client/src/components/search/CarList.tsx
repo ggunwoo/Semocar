@@ -1,5 +1,5 @@
 import "../../styles/components/search/car_list.scss";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import * as type from "../../types/types";
@@ -28,7 +28,7 @@ export function CarList() {
   const getCars: type.CarType[] = useAppSelector(state => state.carList.items);
   const [cars, setCars] = useState([]);
   const [modelList, setModelList] = useState([]);
-  const [thumnail, setThumnail] = useState([]);
+  const [seletModel, setSeletModel] = useState([]);
   const [toggleOpen, setToggleOpen] = useState([]);
   const status = useAppSelector(state => state.carList.status);
   const error = useAppSelector(state => state.carList.error);
@@ -45,7 +45,6 @@ export function CarList() {
     }
   }, []);
 
-
   useEffect(() => {
     // TODO: getCars를 selected된 데이터에 의거하여 필터링하기
 
@@ -59,10 +58,11 @@ export function CarList() {
       const modelMap = {};
 
       getCars.forEach(car => {
-        const modelName = car.model;
+        const modelName = car.model.english_name;
         // 객체에 키값이 존재하지않으면 빈 배열 생성
         if (!modelMap[modelName]) {
           modelMap[modelName] = {
+            name: car.model.name,
             generations: [],
             segment: car.segment,
             fuel_types: new Set(),
@@ -73,24 +73,25 @@ export function CarList() {
         car.fuel_types.forEach(fuel => modelMap[modelName].fuel_types.add(fuel.name));
       });
       // 세대별 차량을 배열 형식으로 오름차순 저장(generations)
-      const sortedModelList = Object.keys(modelMap).map(modelName => {
+      const createModelMap = Object.keys(modelMap).map(modelName => {
         const sortedGenerations = modelMap[modelName].generations.sort((a, b) => {
           const dateA: number = new Date(a.date.year, a.date.month - 1).getTime();
           const dateB: number = new Date(b.date.year, b.date.month - 1).getTime();
           return dateB - dateA;
         });
 
+        console.log(modelMap);
+
         return {
           model: modelName,
+          name: modelMap[modelName].name,
           generations: sortedGenerations,
           segment: modelMap[modelName].segment,
           fuel_types: Array.from(modelMap[modelName].fuel_types),
         };
       });
 
-      sortedModelList.sort()
-
-      setModelList(sortedModelList);
+      setModelList(createModelMap);
     };
 
     handleModelList();
@@ -98,23 +99,33 @@ export function CarList() {
 
   useEffect(() => {
     setToggleOpen(Array(modelList.length).fill(false));
-    setThumnail(Array(modelList.length).fill(0));
+    setSeletModel(Array(modelList.length).fill(0));
   }, [modelList]);
 
   // --자동차 이미지 비동기 호출
-  useEffect(()=>{}, []);
+  useEffect(() => {}, []);
 
-  const handleToggle = idx => {
-    let copyArr = [...toggleOpen];
-    copyArr[idx] = !copyArr[idx];
-    setToggleOpen(copyArr);
+  // TODO: model-list 열고 닫기, 다른거 열면 그 외 전부 닫히고, 다시누르면 그거만 닫히기
+  const toggle = idx => {
+    setToggleOpen(prev => {
+      let clearArr;
+      if (prev[idx]) {
+        // 한번 더 눌러서(true) 닫을 때
+        clearArr = Array(modelList.length).fill(false);
+      } else {
+        // 다른거 열려고 할 때 and 처음 열 때 false값이
+        clearArr = Array(modelList.length).fill(false);
+        clearArr[idx] = true;
+      }
+      return clearArr;
+    });
   };
 
-  const handleThumnail = (listIdx, generIdx) => {
+  const handleSeletModel = (listIdx, generIdx) => {
     console.log(listIdx, generIdx);
-    let copyArr = [...thumnail];
+    let copyArr = [...seletModel];
     copyArr[listIdx] = generIdx;
-    setThumnail(copyArr);
+    setSeletModel(copyArr);
   };
 
   if (status == "loading") {
@@ -125,92 +136,81 @@ export function CarList() {
     return <div>Error!</div>;
   }
 
-  console.log("cars: ", cars);
-  console.log("modelList: ", modelList);
-  console.log("thumnail Number: ", thumnail);
+  // console.log("cars: ", cars);
+  // console.log("modelList: ", modelList);
+  // console.log("seletModel Number: ", seletModel);
   console.log("toggle: ", toggleOpen);
 
   return (
     <section className="container-car-list">
       {/* 상단 탭 */}
-      <article className="list-nav">
+      <nav className="list-nav">
         <div></div>
         {/* 검색 컴포넌트 */}
         <div>
           <SearchBar />
         </div>
-      </article>
+      </nav>
       {/* TODO: 목록은 model 기준으로만 구성하기 */}
-      <S.CarSection className="car-list">
+      <ul className={`car-list grid-rows-4`}>
         {(() => {
-          if (thumnail.length === 0) {
-            return <div style={{ width: "100%" }}>해당되는 차량이 없습니다.</div>;
+          if (seletModel.length === 0) {
+            return (
+              <div className="car-empty" style={{ width: "100%" }}>
+                해당되는 차량이 없습니다.
+              </div>
+            );
           } else {
-            return modelList.map((cars, idx) => (
-              <S.CarArticle key={idx}>
+            return modelList.map((model, idx) => (
+              <li key={idx} className="car-items">
                 <div
-                  className="car_head"
+                  className="car-info"
                   onClick={() => {
-                    navigate(`/detail/${cars.generations[0].id}`);
+                    navigate(`/detail/${model.generations[seletModel[idx]].id}`);
                   }}>
-                  <div className="img_wrap">
-                    <img
-                      src={`${cars.generations[0].image_path}/model_image.png`}
-                      alt={cars.generations[0].name}
-                    />
+                  <div className="car-image">
+                    <img src={`${model.generations[seletModel[idx]].image_path}/model_image.png`} alt={model.name} />
                   </div>
-                  <span>{cars.generations[0].date.year} </span>
-                  <span>{cars.generations[0].name}</span>{" "}
-                  <span>{cars.generations[0].model_initial.toUpperCase()}</span>
-                  <br />
+                  <span>{model.name.toUpperCase()}</span>
                 </div>
-                {cars.generations.length != 1 ? (
-                  <div
-                    className="prev-button"
-                    onClick={() => {
-                      handleToggle(idx);
-                    }}>
-                    {toggleOpen[idx] ? (
-                      <p
-                        onClick={() => {
-                          handleThumnail(idx, 0);
-                        }}>
-                        닫기 △
-                      </p>
-                    ) : (
-                      <p>이전 모델 ▽</p>
-                    )}
-                  </div>
-                ) : (
-                  <div>
-                    <p>이전 모델 없음</p>
-                  </div>
-                )}
+                {/* --toggle 버튼 */}
+                <div
+                  className="model-list-toggle-button"
+                  onClick={() => {
+                    toggle(idx);
+                  }}>
+                  <p>
+                    <span>{model.generations[seletModel[idx]].date.year}&nbsp;</span>
+                    <span>{model.generations[seletModel[idx]].name.toUpperCase()}&nbsp;</span>
+                    <span>{model.generations[seletModel[idx]].model_initial.toUpperCase()}&nbsp;</span>
+                    {toggleOpen[idx] ? <span>▲</span> : <span>▼</span>}
+                  </p>
+                </div>
 
-                <div className={`prev-car ${toggleOpen[idx] ? "prev-open" : "prev-close"}`}>
-                  {cars.generations.map((car, generIdx) => {
-                    if (generIdx > 0) {
-                      return (
-                        <div
-                          key={car.id}
-                          onMouseOver={() => {
-                            handleThumnail(idx, generIdx);
+                <div className={`car-model-list ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
+                  {model.generations.map((car, generIdx) => {
+                    return (
+                      <div key={car.id} className={` ${seletModel[idx] === generIdx ? "focus" : "unfocus"}`}>
+                        <span>{car.date.year}&nbsp;</span>
+                        <span>
+                          {car.name}&nbsp;{car.model_initial.toUpperCase()}&nbsp;
+                        </span>
+                        <span>{generIdx}</span>
+                        <button
+                          onClick={() => {
+                            handleSeletModel(idx, generIdx);
                           }}>
-                          <span>
-                            {car.date.year}.
-                            {car.date.month.toString().length === 1 ? "0" + car.date.month : car.date.month}
-                          </span>{" "}
-                          {car.name} {car.model_initial.toUpperCase()}
-                        </div>
-                      );
-                    }
+                          선택
+                        </button>
+                      </div>
+                    );
                   })}
                 </div>
-              </S.CarArticle>
+              </li>
             ));
           }
         })()}
-      </S.CarSection>
+      </ul>
 
       {/* <TestList /> */}
     </section>

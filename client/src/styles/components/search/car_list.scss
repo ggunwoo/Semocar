@@ -1,4 +1,5 @@
-@import 'main';
+@import "main";
+@import "color";
 
 .container-car-list {
   @include container-style;
@@ -12,31 +13,68 @@
     border-color: divider;
     margin-top: 50px;
   }
-
+  // 자동차 목록
   .car-list {
-    position: relative;
-    .prev-button {
-      user-select: none;
-      cursor: pointer;
+    width: 100%;
+    .car-items {
+      width: 100%;
+      position: relative;
+      .model-list-toggle-button {
+        user-select: none;
+        cursor: pointer;
+      }
+      // 모델 목록
+      .car-model-list {
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        min-width: 400px;
+        background-color: #ccc;
+        white-space: inherit;
+        z-index: 5;
+        .focus {
+          span {
+            color: $--color-dark;
+          }
+        }
+      }
+      .model-list-close {
+        display: none;
+        border: 0px solid black;
+        max-height: 0;
+      }
+      .model-list-open {
+        max-width: 500px;
+        display: block;
+        border: 1px solid black;
+        max-height: 500px;
+        padding: 16px;
+      }
     }
-    .prev-car {
-      background-color: #ccc;
-      position: absolute;
-      overflow: hidden;
-      z-index: 5;
+  }
+  // 가로 한줄에 4개씩
+  .grid-rows-4 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row: repeat(4, 1fr);
+    -ms-grid-row: repeat(4, 1fr);
+    gap: 50px;
+    .car-items {
+      height: 300px;
+      .car-info{
+        .car-image {
+          position: relative;
+          height: 150px;
+          img {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+          }
+        }
+      }
     }
-    .prev-close {
-      display: none;
-      border: 0px solid black;
-      max-height: 0;
-      
-    }
-    .prev-open {
-      max-width: 500px;
-      display: block;
-      border: 1px solid black;
-      max-height: 500px;
-      padding: 16px;
-    }
-  }  
+  }
 }
