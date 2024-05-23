@@ -70,6 +70,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env.SERVER_URL": JSON.stringify(process.env.SERVER_URL),
+      "process.env.IMAGES_URL": JSON.stringify(process.env.IMAGES_URL),
     }),
   ],
   devServer: {
