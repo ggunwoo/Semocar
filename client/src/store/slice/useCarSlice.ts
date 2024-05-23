@@ -1,5 +1,4 @@
-
-import { createSlice,  } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import * as type from "../../types/types";
 import { fetchCarAllList, fetchCarMaps, fetchCar, updateCar } from "../api/carApi";
 

@@ -14,7 +14,6 @@ import getBrandListRouter from "./routes/getBrandListRoute.js";
 import getBrandRouter from "./routes/getBrandRoute.js"
 import getCarListRouter from "./routes/getCarListRoute.js";
 import getCarRouter from "./routes/getCarRoute.js";
-import getCarImageRouter from "./routes/getCarImageRoute.js"
 
 const app = express();
 app.use(cors()); // cors 전체 url 허용
@@ -39,7 +38,6 @@ app.use("/get", getBrandListRouter); // 전체 브랜드 리스트 데이터 라
 app.use("/get", getCarListRouter); // 전체 자동차 리스트 라우터
 app.use("/get", getBrandRouter); // 특정 브랜드 데이터 라우터
 app.use("/get", getCarRouter); // 특정 자동차 데이터 라우터
-app.use("/get", getCarImageRouter); // 특정 자동차 이미지 라우터
 
 
 // ==================================================

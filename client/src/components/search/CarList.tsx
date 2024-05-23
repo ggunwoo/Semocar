@@ -101,6 +101,9 @@ export function CarList() {
     setThumnail(Array(modelList.length).fill(0));
   }, [modelList]);
 
+  // --자동차 이미지 비동기 호출
+  useEffect(()=>{}, []);
+
   const handleToggle = idx => {
     let copyArr = [...toggleOpen];
     copyArr[idx] = !copyArr[idx];
