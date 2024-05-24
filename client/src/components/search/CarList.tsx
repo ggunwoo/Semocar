@@ -9,10 +9,6 @@ import { fetchCarAllList } from "../../store/api/carApi";
 import { SearchBar } from "./SearchBar";
 import TestList from "./testList";
 
-// STYLED
-import { MaxContainer } from "../../styled/Global";
-import * as S from "../../styled/components/CarView.styled";
-
 // TYPE
 interface ModelListType {
   model: string;
@@ -45,19 +41,31 @@ export function CarList() {
     }
   }, []);
 
+  // 선택된 브랜드, segment와 fueltype으로 getCars 필터링
   useEffect(() => {
-    // TODO: getCars를 selected된 데이터에 의거하여 필터링하기
+    // TODO: selectBrand에 brand id값을 이용해 필터링
+    // --select state들이 전부 빈 배열일 때 getCars를 바로 cars에 할당(전체 리스트)
+    console.log([...selectBrand, ...selectSeg, ...selectFuel].length);
+    if ([...selectBrand, ...selectSeg, ...selectFuel].length === 0) {
+      return setCars(getCars);
+    }
+    const filterBrand =
+      selectBrand.length > 0 ? getCars.filter((car: type.CarType) => selectBrand.includes(car.brand.id)) : getCars;
+    const filterSeg =
+      selectSeg.length > 0 ? filterBrand.filter((car: type.CarType) => selectSeg.includes(car.segment)) : filterBrand;
+    const filterFuel =
+      selectFuel.length > 0 ? filterSeg.filter((car: type.CarType) => car.fuel_types.some(fuel => selectFuel.includes(fuel.id))) : filterSeg;
 
-    // TODO: model별로 나뉘어서 목록 생성, 목록은 모델에 따른 세대별 모델로 구성
-    // 예: avante모델에 더뉴 아반떼 CN7, 아반떼 CN7, 아반떼 AD 등등
-    // 목록 순서는 출시일(yyyy.mm) 기준 가장 최신출시 모델순으로 정렬
-    // 가장 최신 모델(목록(배열)의 가장 첫 모델)을 default값으로
-    // default값을 가지고 카드형식에 목록에 썸네일 정보 표시 후
-    // 드롭 다운 형식으로 이전 세대 모델 선택가능, 선택 시 썸네일 정보 변경
+      setCars(filterFuel)
+
+  }, [getCars, selectBrand, selectSeg, selectFuel]);
+
+  useEffect(() => {
+    // -- cars => model별 maps 생성 함수
     const handleModelList = () => {
       const modelMap = {};
 
-      getCars.forEach(car => {
+      cars.forEach(car => {
         const modelName = car.model.english_name;
         // 객체에 키값이 존재하지않으면 빈 배열 생성
         if (!modelMap[modelName]) {
@@ -95,15 +103,12 @@ export function CarList() {
     };
 
     handleModelList();
-  }, [getCars, selectBrand, selectSeg, selectFuel]);
+  }, [cars]);
 
   useEffect(() => {
     setToggleOpen(Array(modelList.length).fill(false));
     setSeletModel(Array(modelList.length).fill(0));
   }, [modelList]);
-
-  // --자동차 이미지 비동기 호출
-  useEffect(() => {}, []);
 
   // TODO: model-list 열고 닫기, 다른거 열면 그 외 전부 닫히고, 다시누르면 그거만 닫히기
   const toggle = idx => {
@@ -139,7 +144,8 @@ export function CarList() {
   // console.log("cars: ", cars);
   // console.log("modelList: ", modelList);
   // console.log("seletModel Number: ", seletModel);
-  console.log("toggle: ", toggleOpen);
+  // console.log("toggle: ", toggleOpen);
+  console.log("selectBrand: ", selectBrand);
 
   return (
     <section className="container-car-list">
@@ -195,7 +201,7 @@ export function CarList() {
                         <span>
                           {car.name}&nbsp;{car.model_initial.toUpperCase()}&nbsp;
                         </span>
-                        <span>{generIdx}</span>
+                        {/* <span>{generIdx}</span> */}
                         <button
                           onClick={() => {
                             handleSeletModel(idx, generIdx);

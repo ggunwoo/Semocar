@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as type from "../../types/types";
-import { fetchCarAllList, fetchCarMaps, fetchCar, updateCar } from "../api/carApi";
+import { fetchCarAllList, fetchCar, updateCar } from "../api/carApi";
 
 interface CarState {
   item: type.CarType | null;
