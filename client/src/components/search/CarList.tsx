@@ -24,7 +24,7 @@ export function CarList() {
   const getCars: type.CarType[] = useAppSelector(state => state.carList.items);
   const [cars, setCars] = useState([]);
   const [modelList, setModelList] = useState([]);
-  const [seletModel, setSeletModel] = useState([]);
+  const [selectModel, setSelectModel] = useState([]);
   const [toggleOpen, setToggleOpen] = useState([]);
   const status = useAppSelector(state => state.carList.status);
   const error = useAppSelector(state => state.carList.error);
@@ -45,7 +45,6 @@ export function CarList() {
   useEffect(() => {
     // TODO: selectBrand에 brand id값을 이용해 필터링
     // --select state들이 전부 빈 배열일 때 getCars를 바로 cars에 할당(전체 리스트)
-    console.log([...selectBrand, ...selectSeg, ...selectFuel].length);
     if ([...selectBrand, ...selectSeg, ...selectFuel].length === 0) {
       return setCars(getCars);
     }
@@ -54,10 +53,11 @@ export function CarList() {
     const filterSeg =
       selectSeg.length > 0 ? filterBrand.filter((car: type.CarType) => selectSeg.includes(car.segment)) : filterBrand;
     const filterFuel =
-      selectFuel.length > 0 ? filterSeg.filter((car: type.CarType) => car.fuel_types.some(fuel => selectFuel.includes(fuel.id))) : filterSeg;
+      selectFuel.length > 0
+        ? filterSeg.filter((car: type.CarType) => car.fuel_types.some(fuel => selectFuel.includes(fuel.id)))
+        : filterSeg;
 
-      setCars(filterFuel)
-
+    setCars(filterFuel);
   }, [getCars, selectBrand, selectSeg, selectFuel]);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export function CarList() {
           return dateB - dateA;
         });
 
-        console.log(modelMap);
+        // console.log(modelMap);
 
         return {
           model: modelName,
@@ -107,7 +107,7 @@ export function CarList() {
 
   useEffect(() => {
     setToggleOpen(Array(modelList.length).fill(false));
-    setSeletModel(Array(modelList.length).fill(0));
+    setSelectModel(Array(modelList.length).fill(0));
   }, [modelList]);
 
   // TODO: model-list 열고 닫기, 다른거 열면 그 외 전부 닫히고, 다시누르면 그거만 닫히기
@@ -126,11 +126,11 @@ export function CarList() {
     });
   };
 
-  const handleSeletModel = (listIdx, generIdx) => {
-    console.log(listIdx, generIdx);
-    let copyArr = [...seletModel];
+  const handleselectModel = (listIdx, generIdx) => {
+    // console.log(listIdx, generIdx);
+    let copyArr = [...selectModel];
     copyArr[listIdx] = generIdx;
-    setSeletModel(copyArr);
+    setSelectModel(copyArr);
   };
 
   if (status == "loading") {
@@ -141,9 +141,9 @@ export function CarList() {
     return <div>Error!</div>;
   }
 
-  // console.log("cars: ", cars);
+  console.log("cars: ", cars);
   // console.log("modelList: ", modelList);
-  // console.log("seletModel Number: ", seletModel);
+  // console.log("selectModel Number: ", selectModel);
   // console.log("toggle: ", toggleOpen);
   console.log("selectBrand: ", selectBrand);
 
@@ -160,7 +160,7 @@ export function CarList() {
       {/* TODO: 목록은 model 기준으로만 구성하기 */}
       <ul className={`car-list grid-rows-4`}>
         {(() => {
-          if (seletModel.length === 0) {
+          if (selectModel.length === 0) {
             return (
               <div className="car-empty" style={{ width: "100%" }}>
                 해당되는 차량이 없습니다.
@@ -169,49 +169,56 @@ export function CarList() {
           } else {
             return modelList.map((model, idx) => (
               <li key={idx} className="car-items">
-                <div
-                  className="car-info"
-                  onClick={() => {
-                    navigate(`/detail/${model.generations[seletModel[idx]].id}`);
-                  }}>
-                  <div className="car-image">
-                    <img src={`${model.generations[seletModel[idx]].image_path}/model_image.png`} alt={model.name} />
-                  </div>
-                  <span>{model.name.toUpperCase()}</span>
-                </div>
-                {/* --toggle 버튼 */}
-                <div
-                  className="model-list-toggle-button"
-                  onClick={() => {
-                    toggle(idx);
-                  }}>
-                  <p>
-                    <span>{model.generations[seletModel[idx]].date.year}&nbsp;</span>
-                    <span>{model.generations[seletModel[idx]].name.toUpperCase()}&nbsp;</span>
-                    <span>{model.generations[seletModel[idx]].model_initial.toUpperCase()}&nbsp;</span>
-                    {toggleOpen[idx] ? <span>▲</span> : <span>▼</span>}
-                  </p>
-                </div>
-
-                <div className={`car-model-list ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
-                  {model.generations.map((car, generIdx) => {
-                    return (
-                      <div key={car.id} className={` ${seletModel[idx] === generIdx ? "focus" : "unfocus"}`}>
-                        <span>{car.date.year}&nbsp;</span>
-                        <span>
-                          {car.name}&nbsp;{car.model_initial.toUpperCase()}&nbsp;
-                        </span>
-                        {/* <span>{generIdx}</span> */}
-                        <button
-                          onClick={() => {
-                            handleSeletModel(idx, generIdx);
-                          }}>
-                          선택
-                        </button>
+                {model.generations[selectModel[idx]] && (
+                  <>
+                    <div
+                      className="car-info"
+                      onClick={() => {
+                        navigate(`/detail/${model.generations[selectModel[idx]].id}`);
+                      }}>
+                      <div className="car-image">
+                        <img
+                          src={`${model.generations[selectModel[idx]].image_path}/model_image.png`}
+                          alt={model.name}
+                        />
                       </div>
-                    );
-                  })}
-                </div>
+                      <span>{model.name.toUpperCase()}</span>
+                    </div>
+                    {/* --toggle 버튼 */}
+                    <div
+                      className="model-list-toggle-button"
+                      onClick={() => {
+                        toggle(idx);
+                      }}>
+                      <p>
+                        <span>{model.generations[selectModel[idx]].date.year}&nbsp;</span>
+                        <span>{model.generations[selectModel[idx]].name.toUpperCase()}&nbsp;</span>
+                        <span>{model.generations[selectModel[idx]].model_initial.toUpperCase()}&nbsp;</span>
+                        {toggleOpen[idx] ? <span>▲</span> : <span>▼</span>}
+                      </p>
+                    </div>
+
+                    <div className={`car-model-list ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
+                      {model.generations.map((car, generIdx) => {
+                        return (
+                          <div key={car.id} className={` ${selectModel[idx] === generIdx ? "focus" : "unfocus"}`}>
+                            <span>{car.date.year}&nbsp;</span>
+                            <span>
+                              {car.name}&nbsp;{car.model_initial.toUpperCase()}&nbsp;
+                            </span>
+                            {/* <span>{generIdx}</span> */}
+                            <button
+                              onClick={() => {
+                                handleselectModel(idx, generIdx);
+                              }}>
+                              선택
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
               </li>
             ));
           }
