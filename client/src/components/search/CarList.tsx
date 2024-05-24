@@ -1,4 +1,4 @@
-import "../../styles/components/search/car_list.scss";
+import "../../styles/components/search/carList.scss";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
