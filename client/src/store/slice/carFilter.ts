@@ -1,5 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const selectedBrand = createSlice({
+  name: 'selectedBrand',
+  initialState: [] as string[],
+  reducers: {
+    brandIn: (state, action)=>{
+      const brandId = action.payload;
+      if(state.includes(brandId)){
+        // 값은 값 체크 해제
+        const updatedBrand = state.filter((stateId:string) => stateId !== brandId)
+        return updatedBrand;
+      } else {
+        // const copyBrand = [brandId];
+        // return copyBrand;
+         state.push(brandId)
+      }
+    },
+    brandReset: (state)=>{
+      if(state.length !== 0){
+        return []
+      }
+    }
+  },
+})
 export const selectedSeg = createSlice({
   name: 'selectedSeg',
   initialState: [] as string[],
@@ -44,32 +67,7 @@ export const selectedFuel = createSlice({
   },
 })
 
-export const selectedBrand = createSlice({
-  name: 'selectedBrand',
-  initialState: [] as string[],
-  reducers: {
-    // brandIn: (state, action)=>{
-    //   state = action.payload;
-    // },
-    brandIn: (state, action)=>{
-      const brand = action.payload;
-      if(state.includes(brand)){
-        // 값은 값 체크 해제
-        const updatedBrand = state.filter((item:string) => item !== brand)
-        return updatedBrand;
-      } else {
-        const copyBrand = [brand];
-        return copyBrand;
-      }
-    },
-    brandReset: (state)=>{
-      if(state.length !== 0){
-        return []
-      }
-    }
-  },
-})
 
+export const { brandIn, brandReset } = selectedBrand.actions;
 export const { segIn, segReset } = selectedSeg.actions;
 export const { fuelIn, fuelReset } = selectedFuel.actions
-export const { brandIn, brandReset } = selectedBrand.actions;
