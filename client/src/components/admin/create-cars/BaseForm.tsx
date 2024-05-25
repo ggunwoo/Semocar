@@ -2,7 +2,7 @@ import "../../../styles/components/form.scss";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/api/brandApi";
-import { segments, months, BRAND_IDS, SEGMENT_IDS } from "../../../../utils/constants"; // 상수 데이터 불러오기
+import { SEGMENT_LIST, MONTHS, BRAND_IDS, SEGMENT_IDS, FUELTYPE_LIST } from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./SubmitButton";
 // ===============================================================
@@ -14,15 +14,7 @@ import SubmitButton from "./SubmitButton";
 export default function BaseCarForm() {
   const dispatch = useAppDispatch();
   // checkbox와 배열 정렬을 위한 복사데이터
-  const [fuelTypes, setFuelTypes] = useState([
-    { name: "가솔린", id: "1", checked: false },
-    { name: "디젤", id: "2", checked: false },
-    { name: "LPG", id: "3", checked: false },
-    { name: "하이브리드", id: "4", checked: false },
-    { name: "전기", id: "5", checked: false },
-    { name: "수소", id: "6", checked: false },
-    { name: "바이퓨얼", id: "7", checked: false },
-  ]);
+  const [fuelTypes, setFuelTypes] = useState([]);
   const useBrands = useAppSelector(state => state.brandList);
   const formData = useAppSelector(state => state.createCar.formData);
   const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
@@ -36,6 +28,13 @@ export default function BaseCarForm() {
       dispatch(fetchBrands()); // --Redux => Brands fetch함수 실행
     }
   }, []);
+
+  useEffect(() => {
+    const addChecked = FUELTYPE_LIST.map(fuel => ({ ...fuel, checked: false }));
+    setFuelTypes(addChecked);
+  }, []);
+
+  console.log(fuelTypes)
 
   // --formData state 변경 처리 함수
   const handleChange = (e, type) => {
@@ -204,7 +203,7 @@ export default function BaseCarForm() {
             setSegment(e.target.value);
           }}>
           <option value={null}>=선택=</option>
-          {segments.map((seg, index) => (
+          {SEGMENT_LIST.map((seg, index) => (
             <option key={index} value={seg}>
               {seg}
             </option>
@@ -229,7 +228,7 @@ export default function BaseCarForm() {
           onChange={e => {
             handleChange(e, "number");
           }}>
-          {months.map((month, index) => (
+          {MONTHS.map((month, index) => (
             <option key={index} value={month}>
               {month}
             </option>

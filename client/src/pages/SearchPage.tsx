@@ -1,6 +1,6 @@
 import { Checkbox } from "@mui/material";
 import { FormGroup, FormControlLabel } from "@mui/material";
-import { segments } from "../../utils/constants";
+import { SEGMENT_LIST, FUELTYPE_LIST } from "../../utils/constants";
 
 // Redux
 import { useAppSelector, useAppDispatch } from "../store/hooks";
@@ -20,8 +20,8 @@ import * as S from "../styled/Brand.styled";
 export default function SearchPage() {
   const dispatch = useAppDispatch();
 
-  const segmentList = segments;
-  const fuelTypeList = ["가솔린", "디젤", "LPG", "하이브리드", "전기", "수소"];
+  const segmentList = SEGMENT_LIST;
+  const fuelTypeList = FUELTYPE_LIST
 
   const segChecked = useAppSelector(state => state.segCheck);
   const segAll = useAppSelector(state => state.segAll);
@@ -142,16 +142,16 @@ export default function SearchPage() {
             {fuelTypeList.map((fuelType, index) => (
               <FormControlLabel
                 className="check"
-                key={fuelType}
+                key={fuelType.id}
                 control={
                   <Checkbox
                     checked={fuelChecked[index]}
                     onChange={() => {
-                      fuelTypeHandle(fuelType, index);
+                      fuelTypeHandle(fuelType.id, index);
                     }}
                   />
                 }
-                label={`${fuelType}`}></FormControlLabel>
+                label={`${fuelType.name}`}></FormControlLabel>
             ))}
           </FormGroup>
         </S.CheckLine>

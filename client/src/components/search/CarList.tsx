@@ -7,7 +7,6 @@ import { fetchCarAllList } from "../../store/api/carApi";
 
 // COMPONENTS
 import { SearchBar } from "./SearchBar";
-import TestList from "./testList";
 
 // TYPE
 interface ModelListType {
@@ -49,7 +48,12 @@ export function CarList() {
       return setCars(getCars);
     }
     const filterBrand =
-      selectBrand.length > 0 ? getCars.filter((car: type.CarType) => selectBrand.includes(car.brand.id)) : getCars;
+      selectBrand.length > 0 ? getCars.filter((car: type.CarType) => {
+        if(typeof car.brand != "string"){
+          return selectBrand.includes(car.brand.id)
+        }
+      }) : getCars; 
+      
     const filterSeg =
       selectSeg.length > 0 ? filterBrand.filter((car: type.CarType) => selectSeg.includes(car.segment)) : filterBrand;
     const filterFuel =

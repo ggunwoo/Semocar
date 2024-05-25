@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { segments } from "../../../utils/constants";
+import { SEGMENT_LIST } from "../../../utils/constants";
 
 export const fuelList = ["가솔린", "디젤", "LPG", "하이브리드", "전기", "수소"];
 
@@ -15,7 +15,7 @@ export const segAll = createSlice({
 
 export const segCheck = createSlice({
   name: "segCheck",
-  initialState: Array(segments.length).fill(false),
+  initialState: Array(SEGMENT_LIST.length).fill(false),
   reducers: {
     segHandle: (state, action) => {
       return action.payload;

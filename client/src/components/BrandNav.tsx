@@ -21,7 +21,6 @@ export function BrandNav() {
   const brands = useAppSelector(state => state.brandList.items);
   const status = useAppSelector(state => state.brandList.status); // idle, loading, secceeded, faild
   const error = useAppSelector(state => state.brandList.error);
-  // const toggle = useAppSelector(state => state.toggle);
   const selectBrand = useAppSelector(state => state.selectedBrand);
 
   useEffect(() => {
