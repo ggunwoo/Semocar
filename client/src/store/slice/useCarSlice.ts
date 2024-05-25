@@ -72,6 +72,10 @@ export const getCarSlice = createSlice({
       // ==접근한 필드에 속성값을 업데이트하기
       ref[keys[keys.length - 1]] = value;
     },
+    unmount: state => {
+      state.item = null;
+      state.status = "idle";
+    },
   },
   extraReducers: builder => {
     builder
@@ -92,4 +96,4 @@ export const getCarSlice = createSlice({
   },
 });
 
-export const { updateField } = getCarSlice.actions;
+export const { updateField, unmount } = getCarSlice.actions;

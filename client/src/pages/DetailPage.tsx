@@ -6,6 +6,7 @@ import * as type from "../types/types";
 import { fetchCar } from "../store/api/carApi";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { imageUrl } from "../api/getCarData";
+import { unmount } from "../store/slice/useCarSlice";
 
 // STYLED
 import { MaxContainer } from "../styled/Global";
@@ -121,6 +122,9 @@ export default function DetailPage() {
     if (status === "idle") {
       dispatch(fetchCar(id));
     }
+    return () => {
+      dispatch(unmount());
+    };
   }, [id, dispatch]);
 
   const [selectGrade, segSelectGrade] = useState("1");
@@ -289,7 +293,9 @@ export default function DetailPage() {
                       <dt>배기량</dt>
                       <dd>{trim.displacement}</dd>
                       <dt>변속기</dt>
-                      <dd>{trim.trans_mission.gear} {trim.trans_mission.type}</dd>
+                      <dd>
+                        {trim.trans_mission.gear} {trim.trans_mission.type}
+                      </dd>
                       <dt>구동방식</dt>
                       <dd>{trim.driving_system}</dd>
                       <dt>최고출력</dt>
@@ -313,9 +319,13 @@ export default function DetailPage() {
                     {/* OPTION 3LINE */}
                     <S.ChartDl>
                       <dt>앞타이어규격</dt>
-                      <dd>{trim.front_tire.width} {trim.front_tire.flatness}R {trim.front_tire.inch}</dd>
+                      <dd>
+                        {trim.front_tire.width} {trim.front_tire.flatness}R {trim.front_tire.inch}
+                      </dd>
                       <dt>뒷타이어규격</dt>
-                      <dd>{trim.rear_tire.width} {trim.rear_tire.flatness}R {trim.rear_tire.inch}</dd>
+                      <dd>
+                        {trim.rear_tire.width} {trim.rear_tire.flatness}R {trim.rear_tire.inch}
+                      </dd>
                       <dt>전륜브레이크</dt>
                       <dd>{trim.front_suspension}</dd>
                       <dt>후륜브레이크</dt>
@@ -461,11 +471,7 @@ export default function DetailPage() {
                 {/* 차량 앞면 이미지 */}
                 <div className="size_img front">
                   <span className="wrap_thumb">
-                    <img
-                      className="sizeimg"
-                      src={`${imageUrl}/size_info/suv/img_suv_front.png`}
-                      alt="SUVFrontImage"
-                    />
+                    <img className="sizeimg" src={`${imageUrl}/size_info/suv/img_suv_front.png`} alt="SUVFrontImage" />
                   </span>
                   <span className="wrap_size track">
                     <span className="txt">
@@ -485,11 +491,7 @@ export default function DetailPage() {
                 {/* 차량 옆면 이미지 */}
                 <div className="size_img side">
                   <span className="wrap_thumb">
-                    <img
-                      className="sizeimg"
-                      src={`${imageUrl}/size_info/suv/img_suv_side.png`}
-                      alt="SUVsideImage"
-                    />
+                    <img className="sizeimg" src={`${imageUrl}/size_info/suv/img_suv_side.png`} alt="SUVsideImage" />
                   </span>
                   <span className="wrap_size wheelbase">
                     <span className="txt">
@@ -509,11 +511,7 @@ export default function DetailPage() {
                 {/* 차량 뒷면 이미지 */}
                 <div className="size_img rear">
                   <span className="wrap_thumb">
-                    <img
-                      className="sizeimg"
-                      src={`${imageUrl}/size_info/suv/img_suv_rear.png`}
-                      alt="SUVrearImage"
-                    />
+                    <img className="sizeimg" src={`${imageUrl}/size_info/suv/img_suv_rear.png`} alt="SUVrearImage" />
                   </span>
                   <span className="wrap_size tread">
                     <span className="txt">
