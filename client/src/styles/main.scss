@@ -1,9 +1,14 @@
 @import 'color';
 
 @mixin container-style {
-  max-width: 1100px;
   // 임시 적응형 웹
+  max-width: 1100px;
   min-width: 1100px;
   padding-left: 0;
   padding-right: 0;
+}
+@mixin container-center-style {
+  // 임시 적응형 웹
+  @include container-style;
+  margin: 0 auto;
 }

@@ -1,4 +1,3 @@
-import "../../styles/components/search/carList.scss";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
@@ -152,7 +151,7 @@ export default function CarList() {
   console.log("selectBrand: ", selectBrand);
 
   return (
-    <section className="container-car-list">
+    <article className="container-search-car-list">
       {/* 상단 탭 */}
       <nav className="list-nav">
         <div></div>
@@ -230,6 +229,6 @@ export default function CarList() {
       </ul>
 
       {/* <TestList /> */}
-    </section>
+    </article>
   );
 }

@@ -18,7 +18,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // COMPONENTS
-import BrandNav from "../components/BrandNav";
+// import BrandNav from "../components/search/SelectBrand";
 
 // STYLED-COMPONENTS
 import { MaxContainer } from "../styled/Global";
@@ -119,12 +119,6 @@ export default function MainPage(): JSX.Element {
           </SwiperSlide>
         ))}
       </S.BannerWrapper>
-
-      {/* 브랜드별 차량 NAV COMPONENTS */}
-      <MaxContainer sx={{ position: "relative" }}>
-        {/* <S.Title marginTop="100px">브랜드별 보러가기</S.Title> */}
-        <BrandNav />
-      </MaxContainer>
 
       {/* 최신 출시 모델 */}
       <S.GradientGuide>

@@ -1,4 +1,4 @@
-import "../styles/components/admin.scss"
+// import "../styles/components/admin.scss"
 import { useState } from "react";
 import verifyPassword from "../api/adminVerify";
 import { Link, Outlet } from "react-router-dom";

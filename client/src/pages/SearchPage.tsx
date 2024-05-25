@@ -1,3 +1,4 @@
+import "../styles/search.scss";
 import { Checkbox } from "@mui/material";
 import { FormGroup, FormControlLabel } from "@mui/material";
 import { SEGMENT_LIST, FUELTYPE_LIST } from "../../utils/constants";
@@ -8,7 +9,7 @@ import { segIn, segReset, fuelIn, fuelReset } from "../store/slice/carFilter";
 import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/slice/carCheck-slice";
 
 // COMPONENT
-import BrandNav from "../components/BrandNav";
+import SearchBrand from "../components/search/SelectBrand";
 import SelectBox from "../components/search/SelectBox"
 import CarList from "../components/search/CarList";
 
@@ -79,9 +80,9 @@ export default function SearchPage() {
   };
 
   return (
-    <MaxContainer>
+    <section className="container-search-page">
       {/* Brand Search Nav */}
-      <BrandNav />
+      <SearchBrand />
       {/* Search Check Box */}
 
       <S.CheckBoxWrapper>
@@ -165,6 +166,6 @@ export default function SearchPage() {
       <CarList />
 
       {/* variant='outlined' size="sm" color="neutral" */}
-    </MaxContainer>
+    </section>
   );
 }

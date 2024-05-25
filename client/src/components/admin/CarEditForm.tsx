@@ -36,7 +36,7 @@ export default function CarEditForm({ carId }) {
         <dd>{carData.id}</dd>
 
         <dt>모델명 : </dt>
-        <dd>{carData.model}</dd>
+        <dd>{carData.model.name}</dd>
 
         <dt>브랜드 : </dt>
         <dd>{typeof carData.brand === "string" ? carData.brand : (carData.brand as type.BrandType).name}</dd>

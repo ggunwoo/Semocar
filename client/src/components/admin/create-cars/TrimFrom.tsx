@@ -1,4 +1,4 @@
-import "../../../styles/components/form.scss";
+// import "../../../styles/components/form.scss";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateField, addTrim, removeTrim } from "../../../store/slice/createCarSlice";
 import { useEffect, useState } from "react";

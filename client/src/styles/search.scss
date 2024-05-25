@@ -1,8 +1,11 @@
 @import "main";
 @import "color";
 
-.container-car-list {
-  @include container-style;
+.container-search-page {
+  @include container-center-style;
+}
+
+.container-search-car-list {
   .list-nav {
     width: 100%;
     display: flex;

@@ -25,19 +25,21 @@ function App(): JSX.Element {
       <CssBaseline />
       {/* HEADER */}
       {!hideHeader && <Header />}
-      {/* ARTICLE */}
-      <Routes>
-        {/* <Route path={"/"} element={<MainPage />} /> */}
-        <Route path="/" element={<SearchPage />} />
-        <Route path="/detail/:id" element={<DetailPage />} />
-        {/* ======= 어드민 페이지 ======= */}
-        <Route path="/admin" element={<AdminPage />}>
-          <Route path="create-brand" element={<CreateBrandPage />} />
-          <Route path="create-car" element={<CreateCarPage />} />
-          <Route path="get-car" element={<CarListPage />} />
-        </Route>
-        {/* ============================ */}
-      </Routes>
+      {/* MAIN */}
+      <main>
+        <Routes>
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/" element={<SearchPage />} />
+          <Route path="/detail/:id" element={<DetailPage />} />
+          {/* ======= 어드민 페이지 ======= */}
+          <Route path="/admin" element={<AdminPage />}>
+            <Route path="create-brand" element={<CreateBrandPage />} />
+            <Route path="create-car" element={<CreateCarPage />} />
+            <Route path="get-car" element={<CarListPage />} />
+          </Route>
+          {/* ============================ */}
+        </Routes>
+      </main>
       {/* FOOTER */}
       {!hideFooter && <Footer />}
     </div>

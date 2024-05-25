@@ -1,4 +1,4 @@
-import "../../../styles/components/form.scss";
+import "../../../styles/form.scss";
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { submitFormData } from "../../../store/api/carApi";

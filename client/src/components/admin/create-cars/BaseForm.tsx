@@ -1,4 +1,4 @@
-import "../../../styles/components/form.scss";
+// import "../../../styles/components/form.scss";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/api/brandApi";

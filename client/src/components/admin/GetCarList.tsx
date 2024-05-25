@@ -1,4 +1,4 @@
-import "../../styles/components/admin.scss";
+import "../../styles/admin.scss";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { fetchCarAllList, fetchCar } from "../../store/api/carApi";
 import { useState, useEffect } from "react";

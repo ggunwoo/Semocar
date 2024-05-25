@@ -1,3 +1,3 @@
 export default function SelectBox(){
-  return <div>SelectBox</div>
+  return <article className="container-select-box">New SelectBox</article>
 }

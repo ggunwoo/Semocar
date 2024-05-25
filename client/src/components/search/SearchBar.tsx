@@ -78,7 +78,7 @@ export function SearchBar() {
     setListHover('photo/select_model')
   }
   return (
-    <>
+    <nav>
     {/* 검색창 */}
         <S.SearchBarWrapper>
         {/* <div></div> */}
@@ -122,6 +122,6 @@ export function SearchBar() {
           </S.ListWrapper>
         }
       </S.SearchBarWrapper>
-    </>
+    </nav>
   )
 }
