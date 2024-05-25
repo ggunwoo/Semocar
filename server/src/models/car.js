@@ -99,8 +99,6 @@ const baseCarSchema = new mongoose.Schema({
   grades: [gradeSchema], // Grade스키마 참조
 }, { versionKey: false });
 
-
-
 const Car = mongoose.model("Car", baseCarSchema);
 
 export default Car;
