@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { useCarData } from "../../utils/useCarData";
+import { SEGMENT_LIST, FUELTYPE_LIST } from "../../utils/constants";
 
 // REDUX
 import { toggleReset } from "../store/slice/useBrandListSlice";
 import { segReset, fuelReset, brandReset } from "../store/slice/carFilter";
-import { segAllChange, segHandle, fuelAllChange, fuelHandle, segList, fuelList } from "../store/slice/carCheck-slice";
+import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/slice/carCheck-slice";
 
 // SWIPER CSS
 import "swiper/css";
@@ -17,7 +18,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // COMPONENTS
-import { BrandNav } from "../components/BrandNav";
+import BrandNav from "../components/BrandNav";
 
 // STYLED-COMPONENTS
 import { MaxContainer } from "../styled/Global";
@@ -62,12 +63,12 @@ export default function MainPage(): JSX.Element {
     dispatch(toggleReset());
     // segement Reset
     dispatch(segAllChange(true));
-    const resetSeg = Array(segList.length).fill(false);
+    const resetSeg = Array(SEGMENT_LIST.length).fill(false);
     dispatch(segHandle(resetSeg));
 
     // fuelType Reset
     dispatch(fuelAllChange(true));
-    const resetFuel = Array(fuelList.length).fill(false);
+    const resetFuel = Array(FUELTYPE_LIST.length).fill(false);
     dispatch(fuelHandle(resetFuel));
 
     console.log("reset");
