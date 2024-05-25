@@ -13,7 +13,10 @@ interface FormDataState {
 const initialState: FormDataState = {
   formData: {
     brand: "",
-    model: "",
+    model: {
+      name: "",
+      english_name: "",
+    },
     name: "",
     english_name: "",
     model_initial: "",

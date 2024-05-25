@@ -124,7 +124,17 @@ export default function BaseCarForm() {
         <input
           type="text"
           name="model"
-          value={formData.model}
+          value={formData.model.name}
+          placeholder="한글"
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
+        <input
+          type="text"
+          name="model"
+          value={formData.model.english_name}
+          placeholder="영어"
           onChange={e => {
             handleChange(e, "string");
           }}
