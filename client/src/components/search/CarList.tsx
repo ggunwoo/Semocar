@@ -16,7 +16,7 @@ interface ModelListType {
   generations: type.CarType[];
 }
 
-export function CarList() {
+export default function CarList() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // Cars Data

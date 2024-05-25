@@ -8,8 +8,9 @@ import { segIn, segReset, fuelIn, fuelReset } from "../store/slice/carFilter";
 import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/slice/carCheck-slice";
 
 // COMPONENT
-import { BrandNav } from "../components/BrandNav";
-import { CarList } from "../components/search/CarList";
+import BrandNav from "../components/BrandNav";
+import SelectBox from "../components/search/SelectBox"
+import CarList from "../components/search/CarList";
 
 // STYLED COMPONENTS
 // SearchBox Styled
@@ -156,6 +157,9 @@ export default function SearchPage() {
           </FormGroup>
         </S.CheckLine>
       </S.CheckBoxWrapper>
+      
+      {/* SelectBox */}
+      <SelectBox />
 
       {/* 차 목록 */}
       <CarList />

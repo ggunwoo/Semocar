@@ -14,7 +14,7 @@ import * as S from "../styled/components/BrandNav.styled";
 
 import { fetchBrands } from "../store/api/brandApi";
 
-export function BrandNav() {
+export default function BrandNav() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
