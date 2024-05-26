@@ -1,3 +1,4 @@
+// ■■ 자동차 데이터 ■■
 export interface TrimType {
   id: string;
   name: string;
@@ -63,7 +64,13 @@ export interface BrandType {
   logo_path: string;
   id: string;
 }
-// ■■ 자동차 제원 데이터 서버 전송 타입 ■■
+
+export interface FuelType {
+  name: string;
+  id: string;
+  _id: string;
+}
+
 export interface CarType {
   brand: BrandType | string;
   model: {
@@ -78,14 +85,17 @@ export interface CarType {
   id: string;
   segment: string;
   date: { year: number; month: number };
-  fuel_types: { name: string; id: string }[];
+  fuel_types: FuelType[];
   grades: grade[];
 }
 
-
-
-
-
+export interface ModelListType {
+  model: string;
+  name: string;
+  segment: string;
+  fuel_types: string[];
+  generations: CarType[];
+}
 
 // ==========Old========
 

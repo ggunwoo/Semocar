@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as type from "../../types/types";
-import { fetchCarAllList, fetchCar, updateCar } from "../api/carApi";
+import { fetchCarList, fetchCar, updateCar } from "../api/carApi";
+
+interface CarListState {
+  items: type.ModelListType[]
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+  // editingCarId: string | null;
+}
 
 interface CarState {
   item: type.CarType | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
-}
-
-interface CarListState {
-  items: type.CarType[] | [];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-  // editingCarId: string | null;
 }
 
 export const carListSlice = createSlice({
@@ -21,19 +21,18 @@ export const carListSlice = createSlice({
     items: [],
     status: "idle",
     error: null as string | null,
-    // editingCarId: null,
   } as CarListState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchCarAllList.pending, state => {
+      .addCase(fetchCarList.pending, state => {
         state.status = "loading";
       })
-      .addCase(fetchCarAllList.fulfilled, (state, action) => {
+      .addCase(fetchCarList.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.items = action.payload;
       })
-      .addCase(fetchCarAllList.rejected, (state, action) => {
+      .addCase(fetchCarList.rejected, (state, action) => {
         state.status = "failed";
         console.log("error");
         state.error = action.error?.message ?? null;

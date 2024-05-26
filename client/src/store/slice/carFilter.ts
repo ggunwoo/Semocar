@@ -11,8 +11,6 @@ export const selectedBrand = createSlice({
         const updatedBrand = state.filter((stateId:string) => stateId !== brandId)
         return updatedBrand;
       } else {
-        // const copyBrand = [brandId];
-        // return copyBrand;
          state.push(brandId)
       }
     },

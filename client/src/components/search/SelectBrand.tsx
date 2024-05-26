@@ -29,8 +29,8 @@ export default function SearchBrand() {
     }
   }, []);
 
-  const brandHandler = (brand: string, index: number) => {
-    dispatch(brandIn(brand));
+  const brandHandler = (brandOBID: string, index: number) => {
+    dispatch(brandIn(brandOBID));
     dispatch(toggleHandler(index));
   };
   const brandAll = () => {
@@ -51,10 +51,10 @@ export default function SearchBrand() {
       <S.Nav>
         {brands.map((brand, index) => (
           <Button
-            className={`logoBtn ${selectBrand.includes(brand.id) ? "clicked" : "unclick"}`}
+            className={`logoBtn ${selectBrand.includes(brand._id) ? "clicked" : "unclick"}`}
             key={brand.id}
             onClick={() => {
-              brandHandler(brand.id, index);
+              brandHandler(brand._id, index);
               // navigate(`/brand`);
             }}
             variant="text">

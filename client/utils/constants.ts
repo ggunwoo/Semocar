@@ -1,3 +1,5 @@
+export const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+
 // 차급
 // --TODO : 추후에 차급 - 사이즈, 플랫폼으로 나누기 (사이즈: 소형,중형,대형 | 플랫폼: 세단, SUV, 왜건)
 export const SEGMENT_LIST = [
@@ -20,17 +22,6 @@ export const SEGMENT_LIST = [
   "왜건",
 ];
 
-export const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-
-export const BRAND_IDS = {
-  현대: "10",
-  기아: "11",
-  제네시스: "12",
-  르노코리아: "13",
-  KGM: "14",
-  쉐보레: "15",
-};
-
 export const SEGMENT_IDS = {
   경차: "11",
   소형세단: "20",
@@ -50,6 +41,15 @@ export const SEGMENT_IDS = {
   왜건: "77",
   쿠페: "88",
   상용차: "99",
+};
+
+export const BRAND_IDS = {
+  현대: "10",
+  기아: "11",
+  제네시스: "12",
+  르노코리아: "13",
+  KGM: "14",
+  쉐보레: "15",
 };
 
 export const FUELTYPE_LIST = [
