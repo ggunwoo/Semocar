@@ -3,7 +3,7 @@ import * as type from "../../types/types";
 import { fetchCarList, fetchCar, updateCar } from "../api/carApi";
 
 interface CarListState {
-  items: type.ModelListType[]
+  items: type.ModelListType[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   // editingCarId: string | null;
@@ -29,6 +29,7 @@ export const carListSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchCarList.fulfilled, (state, action) => {
+        // new Promise((res) => setTimeout(res, 10000)); // 로딩 확인
         state.status = "succeeded";
         state.items = action.payload;
       })
