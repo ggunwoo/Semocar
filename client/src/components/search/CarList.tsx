@@ -5,7 +5,8 @@ import * as type from "../../types/types";
 import { fetchCarList } from "../../store/api/carApi";
 
 // COMPONENTS
-import { SearchBar } from "./SearchBar";
+import SearchBar from "./SearchBar";
+import Spinner from "../Spinner"
 
 export default function CarList() {
   const dispatch = useAppDispatch();
@@ -46,10 +47,6 @@ export default function CarList() {
     setSelectModel(copyArr);
   };
 
-  // if (status == "loading") {
-  //   return <div>Loading...!</div>;
-  // }
-
   if (status === "failed") {
     return <div>Error!</div>;
   }
@@ -69,9 +66,7 @@ export default function CarList() {
       {/* TODO: 목록은 model 기준으로만 구성하기 */}
       <ul className={`car-list grid-rows-4 ${status === "loading" && "list-reloading"}`}>
         {status === "loading" && (
-          <div className="spinner">
-            <p>Loading</p>
-          </div>
+          <Spinner />
         )}
         {cars.length === 0 ? (
           <div className="car-empty" style={{ width: "100%" }}>

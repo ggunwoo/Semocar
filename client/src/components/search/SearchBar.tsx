@@ -13,7 +13,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import * as S from '../../styled/components/SearchBar.styled'
 
 
-export function SearchBar() {
+export default function SearchBar() {
   const carData = useCarData();
   const navigate = useNavigate(); 
   const [searchText, setSearchText] = useState('');
