@@ -1,20 +1,21 @@
 @import "color";
 
-$spinner-border-size: 5px;
+$spinner-border-size: 7px;
 
 .spinner-wrapper {
   position: absolute;
   left: 50%;
   top: 50px;
+  transform: translate(-50%);
   padding: 30px;
   z-index: 99;
 }
 
 .spinner {
   margin: 0 auto;
-  width: 50px;
-  height: 50px;
-  border: $spinner-border-size solid rgba(152, 150, 159, 0.5);
+  width: 75px;
+  height: 75px;
+  border: $spinner-border-size solid rgba(152, 150, 159, 0.2);
   border-top: $spinner-border-size solid $--color-deep-dark;
   border-radius: 50%;
   animation: spin 2s linear infinite;

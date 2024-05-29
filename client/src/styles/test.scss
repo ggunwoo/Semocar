@@ -1,19 +1,63 @@
+@mixin select-list($count: 6) {
+  display: grid;
+  grid-template-columns: repeat($count, 1fr);
+  justify-content: space-evenly;
+}
+
 .container-select-box {
-  .brand-list {
+  // Brand Box Style
+  article.select-line {
     display: flex;
-    justify-content: space-evenly;
-    .brand-item {
-      height: 100px;
-      .logo {
-        width: 45px;
-        height: 30px;
-        .logo-img {
-          width: 100%;
-          height: 100%
-        }
-      }
-      .name {
+    align-items: baseline;
+    // 리스트 제목
+    h2 {
+      width: 70px;
+      font-size: 18px
+    }
+    // 리스트
+    .list {
+    }
+  }
+}
+// 브랜드
+.brand-list {
+  @include select-list(10);
+  .brand-item {
+    // width: 75px;
+    height: 60px;
+    text-align: center;
+    .logo {
+      width: 45px;
+      height: 28px;
+      margin: 0 auto;
+      .logo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
+    .name {
+      width: 100%;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+// 차급
+.seg-list {
+  @include select-list(7);
+  span {
+    font-size: 14px;
+  }
+}
+
+// 연료
+.fuel-list {
+  @include select-list(10);
+  span {
+    font-size: 14px;
   }
 }
