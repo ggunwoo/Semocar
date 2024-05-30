@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const selectedBrand = createSlice({
-  name: "selectedBrand",
+  name: "brand",
   initialState: [] as string[],
   reducers: {
     brandIn: (state, action) => {
@@ -22,7 +22,7 @@ export const selectedBrand = createSlice({
   },
 });
 export const selectedSeg = createSlice({
-  name: "selectedSeg",
+  name: "segment",
   initialState: [] as string[],
   reducers: {
     segIn: (state, action) => {
@@ -42,9 +42,8 @@ export const selectedSeg = createSlice({
     },
   },
 });
-
 export const selectedFuel = createSlice({
-  name: "selectedFuel",
+  name: "fuelType",
   initialState: [] as string[],
   reducers: {
     fuelIn: (state, action) => {
@@ -64,3 +63,7 @@ export const selectedFuel = createSlice({
     },
   },
 });
+
+export const { brandIn, brandReset } = selectedBrand.actions;
+export const { segIn, segReset } = selectedSeg.actions;
+export const { fuelIn, fuelReset } = selectedFuel.actions;

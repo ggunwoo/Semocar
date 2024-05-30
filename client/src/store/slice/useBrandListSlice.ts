@@ -27,29 +27,3 @@ export const brandListSlice = createSlice({
       });
   },
 });
-
-export const toggleSlice = createSlice({
-  name: "toggle",
-  initialState: [],
-  reducers: {
-    toggleHandler: (state, action) => {
-      const index = action.payload;
-      if (state[index] === false) {
-        state.fill(false);
-        state[index] = true;
-      } else if (state[index] === true) {
-        state[index] = false;
-      }
-    },
-    toggleReset: (state) => {
-      state.fill(false);
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchBrands.fulfilled, (state, action) => {
-      return new Array(action.payload.length).fill(false);
-    });
-  },
-});
-
-export const { toggleHandler, toggleReset } = toggleSlice.actions;
