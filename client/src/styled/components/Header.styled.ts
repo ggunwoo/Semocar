@@ -1,7 +1,7 @@
 import  styled  from 'styled-components'
 import { Button} from '@mui/material'
 
-export const Header = styled.div`
+export const Header = styled.header`
 &&& {
   width: 100%;
   /* background-color: #fff; */

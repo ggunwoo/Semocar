@@ -1,6 +1,6 @@
 @import "color";
 
-$header-height: 60px;
+$header-height: 0px;
 $admin-page-height: 76px;
 $nav-height: 24px;
 
@@ -89,10 +89,22 @@ $nav-height: 24px;
         flex-direction: column;
         overflow: hidden;
         max-height: 0;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
         .category_field {
           display: inherit;
           flex-direction: column;
+        }
+        .tire_width,
+        .tire_flatness,
+        .tire_inch {
+          width: 50px;
+        }
+        .middle_title {
+          width: 100%;
+          padding: 4px 0 4px 6px;
+          background-color: #eee;
+          font-weight: bold;
+          font-size: 12px;
         }
       }
       .field.hide {
@@ -101,6 +113,21 @@ $nav-height: 24px;
       .field.show {
         max-height: 1000px;
       }
+    }
+  }
+}
+
+.detail-article {
+  display: flex;
+  dl {
+    dt {
+      float: left;
+      margin-right: 12px;
+      font-weight: bold;
+    }
+    dd {
+      color: #777;
+      font-weight: normal;
     }
   }
 }

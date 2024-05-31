@@ -1,0 +1,33 @@
+@import 'color';
+
+@mixin container-style {
+  // 임시 적응형 웹
+  max-width: 1100px;
+  min-width: 1100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@mixin container-center-style {
+  // 임시 적응형 웹
+  @include container-style;
+  margin: 0 auto;
+}
+
+// Search Page
+// -- Select Box
+@mixin select-grid-list($count: 6) {
+  display: grid;
+  grid-template-columns: repeat($count, 1fr);
+  justify-content: space-evenly;
+  gap: 8px;
+}
+// --Car List
+@mixin list-grid-style($style) {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat($style, 1fr);
+  grid-row: repeat($style, 1fr);
+  -ms-grid-row: repeat($style, 1fr);
+  gap: 50px;
+}

@@ -1,0 +1,233 @@
+@import "main";
+@import "color";
+
+
+
+.container-search-page {
+  @include container-center-style;
+}
+
+// 선택 옵션 박스 스타일
+$list-h2: 70px;
+section.container-select-box {
+  // 리스트 전역 스타일
+  article.line {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #ccc;
+    height: 100px;
+    // 리스트 제목
+    h2 {
+      margin: auto 0;
+      width: $list-h2;
+      font-size: 18px;
+      color: black;
+    }
+    // 리스트
+    > ul,
+    .list {
+      width: calc(1100px - $list-h2);
+      text-align: center;
+      margin: auto 0;
+      span {
+        font-size: 14px;
+      }
+      li {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 10px;
+        box-sizing: border-box;
+        p {
+          user-select: none;
+        }
+        &.false:hover {
+          background-color: #eee;
+        }
+        &.active {
+          background-color: $--color-dark;
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  // 브랜드 옵션
+  article.brand-line {
+    ul {
+      @include select-grid-list(10);
+      li {
+        height: 60px;
+        text-align: center;
+        .logo {
+          width: 45px;
+          height: 28px;
+          margin: 0 auto;
+          .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .name {
+          width: 100%;
+          font-size: 14px;
+          margin-top: 4px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  // 차급 옵션
+  article.segment-line {
+    height: 130px;
+    h2 {
+      margin: 32px 0;
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      ul {
+        display: inherit;
+        li {
+        }
+      }
+    }
+  }
+  // 연료 옵션
+  article.fuelType-line {
+    ul {
+      @include select-grid-list(9);
+    }
+  }
+}
+
+// ㅁ자동차 리스트 스타일ㅁ
+$--list-min-height: 500px;
+
+.container-car-list {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .list-reloading {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: $--list-min-height;
+      background-color: white;
+      opacity: 0.5;
+    }
+  }
+  .list-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0;
+    margin-bottom: 3rem;
+    border-color: divider;
+    margin-top: 50px;
+  }
+  // 자동차 목록
+  .car-list {
+    width: 100%;
+    min-height: $--list-min-height;
+    position: relative;
+    .car-items {
+      width: 100%;
+      position: inherit;
+      
+    }
+  }
+  // 가로 한줄에 4개씩
+  .grid-rows-4 {
+
+    li.car-items {
+      height: 300px;
+      .model-info {
+        p.model-name {
+          font-size: 0.815rem;
+          width: 100%;
+          text-align: center;
+          color: black;
+          background-color: white;
+          border: 2px solid $--color-deep-dark;
+          border-radius: 5px;
+        }
+        .model-image {
+          position: relative;
+          height: 150px;
+          img {
+            position: absolute;
+            bottom: 20px;
+            width: 80%;
+            right: 50%;
+            transform: translateX(50%);
+            height: auto;
+            object-fit: contain;
+          }
+        }
+      }
+      // 선택된 모델 / 모델 리스트 열고 닫는 버튼
+      .model-list-toggle-button {
+        cursor: pointer;
+        .text-box {
+          .head {
+            display: flex;
+            p {
+              font-size: 14px;
+            }
+            p.name {}
+            p.arrow {}
+          }
+          .info {
+
+          }
+        }
+      }
+      // 모델 목록
+      .car-model-list {
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        min-width: 400px;
+        background-color: #ccc;
+        white-space: inherit;
+        z-index: 5;
+        .focus {
+          span {
+            font-size: bold;
+            color: $--color-dark;
+          }
+        }
+      }
+      .model-list-close {
+        display: none;
+        border: 0px solid black;
+        max-height: 0;
+      }
+      .model-list-open {
+        max-width: 500px;
+        display: block;
+        border: 1px solid black;
+        max-height: 500px;
+        padding: 16px;
+      }
+    }
+  }
+}

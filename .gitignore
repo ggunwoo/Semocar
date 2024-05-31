@@ -13,6 +13,7 @@
 */coverage
 
 # misc
+.DS_Store
 */.DS_Store
 */.env
 */.env.local
@@ -20,6 +21,6 @@
 */.env.test.local
 */.env.production.local
 
-
 npm-debug.log*
 *.zip
+서버업로드

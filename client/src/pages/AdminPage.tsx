@@ -1,3 +1,4 @@
+// import "../styles/components/admin.scss"
 import { useState } from "react";
 import verifyPassword from "../api/adminVerify";
 import { Link, Outlet } from "react-router-dom";
@@ -26,16 +27,15 @@ export default function AdminPage(): JSX.Element {
 
   if (!isVerified) {
     return (
-      <section className="grid gap-4 place-content-center text-center h-48">
+      <section>
         <h1>비밀번호 입력</h1>
         <form onSubmit={handleSubmit}>
           <input
-            className="ring-2 block mb-4"
             type="text"
-            onChange={(e) => setPassword(e.target.value)} // 비밀번호 변경 핸들
+            onChange={e => setPassword(e.target.value)} // 비밀번호 변경 핸들
             value={password}
           />
-          <button type="submit" className="w-8 h-2 ml-4">
+          <button type="submit">
             전송
           </button>
         </form>
@@ -43,11 +43,16 @@ export default function AdminPage(): JSX.Element {
     );
   }
   return (
-    <section>
-      <h1 className="m-4">Admin pages</h1>
-      <nav className="flax justify-evenly mx-8 h-8">
-      {/* <Link to="create-brand" className="mr-4 hover:text-sky-400">브랜드 DB 생성</Link> */}
-      <Link to="create-car" className="hover:text-sky-400">자동차 DB 생성</Link>
+    <section className="admin-page-container">
+      <h1>Admin pages</h1>
+      <nav>
+        {/* <Link to="create-brand" className="mr-4 hover:text-sky-400">브랜드 DB 생성</Link> */}
+        <Link to="create-car">
+          자동차 DB 생성
+        </Link>
+        <Link to="get-car">
+          자동차 리스트 보러가기
+        </Link>
       </nav>
       <Outlet />
     </section>

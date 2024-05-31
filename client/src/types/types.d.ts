@@ -1,3 +1,4 @@
+// ■■ 자동차 데이터 ■■
 export interface TrimType {
   id: string;
   name: string;
@@ -18,15 +19,23 @@ export interface TrimType {
   highway_gas_mileage?: number;
   low_emission: string;
   vehicle_weight: number;
-  front_tire: string;
-  rear_tire: string;
+  front_tire: {
+    width: string,
+    flatness: string,
+    inch: string,
+  };
+  rear_tire: {
+    width: string,
+    flatness: string,
+    inch: string,
+  }, 
   front_brake: string;
   rear_brake: string;
   front_suspension: string;
   rear_suspension: string;
   capacity: number;
   length: number;
-  weight: number;
+  width: number;
   height: number;
   wheel_base: number;
   track: number;
@@ -43,30 +52,58 @@ export interface TrimType {
   urban_range?: number;
   highway_range?: number;
 }
-
 export interface GradeType {
   name: string;
   id: string;
   trims: trim[];
 }
+export interface BrandType {
+  _id: string;
+  name: string;
+  english_name: string;
+  logo_path: string;
+  id: string;
+}
 
-// ■■ 자동차 제원 데이터 서버 전송 타입 ■■
-export interface CarDataType {
-  brand: string;
+export interface FuelType {
+  name: string;
+  id: string;
+  _id: string;
+}
+
+interface BaseCarType {
+  model: {
+    name: string,
+    english_name: string
+  };
   name: string;
   english_name: string;
   model_initial: string | null;
+  is_facelift: boolean,
+  image_path: string;
   id: string;
-  segment: string;
-  photo_count: { exterior: number; interior: number };
-  price: { min: number; max: number };
+  segment: {
+    size: string;
+    body: string;
+  };
   date: { year: number; month: number };
-  fuel_types: { name: string; id: string }[];
+  fuel_types: FuelType[];
   grades: grade[];
 }
 
-
-
+export interface CarType extends BaseCarType {
+  brand: BrandType;
+}
+export interface PostCarType extends BaseCarType {
+  brand: string;
+}
+export interface ModelListType {
+  model: string;
+  name: string;
+  segment: string;
+  fuel_types: string[];
+  generations: CarType[];
+}
 
 
 

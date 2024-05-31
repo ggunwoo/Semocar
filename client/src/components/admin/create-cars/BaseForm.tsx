@@ -1,8 +1,16 @@
-import "../../../styles/components/form.scss";
+// import "../../../styles/components/form.scss";
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
-import { fetchBrands } from "../../../store/slice/brands";
-import { segments, months, BRAND_IDS, SEGMENT_IDS } from "../../../../utils/constants"; // 상수 데이터 불러오기
+import { fetchBrands } from "../../../store/api/brandApi";
+import {
+  MONTHS,
+  SEGMENT_SIZE_LIST,
+  SEGMENT_BODY_LIST,
+  SEGMENT_SIZE_IDS,
+  SEGMENT_BODY_IDS,
+  BRAND_IDS,
+  FUELTYPE_LIST,
+} from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./SubmitButton";
 // ===============================================================
@@ -14,47 +22,50 @@ import SubmitButton from "./SubmitButton";
 export default function BaseCarForm() {
   const dispatch = useAppDispatch();
   // checkbox와 배열 정렬을 위한 복사데이터
-  const [fuelTypes, setFuelTypes] = useState([
-    { name: "가솔린", id: "1", checked: false },
-    { name: "디젤", id: "2", checked: false },
-    { name: "LPG", id: "3", checked: false },
-    { name: "하이브리드", id: "4", checked: false },
-    { name: "전기", id: "5", checked: false },
-    { name: "수소", id: "6", checked: false },
-  ]);
-  const brandsSlice = useAppSelector(state => state.brands);
+  const [fuelTypes, setFuelTypes] = useState([]);
+  const useBrands = useAppSelector(state => state.brandList);
   const formData = useAppSelector(state => state.createCar.formData);
   const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
   const [brand, setBrand] = useState("");
-  const [segment, setSegment] = useState("");
+  const [segmentSize, setSegmentSize] = useState("");
+  const [segmentBody, setSegmentBody] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
   const [generateId, setGenerateId] = useState("");
 
   useEffect(() => {
-    if (brandsSlice.status === "idle") {
+    if (useBrands.status === "idle") {
       dispatch(fetchBrands()); // --Redux => Brands fetch함수 실행
     }
   }, []);
 
+  useEffect(() => {
+    const addChecked = FUELTYPE_LIST.map(fuel => ({ ...fuel, checked: false }));
+    setFuelTypes(addChecked);
+  }, []);
+
+  console.log(fuelTypes);
+
   // --formData state 변경 처리 함수
   const handleChange = (e, type) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     //  --type에 따른 value변환 후 값 전달
+    if (type === "boolean") dispatch(updateField({ name: name, value: checked }));
     if (type === "string") dispatch(updateField({ name: name, value: String(value) }));
     if (type === "number" && !isNaN(value)) dispatch(updateField({ name: name, value: Number(value) }));
   };
 
   // TODO : 상수데이터 brand, segment 그리고 출시년도 뒷 두자리를 이용해 ID값 자동생성
   const getBrandName = brandId => {
-    const getBrand = brandsSlice.items.find(item => item._id === brandId);
+    const getBrand = useBrands.items.find(item => item._id === brandId);
     setBrand(getBrand.name);
   };
   const generateBaseId = () => {
     const getbrandIds = BRAND_IDS[brand] || "";
-    const getsegIds = SEGMENT_IDS[segment] || "";
+    const getsegSizeIds = SEGMENT_SIZE_IDS[segmentSize] || "";
+    const getsegBodyIds = SEGMENT_BODY_IDS[segmentBody] || "";
     const getYearSlice = releaseYear.slice(-2);
 
-    const newId = `${getbrandIds}${getsegIds}${getYearSlice}`;
+    const newId = `${getbrandIds}${getsegSizeIds}${getsegBodyIds}${getYearSlice}`;
 
     setGenerateId(newId);
     dispatch(updateField({ name: "id", value: newId }));
@@ -62,7 +73,7 @@ export default function BaseCarForm() {
 
   useEffect(() => {
     generateBaseId();
-  }, [brand, segment, releaseYear]);
+  }, [brand, segmentSize, segmentBody, releaseYear]);
 
   // TODO : 정렬된 배열 만들기
   const handleChangeFuelType = (e, fuelType, index) => {
@@ -80,8 +91,6 @@ export default function BaseCarForm() {
       dispatch(removeFuelType({ name: name, fuelTypeId: fuelType.id }));
     }
   };
-  console.log(generateId);
-  console.log(formData);
 
   return (
     <article className="left-form-container">
@@ -112,12 +121,33 @@ export default function BaseCarForm() {
             getBrandName(e.target.value);
           }}>
           <option value={null}>=선택=</option>
-          {brandsSlice.items.map(brand => (
+          {useBrands.items.map(brand => (
             <option key={brand._id} value={brand._id}>
               {brand.name}
             </option>
           ))}
         </select>
+      </label>
+      <label>
+        모델명:
+        <input
+          type="text"
+          name="model"
+          value={formData.model.name}
+          placeholder="한글"
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
+        <input
+          type="text"
+          name="model"
+          value={formData.model.english_name}
+          placeholder="영어"
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
       </label>
       <label>
         한글이름:
@@ -152,63 +182,56 @@ export default function BaseCarForm() {
           }}
         />
       </label>
+      <label>
+        페이스리프트
+        <input
+          type="checkbox"
+          name="is_facelift"
+          checked={formData.is_facelift}
+          onChange={e => {
+            handleChange(e, "boolean");
+          }}
+        />
+      </label>
+      <label>
+        이미지 URL:
+        <textarea
+          name="image_path"
+          value={formData.image_path}
+          style={{ width: "100%", height: "50px" }}
+          onChange={e => {
+            handleChange(e, "string");
+          }}
+        />
+      </label>
       <label className="seg">
         차급:
         <select
           name="segment"
           onChange={e => {
             handleChange(e, "string");
-            setSegment(e.target.value);
+            setSegmentSize(e.target.value);
           }}>
           <option value={null}>=선택=</option>
-          {segments.map((seg, index) => (
-            <option key={index} value={seg}>
-              {seg}
+          {SEGMENT_SIZE_LIST.map((segSize, index) => (
+            <option key={index} value={segSize}>
+              {segSize}
             </option>
           ))}
         </select>
-      </label>
-      <label>
-        차량 사진 개수:
-        <input
-          type="text"
-          name="photo_count.exterior"
-          value={formData.photo_count.exterior !== 0 ? formData.photo_count.exterior : ""}
+        <select
+          name="segment"
           onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="외관 사진 개수"
-        />
-        <input
-          type="text"
-          name="photo_count.interior"
-          value={formData.photo_count.interior !== 0 ? formData.photo_count.interior : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="내관 사진 개수"
-        />
-      </label>
-      <label>
-        가격:
-        <input
-          type="text"
-          name="price.min"
-          value={formData.price.min !== 0 ? formData.price.min : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="최소"
-        />
-        <input
-          type="text"
-          name="price.max"
-          value={formData.price.max !== 0 ? formData.price.max : ""}
-          onChange={e => {
-            handleChange(e, "number");
-          }}
-          placeholder="최대"
-        />
+            handleChange(e, "string");
+            setSegmentBody(e.target.value);
+          }}>
+          <option value={null}>=선택=</option>
+          {SEGMENT_BODY_LIST.map((segBody, index) => (
+            <option key={index} value={segBody}>
+              {segBody}
+            </option>
+          ))}
+        </select>
       </label>
       <label>
         출시일:
@@ -228,7 +251,7 @@ export default function BaseCarForm() {
           onChange={e => {
             handleChange(e, "number");
           }}>
-          {months.map((month, index) => (
+          {MONTHS.map((month, index) => (
             <option key={index} value={month}>
               {month}
             </option>

@@ -37,7 +37,12 @@ module.exports = {
         test: /\.(css|scss)$/, // scss 파일 처리
         use: [
           "style-loader",
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
           {
             loader: "sass-loader",
             options: {
@@ -65,6 +70,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env.SERVER_URL": JSON.stringify(process.env.SERVER_URL),
+      "process.env.IMAGES_URL": JSON.stringify(process.env.IMAGES_URL),
     }),
   ],
   devServer: {
@@ -78,5 +84,5 @@ module.exports = {
   stats: {
     errorDetails: true,
   },
-  devtool: 'eval-source-map', // 개발 환경
+  devtool: "eval-source-map", // 개발 환경
 };

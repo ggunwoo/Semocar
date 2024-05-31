@@ -1,8 +1,9 @@
 import React, {ChangeEvent, useState } from 'react';
-import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
-import { useCarData } from '../../utils/useCarData';
 import { useNavigate } from 'react-router-dom';
-import * as type from '../types/types'
+import { useAppDispatch } from '../../store/hooks';
+import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
+import { useCarData } from '../../../utils/useCarData';
+import * as type from '../../types/types'
 import Hangul from 'hangul-js';
 
 // ICON
@@ -10,12 +11,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 
 // STYLED
-import * as S from '../styled/components/SearchBar.styled'
+import * as S from '../../styled/components/SearchBar.styled'
+
+import { changeCarListStyle } from '../../store/slice/listStyleSlice';
 
 
-export function Search() {
+export default function SearchBar() {
+  const dispatch = useAppDispatch();
   const carData = useCarData();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
   const [filteredCars, setFilteredCars] = useState<type.Car[]>([]);
   const [listHover, setListHover] = useState<string>('photo/select_model');
@@ -77,8 +81,12 @@ export function Search() {
   const handleLeave = () => {
     setListHover('photo/select_model')
   }
+
+  const handleCarListStyle = (style: string) => {
+    dispatch(changeCarListStyle(style))
+  }
   return (
-    <>
+    <nav>
     {/* 검색창 */}
         <S.SearchBarWrapper>
         {/* <div></div> */}
@@ -122,6 +130,6 @@ export function Search() {
           </S.ListWrapper>
         }
       </S.SearchBarWrapper>
-    </>
+    </nav>
   )
 }

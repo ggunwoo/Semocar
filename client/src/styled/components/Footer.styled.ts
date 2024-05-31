@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { Button } from '@mui/material'
 
-export const FooterCtn = styled.div`
+export const FooterCtn = styled.footer`
 &&& {
   width: 100%;
   height: 150px;
