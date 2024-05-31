@@ -13,7 +13,8 @@ export default function CarList() {
   const navigate = useNavigate();
   // Select State
   const selectBrand = useAppSelector(state => state.selectedBrand);
-  const selectSeg = useAppSelector(state => state.selectedSeg);
+  const selectSegSize = useAppSelector(state => state.selectedSegSize);
+  const selectSegBody = useAppSelector(state => state.selectedSegBody);
   const selectFuel = useAppSelector(state => state.selectedFuel);
   // Cars Data
   const cars: type.ModelListType[] = useAppSelector(state => state.carList.items);
@@ -24,8 +25,8 @@ export default function CarList() {
   const [toggleOpen, setToggleOpen] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchCarList({ selectBrand, selectSeg, selectFuel }));
-  }, [selectBrand, selectSeg, selectFuel, dispatch]);
+    dispatch(fetchCarList({ selectBrand, selectSegSize, selectSegBody, selectFuel }));
+  }, [selectBrand, selectSegSize, selectSegBody, selectFuel, dispatch]);
 
   useEffect(() => {
     setToggleOpen(Array(cars.length).fill(false));
@@ -51,7 +52,7 @@ export default function CarList() {
     return <div>Error!</div>;
   }
 
-  console.log("cars: ", cars);
+  // console.log("cars: ", cars);
 
   return (
     <article className={`container-car-list`}>
