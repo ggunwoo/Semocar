@@ -1,0 +1,224 @@
+@import "color";
+@import "_mixin";
+
+.container-search-page {
+  @include container-center-style;
+}
+
+// 선택 옵션 박스 스타일
+$list-h2: 70px;
+section.container-select-box {
+  // 리스트 전역 스타일
+  article.line {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #ccc;
+    height: 100px;
+    // 리스트 제목
+    h2 {
+      margin: auto 0;
+      width: $list-h2;
+      font-size: 18px;
+      color: black;
+    }
+    // 리스트
+    > ul,
+    .list {
+      width: calc(1100px - $list-h2);
+      text-align: center;
+      margin: auto 0;
+      span {
+        font-size: 14px;
+      }
+      li {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 10px;
+        box-sizing: border-box;
+        p {
+          user-select: none;
+        }
+        &.false:hover {
+          background-color: #eee;
+        }
+        &.active {
+          background-color: $--color-dark;
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  // 브랜드 옵션
+  article.brand-line {
+    ul {
+      @include select-grid-list(10);
+      li {
+        height: 60px;
+        text-align: center;
+        .logo {
+          width: 45px;
+          height: 28px;
+          margin: 0 auto;
+          .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .name {
+          width: 100%;
+          font-size: 14px;
+          margin-top: 4px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  // 차급 옵션
+  article.segment-line {
+    height: 130px;
+    h2 {
+      margin: 32px 0;
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      ul {
+        display: inherit;
+        li {
+        }
+      }
+    }
+  }
+  // 연료 옵션
+  article.fuelType-line {
+    ul {
+      @include select-grid-list(9);
+    }
+  }
+}
+
+// Car List Nav
+.list-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0;
+  margin-bottom: 3rem;
+  border-color: divider;
+  margin-top: 50px;
+}
+
+// ㅁ자동차 리스트 스타일ㅁ
+$--list-min-height: 500px;
+
+.container-car-list {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .list-reloading {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: $--list-min-height;
+      background-color: white;
+      opacity: 0.5;
+    }
+    .car-empty {
+      font-size: 18px;
+    }
+  }
+}
+
+// car-list
+.car-list {
+  position: relative
+}
+.grid-rows-4 {
+  @include list-grid-style(4);
+  .car {
+    .card {
+      .head {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        img {
+          width: 28px;
+          object-fit: contain;
+        }
+      }
+      .img-wrap {
+        position: relative;
+        height: 130px;
+        img {
+          position: absolute;
+          bottom: 20px;
+          right: 50%;
+          transform: translate(50%);
+          width: 80%;
+          height: auto;
+          object-fit: contain;
+          cursor: pointer;
+          transition: all .3s ease-out;
+        }
+        &:hover > img{
+          transform: translate(30%);
+        }
+      }
+      
+      .select-model {
+        position: relative;
+        .model {
+          display: flex;
+          .name {}
+          .arrow {}
+        }
+        .gener {
+          position: absolute;
+          left: 0;
+          display: flex;
+          flex-direction: row;
+          max-width: 400px;
+          background-color: white;
+          z-index: 5;
+          .seleted {
+            color: $--color;
+          }
+        }
+        .model-list-close {
+          display: none;
+        }
+        .model-list-open {
+          display: block;
+          min-width: 300px;
+          max-width: 800px;
+          max-height: 500px;
+          padding: 16px;
+          border: 1px solid black;
+        }
+      }
+      .button {
+      }
+    }
+  }
+}

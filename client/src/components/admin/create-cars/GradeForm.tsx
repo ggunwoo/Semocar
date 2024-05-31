@@ -1,4 +1,4 @@
-import "../../../styles/components/form.scss";
+// import "../../../styles/components/form.scss";
 import TrimForm from "./TrimFrom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateField, addGrade, removeGrade } from "../../../store/slice/createCarSlice";
@@ -38,7 +38,8 @@ export default function GradesForm() {
         <section key={index} className="grades">
           <article className="head">
             <h2>Grade {grades[index].id}</h2>
-            {grades[index].id !== 1 && (
+            {/* index(Number)가 0 이 아닐 때만 버튼 렌더링 */}
+            {index != 0 && (
               <button
                 type="button"
                 onClick={() => {
@@ -47,6 +48,7 @@ export default function GradesForm() {
                 X
               </button>
             )}
+
           </article>
           <label>
             name:

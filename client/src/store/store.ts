@@ -1,22 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { selectedSeg, selectedFuel, selectedBrand } from "./slice/carFilter";
-import { brandsSlice, toggleSlice } from "./slice/brands";
-import { segAll, segCheck, fuelAll, fuelCheck } from "./slice/carCheck-slice";
+import { selectedSegSize, selectedSegBody, selectedFuel, selectedBrand } from "./slice/selectedSlice";
+import { brandListSlice } from "./slice/useBrandListSlice";
+import { carListSlice, getCarSlice } from "./slice/useCarSlice";
 import { formDataSlice } from "./slice/createCarSlice";
+import { carListStyleSlice } from "./slice/listStyleSlice";
 
 export const store = configureStore({
   reducer: {
-    selectedSeg: selectedSeg.reducer,
-    selectedFuel: selectedFuel.reducer,
+    carListStyle: carListStyleSlice.reducer,
+    // 선택 요소 관리
     selectedBrand: selectedBrand.reducer,
-    brands: brandsSlice.reducer,
-    toggle: toggleSlice.reducer,
-    segAll: segAll.reducer,
-    segCheck: segCheck.reducer,
-    fuelAll: fuelAll.reducer,
-    fuelCheck: fuelCheck.reducer,
-    // Form데이터
+    selectedSegSize: selectedSegSize.reducer,
+    selectedSegBody: selectedSegBody.reducer,
+    selectedFuel: selectedFuel.reducer,
+    // Server, DB
     createCar: formDataSlice.reducer,
+    brandList: brandListSlice.reducer,
+    carList: carListSlice.reducer,
+    car: getCarSlice.reducer,
   },
 });
 

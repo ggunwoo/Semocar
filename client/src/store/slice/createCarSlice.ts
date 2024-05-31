@@ -1,25 +1,32 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
-import { serverUrl } from "../../api/getCarData";
-import { RootState } from "../store";
 import * as type from "../../types/types";
+import { submitFormData } from "../api/carApi";
 
 interface FormDataState {
-  formData: type.CarDataType;
+  formData: type.PostCarType;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
 
+
+
 const initialState: FormDataState = {
   formData: {
     brand: "",
+    model: {
+      name: "",
+      english_name: "",
+    },
     name: "",
     english_name: "",
     model_initial: "",
+    is_facelift: false,
+    image_path: "",
     id: "",
-    segment: "",
-    photo_count: { exterior: 0, interior: 0 },
-    price: { min: 0, max: 0 },
+    segment: {
+      size: "",
+      body: "",
+    },
     date: { year: 0, month: 1 },
     fuel_types: [],
     grades: [
@@ -33,20 +40,6 @@ const initialState: FormDataState = {
   status: "idle",
   error: null,
 };
-
-// --차량 데이터 전송 함수
-export const submitFormData = createAsyncThunk("form/submitFormData", async (_, { getState, rejectWithValue }) => {
-  try {
-    const state = getState() as RootState;
-    const formData = state.createCar.formData;
-    const response = await axios.post(`${serverUrl}/create/cars`, formData);
-    console.log(`${serverUrl}/create/cars`)
-    return response.data;
-  } catch (error) {
-    console.error("Error sending data:", error.response?.data || error.message);
-    return rejectWithValue(error.response?.data || "Unknown error");
-  }
-});
 
 export const formDataSlice = createSlice({
   name: "form",
@@ -80,7 +73,7 @@ export const formDataSlice = createSlice({
     // ==grade배열에 객체 추가 함수
     addGrade: state => {
       const newGrade = {
-        id: state.formData.grades.length + 1, // --id값을 현재 길이 + 1로 설정
+        id: String(state.formData.grades.length + 1), // --id값을 현재 길이 + 1로 설정
         name: "",
         trims: [],
       };
@@ -93,53 +86,62 @@ export const formDataSlice = createSlice({
     addTrim: (state, action: PayloadAction<number>) => {
       const grade = state.formData.grades.find(grade => grade.id === action.payload);
       if (grade) {
-        console.log("생성");
-        const newTrim: type.TrimType = {
-          // 기본값 ICE 필드
-          id: grade.trims.length + 1,
-          name: "",
-          field: "ICE",
-          price: 0,
-          fuel_type: "",
-          engine: "",
-          displacement: 0,
-          trans_mission: {
-            gear: "",
-            type: "",
-          },
-          driving_system: "",
-          power: 0,
-          torque: 0,
-          gas_mileage: 0,
-          urban_gas_mileage: 0,
-          highway_gas_mileage: 0,
-          low_emission: "",
-          vehicle_weight: 0,
-          front_tire: "",
-          rear_tire: "",
-          front_brake: "",
-          rear_brake: "",
-          front_suspension: "",
-          rear_suspension: "",
-          capacity: 0,
-          length: 0,
-          weight: 0,
-          height: 0,
-          wheel_base: 0,
-          track: 0,
-          tread: 0,
-          motor_power: 0,
-          motor_torque: 0,
-          battery_type: "",
-          battery_volume: 0,
-          battery_voltage: 0,
-          ev_mileage: 0,
-          urban_ev_mileage: 0,
-          highway_ev_mileage: 0,
-          range: 0,
-          urban_range: 0,
-          highway_range: 0,
-        };
+        const lastTrim = grade.trims[grade.trims.length - 1];
+        const newTrim: type.TrimType = lastTrim
+          ? { ...lastTrim, id: grade.trims.length + 1 }
+          : {
+              id: grade.trims.length + 1,
+              name: "",
+              field: "ICE",
+              price: 0,
+              fuel_type: "",
+              engine: "",
+              displacement: 0,
+              trans_mission: {
+                gear: "",
+                type: "",
+              },
+              driving_system: "",
+              power: 0,
+              torque: 0,
+              gas_mileage: 0,
+              urban_gas_mileage: 0,
+              highway_gas_mileage: 0,
+              low_emission: "",
+              vehicle_weight: 0,
+              front_tire: {
+                width: "",
+                flatness: "",
+                inch: "",
+              },
+              rear_tire: {
+                width: "",
+                flatness: "",
+                inch: "",
+              },
+              front_brake: "",
+              rear_brake: "",
+              front_suspension: "",
+              rear_suspension: "",
+              capacity: 0,
+              length: 0,
+              width: 0,
+              height: 0,
+              wheel_base: 0,
+              track: 0,
+              tread: 0,
+              motor_power: 0,
+              motor_torque: 0,
+              battery_type: "",
+              battery_volume: 0,
+              battery_voltage: 0,
+              ev_mileage: 0,
+              urban_ev_mileage: 0,
+              highway_ev_mileage: 0,
+              range: 0,
+              urban_range: 0,
+              highway_range: 0,
+            };
         grade.trims.push(newTrim);
       }
     },

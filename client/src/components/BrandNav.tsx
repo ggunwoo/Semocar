@@ -1,84 +1,79 @@
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { brandIn, brandReset } from "../store/slice/carFilter";
-import { toggleHandler, toggleReset } from "../store/slice/brands";
+import { brandIn, brandReset } from "../store/slice/selectedSlice";
+
+import { VscClearAll } from "react-icons/vsc";
 
 // STYLED
-import { Button } from "@mui/material";
+import { Button, useAutocomplete } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MaxContainer } from "../styled/Global";
 import * as S from "../styled/components/BrandNav.styled";
 
-import { fetchBrands } from "../store/slice/brands";
+import { fetchBrands } from "../store/api/brandApi";
 
-export function BrandNav() {
+export default function SearchBrand() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const brands = useAppSelector(state => state.brandList.items);
+  const status = useAppSelector(state => state.brandList.status); // idle, loading, secceeded, faild
+  const error = useAppSelector(state => state.brandList.error);
+  const selectBrand = useAppSelector(state => state.selectedBrand);
+
   useEffect(() => {
-    if(brands.status === 'idle'){
+    if (status === "idle") {
       dispatch(fetchBrands()); // Redux => Brands fetch함수 실행
     }
   }, []);
 
-  const brands = useAppSelector((state) => state.brands);
-
-  const toggle = useAppSelector((state) => {
-    return state.toggle;
-  });
-
-  const brandHandler = (brand: string, index: number) => {
-    dispatch(brandIn(brand));
-    dispatch(toggleHandler(index));
+  const brandHandler = (brandOBID: string, index: number) => {
+    dispatch(brandIn(brandOBID));
   };
   const brandAll = () => {
     dispatch(brandReset());
-    dispatch(toggleReset());
   };
 
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
+
   return (
-    <S.NavWrapper>
-      <MaxContainer>
-        <S.Nav>
-          {brands?.status === "succeeded" ? (
-            brands?.items.map((brand, index) => (
-              <Button
-                className={`logoBtn ${toggle[index] ? "clicked" : "unclick"}`}
-                key={brand.id}
-                onClick={() => {
-                  brandHandler(brand.name, index);
-                  navigate(`/brand`);
-                }}
-                variant="text"
-              >
-                <div className="imgBox">
-                  <img
-                    style={{ width: "40px" }}
-                    src={brand.logo_path}
-                    alt={brand.english_name}
-                  />
-                </div>
-                <p className="logoName">{brand.name}</p>
-              </Button>
-            ))
-          ) : (
-            <div>Loading...</div>
-          )}
+    // <S.NavWrapper>
+    <article className="container-select-brand">
+      <S.Nav>
+        {brands.map((brand, index) => (
           <Button
-            className="logoBtn"
+            className={`logoBtn ${selectBrand.includes(brand._id) ? "clicked" : "unclick"}`}
+            key={brand.id}
             onClick={() => {
-              brandAll();
-              navigate(`/brand`);
+              brandHandler(brand._id, index);
+              // navigate(`/brand`);
             }}
-          >
+            variant="text">
             <div className="imgBox">
-              <MenuIcon sx={{ fontSize: "36px", color: "#333" }} />
+              <img style={{ width: "40px" }} src={brand.logo_path} alt={brand.english_name} />
             </div>
-            <p className="logoName">전체보기</p>
+            <p className="logoName">{brand.name}</p>
           </Button>
-        </S.Nav>
-      </MaxContainer>
-    </S.NavWrapper>
+        ))}
+        <Button
+          className="logoBtn"
+          onClick={() => {
+            brandAll();
+            navigate(`/`);
+          }}>
+          <div className="imgBox">
+            <VscClearAll style={{ color: "black", fontSize: "32px" }} />
+          </div>
+          <p className="logoName">선택해제</p>
+        </Button>
+      </S.Nav>
+      {/* </S.NavWrapper> */}
+    </article>
   );
 }
