@@ -1,7 +1,8 @@
 import React, {ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store/hooks';
 import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import { useCarData } from '../../../utils/useCarData';
-import { useNavigate } from 'react-router-dom';
 import * as type from '../../types/types'
 import Hangul from 'hangul-js';
 
@@ -12,10 +13,13 @@ import ClearIcon from '@mui/icons-material/Clear';
 // STYLED
 import * as S from '../../styled/components/SearchBar.styled'
 
+import { changeCarListStyle } from '../../store/slice/listStyleSlice';
+
 
 export default function SearchBar() {
+  const dispatch = useAppDispatch();
   const carData = useCarData();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
   const [filteredCars, setFilteredCars] = useState<type.Car[]>([]);
   const [listHover, setListHover] = useState<string>('photo/select_model');
@@ -76,6 +80,10 @@ export default function SearchBar() {
   /** 리스트 리브시 이미지 초기화 */
   const handleLeave = () => {
     setListHover('photo/select_model')
+  }
+
+  const handleCarListStyle = (style: string) => {
+    dispatch(changeCarListStyle(style))
   }
   return (
     <nav>

@@ -71,8 +71,7 @@ export interface FuelType {
   _id: string;
 }
 
-export interface CarType {
-  brand: BrandType | string;
+interface BaseCarType {
   model: {
     name: string,
     english_name: string
@@ -92,6 +91,12 @@ export interface CarType {
   grades: grade[];
 }
 
+export interface CarType extends BaseCarType {
+  brand: BrandType;
+}
+export interface PostCarType extends BaseCarType {
+  brand: string;
+}
 export interface ModelListType {
   model: string;
   name: string;
@@ -99,6 +104,8 @@ export interface ModelListType {
   fuel_types: string[];
   generations: CarType[];
 }
+
+
 
 // ==========Old========
 

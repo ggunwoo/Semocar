@@ -15,7 +15,7 @@ export default function FuelTypeList() {
           key={ft.id}
           onClick={() => dispatch(fuelIn(ft.id))}
           className={`${ftList.includes(ft.id) && "active"}`}>
-          <span>{ft.name}</span>
+          <p>{ft.name}</p>
         </li>
       ))}
     </ul>

@@ -3,9 +3,11 @@ import { selectedSegSize, selectedSegBody, selectedFuel, selectedBrand } from ".
 import { brandListSlice } from "./slice/useBrandListSlice";
 import { carListSlice, getCarSlice } from "./slice/useCarSlice";
 import { formDataSlice } from "./slice/createCarSlice";
+import { carListStyleSlice } from "./slice/listStyleSlice";
 
 export const store = configureStore({
   reducer: {
+    carListStyle: carListStyleSlice.reducer,
     // 선택 요소 관리
     selectedBrand: selectedBrand.reducer,
     selectedSegSize: selectedSegSize.reducer,

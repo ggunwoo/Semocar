@@ -4,10 +4,8 @@ import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/api/brandApi";
 import {
   MONTHS,
-  SEGMENT_LIST,
   SEGMENT_SIZE_LIST,
   SEGMENT_BODY_LIST,
-  SEGMENT_IDS,
   SEGMENT_SIZE_IDS,
   SEGMENT_BODY_IDS,
   BRAND_IDS,

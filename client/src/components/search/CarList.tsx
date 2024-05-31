@@ -6,7 +6,8 @@ import { fetchCarList } from "../../store/api/carApi";
 
 // COMPONENTS
 import SearchBar from "./SearchBar";
-import Spinner from "../Spinner"
+import Spinner from "../Spinner";
+import { Generator } from "webpack";
 
 export default function CarList() {
   const dispatch = useAppDispatch();
@@ -23,6 +24,8 @@ export default function CarList() {
 
   const [selectModel, setSelectModel] = useState([]);
   const [toggleOpen, setToggleOpen] = useState([]);
+
+  const carListStyle = useAppSelector(state => state.carListStyle);
 
   useEffect(() => {
     dispatch(fetchCarList({ selectBrand, selectSegSize, selectSegBody, selectFuel }));
@@ -55,79 +58,86 @@ export default function CarList() {
   // console.log("cars: ", cars);
 
   return (
-    <article className={`container-car-list`}>
-      {/* 상단 탭 */}
-      <nav className="list-nav">
-        <div></div>
-        {/* 검색 컴포넌트 */}
-        <div>
-          <SearchBar />
-        </div>
-      </nav>
+    <ul className={`car-list grid-rows-${carListStyle} ${status === "loading" && "list-reloading"}`}>
       {/* TODO: 목록은 model 기준으로만 구성하기 */}
-      <ul className={`car-list grid-rows-4 ${status === "loading" && "list-reloading"}`}>
-        {status === "loading" && (
-          <Spinner />
-        )}
-        {cars.length === 0 ? (
-          <div className="car-empty" style={{ width: "100%" }}>
-            해당되는 차량이 없습니다.
-          </div>
-        ) : (
-          cars.map((car, idx) => (
-            <li key={idx} className={`car-items`}>
-              {car.generations[selectModel[idx]] && (
-                <>
+      {status === "loading" && <Spinner />}
+      {cars.length === 0 ? (
+        <div className="car-empty" style={{ width: "100%" }}>
+          해당되는 차량이 없습니다.
+        </div>
+      ) : (
+        cars.map((car, idx) => (
+          // 차량
+          <li key={idx} className={`car`}>
+            {car.generations[selectModel[idx]] && (
+              <section className="card">
+                {/* 모델명 */}
+                <article className="head">
+                  <img
+                    width="40px"
+                    height="auto"
+                    src={`${car.generations[selectModel[idx]].brand.logo_path}`}
+                    alt={car.generations[selectModel[idx]].name}></img>
+                  <p className="model-name">{car.name.toUpperCase()}</p>
+                </article>
+                {/* 이미지 */}
+                <figure className="img-wrap">
+                  <img
+                    width="250px"
+                    height="auto"
+                    src={`${car.generations[selectModel[idx]].image_path}/model_image.png`}
+                    alt={car.name}
+                    onClick={()=>(navigate(`detail/${car.generations[selectModel[idx]].id}`))}
+                  />
+                </figure>
+                {/* 선택된 세대 모델 이름 및 정보 */}
+                <article className="select-model">
                   <div
-                    className="car-info"
-                    onClick={() => {
-                      navigate(`/detail/${car.generations[selectModel[idx]].id}`);
-                    }}>
-                    <div className="car-image">
-                      <img src={`${car.generations[selectModel[idx]].image_path}/model_image.png`} alt={car.name} />
-                    </div>
-                    <span>{car.name}</span>
-                  </div>
-                  {/* --toggle 버튼 */}
-                  <div
-                    className="model-list-toggle-button"
+                    className="model"
                     onClick={() => {
                       toggle(idx);
                     }}>
-                    <p>
+                    <div className="name">
                       <span>{car.generations[selectModel[idx]].date.year}&nbsp;</span>
                       <span>{car.generations[selectModel[idx]].name.toUpperCase()}&nbsp;</span>
                       <span>{car.generations[selectModel[idx]].model_initial.toUpperCase()}&nbsp;</span>
-                      {toggleOpen[idx] ? <span>▲</span> : <span>▼</span>}
-                    </p>
+                    </div>
+                    <div className="arrow">{toggleOpen[idx] ? <span>▲</span> : <span>▼</span>}</div>
                   </div>
-
-                  <div className={`car-model-list ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
-                    {car.generations.map((car, generIdx) => {
-                      return (
-                        <div key={car.id} className={` ${selectModel[idx] === generIdx ? "focus" : "unfocus"}`}>
-                          <span>{car.date.year}&nbsp;</span>
-                          <span>
-                            {car.name}&nbsp;{car.model_initial.toUpperCase()}&nbsp;
-                          </span>
-                          {/* <span>{generIdx}</span> */}
-                          <button
-                            onClick={() => {
-                              handleselectModel(idx, generIdx);
-                            }}>
-                            선택
-                          </button>
-                        </div>
-                      );
-                    })}
+                  <div className={`gener ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
+                    {car.generations.map((model, generIdx) => (
+                      <div className={`gener-item ${selectModel[generIdx] === generIdx && "seleted"}`}>
+                        <span className="year">{model.date.year}&nbsp;</span>
+                        <span className="name">{model.name.toUpperCase()}&nbsp;</span>
+                        <span className="initial">{model.model_initial.toUpperCase()}&nbsp;</span>
+                        <button
+                          onClick={() => {
+                            handleselectModel(idx, generIdx);
+                          }}>
+                          선택
+                        </button>
+                      </div>
+                    ))}
                   </div>
-                </>
-              )}
-            </li>
-          ))
-        )}
-      </ul>
-      {/* <TestList /> */}
-    </article>
+                </article>
+                <article className="simple-info">
+                  <p>
+                    {car.generations[selectModel[idx]].segment.size}
+                    {car.generations[selectModel[idx]].segment.body}
+                  </p>
+                  <p>
+                    {car.generations[selectModel[idx]].fuel_types.map((ft, idx, arr) =>
+                      idx === arr.length - 1 ? ft.name : ft.name + ", "
+                    )}
+                  </p>
+                </article>
+                {/* 상세정보 보러가기 버튼 */}
+                <button>상세정보</button>
+              </section>
+            )}
+          </li>
+        ))
+      )}
+    </ul>
   );
 }

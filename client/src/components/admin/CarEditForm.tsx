@@ -39,10 +39,12 @@ export default function CarEditForm({ carId }) {
         <dd>{carData.model.name}</dd>
 
         <dt>브랜드 : </dt>
-        <dd>{typeof carData.brand === "string" ? carData.brand : (carData.brand as type.BrandType).name}</dd>
+        <dd>{carData.brand.name}</dd>
 
         <dt>차량명 : </dt>
-        <dd>{carData.name}, {carData.english_name}</dd>
+        <dd>
+          {carData.name}, {carData.english_name}
+        </dd>
 
         <dt>이니셜 : </dt>
         <dd>{carData.model_initial}</dd>
@@ -51,16 +53,22 @@ export default function CarEditForm({ carId }) {
         <dd>{carData.image_path}</dd>
 
         <dt>차급 : </dt>
-        <dd>{carData.segment}</dd>
+        <dd>
+          {carData.segment.size}
+          {carData.segment.body}
+        </dd>
 
         <dt>출시일 : </dt>
-        <dd>{carData.date.year}.{carData.date.month.toString().length === 1 ? "0"+carData.date.month : carData.date.month }</dd>
+        <dd>
+          {carData.date.year}.
+          {carData.date.month.toString().length === 1 ? "0" + carData.date.month : carData.date.month}
+        </dd>
 
         <dt>연료 종류 : </dt>
-        <dd>{carData.fuel_types.map(ft=>( ft.name+", " ))}</dd>
+        <dd>{carData.fuel_types.map(ft => ft.name + ", ")}</dd>
 
         <dt>등급 </dt>
-        <dd>{carData.grades.map(grade => (grade.name+", "))}</dd>
+        <dd>{carData.grades.map(grade => grade.name + ", ")}</dd>
       </dl>
 
       <dl>

@@ -1,5 +1,7 @@
+@import "main";
 @import "color";
-@import "_mixin";
+
+
 
 .container-search-page {
   @include container-center-style;
@@ -107,18 +109,6 @@ section.container-select-box {
   }
 }
 
-// Car List Nav
-.list-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0;
-  margin-bottom: 3rem;
-  border-color: divider;
-  margin-top: 50px;
-}
-
 // ㅁ자동차 리스트 스타일ㅁ
 $--list-min-height: 500px;
 
@@ -142,82 +132,101 @@ $--list-min-height: 500px;
       background-color: white;
       opacity: 0.5;
     }
-    .car-empty {
-      font-size: 18px;
+  }
+  .list-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0;
+    margin-bottom: 3rem;
+    border-color: divider;
+    margin-top: 50px;
+  }
+  // 자동차 목록
+  .car-list {
+    width: 100%;
+    min-height: $--list-min-height;
+    position: relative;
+    .car-items {
+      width: 100%;
+      position: inherit;
+      
     }
   }
-}
+  // 가로 한줄에 4개씩
+  .grid-rows-4 {
 
-// car-list
-.car-list {
-  position: relative
-}
-.grid-rows-4 {
-  @include list-grid-style(4);
-  .car {
-    .card {
-      .head {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        img {
-          width: 28px;
-          object-fit: contain;
-        }
-      }
-      .img-wrap {
-        position: relative;
-        height: 130px;
-        img {
-          position: absolute;
-          bottom: 20px;
-          right: 50%;
-          transform: translate(50%);
-          width: 80%;
-          height: auto;
-          object-fit: contain;
-          cursor: pointer;
-          transition: all .3s ease-out;
-        }
-        &:hover > img{
-          transform: translate(30%);
-        }
-      }
-      
-      .select-model {
-        position: relative;
-        .model {
-          display: flex;
-          .name {}
-          .arrow {}
-        }
-        .gener {
-          position: absolute;
-          left: 0;
-          display: flex;
-          flex-direction: row;
-          max-width: 400px;
+    li.car-items {
+      height: 300px;
+      .model-info {
+        p.model-name {
+          font-size: 0.815rem;
+          width: 100%;
+          text-align: center;
+          color: black;
           background-color: white;
-          z-index: 5;
-          .seleted {
-            color: $--color;
+          border: 2px solid $--color-deep-dark;
+          border-radius: 5px;
+        }
+        .model-image {
+          position: relative;
+          height: 150px;
+          img {
+            position: absolute;
+            bottom: 20px;
+            width: 80%;
+            right: 50%;
+            transform: translateX(50%);
+            height: auto;
+            object-fit: contain;
           }
         }
-        .model-list-close {
-          display: none;
-        }
-        .model-list-open {
-          display: block;
-          min-width: 300px;
-          max-width: 800px;
-          max-height: 500px;
-          padding: 16px;
-          border: 1px solid black;
+      }
+      // 선택된 모델 / 모델 리스트 열고 닫는 버튼
+      .model-list-toggle-button {
+        cursor: pointer;
+        .text-box {
+          .head {
+            display: flex;
+            p {
+              font-size: 14px;
+            }
+            p.name {}
+            p.arrow {}
+          }
+          .info {
+
+          }
         }
       }
-      .button {
+      // 모델 목록
+      .car-model-list {
+        position: absolute;
+        left: 0;
+        overflow: hidden;
+        min-width: 400px;
+        background-color: #ccc;
+        white-space: inherit;
+        z-index: 5;
+        .focus {
+          span {
+            font-size: bold;
+            color: $--color-dark;
+          }
+        }
+      }
+      .model-list-close {
+        display: none;
+        border: 0px solid black;
+        max-height: 0;
+      }
+      .model-list-open {
+        max-width: 500px;
+        display: block;
+        border: 1px solid black;
+        max-height: 500px;
+        padding: 16px;
       }
     }
   }

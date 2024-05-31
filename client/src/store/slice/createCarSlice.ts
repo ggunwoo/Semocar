@@ -3,7 +3,7 @@ import * as type from "../../types/types";
 import { submitFormData } from "../api/carApi";
 
 interface FormDataState {
-  formData: type.CarType;
+  formData: type.PostCarType;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
