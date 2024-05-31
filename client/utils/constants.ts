@@ -45,6 +45,45 @@ export const SEGMENT_IDS = {
   벤: "52",
   상용차: "99",
 };
+export const SEGMENT_SIZE_LIST = ["경형", "소형", "준중형", "중형", "준대형", "대형"];
+export const SEGMENT_BODY_LIST = [
+  "세단",
+  "SUV",
+  "벤",
+  "픽업",
+  "MPV",
+  "RV",
+  "스포츠카",
+  "쿠페",
+  "해치백",
+  "왜건",
+  "트럭",
+  "버스",
+  "승합",
+];
+export const SEGMENT_SIZE_IDS = {
+  경형: "1",
+  소형: "2",
+  준중형: "3",
+  중형: "4",
+  준대형: "5",
+  대형: "6",
+};
+export const SEGMENT_BODY_IDS = {
+  세단: "10",
+  해치백: "11",
+  왜건: "12",
+  쿠페: "13",
+  스포츠카: "14",
+  SUV: "20",
+  픽업: "30",
+  벤: "31",
+  RV: "33",
+  MPV: "32",
+  트럭: "40",
+  버스: "41",
+  승합: "42",
+};
 
 export const BRAND_IDS = {
   현대: "10",

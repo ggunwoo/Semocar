@@ -7,8 +7,7 @@ import { useCarData } from "../../utils/useCarData";
 import { SEGMENT_LIST, FUELTYPE_LIST } from "../../utils/constants";
 
 // REDUX
-import { toggleReset } from "../store/slice/useBrandListSlice";
-import { segReset, fuelReset, brandReset } from "../store/slice/carFilter";
+import { segReset, fuelReset, brandReset } from "../store/slice/SelectedSlice";
 import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/slice/carCheck-slice";
 
 // SWIPER CSS
@@ -60,7 +59,6 @@ export default function MainPage(): JSX.Element {
     dispatch(segReset());
     dispatch(fuelReset());
     dispatch(brandReset());
-    dispatch(toggleReset());
     // segement Reset
     dispatch(segAllChange(true));
     const resetSeg = Array(SEGMENT_LIST.length).fill(false);
@@ -75,7 +73,7 @@ export default function MainPage(): JSX.Element {
   }, [dispatch]);
 
   return (
-    <>
+    <> 
       {/* 메인배너 SLIDE */}
       <S.BannerWrapper
         // scrollbar={{

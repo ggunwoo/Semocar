@@ -83,7 +83,10 @@ export interface CarType {
   is_facelift: boolean,
   image_path: string;
   id: string;
-  segment: string;
+  segment: {
+    size: string;
+    body: string;
+  };
   date: { year: number; month: number };
   fuel_types: FuelType[];
   grades: grade[];

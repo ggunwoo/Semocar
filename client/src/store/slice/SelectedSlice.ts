@@ -21,21 +21,43 @@ export const selectedBrand = createSlice({
     },
   },
 });
-export const selectedSeg = createSlice({
-  name: "segment",
+
+export const selectedSegSize = createSlice({
+  name: "segmentSize",
   initialState: [] as string[],
   reducers: {
-    segIn: (state, action) => {
-      const segment = action.payload;
-      if (state.includes(segment)) {
-        const updatedSegment = state.filter((item: string) => item !== segment);
-        return updatedSegment;
+    segSizeIn: (state, action) => {
+      const size = action.payload;
+      if (state.includes(size)) {
+        const updatedSize = state.filter((item: string) => item !== size);
+        return updatedSize;
       } else {
-        let copySegment = [...state, segment];
-        return copySegment;
+        let copySize = [...state, size];
+        return copySize;
       }
     },
-    segReset: state => {
+    segSizeReset: state => {
+      if (state.length !== 0) {
+        return [];
+      }
+    },
+  },
+});
+export const selectedSegBody = createSlice({
+  name: "segmentBody",
+  initialState: [] as string[],
+  reducers: {
+    segBodyIn: (state, action) => {
+      const body = action.payload;
+      if (state.includes(body)) {
+        const updatedBody = state.filter((item: string) => item !== body);
+        return updatedBody;
+      } else {
+        let copyBody = [...state, body];
+        return copyBody;
+      }
+    },
+    segBodyReset: state => {
       if (state.length !== 0) {
         return [];
       }
@@ -65,5 +87,30 @@ export const selectedFuel = createSlice({
 });
 
 export const { brandIn, brandReset } = selectedBrand.actions;
-export const { segIn, segReset } = selectedSeg.actions;
+export const { segSizeIn, segSizeReset } = selectedSegSize.actions;
+export const { segBodyIn, segBodyReset } = selectedSegBody.actions;
 export const { fuelIn, fuelReset } = selectedFuel.actions;
+
+export const selectedSeg = createSlice({
+  name: "segment",
+  initialState: [] as string[],
+  reducers: {
+    segIn: (state, action) => {
+      const segment = action.payload;
+      if (state.includes(segment)) {
+        const updatedSegment = state.filter((item: string) => item !== segment);
+        return updatedSegment;
+      } else {
+        let copySegment = [...state, segment];
+        return copySegment;
+      }
+    },
+    segReset: state => {
+      if (state.length !== 0) {
+        return [];
+      }
+    },
+  },
+});
+
+export const { segIn, segReset } = selectedSeg.actions;

@@ -5,16 +5,22 @@ const router = express.Router();
 
 // Get all cars or filtered cars
 router.get("/cars", async (req, res) => {
-  const { brand, segment, fuel } = req.query;
+  const { brand, size, body, fuel } = req.query;
 
-  console.log(`$brand=${brand}&segment=${segment}&fuel=${fuel}`);
+  console.log("brand: ", brand);
+  console.log("size: ", size);
+  console.log("body: ", body);
+  console.log("fuel: ", fuel);
 
   let query = {};
   if (brand) {
     query["brand"] = { $in: brand.split(",") }; // 참조된 브랜드 ID를 기반으로 필터링
   }
-  if (segment) {
-    query.segment = { $in: segment.split(",") };
+  if (size) {
+    query["segment.size"] = { $in: size.split(",") };
+  }
+  if (body) {
+    query["segment.body"] = { $in: body.split(",") };
   }
   if (fuel) {
     query["fuel_types.id"] = { $in: fuel.split(",") };

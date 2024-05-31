@@ -2,7 +2,17 @@
 import { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../../store/hooks";
 import { fetchBrands } from "../../../store/api/brandApi";
-import { SEGMENT_LIST, MONTHS, BRAND_IDS, SEGMENT_IDS, FUELTYPE_LIST } from "../../../../utils/constants"; // 상수 데이터 불러오기
+import {
+  MONTHS,
+  SEGMENT_LIST,
+  SEGMENT_SIZE_LIST,
+  SEGMENT_BODY_LIST,
+  SEGMENT_IDS,
+  SEGMENT_SIZE_IDS,
+  SEGMENT_BODY_IDS,
+  BRAND_IDS,
+  FUELTYPE_LIST,
+} from "../../../../utils/constants"; // 상수 데이터 불러오기
 import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
 import SubmitButton from "./SubmitButton";
 // ===============================================================
@@ -19,7 +29,8 @@ export default function BaseCarForm() {
   const formData = useAppSelector(state => state.createCar.formData);
   const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
   const [brand, setBrand] = useState("");
-  const [segment, setSegment] = useState("");
+  const [segmentSize, setSegmentSize] = useState("");
+  const [segmentBody, setSegmentBody] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
   const [generateId, setGenerateId] = useState("");
 
@@ -34,7 +45,7 @@ export default function BaseCarForm() {
     setFuelTypes(addChecked);
   }, []);
 
-  console.log(fuelTypes)
+  console.log(fuelTypes);
 
   // --formData state 변경 처리 함수
   const handleChange = (e, type) => {
@@ -52,10 +63,11 @@ export default function BaseCarForm() {
   };
   const generateBaseId = () => {
     const getbrandIds = BRAND_IDS[brand] || "";
-    const getsegIds = SEGMENT_IDS[segment] || "";
+    const getsegSizeIds = SEGMENT_SIZE_IDS[segmentSize] || "";
+    const getsegBodyIds = SEGMENT_BODY_IDS[segmentBody] || "";
     const getYearSlice = releaseYear.slice(-2);
 
-    const newId = `${getbrandIds}${getsegIds}${getYearSlice}`;
+    const newId = `${getbrandIds}${getsegSizeIds}${getsegBodyIds}${getYearSlice}`;
 
     setGenerateId(newId);
     dispatch(updateField({ name: "id", value: newId }));
@@ -63,7 +75,7 @@ export default function BaseCarForm() {
 
   useEffect(() => {
     generateBaseId();
-  }, [brand, segment, releaseYear]);
+  }, [brand, segmentSize, segmentBody, releaseYear]);
 
   // TODO : 정렬된 배열 만들기
   const handleChangeFuelType = (e, fuelType, index) => {
@@ -200,12 +212,25 @@ export default function BaseCarForm() {
           name="segment"
           onChange={e => {
             handleChange(e, "string");
-            setSegment(e.target.value);
+            setSegmentSize(e.target.value);
           }}>
           <option value={null}>=선택=</option>
-          {SEGMENT_LIST.map((seg, index) => (
-            <option key={index} value={seg}>
-              {seg}
+          {SEGMENT_SIZE_LIST.map((segSize, index) => (
+            <option key={index} value={segSize}>
+              {segSize}
+            </option>
+          ))}
+        </select>
+        <select
+          name="segment"
+          onChange={e => {
+            handleChange(e, "string");
+            setSegmentBody(e.target.value);
+          }}>
+          <option value={null}>=선택=</option>
+          {SEGMENT_BODY_LIST.map((segBody, index) => (
+            <option key={index} value={segBody}>
+              {segBody}
             </option>
           ))}
         </select>

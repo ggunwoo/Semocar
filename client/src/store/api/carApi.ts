@@ -6,7 +6,8 @@ import { serverUrl } from "../../api/getCarData";
 
 interface FilterParams {
   selectBrand: string[];
-  selectSeg: string[];
+  selectSegSize: string[];
+  selectSegBody: string[];
   selectFuel: string[];
 }
 
@@ -33,13 +34,16 @@ export const fetchCarAllList = createAsyncThunk("cars/fetchCars", async () => {
 // -- 데이터 리스트 호출
 export const fetchCarList = createAsyncThunk(
   "cars/fetchFilteredCars",
-  async ({ selectBrand, selectSeg, selectFuel }: FilterParams) => {
+  async ({ selectBrand, selectSegSize, selectSegBody, selectFuel }: FilterParams) => {
     let query = "";
     if (selectBrand.length) {
       query += `brand=${selectBrand.join(",")}&`;
     }
-    if (selectSeg.length) {
-      query += `segment=${selectSeg.join(",")}&`;
+    if (selectSegSize.length) {
+      query += `size=${selectSegSize.join(",")}&`;
+    }
+    if (selectSegBody.length) {
+      query += `body=${selectSegBody.join(",")}&`;
     }
     if (selectFuel.length) {
       query += `fuel=${selectFuel.join(",")}&`;
@@ -58,7 +62,7 @@ export const fetchCarList = createAsyncThunk(
           model: modelName,
           name: car.model.name,
           generations: [],
-          segment: car.segment,
+          segment: car.segment.size + car.segment.body,
           fuel_types: [],
         };
       }
@@ -87,7 +91,7 @@ export const fetchCarList = createAsyncThunk(
         fuel_types: Array.from(modelMap[modelName].fuel_types) as string[], // Set을 배열로 변환
       };
     });
-
+    console.log(createModelMap);
     return createModelMap;
   }
 );

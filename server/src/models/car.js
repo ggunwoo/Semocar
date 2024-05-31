@@ -87,7 +87,10 @@ const baseCarSchema = new mongoose.Schema({
   is_facelift: Boolean,
   image_path: String,
   id: String, // 차량 고유번호(ID) ▶ 브랜드, 차급, 작성순서순으로 조합 (기아(11) 경차(11) 레이(1)) = 11111
-  segment: String, // 차급명칭(한국기준) ▶ 경차, 준중형, 중형, 준대형SUV 등
+  segment: { // (한국기준)
+    size: String, // 차급-크기 ▶ 경형 소형 준중형 중형 준대형 대형
+    body: String, // 차급-스타일 ▶ , SUV, CUV, 쿠페, 왜건, 해치백, RV, MPV, 픽업트럭, 밴 등
+  }, 
   date: {
     year: Number,
     month: Number,

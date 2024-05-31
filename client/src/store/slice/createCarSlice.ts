@@ -23,7 +23,10 @@ const initialState: FormDataState = {
     is_facelift: false,
     image_path: "",
     id: "",
-    segment: "",
+    segment: {
+      size: "",
+      body: "",
+    },
     date: { year: 0, month: 1 },
     fuel_types: [],
     grades: [
