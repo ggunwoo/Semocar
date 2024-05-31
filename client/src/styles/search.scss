@@ -1,7 +1,7 @@
 @import "main";
 @import "color";
 
-@mixin select-list($count: 6) {
+@mixin select-grid-list($count: 6) {
   display: grid;
   grid-template-columns: repeat($count, 1fr);
   justify-content: space-evenly;
@@ -12,19 +12,29 @@
 }
 
 // 선택 옵션 박스 스타일
-.container-select-box {
-  // Brand Box Style
-  article.select-line {
+$list-h2: 70px;
+section.container-select-box {
+  // 리스트 전역 스타일
+  article.line {
     display: flex;
     align-items: baseline;
+    border-bottom: 1px solid black;
+    padding: 2rem 0;
     // 리스트 제목
     h2 {
-      width: 70px;
+      width: $list-h2;
       font-size: 18px;
     }
     // 리스트
+    > ul,
     .list {
-      .item {
+      width: calc(1100px - $list-h2);
+      text-align: center;
+      span {
+        font-size: 14px;
+      }
+      li {
+        padding: 8px 12px;
         &:hover {
           background-color: #eee;
         }
@@ -34,50 +44,56 @@
       }
     }
   }
-}
-// 브랜드
-.brand-list {
-  @include select-list(10);
-  .brand-item {
-    height: 60px;
-    text-align: center;
-    .logo {
-      width: 45px;
-      height: 28px;
-      margin: 0 auto;
-      .logo-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+
+  // 브랜드 옵션
+  article.brand-line {
+    ul {
+      @include select-grid-list(10);
+      li {
+        height: 60px;
+        text-align: center;
+        .logo {
+          width: 45px;
+          height: 28px;
+          margin: 0 auto;
+          .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        .name {
+          width: 100%;
+          font-size: 14px;
+          font-weight: bold;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
       }
     }
-    .name {
-      width: 100%;
-      font-size: 14px;
-      font-weight: bold;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+  }
+  // 차급 옵션
+  article.segment-line {
+    .list {
+      display: flex;
+      flex-direction: column;
+      ul {
+        display: inherit;
+        li {
+        }
+      }
+    }
+  }
+  // 연료 옵션
+  article.fuelType-line {
+    ul {
+      @include select-grid-list(10);
     }
   }
 }
-// 차급
-.seg-list {
-  @include select-list(7);
-  span {
-    font-size: 14px;
-  }
-}
 
-// 연료
-.fuel-list {
-  @include select-list(10);
-  span {
-    font-size: 14px;
-  }
-}
-
-// 자동차 리스트 스타일
+// ㅁ자동차 리스트 스타일ㅁ
 $--list-min-height: 500px;
 
 .container-car-list {

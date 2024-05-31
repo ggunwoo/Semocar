@@ -1,8 +1,8 @@
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { SEGMENT_SIZE_LIST, SEGMENT_BODY_LIST, SEGMENT_SIZE_IDS, SEGMENT_BODY_IDS } from "../../../utils/constants";
-import { segSizeIn, segSizeReset, segBodyIn, segBodyReset } from "../../store/slice/selectedSlice";
+import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { SEGMENT_SIZE_LIST, SEGMENT_BODY_LIST, SEGMENT_SIZE_IDS, SEGMENT_BODY_IDS } from "../../../../utils/constants";
+import { segSizeIn, segSizeReset, segBodyIn, segBodyReset } from "../../../store/slice/selectedSlice";
 
-export default function SelectSegment() {
+export default function SegmentList() {
   const dispatch = useAppDispatch();
   const sizeList = useAppSelector(state => state.selectedSegSize);
   const bodyList = useAppSelector(state => state.selectedSegBody);
@@ -11,27 +11,27 @@ export default function SelectSegment() {
   console.log(bodyList);
 
   return (
-    <ul className="list seg-list">
-      <div>
+    <div className="list">
+      <ul>
         {SEGMENT_SIZE_LIST.map((size, idx) => (
           <li
             key={SEGMENT_SIZE_IDS[size]}
             onClick={() => dispatch(segSizeIn(size))}
-            className={`item seg-item ${sizeList.includes(size) && "active"}`}>
+            className={`${sizeList.includes(size) && "active"}`}>
             <p>{size}</p>
           </li>
         ))}
-      </div>
-      <div>
+      </ul>
+      <ul>
         {SEGMENT_BODY_LIST.map((body, idx) => (
           <li
             key={SEGMENT_BODY_IDS[body]}
             onClick={() => dispatch(segBodyIn(body))}
-            className={`item seg-item ${bodyList.includes(body) && "active"}`}>
+            className={`${bodyList.includes(body) && "active"}`}>
             <p>{body}</p>
           </li>
         ))}
-      </div>
-    </ul>
+      </ul>
+    </div>
   );
 }

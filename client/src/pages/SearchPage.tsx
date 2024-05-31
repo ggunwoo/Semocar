@@ -1,7 +1,7 @@
 import "../styles/search.scss";
 
 // COMPONENT
-import SelectWrap from "../components/search/SelectWrap";
+import OptionBox from "../components/search/OptionBox";
 import CarList from "../components/search/CarList";
 
 
@@ -11,7 +11,7 @@ export default function SearchPage() {
   return (
     <section className="container-search-page">
       {/* SelectBox */}
-      <SelectWrap />
+      <OptionBox />
 
       {/* 차 목록 */}
       <CarList />

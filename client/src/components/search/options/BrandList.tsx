@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { fetchBrands } from "../../store/api/brandApi";
-import { brandIn, brandReset } from "../../store/slice/selectedSlice";
+import { useAppSelector, useAppDispatch } from "../../../store/hooks";
+import { fetchBrands } from "../../../store/api/brandApi";
+import { brandIn, brandReset } from "../../../store/slice/selectedSlice";
 
-export default function SelectBrand() {
+export default function BrandList() {
   const dispatch = useAppDispatch();
   const brands = useAppSelector(state => state.brandList.items);
   const status = useAppSelector(state => state.brandList.status);
@@ -25,11 +25,11 @@ export default function SelectBrand() {
   console.log(selectedBrand);
 
   return (
-    <ul className="list brand-list">
+    <ul>
       {brands.map((brand, i) => (
         <li
           key={brand._id}
-          className={`item brand-item ${selectedBrand.includes(brand._id) && "active"}`}
+          className={`${selectedBrand.includes(brand._id) && "active"}`}
           onClick={() => {
             updateList(brand._id, i);
           }}>
