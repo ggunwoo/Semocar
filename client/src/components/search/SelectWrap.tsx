@@ -1,4 +1,4 @@
-import "../../styles/test.scss";
+import "../../styles/search.scss";
 import SelectBrand from "./SelectBrand";
 import SelectSeg from "./SelectSeg";
 import SelectFuel from "./SelectFuel";

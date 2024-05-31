@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { useCarData } from "../../utils/useCarData";
-import { SEGMENT_LIST, FUELTYPE_LIST } from "../../utils/constants";
+import { FUELTYPE_LIST, SEGMENT_SIZE_LIST, SEGMENT_BODY_LIST } from "../../utils/constants";
 
 // REDUX
-import { segReset, fuelReset, brandReset } from "../store/slice/SelectedSlice";
+import { fuelReset, brandReset } from "../store/slice/selectedSlice";
 import { segAllChange, segHandle, fuelAllChange, fuelHandle } from "../store/slice/carCheck-slice";
 
 // SWIPER CSS
@@ -44,36 +44,12 @@ export default function MainPage(): JSX.Element {
   };
   const letestCar = latestCarHandler();
 
-  /** 포토 갤러리 사진 import */
-
-  const [carPhoto, setCarPhoto] = useState([
-    { id: 10220, name: "쏘나타 디 엣지", imgUrl: "hyundai/Sonata/exterior" },
-    { id: 15300, name: "트랙스 크로스오버", imgUrl: "chevrolet/TraxCrossover/exterior" },
-    { id: 11331, name: "EV9", imgUrl: "kia/EV9/exterior" },
-    { id: 13320, name: "QM6", imgUrl: "renault_korea/QM6/exterior" },
-    { id: 10210, name: "아반떼 CN7", imgUrl: "hyundai/Avante/exterior" },
-    { id: 11310, name: "스포티지", imgUrl: "kia/Sportage/exterior" },
-  ]);
-
   useEffect(() => {
-    dispatch(segReset());
-    dispatch(fuelReset());
-    dispatch(brandReset());
-    // segement Reset
-    dispatch(segAllChange(true));
-    const resetSeg = Array(SEGMENT_LIST.length).fill(false);
-    dispatch(segHandle(resetSeg));
-
-    // fuelType Reset
-    dispatch(fuelAllChange(true));
-    const resetFuel = Array(FUELTYPE_LIST.length).fill(false);
-    dispatch(fuelHandle(resetFuel));
-
     console.log("reset");
   }, [dispatch]);
 
   return (
-    <> 
+    <>
       {/* 메인배너 SLIDE */}
       <S.BannerWrapper
         // scrollbar={{
@@ -180,37 +156,6 @@ export default function MainPage(): JSX.Element {
           </Swiper>
         </S.Letest>
       </S.GradientGuide>
-
-      {/* 포토 갤러리 */}
-      <S.PhotoGallery>
-        <MaxContainer>
-          {/* 섹션제목 */}
-          <div className="title">포토 갤러리</div>
-          <div className="galleryWrapper">
-            {carPhoto.map((photo, i) => (
-              <div className="photoWrapper" key={carPhoto[i].id}>
-                {/* hover 보여줄 요소 */}
-                <div className="info">
-                  <p className="name">{photo.name}</p>
-                  <div
-                    className="linkBtn"
-                    onClick={() => {
-                      navigate(`/detail/${photo.id}`);
-                    }}>
-                    MORE PROFILE &gt;
-                  </div>
-                </div>
-                <img
-                  className="img"
-                  style={{ width: "100%" }}
-                  src={`https://raw.githubusercontent.com/gunw0-0/cars/main/images/photo/${photo.imgUrl}/1.jpg`}
-                  alt="CARPHOTO"
-                />
-              </div>
-            ))}
-          </div>
-        </MaxContainer>
-      </S.PhotoGallery>
     </>
   );
 }

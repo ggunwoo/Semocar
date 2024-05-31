@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { fetchBrands } from "../../store/api/brandApi";
-import { brandIn, brandReset } from "../../store/slice/SelectedSlice";
+import { brandIn, brandReset } from "../../store/slice/selectedSlice";
 
 export default function SelectBrand() {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export default function SelectBrand() {
     }
   }, []);
 
-  const handleBrand = (brandOBID: string, idx: number) => {
+  const updateList = (brandOBID: string, idx: number) => {
     console.log(brandOBID);
     dispatch(brandIn(brandOBID));
   };
@@ -29,9 +29,9 @@ export default function SelectBrand() {
       {brands.map((brand, i) => (
         <li
           key={brand._id}
-          className={`brand-item ${selectedBrand.includes(brand._id) && "active"}`}
+          className={`item brand-item ${selectedBrand.includes(brand._id) && "active"}`}
           onClick={() => {
-            handleBrand(brand._id, i);
+            updateList(brand._id, i);
           }}>
           <div className="logo">
             <img className="logo-img" src={`${brand.logo_path}`} />

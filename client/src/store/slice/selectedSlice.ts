@@ -90,27 +90,3 @@ export const { brandIn, brandReset } = selectedBrand.actions;
 export const { segSizeIn, segSizeReset } = selectedSegSize.actions;
 export const { segBodyIn, segBodyReset } = selectedSegBody.actions;
 export const { fuelIn, fuelReset } = selectedFuel.actions;
-
-export const selectedSeg = createSlice({
-  name: "segment",
-  initialState: [] as string[],
-  reducers: {
-    segIn: (state, action) => {
-      const segment = action.payload;
-      if (state.includes(segment)) {
-        const updatedSegment = state.filter((item: string) => item !== segment);
-        return updatedSegment;
-      } else {
-        let copySegment = [...state, segment];
-        return copySegment;
-      }
-    },
-    segReset: state => {
-      if (state.length !== 0) {
-        return [];
-      }
-    },
-  },
-});
-
-export const { segIn, segReset } = selectedSeg.actions;
