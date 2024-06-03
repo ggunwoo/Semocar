@@ -1,5 +1,5 @@
 import axios from "axios";
-import { serverUrl } from "./getCarData";
+import { serverUrl } from "../../utils/constants";
 
 const verifyPassword = async (pw: string) => {
 

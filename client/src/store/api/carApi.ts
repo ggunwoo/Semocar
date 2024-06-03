@@ -2,7 +2,7 @@ import axios from "axios";
 import * as type from "../../types/types";
 import { RootState } from "../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../api/getCarData";
+import { serverUrl } from "../../../utils/constants";
 
 interface FilterParams {
   selectBrand: string[];
@@ -26,6 +26,7 @@ export const submitFormData = createAsyncThunk("form/submitFormData", async (_, 
   }
 });
 
+// --전체 데이터 리스트 호출
 export const fetchCarAllList = createAsyncThunk("cars/fetchCars", async () => {
   const response = await axios.get(`${serverUrl}/get/cars`);
   return response.data;

@@ -1,8 +1,5 @@
 import axios from "axios";
 
-export const serverUrl = process.env.SERVER_URL; // SERVER URL: 개발=> 로컬서버 URL, 배포(환경설정)=> aws클라우드 서버)
-export const imageUrl = process.env.IMAGES_URL; // IMAGE URL
-
 export const getCarData = async () => {
   try {
     const response = await axios.get(
@@ -15,31 +12,31 @@ export const getCarData = async () => {
   }
 };
 
-export const getCars = async () => {
-  try {
-    const response = await axios.get(`${serverUrl}/cars`);
-    return response.data;
-  } catch (error) {
-    console.log("Error", error);
-  }
-};
+// export const getCars = async () => {
+//   try {
+//     const response = await axios.get(`${serverUrl}/cars`);
+//     return response.data;
+//   } catch (error) {
+//     console.log("Error", error);
+//   }
+// };
 
-export const getCar = async id => {
-  try {
-    const response = await axios.get(`${serverUrl}/cars/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log("Error", error);
-  }
-};
+// export const getCar = async id => {
+//   try {
+//     const response = await axios.get(`${serverUrl}/cars/${id}`);
+//     return response.data;
+//   } catch (error) {
+//     console.log("Error", error);
+//   }
+// };
 
-// --Redux로 옮김
-export const getBrands = async () => {
-  try {
-    const response = await axios.get(`${serverUrl}/brands`);
-    return response.data;
-  } catch (error) {
-    console.log("error get brand", error);
-    return null;
-  }
-};
+// // --Redux로 옮김
+// export const getBrands = async () => {
+//   try {
+//     const response = await axios.get(`${serverUrl}/brands`);
+//     return response.data;
+//   } catch (error) {
+//     console.log("error get brand", error);
+//     return null;
+//   }
+// };
