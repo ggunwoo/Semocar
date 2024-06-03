@@ -107,8 +107,8 @@ section.container-select-box {
   }
 }
 
-// Car List Nav
-.list-nav {
+// aside
+.aside {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -118,8 +118,11 @@ section.container-select-box {
   border-color: divider;
   margin-top: 50px;
 }
+.badge-list {
+  
+}
 
-// ㅁ자동차 리스트 스타일ㅁ
+// CarList
 $--list-min-height: 500px;
 
 .container-car-list {

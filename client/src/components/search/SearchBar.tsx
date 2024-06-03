@@ -1,6 +1,8 @@
-import React, {ChangeEvent, useState } from 'react';
+import React, {ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchCarAllList } from '../../store/api/carApi';
+import { imageUrl } from '../../../utils/constants';
 import {OutlinedInput, InputAdornment, ListItem, ListItemButton, ListItemText} from '@mui/material';
 import { useCarData } from '../../../utils/useCarData';
 import * as type from '../../types/types'
@@ -19,10 +21,16 @@ import { changeCarListStyle } from '../../store/slice/listStyleSlice';
 export default function SearchBar() {
   const dispatch = useAppDispatch();
   const carData = useCarData();
+  const cars = useAppSelector(state => state.carList.items);
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState('');
-  const [filteredCars, setFilteredCars] = useState<type.Car[]>([]);
-  const [listHover, setListHover] = useState<string>('photo/select_model');
+  const [filteredCars, setFilteredCars] = useState<type.ModelListType[]>([]);
+  const [listHover, setListHover] = useState<string>(`${imageUrl}/select_model.png`);
+
+  useEffect(()=>{
+    dispatch(fetchCarAllList());
+    console.log("전체 차 리스트 호출")
+  }, [searchText])
 
   // 검색 함수
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +40,8 @@ export default function SearchBar() {
       setFilteredCars([]);
     } else {
       // 사용자가 검색어를 입력하면 결과물 보여주는 로직(초성가능)
-      const filtered = carData.filter((car)=>{
-        const carName = car.name.kr;
+      const filtered = cars.filter((car)=>{
+        const carName = car.name;
         const carInitials = Hangul.disassemble(carName)
         .reduce((acc, curr)=>{
           if(Hangul.isComplete(curr)){
@@ -75,11 +83,11 @@ export default function SearchBar() {
   }
   /** 리스트 호버시 이미지 변경 함수 */
   const handleHover = (url:string) => {
-    setListHover(url)
+    setListHover(url+"/model_image.png")
   }
   /** 리스트 리브시 이미지 초기화 */
   const handleLeave = () => {
-    setListHover('photo/select_model')
+    setListHover(`${imageUrl}/select_model.png`)
   }
 
   const handleCarListStyle = (style: string) => {
@@ -118,14 +126,14 @@ export default function SearchBar() {
             <S.ListTexts>
               {filteredCars?.map((car, index)=>(
                 <ListItem className='item' key={index} disablePadding>
-                  <ListItemButton onMouseLeave={()=>{handleLeave()}} onMouseEnter={()=>{handleHover(car.imgUrl)}} className='btn' onClick={()=>{navigate(`/detail/${car.id}`)}}>
-                      <ListItemText className='name'>{car.name.kr}</ListItemText>
+                  <ListItemButton onMouseLeave={()=>{handleLeave()}} onMouseEnter={()=>{handleHover(car.generations[0].image_path)}} className='btn' onClick={()=>{navigate(`/detail/${car.generations[0].id}`)}}>
+                      <ListItemText className='name'>{car.name}</ListItemText>
                   </ListItemButton>
                 </ListItem>
               ))}
             </S.ListTexts>
             <S.ListPhoto>
-                <img src={`https://raw.githubusercontent.com/ggunwoo/Semocar/main/src/images/${listHover}.png`} alt="" />
+                <img src={`${listHover}`} alt="CAR IMAGE" />
             </S.ListPhoto>
           </S.ListWrapper>
         }
