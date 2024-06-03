@@ -5,7 +5,7 @@ import { SwiperSlide } from "swiper/react";
 import * as type from "../types/types";
 import { fetchCar } from "../store/api/carApi";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
-import { imageUrl } from "../api/getCarData";
+import { imageUrl } from "../../utils/constants";
 import { unmount } from "../store/slice/useCarSlice";
 
 // STYLED
