@@ -15,7 +15,7 @@ export default function SearchPage() {
       {/* 상단 탭 */}
       <aside className="aside">
         <article className="badge-list">
-          <SelectBadge />
+          {/* <SelectBadge /> */}
         </article>
         {/* 검색 컴포넌트 */}
         <article className="search-bar">

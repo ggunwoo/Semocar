@@ -34,7 +34,7 @@ export default function BrandList() {
             updateList(brand._id, i);
           }}>
           <div className="logo">
-            <img className="logo-img" src={`${brand.logo_path}`} />
+            <img src={`${brand.logo_path}`} alt={brand.name}/>
           </div>
           <p className="name">{brand.name}</p>
         </li>
