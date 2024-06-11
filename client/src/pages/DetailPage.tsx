@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { unmount } from "../store/slice/useCarSlice";
 
 // COMPONENTS
-import ModelInfo from "../components/detail/modelInfo";
+import ModelInfo from "../components/detail/ModelInfo";
 import PhotoCarousel from "../components/detail/PhotoCarousel";
 
 // STYLED
