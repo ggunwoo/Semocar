@@ -35,7 +35,7 @@ section.container-select-box {
         font-size: 14px;
       }
       li {
-        padding: 8px 12px;
+        padding: 6px 8px;
         cursor: pointer;
         border-radius: 10px;
         box-sizing: border-box;
@@ -66,7 +66,7 @@ section.container-select-box {
           width: 45px;
           height: 28px;
           margin: 0 auto;
-          .logo-img {
+          img {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -76,9 +76,17 @@ section.container-select-box {
           width: 100%;
           font-size: 14px;
           margin-top: 4px;
+          padding-bottom: 8px;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+        }
+        &.active {
+          .logo {
+            img {
+              filter: invert(100);
+            }
+          }
         }
       }
     }
@@ -94,7 +102,9 @@ section.container-select-box {
       flex-direction: column;
       ul {
         display: inherit;
+        gap: 12px;
         li {
+          margin-top: 12px;
         }
       }
     }
@@ -107,19 +117,47 @@ section.container-select-box {
   }
 }
 
-// Car List Nav
-.list-nav {
+// aside
+.aside {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0;
   margin-bottom: 3rem;
-  border-color: divider;
   margin-top: 50px;
 }
+// badges
+.badge-list {
+  width: 100%;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    gap: 8px;
+    .badge {
+      color: white;
+      border-radius: 15px;
+      padding: 4px 12px;
+      box-sizing: border-box;
+      span {
+        margin-top: 2px;
+      }
+    }
+    .brand-badge {
+      background-color: blueviolet;
+      
+    }
+    .seg-size-badge, .seg-body-badge {
+      background-color: rgb(42, 23, 129);
+    }
+    .fuel-badge {
+      background-color: rgb(131, 28, 156);
+    }
+  }
+}
 
-// ㅁ자동차 리스트 스타일ㅁ
+// CarList
 $--list-min-height: 500px;
 
 .container-car-list {

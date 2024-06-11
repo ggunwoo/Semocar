@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../api/getCarData";
+import { serverUrl } from "../../../utils/constants";
 import { fetchBrands } from "../api/brandApi";
 
 

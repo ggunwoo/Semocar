@@ -106,7 +106,7 @@ export default function CarList() {
                   </div>
                   <div className={`gener ${toggleOpen[idx] ? "model-list-open" : "model-list-close"}`}>
                     {car.generations.map((model, generIdx) => (
-                      <div className={`gener-item ${selectModel[generIdx] === generIdx && "seleted"}`}>
+                      <div key={model.id} className={`gener-item ${selectModel[generIdx] === generIdx && "seleted"}`}>
                         <span className="year">{model.date.year}&nbsp;</span>
                         <span className="name">{model.name.toUpperCase()}&nbsp;</span>
                         <span className="initial">{model.model_initial.toUpperCase()}&nbsp;</span>

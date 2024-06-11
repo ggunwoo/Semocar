@@ -1,5 +1,8 @@
 export const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 
+export const serverUrl = process.env.SERVER_URL; // SERVER URL: 개발=> 로컬서버 URL, 배포(환경설정)=> aws클라우드 서버)
+export const imageUrl = process.env.IMAGES_URL; // IMAGE URL
+
 // 차급
 // --TODO : 추후에 차급 - 사이즈, 플랫폼으로 나누기 (사이즈: 소형,중형,대형 | 플랫폼: 세단, SUV, 왜건)
 export const SEGMENT_SIZE_LIST = ["경형", "소형", "준중형", "중형", "준대형", "대형"];

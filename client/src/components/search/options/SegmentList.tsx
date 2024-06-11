@@ -17,7 +17,7 @@ export default function SegmentList() {
           <li
             key={SEGMENT_SIZE_IDS[size]}
             onClick={() => dispatch(segSizeIn(size))}
-            className={`${sizeList.includes(size) && "active"}`}>
+            className={`size ${sizeList.includes(size) && "active"}`}>
             <p>{size}</p>
           </li>
         ))}
@@ -27,7 +27,7 @@ export default function SegmentList() {
           <li
             key={SEGMENT_BODY_IDS[body]}
             onClick={() => dispatch(segBodyIn(body))}
-            className={`${bodyList.includes(body) && "active"}`}>
+            className={`body ${bodyList.includes(body) && "active"}`}>
             <p>{body}</p>
           </li>
         ))}

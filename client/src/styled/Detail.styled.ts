@@ -59,14 +59,14 @@ export const HeadBox = styled.div`&&&
       color: #62478f;
       font-weight: bold;
       font-size: 1.5rem;
-      line-height: 2rem;
+      line-height: 4rem;
     }
   }
   /* 우측 이미지 */
   .image {
-    margin-top: 120px;
+    margin-top: 80px;
     img {
-      width: 500px;
+      width: 460px;
     }
   }
 }`;
@@ -139,7 +139,7 @@ export const FixedBox = styled.div`&&&
   /* border-bottom: 1px solid #000; */
   box-shadow: 0px 4px 20px rgba(196,196,196,0.25);
   overflow: hidden;
-  z-index: 2;
+  z-index: 10;
   /* TargetNav가 화면에 가려질때 보여주기 */
   &.unfixed { display: none; }
   &.fixed { display: block; }
@@ -180,7 +180,7 @@ export const FixedBox = styled.div`&&&
           color: #626262;
           font-size: 2.125rem;
           font-weight: 600;
-          line-height: 1rem;
+          line-height: 3rem;
         }
       }
       /* 스크롤위치이동 탭(TargetNav) */
@@ -217,10 +217,10 @@ export const FixedBox = styled.div`&&&
     /* 우측이미지 */
     .imgBax {
       img {
-        width: 460px;
+        width: 440px;
         position: relative;
-        top: 7px;
-        right: 60px;
+        bottom: 10px;
+        right: 50px;
       }
     }
   }
