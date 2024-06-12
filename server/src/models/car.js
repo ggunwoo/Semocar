@@ -12,16 +12,6 @@ const trimSchema = new mongoose.Schema({
   low_emission: String, // 에너지 소비 효율 ▶ -등급
   driving_system: String, // 구동타입 ▶ FF, FR, RR, 4WD AWD 등
   vehicle_weight: Number, // 공차중량 ▶ ----kg
-  front_tire: {
-    width: {type: String, required: true}, // 앞 타이어 폭 ▶ --- 
-    flatness: {type: String, required: true}, // 앞 타이어 편평비 ▶ --R
-    inch: {type: String, required: true}, // 앞 타이어 휠 사이즈 ▶ -- (inch)
-  },
-  rear_tire: {
-    width: {type: String, required: true}, // 뒷 타이어 폭 ▶ --- 
-    flatness: {type: String, required: true}, // 뒷 타이어 편평비 ▶ --R
-    inch: {type: String, required: true}, // 뒷 타이어 휠 사이즈 ▶ -- (inch)
-  },
   front_brake: String, // 전륜 브레이크
   rear_brake: String, // 후륜 브레이크
   front_suspension: String, // 전륜 서스펜션
@@ -33,6 +23,16 @@ const trimSchema = new mongoose.Schema({
   wheel_base: Number, // 축거(휠베이스) ▶ ----mm
   track: Number, // 윤거전 ▶ ----mm
   tread: Number, // 윤거후 ▶ ----mm
+  front_tire: {
+    width: {type: String, required: true}, // 앞 타이어 폭 ▶ --- 
+    flatness: {type: String, required: true}, // 앞 타이어 편평비 ▶ --R
+    inch: {type: String, required: true}, // 앞 타이어 휠 사이즈 ▶ -- (inch)
+  },
+  rear_tire: {
+    width: {type: String, required: true}, // 뒷 타이어 폭 ▶ --- 
+    flatness: {type: String, required: true}, // 뒷 타이어 편평비 ▶ --R
+    inch: {type: String, required: true}, // 뒷 타이어 휠 사이즈 ▶ -- (inch)
+  },
   trans_mission: {
     gear: {type: String, required: true}, // 변속기단수 ▶ 1단~8단 (일단 8단까지만)
     type: {type: String, required: true}, // 변속기종류 ▶ 수동, 토크컨버터, DCT, CVT, AMT, IVT 등

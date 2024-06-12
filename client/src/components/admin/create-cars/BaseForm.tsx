@@ -132,7 +132,7 @@ export default function BaseCarForm() {
         모델명:
         <input
           type="text"
-          name="model"
+          name="model.name"
           value={formData.model.name}
           placeholder="한글"
           onChange={e => {
@@ -141,7 +141,7 @@ export default function BaseCarForm() {
         />
         <input
           type="text"
-          name="model"
+          name="model.english_name"
           value={formData.model.english_name}
           placeholder="영어"
           onChange={e => {
@@ -207,7 +207,7 @@ export default function BaseCarForm() {
       <label className="seg">
         차급:
         <select
-          name="segment"
+          name="segment.size"
           onChange={e => {
             handleChange(e, "string");
             setSegmentSize(e.target.value);
@@ -220,7 +220,7 @@ export default function BaseCarForm() {
           ))}
         </select>
         <select
-          name="segment"
+          name="segment.body"
           onChange={e => {
             handleChange(e, "string");
             setSegmentBody(e.target.value);
