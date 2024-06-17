@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 import adminRouter from "./routes/adminRoute.js";
 import createBrandsRouter from "./routes/createBrandRoute.js";
 import createCarRouter from "./routes/createCarRoute.js";
+import createCarSimpleRouter from "./routes/createCarSimpleRoute.js";
 import getBrandListRouter from "./routes/getBrandListRoute.js";
 import getBrandRouter from "./routes/getBrandRoute.js"
 import getCarListRouter from "./routes/getCarListRoute.js";
@@ -33,7 +34,8 @@ app.get("/create", (req, res) => {
 // Use Router
 app.use("/", adminRouter); // Admin password 검증 라우트
 app.use("/create", createBrandsRouter); // 브랜드 생성 라우트
-app.use("/create", createCarRouter);
+app.use("/create", createCarRouter); // 자동차 생성 라우트
+app.use("/create", createCarSimpleRouter); // 자동차 생성 라우트(simple)
 app.use("/get", getBrandListRouter); // 전체 브랜드 리스트 데이터 라우터
 app.use("/get", getCarListRouter); // 전체 자동차 리스트 라우터
 app.use("/get", getBrandRouter); // 특정 브랜드 데이터 라우터

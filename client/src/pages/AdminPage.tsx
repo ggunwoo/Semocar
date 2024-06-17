@@ -1,4 +1,4 @@
-// import "../styles/components/admin.scss"
+import "../styles/admin.scss"
 import { useState } from "react";
 import verifyPassword from "../api/adminVerify";
 import { Link, Outlet } from "react-router-dom";
@@ -50,9 +50,12 @@ export default function AdminPage(): JSX.Element {
         <Link to="create-car">
           자동차 DB 생성
         </Link>
-        <Link to="get-car">
-          자동차 리스트 보러가기
+        <Link to="create-car-simple">
+          자동차 DB 생성	&#40;심플&#41;
         </Link>
+        {/* <Link to="get-car">
+          자동차 리스트 보러가기
+        </Link> */}
       </nav>
       <Outlet />
     </section>

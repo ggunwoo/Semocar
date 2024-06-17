@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Brand from "./brand.js";
 
 // 트림(Trims) 스키마
 const trimSchema = new mongoose.Schema({
@@ -24,18 +23,18 @@ const trimSchema = new mongoose.Schema({
   track: Number, // 윤거전 ▶ ----mm
   tread: Number, // 윤거후 ▶ ----mm
   front_tire: {
-    width: {type: String, required: true}, // 앞 타이어 폭 ▶ --- 
-    flatness: {type: String, required: true}, // 앞 타이어 편평비 ▶ --R
-    inch: {type: String, required: true}, // 앞 타이어 휠 사이즈 ▶ -- (inch)
+    width: {type: String, default: "000"}, // 앞 타이어 폭 ▶ --- 
+    flatness: {type: String, default: "00R"}, // 앞 타이어 편평비 ▶ --R
+    inch: {type: String, default: "00"}, // 앞 타이어 휠 사이즈 ▶ -- (inch)
   },
   rear_tire: {
-    width: {type: String, required: true}, // 뒷 타이어 폭 ▶ --- 
-    flatness: {type: String, required: true}, // 뒷 타이어 편평비 ▶ --R
-    inch: {type: String, required: true}, // 뒷 타이어 휠 사이즈 ▶ -- (inch)
+    width: {type: String, default: "000"}, // 뒷 타이어 폭 ▶ --- 
+    flatness: {type: String, default: "00R"}, // 뒷 타이어 편평비 ▶ --R
+    inch: {type: String, default: "00"}, // 뒷 타이어 휠 사이즈 ▶ -- (inch)
   },
   trans_mission: {
-    gear: {type: String, required: true}, // 변속기단수 ▶ 1단~8단 (일단 8단까지만)
-    type: {type: String, required: true}, // 변속기종류 ▶ 수동, 토크컨버터, DCT, CVT, AMT, IVT 등
+    gear: {type: String, default: "0단"}, // 변속기단수 ▶ 1단~8단 (일단 8단까지만)
+    type: {type: String, default: "변속기"}, // 변속기종류 ▶ 수동, 토크컨버터, DCT, CVT, AMT, IVT 등
   },
   
   // ■■■■■내연기관(ICE), 하이브리드(HEV, PHEV) 추가 필드■■■■■

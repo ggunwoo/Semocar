@@ -81,13 +81,6 @@ section.container-select-box {
           text-overflow: ellipsis;
           overflow: hidden;
         }
-        &.active {
-          .logo {
-            img {
-              filter: invert(100);
-            }
-          }
-        }
       }
     }
   }
@@ -157,14 +150,11 @@ section.container-select-box {
   }
 }
 
-// CarList
+// CarList 자동차 목록
 $--list-min-height: 500px;
 
 .container-car-list {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
   .list-reloading {
     &::after {
       content: "";
@@ -206,6 +196,10 @@ $--list-min-height: 500px;
         }
       }
       .img-wrap {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
         position: relative;
         height: 130px;
         img {

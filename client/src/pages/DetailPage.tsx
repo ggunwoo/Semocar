@@ -69,7 +69,6 @@ export default function DetailPage() {
 
   console.log("minPrice: ", minPrice);
   console.log("maxPrice: ", maxPrice);
-  
 
   // // Mount
   useEffect(() => {
@@ -145,7 +144,6 @@ export default function DetailPage() {
   // console.log(car);
 
   if (status === "succeeded") {
-    // if (false) {
     return (
       <section style={{ background: "#FFF" }}>
         <S.HeadBox>
@@ -157,7 +155,10 @@ export default function DetailPage() {
                   <span>{car.brand.name}</span>
                 </p>
                 <p className="name">{car.name}</p>
-                <p className="price">{minPrice.toLocaleString("ko-KR")}~{maxPrice.toLocaleString("ko-KR")}만원</p>
+                <p className="price">
+                  {minPrice + maxPrice != 0 &&
+                    minPrice.toLocaleString("ko-KR") + "~" + maxPrice.toLocaleString("ko-KR") + "만원"}
+                </p>
                 <S.StyledChip className="first" label={`${car.segment.size}${car.segment.body}`} variant="outlined" />
                 {car.fuel_types.map((fuel, idx) => (
                   <S.StyledChip key={idx} label={`${fuel.name}`} variant="outlined" />

@@ -13,10 +13,8 @@ export default function ModelInfo() {
   const [selectGrade, segSelectGrade] = useState("1");
   const [selectTrim, segSelectTrim] = useState("1");
 
-  const grade = car.grades ? car.grades.find(grade => grade.id === selectGrade) : [];
-  const trim = grade.trims ? grade.trims.find(trim => trim.id === selectTrim) : grade;
-  
-  
+  const grade: any = car.grades && car.grades.find(grade => grade.id === selectGrade);
+  const trim: any = grade.trims ? grade.trims.find(trim => trim.id === selectTrim) : grade;
 
   return (
     <S.ChartWrapper>
@@ -61,14 +59,11 @@ export default function ModelInfo() {
         {/* 가격 price */}
         <S.PriceDl>
           <dt>가격</dt>
-          <dd>
-            <p>
-              {trim.price.toLocaleString("ko-KR")} <span>만원</span>
-            </p>
-          </dd>
+          <dd>{trim?.price ? <p>{trim.price.toLocaleString("ko-KR")}만원</p> : <p>가격정보없음</p>}</dd>
         </S.PriceDl>
 
         {/* 제원 SPAC */}
+
         <S.SpacDl>
           <dt>제원</dt>
           <div style={{ position: "absolute", bottom: "0" }}></div>
@@ -267,14 +262,14 @@ export default function ModelInfo() {
             <span className="wrap_size track">
               <span className="txt">
                 윤거전
-                <span> {trim.track}</span>
+                <span> {trim?.track}</span>
               </span>
               <span className="line"></span>
             </span>
             <span className="wrap_size weight">
               <span className="txt">
                 전폭
-                <span> {trim.weight}</span>
+                <span> {trim?.weight}</span>
               </span>
               <span className="line"></span>
             </span>
@@ -287,14 +282,14 @@ export default function ModelInfo() {
             <span className="wrap_size wheelbase">
               <span className="txt">
                 축거
-                <span> {trim.wheelBase}</span>
+                <span> {trim?.wheelBase}</span>
               </span>
               <span className="line"></span>
             </span>
             <span className="wrap_size length">
               <span className="txt">
                 전장
-                <span> {trim.length}</span>
+                <span> {trim?.length}</span>
               </span>
               <span className="line"></span>
             </span>
@@ -307,14 +302,14 @@ export default function ModelInfo() {
             <span className="wrap_size tread">
               <span className="txt">
                 윤거후
-                <span> {trim.tread}</span>
+                <span> {trim?.tread}</span>
               </span>
               <span className="line"></span>
             </span>
             <span className="wrap_size height">
               <span className="txt">
                 전고
-                <span> {trim.height}</span>
+                <span> {trim?.height}</span>
               </span>
               <span className="line"></span>
             </span>

@@ -1,9 +1,9 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as type from "../../types/types";
-import { submitFormData } from "../api/carApi";
+import { submitSimpleFormData } from "../api/carApi";
 
 interface FormDataState {
-  formData: type.PostCarType;
+  formData: type.PostSimpleCarType;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -39,13 +39,13 @@ const initialState: FormDataState = {
   error: null,
 };
 
-export const formDataSlice = createSlice({
+export const SimpleformDataSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
     // TODO : grades, trims 같은 객체배열 처리함수
     // ==formData 상태 변경 함수
-    updateField: (state, action) => {
+    updateFieldSP: (state, action) => {
       const { name, value } = action.payload;
       console.log(name, value);
       const keys = name.split("."); // --(".") 기준으로 경로 분할
@@ -69,7 +69,7 @@ export const formDataSlice = createSlice({
       ref[keys[keys.length - 1]] = value;
     },
     // ==grade배열에 객체 추가 함수
-    addGrade: state => {
+    addGradeSP: state => {
       const newGrade = {
         id: String(state.formData.grades.length + 1), // --id값을 현재 길이 + 1로 설정
         name: "",
@@ -78,10 +78,10 @@ export const formDataSlice = createSlice({
       state.formData.grades.push(newGrade);
     },
     // ==grade배열에 id값이 일치하는 객체 삭제 함수
-    removeGrade: (state, action: PayloadAction<string>) => {
+    removeGradeSP: (state, action: PayloadAction<string>) => {
       state.formData.grades = state.formData.grades.filter(grade => grade.id !== action.payload);
     },
-    addTrim: (state, action: PayloadAction<string>) => {
+    addTrimSP: (state, action: PayloadAction<string>) => {
       const grade = state.formData.grades.find(grade => grade.id === action.payload);
       if (grade) {
         const lastTrim = grade.trims[grade.trims.length - 1];
@@ -92,83 +92,36 @@ export const formDataSlice = createSlice({
               name: "",
               field: "ICE",
               price: 0,
-              fuel_type: "",
-              engine: "",
-              displacement: 0,
-              trans_mission: {
-                gear: "",
-                type: "",
-              },
-              driving_system: "",
-              power: 0,
-              torque: 0,
-              gas_mileage: 0,
-              urban_gas_mileage: 0,
-              highway_gas_mileage: 0,
-              low_emission: "",
-              vehicle_weight: 0,
-              front_tire: {
-                width: "",
-                flatness: "",
-                inch: "",
-              },
-              rear_tire: {
-                width: "",
-                flatness: "",
-                inch: "",
-              },
-              front_brake: "",
-              rear_brake: "",
-              front_suspension: "",
-              rear_suspension: "",
-              capacity: 0,
-              length: 0,
-              width: 0,
-              height: 0,
-              wheel_base: 0,
-              track: 0,
-              tread: 0,
-              motor_power: 0,
-              motor_torque: 0,
-              battery_type: "",
-              battery_volume: 0,
-              battery_voltage: 0,
-              ev_mileage: 0,
-              urban_ev_mileage: 0,
-              highway_ev_mileage: 0,
-              range: 0,
-              urban_range: 0,
-              highway_range: 0,
             };
         grade.trims.push(newTrim);
       }
     },
     // ==grade[index].trims으로 배열에 접근 뒤 id값이 일치하는 trim객체 삭제 함수
-    removeTrim: (state, action) => {
+    removeTrimSP: (state, action) => {
       const { gradeIdx, id } = action.payload;
       state.formData.grades[gradeIdx].trims = state.formData.grades[gradeIdx].trims.filter(trim => trim.id !== id);
     },
     // ==fuel_types은 배열객체, 새로운 연료타입 객체 생성 및 삭제 액션함수
-    addFuelType: (state, action) => {
+    addFuelTypeSP: (state, action) => {
       const { name, fuelType } = action.payload;
       state.formData[name].push(fuelType);
       state.formData.fuel_types.sort((a, b) => parseInt(a.id) - parseInt(b.id)); // --추가 후 오름차순 정렬
     },
-    removeFuelType: (state, action) => {
+    removeFuelTypeSP: (state, action) => {
       const { name, fuelTypeId } = action.payload;
       state.formData[name] = state.formData[name].filter(ft => ft.id !== fuelTypeId);
     },
   },
   extraReducers: builder => {
     builder
-      .addCase(submitFormData.pending, state => {
+      .addCase(submitSimpleFormData.pending, state => {
         state.status = "loading"; // 전송중
       })
-      .addCase(submitFormData.fulfilled, state => {
+      .addCase(submitSimpleFormData.fulfilled, state => {
         state.status = "succeeded"; // 전송완료
         alert("전송성공!");
       })
-      .addCase(submitFormData.rejected, (state, action) => {
+      .addCase(submitSimpleFormData.rejected, (state, action) => {
         state.status = "failed"; // 전송실패
         state.error = action.error?.message ?? null;
         alert("전송실패!" + state.error);
@@ -176,5 +129,5 @@ export const formDataSlice = createSlice({
   },
 });
 
-export const { updateField, addGrade, removeGrade, addTrim, removeTrim, addFuelType, removeFuelType } =
-  formDataSlice.actions;
+export const { updateFieldSP, addGradeSP, removeGradeSP, addTrimSP, removeTrimSP, addFuelTypeSP, removeFuelTypeSP } =
+  SimpleformDataSlice.actions;

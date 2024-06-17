@@ -3,6 +3,7 @@ import { selectedSegSize, selectedSegBody, selectedFuel, selectedBrand } from ".
 import { brandListSlice } from "./slice/useBrandListSlice";
 import { carListSlice, getCarSlice } from "./slice/useCarSlice";
 import { formDataSlice } from "./slice/createCarSlice";
+import { SimpleformDataSlice } from "./slice/createCarSimpleSlice";
 import { carListStyleSlice } from "./slice/listStyleSlice";
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
     selectedFuel: selectedFuel.reducer,
     // Server, DB
     createCar: formDataSlice.reducer,
+    createCarSimple: SimpleformDataSlice.reducer,
     brandList: brandListSlice.reducer,
     carList: carListSlice.reducer,
     car: getCarSlice.reducer,
