@@ -34,8 +34,6 @@ export default function TrimeForm({ gradeIdx }) {
     dispatch(removeTrimSP({ gradeIdx, id }));
   };
 
-  console.log(grade)
-
   return (
     <article className="trims">
       {trims?.map((trim, index) => (
