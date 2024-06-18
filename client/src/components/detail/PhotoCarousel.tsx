@@ -27,7 +27,7 @@ export default function PhotoCarousel() {
     setViewPhoto(copyArr);
   };
 
-  if (car.grades[0].trims) {
+  if (car.grades[0].trims.length === 0) {
     return <p>사진 정보없음</p>;
   }
 
