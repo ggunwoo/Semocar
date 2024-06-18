@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "../../styled/Detail.styled";
 import { MaxContainer } from "../../styled/Global";
 import { useAppSelector } from "../../store/hooks";
 
 export default function HeadBox({ minPrice, maxPrice, targetClick }) {
   const car = useAppSelector(state => state.car.item);
+  const navigate = useNavigate();
 
   const [ClickCheck, setClickCheck] = useState([true, false, false]);
   const [tabFixed, setTabFixed] = useState(false);
@@ -104,34 +106,37 @@ export default function HeadBox({ minPrice, maxPrice, targetClick }) {
       </S.TartgetNav>
 
       {/* TargetNav가 화면에서 사라졌을 때 보여줄 섹션 */}
-      <S.FixedBox className={`${tabFixed ? "fixed" : "unfixed"}`}>
+      <article className={`target-nav ${tabFixed ? "fixed" : "unfixed"}`}>
         <div className="wrap">
-          <div className="featureBox">
-            <div className="titleGroup">
-              <div className="brand">
-                <img src={`${car.brand.logo_path}`} alt={car.brand.english_name} />
-                <span className="brand">{car.brand.name}</span>
-              </div>
-              <p className="name">{car.name}</p>
-            </div>
-            <div className="btnGroup">
-              {["등급별 제원", "포토"].map((item, index) => (
-                <S.TargetBtn
-                  key={index}
-                  className={`targetBtn ${ClickCheck[index] ? "clicked" : "unclick"}`}
-                  onClick={() => {
-                    targetMove(targetClick[index]);
-                  }}>
-                  <p>{item}</p>
-                </S.TargetBtn>
-              ))}
-            </div>
+          <div className="buttons">
+            {["등급별 제원", "포토"].map((item, index) => (
+              <S.TargetBtn
+                key={index}
+                className={`targetBtn ${ClickCheck[index] ? "clicked" : "unclick"}`}
+                onClick={() => {
+                  targetMove(targetClick[index]);
+                }}>
+                <p>{item}</p>
+              </S.TargetBtn>
+            ))}
           </div>
-          <div className="imgBax">
-            <img src={`${car.image_path}/model_image.png`} alt={car.english_name} />
+
+          <div className="title-group">
+            <div className="brand">
+              <img src={`${car.brand.logo_path}`} alt={car.brand.english_name} />
+              {/* <span className="brand">{car.brand.name}</span> */}
+            </div>
+            <span className="name">
+              {car.name}&nbsp;{car.model_initial.toUpperCase()}
+            </span>
+          </div>
+
+          <div className="nav">
+            <div onClick={() => navigate("/")}>홈</div>
+            <div>로그인</div>
           </div>
         </div>
-      </S.FixedBox>
+      </article>
     </>
   );
 }
