@@ -69,8 +69,11 @@ export default function HeadBox({ minPrice, maxPrice, targetClick }) {
               </p>
               <p className="name">{car.name}</p>
               <p className="price">
-                {minPrice + maxPrice != 0 &&
-                  minPrice.toLocaleString("ko-KR") + "~" + maxPrice.toLocaleString("ko-KR") + "만원"}
+                {minPrice + maxPrice != 0
+                  ? minPrice === maxPrice
+                    ? minPrice.toLocaleString("ko-KR") + "만원"
+                    : minPrice.toLocaleString("ko-KR") + "~" + maxPrice.toLocaleString("ko-KR") + "만원"
+                  : "가격 정보 없음"}
               </p>
               <S.StyledChip className="first" label={`${car.segment.size}${car.segment.body}`} variant="outlined" />
               {car.fuel_types.map((fuel, idx) => (
