@@ -202,6 +202,8 @@ export default function BaseCarForm() {
           }}
         />
       </label>
+      {/* 이미지 확인 */}
+      <img className="check-img" src={`${formData.image_path}/model_image.png`} alt="이미지 url확인" />
       <label className="seg">
         차급:
         <select
