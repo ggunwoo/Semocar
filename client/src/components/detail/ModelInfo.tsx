@@ -8,7 +8,10 @@ import * as S from "../../styled/Detail.styled";
 
 // Components
 import GradeSelect from "./GradeSelect";
-import Chart from "./Chart";
+import ChartIce from "./spec/Chart_Ice";
+import ChartHev from "./spec/Chart_hev";
+import ChartPhev from "./spec/Chart_phev";
+import ChartEv from "./spec/Chart_ev";
 import SizeBox from "./SizeBox";
 
 export default function ModelInfo() {
@@ -26,8 +29,22 @@ export default function ModelInfo() {
       <div className="infoWrap" id="grade">
         <GradeSelect />
 
-        {/* 제원 차트 SPAC */}
-        <Chart trim={trim} />
+        {/* 가격 price */}
+        <S.PriceDl>
+          <dt>가격</dt>
+          <dd>{trim?.price ? <p>{trim.price.toLocaleString("ko-KR")}만원</p> : <p>가격정보없음</p>}</dd>
+        </S.PriceDl>
+
+        <S.SpacDl>
+          <dt>제원</dt>
+          <div style={{ position: "absolute", bottom: "0" }}></div>
+
+          {/* 트림 유형별 차트 */}
+          {trim.field === "ICE" && <ChartIce trim={trim} />}
+          {trim.field === "HEV" && <ChartHev trim={trim} />}
+          {trim.field === "PHEV" && <ChartPhev trim={trim} />}
+          {trim.field === "EV" && <ChartEv trim={trim} />}
+        </S.SpacDl>
 
         {/* 차량 사이즈이미지 */}
         <SizeBox trim={trim} />

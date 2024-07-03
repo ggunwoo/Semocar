@@ -34,6 +34,8 @@ export default function DetailPage() {
   const status = useAppSelector(state => state.car.status);
   const error = useAppSelector(state => state.car.error);
 
+  
+
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(0);
 
@@ -109,12 +111,12 @@ export default function DetailPage() {
         {/* ------------------------------------------- */}
 
         <MaxContainer>
-          {/* 차량정보 적어놓은 표 */}
+          
+          {/* 차량정보 */}
           <ModelInfo />
 
           {/* 포토갤러리 스크롤이동 위치, height = section간격 */}
           <S.MoveRef height="180px" ref={photoRef}></S.MoveRef>
-          {/* --------------------------------------------- */}
 
           {/* PHOTO GALLERY */}
           <S.SwiperWrap>
@@ -123,7 +125,6 @@ export default function DetailPage() {
 
           {/* 댓글 스크롤이동 위치, height = section간격 */}
           <S.MoveRef height="200px" ref={commentRef}></S.MoveRef>
-          {/* --------------------------------------------- ---*/}
           {/* 댓글 */}
           <article className={`comment-list`}>
             <div className="blank"></div>
