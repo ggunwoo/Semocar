@@ -132,7 +132,7 @@ export default function CarList() {
                   </p>
                 </article>
                 {/* 상세정보 보러가기 버튼 */}
-                <button>상세정보</button>
+                {/* <button>상세정보</button> */}
               </section>
             )}
           </li>

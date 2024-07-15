@@ -11,8 +11,8 @@ import {
   BRAND_IDS,
   FUELTYPE_LIST,
 } from "../../../../utils/constants"; // 상수 데이터 불러오기
-import { updateField, addFuelType, removeFuelType } from "../../../store/slice/createCarSlice";
-import SubmitButton from "./SubmitButton";
+import { updateFieldSP, addFuelTypeSP, removeFuelTypeSP } from "../../../store/slice/createCarSimpleSlice";
+import SubmitButton from "./SimpleSubmitButton";
 // ===============================================================
 //
 // ===============================================================
@@ -24,8 +24,8 @@ export default function BaseCarForm() {
   // checkbox와 배열 정렬을 위한 복사데이터
   const [fuelTypes, setFuelTypes] = useState([]);
   const useBrands = useAppSelector(state => state.brandList);
-  const formData = useAppSelector(state => state.createCar.formData);
-  const getFuelTypes = useAppSelector(state => state.createCar.formData.fuel_types);
+  const formData = useAppSelector(state => state.createCarSimple.formData);
+  const getFuelTypes = useAppSelector(state => state.createCarSimple.formData.fuel_types);
   const [brand, setBrand] = useState("");
   const [segmentSize, setSegmentSize] = useState("");
   const [segmentBody, setSegmentBody] = useState("");
@@ -43,15 +43,13 @@ export default function BaseCarForm() {
     setFuelTypes(addChecked);
   }, []);
 
-  console.log(fuelTypes);
-
   // --formData state 변경 처리 함수
   const handleChange = (e, type) => {
     const { name, value, checked } = e.target;
     //  --type에 따른 value변환 후 값 전달
-    if (type === "boolean") dispatch(updateField({ name: name, value: checked }));
-    if (type === "string") dispatch(updateField({ name: name, value: String(value) }));
-    if (type === "number" && !isNaN(value)) dispatch(updateField({ name: name, value: Number(value) }));
+    if (type === "boolean") dispatch(updateFieldSP({ name: name, value: checked }));
+    if (type === "string") dispatch(updateFieldSP({ name: name, value: String(value) }));
+    if (type === "number" && !isNaN(value)) dispatch(updateFieldSP({ name: name, value: Number(value) }));
   };
 
   // TODO : 상수데이터 brand, segment 그리고 출시년도 뒷 두자리를 이용해 ID값 자동생성
@@ -68,7 +66,7 @@ export default function BaseCarForm() {
     const newId = `${getbrandIds}${getsegSizeIds}${getsegBodyIds}${getYearSlice}`;
 
     setGenerateId(newId);
-    dispatch(updateField({ name: "id", value: newId }));
+    dispatch(updateFieldSP({ name: "id", value: newId }));
   };
 
   useEffect(() => {
@@ -83,18 +81,18 @@ export default function BaseCarForm() {
       const copyArr = [...fuelTypes]; // 배열 복사
       copyArr[index].checked = copyArr[index].checked = true; // 복사한 배열에 checked 값 수정
       setFuelTypes(copyArr); // 복사한 배열으로 수정
-      dispatch(addFuelType({ name: name, fuelType }));
+      dispatch(addFuelTypeSP({ name: name, fuelType }));
     } else if (getFuelTypes.some(ft => ft.id === fuelTypes[index].id)) {
       const copyArr = [...fuelTypes];
       copyArr[index].checked = copyArr[index].checked = false;
       setFuelTypes(copyArr);
-      dispatch(removeFuelType({ name: name, fuelTypeId: fuelType.id }));
+      dispatch(removeFuelTypeSP({ name: name, fuelTypeId: fuelType.id }));
     }
   };
 
   return (
     <article className="left-form-container">
-      <p className="text-1xl">차량 정보 등록</p>
+      <p className="text-1xl">차량 정보 등록&#40;심플&#41;</p>
       {/* TODO :: 브랜드, 차급, 출시년도 선택하면 id값 자동화설정 */}
       {/* 브랜드, 차급은 상수데이터(두자릿수 숫자)로 출시년도 뒷두자리, 2022면 22만 배열에 할당 후 join() number() + 숫자 타입 1을 뒤에 붙이고 */}
       {/* db에 같은 데이터가 있다면 1을 1이 증감된 2를 할당하기 */}

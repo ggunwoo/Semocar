@@ -96,4 +96,6 @@ export const getCarSlice = createSlice({
   },
 });
 
+
+
 export const { updateField, unmount } = getCarSlice.actions;

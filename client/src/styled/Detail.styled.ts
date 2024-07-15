@@ -132,7 +132,7 @@ export const TargetBtn = styled.div`&&&
 export const FixedBox = styled.div`&&&
 {
   width: 100%;
-  height: 130px;
+  height: 100px;
   position: fixed;
   top: 0;
   background-color: #fff;
@@ -143,87 +143,8 @@ export const FixedBox = styled.div`&&&
   /* TargetNav가 화면에 가려질때 보여주기 */
   &.unfixed { display: none; }
   &.fixed { display: block; }
-  .wrap {
-    width: 1100px;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    /* 좌측요소 */
-    .featureBox {
-      /* 타이틀*/
-      .titleGroup {
-        margin-top: 18px;
-        /* 브랜드 */
-        .brand {
-          display: flex;
-          align-items: center;
-          /* 브랜드-이미지 */
-          img {
-            max-width: 25px;
-            min-width: 15px;
-            max-height: 17px;
-            margin-right: 8px;
-            opacity: .75;
-          }
-          /* 브랜드-이름 */
-          span {
-            font-size: 0.75rem;
-            color: #626262;
-            text-align: center;
-            margin-top: 3px;
-          }
-        }
-        /* 차량이름 */
-        .name {
-          color: #626262;
-          font-size: 2.125rem;
-          font-weight: 600;
-          line-height: 3rem;
-        }
-      }
-      /* 스크롤위치이동 탭(TargetNav) */
-      .btnGroup {
-        display: flex;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        p {
-        }
-        .targetBtn {
-          font-size: 1rem;
-        }
-        .unclick {
-            color: #cacaca;
-          }
-        .clicked {
-          color: #AB9ADD;
-          font-weight: bold;
-          position: relative;
-          &::before {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 5px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: #AB9ADD;
-          }
-        }
-      }
-    }
-    /* 우측이미지 */
-    .imgBax {
-      img {
-        width: 440px;
-        position: relative;
-        bottom: 10px;
-        right: 50px;
-      }
-    }
-  }
+
+  
 }`;
 // 차량 상세정보 표 (등급별 제원)
 export const ChartWrapper = styled.div`

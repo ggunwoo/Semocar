@@ -16,6 +16,8 @@ export default function PhotoCarousel() {
   const [exThumbs, setExThumbs] = useState<Swiper | null>(null);
   const [inThumbs, setInThumbs] = useState<Swiper | null>(null);
 
+  const [imageErr, setImageErr] = useState(false);
+
   // // -- 임시로 5개 고정
   const exteriorArr = new Array(5).fill(1).map((item, index) => (item = item + index));
   const interiorArr = new Array(5).fill(1).map((item, index) => (item = item + index));
@@ -27,6 +29,10 @@ export default function PhotoCarousel() {
     setViewPhoto(copyArr);
   };
 
+  if (imageErr) {
+    return <p>사진 정보없음</p>;
+  }
+
   return (
     <>
       <div className="slideHead">
@@ -37,7 +43,7 @@ export default function PhotoCarousel() {
               viewChange(0);
             }}
             className={`changeBtn exBtn ${viewPhoto[0] ? "active" : "inactive"}`}>
-            외부
+            외관
           </div>
           {/* 외부버튼 */}
 
@@ -46,7 +52,7 @@ export default function PhotoCarousel() {
               viewChange(1);
             }}
             className={`changeBtn inBtn ${viewPhoto[1] ? "active" : "inactive"}`}>
-            내부
+            실내
           </div>
         </div>
       </div>
@@ -61,7 +67,11 @@ export default function PhotoCarousel() {
           modules={[FreeMode, Navigation, Thumbs]}>
           {exteriorArr.map((number, idx) => (
             <SwiperSlide key={number}>
-              <img src={`${car.image_path}/exterior/${idx}.jpg`} alt={car.english_name} />
+              <img
+                src={`${car.image_path}/exterior/${idx}.jpg`}
+                alt={car.english_name}
+                onError={() => setImageErr(true)}
+              />
             </SwiperSlide>
           ))}
         </S.MainSwiper>
@@ -75,7 +85,11 @@ export default function PhotoCarousel() {
           {/* ThumbsSwiper */}
           {exteriorArr.map((number, idx) => (
             <SwiperSlide key={number}>
-              <img src={`${car.image_path}/exterior/${idx}.jpg`} alt={car.english_name} />
+              <img
+                src={`${car.image_path}/exterior/${idx}.jpg`}
+                alt={car.english_name}
+                onError={() => setImageErr(true)}
+              />
             </SwiperSlide>
           ))}
         </S.ThumbsSwiper>
