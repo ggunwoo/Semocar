@@ -65,7 +65,7 @@ module.exports = {
       publicPath: "/",
     }),
     new FaviconsWebpackPlugin({
-      logo: "./public/logo-512x512.png",
+      logo: "./public/assets/logo-512x512.png",
       manifest: "./public/manifest.json",
     }),
     new webpack.DefinePlugin({

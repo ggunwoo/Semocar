@@ -2,7 +2,7 @@ import axios from "axios";
 import * as type from "../../types/types";
 import { RootState } from "../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { serverUrl } from "../../api/getCarData";
+import { serverUrl } from "../../../utils/constants";
 
 interface FilterParams {
   selectBrand: string[];
@@ -25,7 +25,21 @@ export const submitFormData = createAsyncThunk("form/submitFormData", async (_, 
     return rejectWithValue(error.response?.data || "Unknown error");
   }
 });
+export const submitSimpleFormData = createAsyncThunk("form/submitSimpleFormData", async (_, { getState, rejectWithValue }) => {
+  try {
+    const state = getState() as RootState;
+    const formData = state.createCarSimple.formData;
+    console.log("Sending formData:", formData); // 전송 전 formData 로그 출력
+    const response = await axios.post(`${serverUrl}/create/carSimple`, formData);
+    console.log(`${serverUrl}/create/carSimple`);
+    return response.data;
+  } catch (error) {
+    console.error("Error sending data:", error.response?.data || error.message);
+    return rejectWithValue(error.response?.data || "Unknown error");
+  }
+});
 
+// --전체 데이터 리스트 호출
 export const fetchCarAllList = createAsyncThunk("cars/fetchCars", async () => {
   const response = await axios.get(`${serverUrl}/get/cars`);
   return response.data;

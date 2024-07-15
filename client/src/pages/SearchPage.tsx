@@ -4,6 +4,7 @@ import "../styles/search.scss";
 import OptionBox from "../components/search/OptionBox";
 import CarList from "../components/search/CarList";
 import SearchBar from "../components/search/SearchBar";
+import SelectBadge from "../components/search/SelectBadge";
 
 // Search View Styled
 export default function SearchPage() {
@@ -12,13 +13,15 @@ export default function SearchPage() {
       {/* SelectBox */}
       <OptionBox />
       {/* 상단 탭 */}
-      <nav className="list-nav">
-        <div></div>
+      <aside className="aside">
+        <article className="badge-list">
+          {/* <SelectBadge /> */}
+        </article>
         {/* 검색 컴포넌트 */}
-        <div>
+        <article className="search-bar">
           <SearchBar />
-        </div>
-      </nav>
+        </article>
+      </aside>
 
       <article className={`container-car-list`}>
         {/* 차 목록 */}
