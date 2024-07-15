@@ -12,7 +12,7 @@ export default function ChartIce({ trim }) {
         <dt>엔진형식</dt>
         <dd>{trim.engine}</dd>
         <dt>배기량</dt>
-        <dd>{trim.displacement}</dd>
+        <dd>{trim.displacement}&nbsp;<span>cc</span></dd>
         <dt>변속기</dt>
         <dd>
           {trim.trans_mission.gear} {trim.trans_mission.type}
@@ -20,22 +20,22 @@ export default function ChartIce({ trim }) {
         <dt>구동방식</dt>
         <dd>{trim.driving_system}</dd>
         <dt>최고출력</dt>
-        <dd>{trim.power}</dd>
+        <dd>{trim.power}&nbsp;<span>마력</span></dd>
         <dt>최대토크</dt>
-        <dd>{trim.torque?.toFixed(1)}</dd>
+        <dd>{trim.torque?.toFixed(1)}&nbsp;<span>kg.m</span></dd>
       </S.ChartDl>
       {/* OPTION 2LINE */}
       <S.ChartDl>
         <dt>복합연비</dt>
-        <dd>{trim.gas_mileage?.toFixed(1)}</dd>
+        <dd>{trim.gas_mileage?.toFixed(1)}&nbsp;<span>km/l</span></dd>
         <dt>도심연비</dt>
-        <dd>{trim.urban_gas_mileage?.toFixed(1)}km/l</dd>
+        <dd>{trim.urban_gas_mileage?.toFixed(1)}&nbsp;<span>km/l</span></dd>
         <dt>고속도로연비</dt>
-        <dd>{trim.highway_gas_mileage?.toFixed(1)}km/l</dd>
+        <dd>{trim.highway_gas_mileage?.toFixed(1)}&nbsp;<span>km/l</span></dd>
         <dt>연비등급</dt>
         <dd>{trim.low_emission}</dd>
         <dt>공차중량</dt>
-        <dd>{trim.vehicle_weight}kg</dd>
+        <dd>{trim.vehicle_weight}&nbsp;<span>kg</span></dd>
       </S.ChartDl>
       {/* OPTION 3LINE */}
       <S.ChartDl>

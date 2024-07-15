@@ -8,7 +8,7 @@ import * as S from "../../styled/Detail.styled";
 
 // Components
 import GradeSelect from "./GradeSelect";
-import ChartIce from "./spec/Chart_Ice";
+import ChartIce from "./spec/Chart_ice";
 import ChartHev from "./spec/Chart_hev";
 import ChartPhev from "./spec/Chart_phev";
 import ChartEv from "./spec/Chart_ev";
@@ -17,6 +17,8 @@ import SizeBox from "./SizeBox";
 export default function ModelInfo() {
   const car = useAppSelector(state => state.car.item);
   const status = useAppSelector(state => state.car.status);
+
+  console.log(car);
 
   const selectGrade = useAppSelector(state => state.selectGrade.selectGrade);
   const selectTrim = useAppSelector(state => state.selectGrade.selectTrim);
@@ -35,19 +37,24 @@ export default function ModelInfo() {
           <dd>{trim?.price ? <p>{trim.price.toLocaleString("ko-KR")}만원</p> : <p>가격정보없음</p>}</dd>
         </S.PriceDl>
 
-        <S.SpacDl>
-          <dt>제원</dt>
-          <div style={{ position: "absolute", bottom: "0" }}></div>
+        {trim.engine ? (
+          <>
+            <S.SpacDl>
+              <dt>제원</dt>
+              <div style={{ position: "absolute", bottom: "0" }}></div>
 
-          {/* 트림 유형별 차트 */}
-          {trim.field === "ICE" && <ChartIce trim={trim} />}
-          {trim.field === "HEV" && <ChartHev trim={trim} />}
-          {trim.field === "PHEV" && <ChartPhev trim={trim} />}
-          {trim.field === "EV" && <ChartEv trim={trim} />}
-        </S.SpacDl>
-
-        {/* 차량 사이즈이미지 */}
-        <SizeBox trim={trim} />
+              {/* 트림 유형별 차트 */}
+              {trim.field === "ICE" && <ChartIce trim={trim} />}
+              {trim.field === "HEV" && <ChartHev trim={trim} />}
+              {trim.field === "PHEV" && <ChartPhev trim={trim} />}
+              {trim.field === "EV" && <ChartEv trim={trim} />}
+            </S.SpacDl>
+            {/* 차량 사이즈이미지 */}
+            <SizeBox trim={trim} />
+          </>
+        ) : (
+          <div>상세정보가 없습니다.</div>
+        )}
       </div>
     </S.ChartWrapper>
   );
