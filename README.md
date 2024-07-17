@@ -10,7 +10,7 @@
 
 > 국내 신차 정보를 제공하는 웹사이트입니다. 프로덕트 디자이너와 2인 토이프로젝트를 진행했습니다.  
 
-> vercel 배포  
+> Vercel 배포  
 > <https://semocar.vercel.app>
 
 <br />
